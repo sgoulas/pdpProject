@@ -1,0 +1,34 @@
+
+Project aims:
+  ☐ Build an e-commerce site that is highly rated in lighthouse and wc3 validation tools.
+
+Technologies, methodologies and architecture:
+  ☐ React with typescript
+  ☐ Redux saga
+  ☐ SEO
+  ☐ Performance optimization
+  ☐ Semantic HTML
+  ☐ Custom CSS + Flex / Grid
+  ☐ Data driven navigation
+  ☐ State / UI separation
+  ☐ Axios
+  ☐ SSR with node / next / express (or fake data with faker)
+  ☐ GraphQL calls
+  ☐ Animations
+  ☐ Responsive, mobile first design
+  ☐ Hosted (if possible) on github pages
+  ☐ Persistent state
+  ☐ Dynamic loading with suspense
+  ☐ React testing library
+
+Main Goals:
+  ☐ Landing Page
+  ☐ Products listing page
+  ☐ Product page
+  ☐ Checkout page
+
+Extra milestones:
+  ☐ Wishlist
+  ☐ Dark Mode
+  ☐ Paypal integration / stripe
+  ☐ compare page

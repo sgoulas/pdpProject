@@ -1,0 +1,9 @@
+{
+  "name": "personal-development-plan-project",
+  "version": "1.0.0",
+  "description": "A project as part of my personal development plan in Agile Actors. I aim to use technologies I am not familiar with in order to improve as a developer.",
+  "main": "index.js",
+  "repository": "https://github.com/sgoulas/pdpProject",
+  "author": "sgoulas <sprgoulas@gmail.com>",
+  "license": "MIT"
+}
