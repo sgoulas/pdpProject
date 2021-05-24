@@ -40,3 +40,5 @@ It seems that SG can be paired with data fetching via the (async) `getStaticPros
 
 It seems that the fetched data are determined during build time, so a SG page will not receive updates about new data without rebuilding. However the `revalidate` allows us to use incremental static generation (**ISG**) to re-generate the page on a specific interval on the server side, in order to serve up to date pre-rendered pages (this is really awesome lol). So, when is there a need for true SSR? I guess when there is a need for the most accurate representation of data? Like, even with a `revalidate` value of 1, the server can serve an "old" page, assuming the latter changed in the span of a second between two requests. But when the accuracy matters the most, SSR is the best opion. Also, SSR has access to the request and response object, so this is somethig to keep in mind.
 Of course, SSR adds a time overhead, so unless I work with data that change multiple times _per second_ and are also _mission critical_ to be laser point accurate, SSR is not required.
+
+Finished the Next.js section of Academind.
