@@ -42,3 +42,7 @@ It seems that the fetched data are determined during build time, so a SG page wi
 Of course, SSR adds a time overhead, so unless I work with data that change multiple times _per second_ and are also _mission critical_ to be laser point accurate, SSR is not required.
 
 Finished the Next.js section of Academind.
+
+## 30 May 2021
+
+After talking with my coach we decided it was better to use webpack as a bundler, because it's more widely used and thus will be more useful in my professional works. Thus, I started reading the webpack documenattion and getting started section (https://webpack.js.org/guides/getting-started/).
