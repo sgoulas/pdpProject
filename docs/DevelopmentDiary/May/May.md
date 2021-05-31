@@ -46,3 +46,11 @@ Finished the Next.js section of Academind.
 ## 30 May 2021
 
 After talking with my coach we decided it was better to use webpack as a bundler, because it's more widely used and thus will be more useful in my professional works. Thus, I started reading the webpack documenattion and getting started section (https://webpack.js.org/guides/getting-started/).
+
+After finishing with the getting started guide I changed the project structure and also set up a webpack.config.js file and a build script and was able to get an output bundle with an html page that was loading a main.js file.
+
+I also found out that at the moment yarn doesn't offer a way to prevent the installation of dev dependencie, so this is something I was not aware of when choosing the package manager.
+
+There seems to be a need for html-webpack-plugin (https://webpack.js.org/plugins/html-webpack-plugin/), at least in the future, since it allows bundling files whose name change each time (like files that contain hashes or dates or generally have dynamic names, CSS files are the first to come to mind when reading this). I am not going to use it from the beginning since there is no need for it at the moment, but it is definitely something I should have in mind.
+
+Now I need to install the necessary react packages and try to do two things: boot up a dev server that hot-reloads and create a script that successfully builds my application. I wonder when is the best time to add typescript to the application, before adding react or after.

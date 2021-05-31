@@ -6,6 +6,10 @@
   "repository": "https://github.com/sgoulas/pdpProject",
   "author": "sgoulas <sprgoulas@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
     "webpack": "^5.38.1",
     "webpack-cli": "^4.7.0"
