@@ -27,3 +27,11 @@ By setting the mode parameter to either development, production or none, you can
 Webpack supports all browsers that are ES5-compliant (IE8 and below are not supported). webpack needs Promise for import() and require.ensure(). If you want to support older browsers, you will need to load a polyfill before using these expressions
 
 - html-webpack-plugin (https://webpack.js.org/plugins/html-webpack-plugin/) allows bundling files whose name change each time (like files that contain hashes or dates or generally have dynamic names, CSS files are the first to come to mind when reading this).
+
+### resolve
+
+https://webpack.js.org/configuration/resolve/#resolve
+
+Create aliases to import or require certain modules more easily. It actually seems to be a webpack alternative to `babel-plugin-module-resolver`, which I used in a previous project. This really seems a simpler approach (note: in this article https://medium.com/bootstart/why-you-should-use-babel-resolvers-210615fc41d the author suggests that they prefer babel since more projects use babel than webpack).
+
+Regarding `webpack` versus `babel` approach also refer to this: https://zaiste.net/posts/javascript-module-resolution-webpack-babel/.
