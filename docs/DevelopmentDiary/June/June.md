@@ -31,7 +31,7 @@ As I wrote earlier and by cross referencing the article with the docs I will ins
 - `@babel/preset-react` to transpile React to ES5.
 - `babel-loader` to transform the Javascript dependencies with Babel (transform `import` statements to `require` ones).
 
-I will skip `@babel/cli` since as per the docs (https://babeljs.io/docs/en/babel-cli) it's usage if to transpile files manually from the command line, which is something that I currently do not plan on doing.
+I will skip `@babel/cli` since as per the docs (https://babeljs.io/docs/en/babel-cli) its usage is to transpile files manually from the command line, which is something that I currently do not plan on doing.
 
 After that I will add some loaders:
 
@@ -54,7 +54,7 @@ I chose `eval-source-map` since I wanted the best possible quality of informatio
 I tried to differentiate the `devtool` value based on the value of the `process.env.NODE_ENV` variable in order to differentiate the information exposed upon errors based on the environment (development versus production), but it seems the best way to implement it is by splitting the `webpack.config.js` into `development` and `production`, each on configuring `webpack` differently based on the current environment (https://webpack.js.org/guides/production/).
 
 (
-Funnily enough, it seems I was not the first one to try this since there is a dedicated section for that in the docs:
+Funnily enough, it seems I was not the first one to try ternary-finding-my-way-out of this since there is a dedicated section for that in the docs:
 Technically, NODE_ENV is a system environment variable that Node.js exposes into running scripts. It is used by convention to determine dev-vs-prod behavior by server tools, build scripts, and client-side libraries.
 Contrary to expectations, process.env.NODE_ENV is not set to 'production' within the build script webpack.config.js, see https://github.com/webpack/webpack/issues/2537. Thus, conditionals like process.env.NODE_ENV === 'production' ? '[name].[contenthash].bundle.js' : '[name].bundle.js' within webpack configurations do not work as expected.
 )
@@ -70,3 +70,5 @@ In order to handle the files I will be adding `webpack-merge` which is what the 
 (In the end I opted for no source maps in production for maximum performance and security, this may be changed in the future though.)
 
 Thus, I can handle different configurations based on my environment needs.
+
+Next I should probably pick up my reading from here https://dev.to/deadwing7x/setup-a-react-app-using-webpack-babel-and-typescript-5927 which is the second part of the previously mentioned DEV.to article, this time about typescript.
