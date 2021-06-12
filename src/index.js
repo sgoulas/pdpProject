@@ -1,7 +1,7 @@
 function component() {
   const element = document.createElement("div");
 
-  element.innerHTML = "Hello webpack";
+  element.innerHTML = "Hello webpack!!";
 
   return element;
 }

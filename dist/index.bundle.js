@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("function component() {\r\n  const element = document.createElement(\"div\");\r\n\r\n  element.innerHTML = \"Hello webpack\";\r\n\r\n  return element;\r\n}\r\n\r\ndocument.body.appendChild(component());\r\n\n\n//# sourceURL=webpack://personal-development-plan-project/./src/index.js?");
+eval("function component() {\r\n  const element = document.createElement(\"div\");\r\n\r\n  element.innerHTML = \"Hello webpack!\";\r\n\r\n  return element;\r\n}\r\n\r\ndocument.body.appendChild(component());\r\n\n\n//# sourceURL=webpack://personal-development-plan-project/./src/index.js?");
 
 /***/ })
 

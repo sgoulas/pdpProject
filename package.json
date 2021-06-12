@@ -8,10 +8,14 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack serve"
   },
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "html-webpack-plugin": "^5.3.1",
     "webpack": "^5.38.1",
-    "webpack-cli": "^4.7.0"
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
   }
 }
