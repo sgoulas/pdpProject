@@ -46,3 +46,27 @@ I updated `.babelrc` file with the required presets and also added the `"@babel/
 I finally updated `webpack.config.js` with `module` prop, adding `rules` for loading and handling different type of files (specifically `js`/`jsx`, `css`/`scss` and a variety of image formats).
 
 At this point `React` is successfully integrated into the project, I am able to transpile it with `Babel` and bundle and serve it with `Webpack`, while also seeing any changes take effect into real time in the developemnt server.
+
+As a final addition, I would like to add source mapping functionality to my project, to be able to inspect the deployed code despite it being minified and bundled. Webpack has a dedicated section for that: https://webpack.js.org/configuration/devtool/#devtool indicating the various appraoches I can take.
+
+I chose `eval-source-map` since I wanted the best possible quality of information during development.
+
+I tried to differentiate the `devtool` value based on the value of the `process.env.NODE_ENV` variable in order to differentiate the information exposed upon errors based on the environment (development versus production), but it seems the best way to implement it is by splitting the `webpack.config.js` into `development` and `production`, each on configuring `webpack` differently based on the current environment (https://webpack.js.org/guides/production/).
+
+(
+Funnily enough, it seems I was not the first one to try this since there is a dedicated section for that in the docs:
+Technically, NODE_ENV is a system environment variable that Node.js exposes into running scripts. It is used by convention to determine dev-vs-prod behavior by server tools, build scripts, and client-side libraries.
+Contrary to expectations, process.env.NODE_ENV is not set to 'production' within the build script webpack.config.js, see https://github.com/webpack/webpack/issues/2537. Thus, conditionals like process.env.NODE_ENV === 'production' ? '[name].[contenthash].bundle.js' : '[name].bundle.js' within webpack configurations do not work as expected.
+)
+
+So the plan is to have three different webpack configuration files:
+
+- `webpack.common.js` will contain environment-agnostic settings like entry, output, plugins etc. Settings that will remain the same no matter the mode.
+- `webpack.dev.js` will contain development settings like mode, full information source maps and devServer settings
+- `webpack.prod.js` will contain production settings, specifically the mode (at least for now).
+
+In order to handle the files I will be adding `webpack-merge` which is what the webpack docs suggest I do to merge the different configurations.
+
+(In the end I opted for no source maps in production for maximum performance and security, this may be changed in the future though.)
+
+Thus, I can handle different configurations based on my environment needs.
