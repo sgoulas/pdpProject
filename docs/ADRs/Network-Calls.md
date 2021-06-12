@@ -1,6 +1,6 @@
 # Deciding fetch implementation
 
-## Data
+## Date
 
 15 May 2021
 
