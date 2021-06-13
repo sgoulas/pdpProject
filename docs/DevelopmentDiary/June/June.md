@@ -72,3 +72,13 @@ In order to handle the files I will be adding `webpack-merge` which is what the 
 Thus, I can handle different configurations based on my environment needs.
 
 Next I should probably pick up my reading from here https://dev.to/deadwing7x/setup-a-react-app-using-webpack-babel-and-typescript-5927 which is the second part of the previously mentioned DEV.to article, this time about typescript.
+
+## 13 June 2021
+
+I need to add typescript to the project. I will need the following:
+
+- `@types/react` and `@types/react-dom` which contain type definitions for `react` and `react-com` respectively.
+- `@babel/preset-typescript` so that `babel` can work with typescript.
+- `ts-loader` to be able to load typescript files with `webpack`.
+
+I also updated `webpack.common.js`, created a `tsconfig.json` and changed the existing `js` files to `ts` ones.
