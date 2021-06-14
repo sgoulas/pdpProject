@@ -3,7 +3,7 @@ Project aims:
   ☐ Build an e-commerce site that is highly rated in lighthouse and wc3 validation tools.
 
 Technologies, methodologies and architecture:
-  ☐ React with typescript
+  ✔ React with typescript @done(21-06-14 03:32)
   ☐ Redux saga
   ☐ SEO
   ☐ Performance optimization
