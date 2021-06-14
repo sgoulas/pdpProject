@@ -12,6 +12,8 @@ Technologies, methodologies and architecture:
   ☐ Data driven navigation
   ☐ State / UI separation
   ☐ Axios
+  ☐ Husky for pre-commit checking files
+  ☐ Eslint
   ☐ SSR with node / next / express (or fake data with faker)
   ☐ GraphQL calls
   ☐ Animations
@@ -32,3 +34,4 @@ Extra milestones:
   ☐ Dark Mode
   ☐ Paypal integration / stripe
   ☐ compare page
+  ☐ Analytics
