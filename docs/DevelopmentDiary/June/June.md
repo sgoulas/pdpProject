@@ -236,6 +236,6 @@ At this point, I am honestly not exactly sure what `graphql-tools` offers. It se
 
 Maybe this can help? https://dev.to/ekafyi/typing-and-mocking-a-graphql-api-server-with-apollo-3f4h
 
-I still have not figured out how to actually mock my GraphQL calls. Hell, I am not even sure if I need `apollo-server`.
+I still have not figured out how to actually mock my GraphQL calls. Hell, I am not even sure if I need `apollo-server`. It seems like the only way to mock the calls purely in the front end, without needing a server running is by using the `MockedProvider` normally used for testing https://www.apollographql.com/docs/react/development-testing/testing/.
 
 I am going to sleep...
