@@ -89,7 +89,7 @@ Having estasblished the toolchain (yarn webpack and babel) and the core technolo
 
 I already know of faker.js (https://github.com/Marak/faker.js) and my initial thought was to use it to generate any data I need. I do however need to finalise the architecture I am going to use for fetching data with GraphQL, as well as fill any gaps in my knowledge.
 
-GraphQL org has many (many) packages for using graphql in FE or BE in javascript environments (https://graphql.org/code/#javascript) depending on the stack. It seems that when it comes to "front end + react" the suggested package is apollo client (https://www.apollographql.com/docs/react).
+GraphQL org has many (many) packages for using graphql in FE or BE in javascript environments (https://graphql.org/code/#javascript) depending on the stack. It seems that when it comes to "front end + react" the suggested package is apollo client (https://www.apollographql.com/docs/react) (apollo being a company that creates tools for bulding application with GraphQL).
 
 So basically I need to figure out how to make the following work together:
 
@@ -239,3 +239,94 @@ Maybe this can help? https://dev.to/ekafyi/typing-and-mocking-a-graphql-api-serv
 I still have not figured out how to actually mock my GraphQL calls. Hell, I am not even sure if I need `apollo-server`. It seems like the only way to mock the calls purely in the front end, without needing a server running is by using the `MockedProvider` normally used for testing https://www.apollographql.com/docs/react/development-testing/testing/.
 
 I am going to sleep...
+
+## 20 June 2021
+
+I continue reading the docs in order to get a clear grasp on the "big picture" and what is needed. One thing that I notice is that apollo client suggests using a hook named `useQuery` in order to fetch, but does not seem to provide (at least at first glance) a simple "query" function. This means that the fetching operation is "known" to my components and that the two concepts (component and "fetching via apollo") are coupled together. Ideally I would like any data that is the result of a network call to exist in the Redux store and either be available through the component props (after a `connect`) or by calling `useSelector`, thus eliminating any need of explicitly calling `useQuery` inside my components. This would allow me to implement a "separation of concerns" where components only know their pros, not where the props came from or how they came to be, which in turn makes any future change / update easier.
+
+Also, there is `apollo-client` and `@apollo/client` and they seem to be different versions of the same thing.
+
+Turns out `@apollo/client` is the up to date (3.x.x), with `apollo-client` being the older verion.`@apollo/client` package also includes both React hooks and GraphQL request handling, which previously required installing separate packages.
+
+After some further reading it seems that if I want to use graphQL then I really need to setup an apollo-server that will also mock every response with faker. `MockedProvider` should only be used for the front end testing and not for mocking data while the application is running.
+
+So the list at the moment looks something like this:
+
+- `@apollo/client` which includes the in-memory cache, local state management, error handling, and a React-based view layer, basically everything that is needed for Apollo Client in an application built with React.
+- `graphql` which provides logic for parsing GraphQL queries.
+- `apollo-server` for setting up a simple server to answer to the graphQL requests from an apollo client.
+
+I still need to find a way to perform the fetching in the middleware instead of inside the components.
+
+It seems that the way to do it is create a new apollo client from `@apollo/client`, and expose a `query` function which is basically the same as running the built in `query` method of the apollo client. Then I should use this exposed function in my middleware, thus fetching without the usage of the `useQuery` hook. I would be missing out on the `loading`,`error` and `data` values returned from the hook though...
+
+Also, I should consider using `apollo-boost` to quickly configure my client.
+
+Problem is, `apollo-boost` uses `apollo-client` instead of `@apollo/client`, meaning it still uses the 2.x.x version instead of the 3.x.x one, so I should probably just set it up manually myself one package at a time.
+
+I got to say, this is the first time I am having so much trouble choosing the correct packages and indentifying what needs to be where. Multiple packages with almost identical names (what is the usage of `react-apollo` that all the other mentioned packages do not provide?), documentation that abstracts the "big view", broken example links and no clear overview of a completed project (even a bare bones one). I guess this is what back end developers hate when they talk about the "front end ecosystem".
+
+Considering the apollo client uses the `fetch` api there are 4 disadvantages that I have to keep in mind:
+
+- The response has to be formatted into a JSON.
+- HTTP request / response interceptors ---> this is actually handle-able on the apollo client layer so not an issue.
+- No (easy) way to cancel an ongoing request (would have to overwrite the api, something that I do not want to do).
+- No way to set up a time out configuration.
+
+So it seems I have two options regarding the networking:
+
+- Go with apollo client and its `query`.
+- Use `axios`, which does support graphQL calls.
+
+Going with `axios` low key means I will not be using `@apollo/client` at all, meaning I would lose:
+
+- caching.
+- declarative data fetching (the `loading`,`error` and `data` that `useQuery` returns).
+
+(honestly, these are the two major selling points https://www.apollographql.com/docs/react/why-apollo/ is trying to push, local state management https://www.apollographql.com/docs/react/local-state/local-state-management/ looks cool but I do want to use redux with saga so my application state will be there).
+
+Considering I was not planning to use `useQuery` (and all its goodies) in the first place, opting for "network agnostic" components and the fact that I don't really want the apollo only featurues but I do want the `axios` only ones, I am not sure I need `@apollo/client` after all. I definitely need to make sure this is actually the case and try to find out if there is something else that `@apollo/client` offers that is important and I would be missing out. But if this is not the case the setup would be something like:
+
+Back end:
+
+- `apollo-server`
+- `faker`
+
+Front end:
+
+- `graphql`
+- `axios`
+
+I can also mock without a back end at all, if I manage to actually read the `graphql-tools` docs https://www.graphql-tools.com/docs/mocking/.
+If I understand correctly the way `graphql-tools` mocking works, it does not intercept any call whatsoever, it just executes a graphql query against an executable schema and returns the results:
+
+```js
+import { makeExecutableSchema } from "@graphql-tools/schema";
+import { addMocksToSchema } from "@graphql-tools/mock";
+import { graphql } from "graphql";
+
+// Fill this in with the schema string
+const schemaString = `...`;
+
+// Make a GraphQL schema with no resolvers
+const schema = makeExecutableSchema({ typeDefs: schemaString });
+
+// Create a new schema with mocks
+const schemaWithMocks = addMocksToSchema({ schema });
+
+const query = `
+query tasksForUser {
+  user(id: 6) { id, name }
+}
+`;
+
+graphql(schemaWithMocks, query).then(
+  (
+    result // this is an imperative call, it does not intercept a network call
+  ) => console.log("Got result", result)
+);
+```
+
+So, I am guessing, in order to set up a front end only mock I would have to use `axios-mock-adapter` to actually intercept `axios` calls, then instead of returning a response object, extract the params, execute a graphql query in the same way described above, then return the object containg the results.
+
+I am not exactly sure about that. And I still need to read more to make sure, absolutely sure, that not using `@apollo/client` is the correct decision.
