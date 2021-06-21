@@ -327,6 +327,13 @@ graphql(schemaWithMocks, query).then(
 );
 ```
 
-So, I am guessing, in order to set up a front end only mock I would have to use `axios-mock-adapter` to actually intercept `axios` calls, then instead of returning a response object, extract the params, execute a graphql query in the same way described above, then return the object containg the results.
+So, I am guessing, in order to set up a front end only mock I would have to use `axios-mock-adapter` to actually intercept `axios` calls, then instead of returning a response object I should extract the params, execute a graphql query in the same way described above, then return the object containg the results.
 
 I am not exactly sure about that. And I still need to read more to make sure, absolutely sure, that not using `@apollo/client` is the correct decision.
+
+## 21 June 2021
+
+To recap the plan is the following:
+
+1. Decide if I actually need `@apollo/client`, this will also decide if I will move forward with `query` or `axios`.
+2. Decide if I will mock the graphQL server in the front end with `graphql-tools` or set up an actual graphQL server with mock responses with `apollo-server`.
