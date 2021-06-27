@@ -5,6 +5,7 @@ Project aims:
 Technologies, methodologies and architecture:
   ✔ React with typescript @done(21-06-14 03:32)
   ☐ Redux saga
+  ☐ Redux toolkit (with care for memoized selectors)
   ☐ SEO
   ☐ Performance optimization
   ☐ Semantic HTML
@@ -21,7 +22,7 @@ Technologies, methodologies and architecture:
   ☐ Hosted (if possible) on github pages
   ☐ Persistent state
   ☐ Dynamic loading with suspense
-  ☐ React testing library
+  ☐ React testing library + jest + redux-saga-test-plan
 
 Main Goals:
   ☐ Landing Page
@@ -35,3 +36,4 @@ Extra milestones:
   ☐ Paypal integration / stripe
   ☐ compare page
   ☐ Analytics
+  ☐ Accessibility https://dev.to/sreashi/accessibility-in-react-2m2n

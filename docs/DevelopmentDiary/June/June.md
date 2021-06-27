@@ -337,3 +337,7 @@ To recap the plan is the following:
 
 1. Decide if I actually need `@apollo/client`, this will also decide if I will move forward with `query` or `axios`.
 2. Decide if I will mock the graphQL server in the front end with `graphql-tools` or set up an actual graphQL server with mock responses with `apollo-server`.
+
+## 27 June 2021
+
+I decided to mock the graphQL server in the back end, which means setting up a server that will serve mock data using `apollo-client`. I added some information behind this decision in the ADR folder in the `BackEnd-Mocking.md`.
