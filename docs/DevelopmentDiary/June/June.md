@@ -341,3 +341,19 @@ To recap the plan is the following:
 ## 27 June 2021
 
 I decided to mock the graphQL server in the back end, which means setting up a server that will serve mock data using `apollo-client`. I added some information behind this decision in the ADR folder in the `BackEnd-Mocking.md`.
+
+I also found a stackoverflow question regarding the topic that had troubled me over the past days, the actual benefits of apollo client over axios. I knew about caching, declarative data fetching, subscriptions and apollo link state, but the approved answer had some more information which I paste here:
+
+- Exposed loading, error and data state, so you don't have to create additional stateful components just to fetch data asynchronously
+- A normalized caching layer that allows you to avoid making unnecessary repeat requests to your server
+- Observable queries that allow your UI to update whenever any query or mutation changes a relevant part of the cache
+- Powerful error handling tools through apollo-link-error
+- Pagination support through loadMore
+- Optimistic UI updates for mutations
+- Support for Subscriptions through apollo-link-ws
+- Integration with local state management through apollo-link-state
+- Support for deferred queries through the @defer directive
+- Server-side-rendering support
+- Apollo Client Developer Tools chrome extension that includes built-in GraphiQL console, query watcher, mutation inspector and cache inspector.
+
+(https://stackoverflow.com/questions/54063090/react-with-graphql-clients)

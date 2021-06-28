@@ -14,7 +14,7 @@ Technologies, methodologies and architecture:
   ☐ State / UI separation
   ☐ Axios
   ☐ Husky for pre-commit checking files
-  ☐ Eslint
+  ☐ Eslint (https://eslint.org/docs/rules/) / (https://www.npmjs.com/package/eslint)
   ☐ SSR with node / next / express (or fake data with faker)
   ☐ GraphQL calls
   ☐ Animations
