@@ -6,12 +6,23 @@
     "repository": "https://github.com/sgoulas/pdpProject",
     "author": "sgoulas <sprgoulas@gmail.com>",
     "license": "MIT",
+    "lint-staged": {
+        "*.{ts,tsx,js,jsx}": [
+            "eslint"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "yarn lintStaged"
+        }
+    },
     "scripts": {
         "build": "webpack --config webpack.prod.js",
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "webpack serve --config webpack.dev.js",
         "prettify": "prettier --write src/prettier --write src/",
-        "lint": "./node_modules/.bin/eslint src/"
+        "lint": "./node_modules/.bin/eslint src/",
+        "lintStaged": "lint-staged"
     },
     "dependencies": {
         "react": "^17.0.2",
@@ -34,7 +45,9 @@
         "eslint-plugin-react": "^7.24.0",
         "file-loader": "^6.2.0",
         "html-webpack-plugin": "^5.3.1",
+        "husky": "^7.0.0",
         "image-webpack-loader": "^7.0.1",
+        "lint-staged": "^11.0.0",
         "prettier": "^2.3.2",
         "style-loader": "^2.0.0",
         "ts-loader": "^9.2.3",
