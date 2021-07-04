@@ -7,7 +7,7 @@
     "author": "sgoulas <sprgoulas@gmail.com>",
     "license": "MIT",
     "lint-staged": {
-        "*.*": [
+        "*.{ts,tsx,js,jsx}": [
             "eslint --fix"
         ]
     },
