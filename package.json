@@ -7,14 +7,9 @@
     "author": "sgoulas <sprgoulas@gmail.com>",
     "license": "MIT",
     "lint-staged": {
-        "*.{ts,tsx,js,jsx}": [
+        "*.*": [
             "eslint"
         ]
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "yarn lintStaged"
-        }
     },
     "scripts": {
         "build": "webpack --config webpack.prod.js",
