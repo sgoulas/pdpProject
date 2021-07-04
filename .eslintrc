@@ -1,0 +1,58 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint"
+    ],
+    "settings": { //https://eslint.org/docs/user-guide/configuring/configuration-files#adding-shared-settings
+        "react": {
+            "version": "detect"
+        }
+    },
+    "rules": {
+        "no-unreachable": "error",
+        "no-extra-boolean-cast":"error",
+        "arrow-body-style":["error", "as-needed"],
+        "no-duplicate-imports":"error",
+        "no-var":"error",
+        "object-shorthand":"error",
+        "no-useless-rename":"error",
+        "no-useless-concat": "error",
+        "no-useless-escape":"error",
+        "default-case":"error",
+        "dot-notation":"error",
+        "no-alert":"warn",
+        "guard-for-in":"error",
+        "no-eval":"warn",
+        "no-eq-null":"error",
+        "no-lone-blocks":"error",
+        "no-lonely-if":"error",
+        "no-nested-ternary":"error",
+        "require-await":"error",
+        "no-magic-numbers":[
+            "error",
+            {
+                "ignore": [
+                    0,
+                    1
+                ]
+            }
+        ]
+    }
+}
