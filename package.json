@@ -1,39 +1,41 @@
 {
-  "name": "personal-development-plan-project",
-  "version": "1.0.0",
-  "description": "A project as part of my personal development plan in Agile Actors. I aim to use technologies I am not familiar with in order to improve as a developer.",
-  "private": "true",
-  "repository": "https://github.com/sgoulas/pdpProject",
-  "author": "sgoulas <sprgoulas@gmail.com>",
-  "license": "MIT",
-  "scripts": {
-    "build": "webpack --config webpack.prod.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve --config webpack.dev.js"
-  },
-  "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "typescript": "^4.3.2"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.14.5",
-    "@babel/plugin-proposal-class-properties": "^7.14.5",
-    "@babel/preset-env": "^7.14.5",
-    "@babel/preset-react": "^7.14.5",
-    "@babel/preset-typescript": "^7.14.5",
-    "@types/react": "^17.0.11",
-    "@types/react-dom": "^17.0.7",
-    "babel-loader": "^8.2.2",
-    "css-loader": "^5.2.6",
-    "file-loader": "^6.2.0",
-    "html-webpack-plugin": "^5.3.1",
-    "image-webpack-loader": "^7.0.1",
-    "style-loader": "^2.0.0",
-    "ts-loader": "^9.2.3",
-    "webpack": "^5.38.1",
-    "webpack-cli": "^4.7.2",
-    "webpack-dev-server": "^3.11.2",
-    "webpack-merge": "^5.8.0"
-  }
+    "name": "personal-development-plan-project",
+    "version": "1.0.0",
+    "description": "A project as part of my personal development plan in Agile Actors. I aim to use technologies I am not familiar with in order to improve as a developer.",
+    "private": "true",
+    "repository": "https://github.com/sgoulas/pdpProject",
+    "author": "sgoulas <sprgoulas@gmail.com>",
+    "license": "MIT",
+    "scripts": {
+        "build": "webpack --config webpack.prod.js",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "webpack serve --config webpack.dev.js",
+        "prettify": "prettier --write src/prettier --write src/"
+    },
+    "dependencies": {
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "typescript": "^4.3.2"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.14.5",
+        "@babel/plugin-proposal-class-properties": "^7.14.5",
+        "@babel/preset-env": "^7.14.5",
+        "@babel/preset-react": "^7.14.5",
+        "@babel/preset-typescript": "^7.14.5",
+        "@types/react": "^17.0.11",
+        "@types/react-dom": "^17.0.7",
+        "babel-loader": "^8.2.2",
+        "css-loader": "^5.2.6",
+        "file-loader": "^6.2.0",
+        "html-webpack-plugin": "^5.3.1",
+        "image-webpack-loader": "^7.0.1",
+        "prettier": "^2.3.2",
+        "style-loader": "^2.0.0",
+        "ts-loader": "^9.2.3",
+        "webpack": "^5.38.1",
+        "webpack-cli": "^4.7.2",
+        "webpack-dev-server": "^3.11.2",
+        "webpack-merge": "^5.8.0"
+    }
 }
