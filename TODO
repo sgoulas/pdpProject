@@ -13,8 +13,8 @@ Technologies, methodologies and architecture:
   ☐ Data driven navigation
   ☐ State / UI separation
   ☐ Axios
-  ☐ Husky for pre-commit checking files
-  ☐ Eslint (https://eslint.org/docs/rules/) / (https://www.npmjs.com/package/eslint)
+  ✔ Husky for pre-commit checking files @done(21-07-05 02:55)
+  ✔ Eslint (https://eslint.org/docs/rules/) / (https://www.npmjs.com/package/eslint) @done(21-07-05 02:55)
   ☐ SSR with node / next / express (or fake data with faker)
   ☐ GraphQL calls
   ☐ Animations
