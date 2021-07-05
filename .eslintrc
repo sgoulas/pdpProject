@@ -25,6 +25,10 @@
             "version": "detect"
         }
     },
+    "ignorePatterns": [
+        "webpack.*.js",
+        "/dist"
+    ],
     "rules": {
         "no-unreachable": "error",
         "no-extra-boolean-cast":"error",
