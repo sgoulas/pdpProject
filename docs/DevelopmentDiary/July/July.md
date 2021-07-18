@@ -39,3 +39,29 @@ The articles I found online suggested I added the `git add` command after `eslin
 Honestly, not really clear at all. The issues opened in github dated back to 2018 and were revived in 2020 with no definitive solution added. At the end of the day, I feel like this should had been a straight forward issue but it wasn't. (It was however when I did it in the react-ciphers project, granted that one did not include lint-staged).
 
 I think I am going to add NextJS next and maybe try to set up the webpack aliases to pair it with.
+
+## 5 July 2021
+
+While trying to add NextJS to my project I discovered that most tutorials suggest starting with create react app with the option for NextJs, or cloning a default NextJS repo.
+
+The docs (https://nextjs.org/docs) do have information about adding NextJS to an existing project, but what I have trouble understanding is the relation between webpack and Next. The docs suggest I replace my `build` and `start` scripts with `next build` and `next start` (they also suggest a `next lint` script). I also see that Next uses webpack under the hood, but I wonder what this means for an existing webpack configuration. Do I have to remove it? Replace it? Can my existing configuration co-exist with Next's one? My first impression is that by choosing NextJS I give up on having a custom webpack configuration file, let alone multiple ones as I currently do.
+
+Also, it is lowkey unreal that most of the articles are about migrating from CRA projects or cloning existing template repositories. Even the official docs (https://nextjs.org/docs/migrating/incremental-adoption) have only the following options:
+
+-   incremental adoption
+-   migrating from gatsby
+-   migrating from CRA
+-   migrating from react router
+
+## 18 July 2012
+
+My aim for today is to reach a conclusion regarding `next` and `webpack` so I can setup an `apollo-server` and actually start coding. I want to see if (and to what extend) `next` supports custom webpack configuration, with the aim of preserving my existing configurations. If this can not be, then I will replace the latter with `next` since I already managed to setup `webpack` and `next` plays an integral part in routing, SEO and code splitting, which are all concepts that I want to explore in this project.
+
+Links I have found so far that are relavent:
+
+-   https://nextjs.org/docs
+-   https://nextjs.org/docs/messages/webpack5
+-   https://nextjs.org/docs/api-reference/next.config.js/custom-webpack-config
+-   https://nextjs.org/docs/advanced-features/source-maps
+
+It seems that I can actually retain a standalone (see: explicitly defined by me) `babel` configuration according to this: https://nextjs.org/docs/advanced-features/customizing-babel-config. So even by adoptin `next` I can retain any babel configuration.
