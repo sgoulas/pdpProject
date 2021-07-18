@@ -65,3 +65,11 @@ Links I have found so far that are relavent:
 -   https://nextjs.org/docs/advanced-features/source-maps
 
 It seems that I can actually retain a standalone (see: explicitly defined by me) `babel` configuration according to this: https://nextjs.org/docs/advanced-features/customizing-babel-config. So even by adoptin `next` I can retain any babel configuration.
+
+I installed `next`, updated the scripts and then kept gotting a run time regenerator error even after adding the `@babel/plugin-transform-runtime` plugin. In the end I found in the babel docs that I also needed to add `@babel/runtime` and I actually managed to start my development server again, this time pre-rendered by `next`.
+
+Honestly, I am feeling sad about having to remove my webpack configurations. It took me a bit of time to learn and add them and I was meticulous about adding only what I needed. To remove them before even starting developing was not a great feeling. I did create the `0.2.0` pre-release tag which contains them though, so I can always go back and see what I did. I also got to actually read and learn, so at the end of the day not a net loss by all means.
+
+The rendering change is evident from the fact that when viewing the souce (`view-source:` not to confuse with the `inspect` tool) I can actually see the HTML code, whereas viewinig the source of another deployed non-next-using react app like https://sgoulas.github.io/react-ciphers/ shows just javascript code. So it works!
+
+Also, thank God my existing `babel` configuration for typescript does not need any more tinkering and `next` works with it from the get go.
