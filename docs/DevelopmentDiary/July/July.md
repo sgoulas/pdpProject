@@ -73,3 +73,15 @@ Honestly, I am feeling sad about having to remove my webpack configurations. It 
 The rendering change is evident from the fact that when viewing the souce (`view-source:` not to confuse with the `inspect` tool) I can actually see the HTML code, whereas viewinig the source of another deployed non-next-using react app like https://sgoulas.github.io/react-ciphers/ shows just javascript code. So it works!
 
 Also, thank God my existing `babel` configuration for typescript does not need any more tinkering and `next` works with it from the get go.
+
+I also removed the explicit `webpack` and `webpack-cli` dependencies, since `next` uses webpack internally and it seemed redundant to have them on their own.
+
+According to the docs https://nextjs.org/docs/deployment if I run `build` then `start`, then `next` will spin up a node server hosting my `next` application. The one thing I wonder is why my react dev tools indicates that the page has loaded a development build of react and not a production one. ----> I should run the `build` script followed by the `start` one and it actually deployed a production build to localhost. Cool.
+
+I should also consider singing up for a Vercel account I guess.
+
+Next steps: go over `next` configuration files and see if I should add anything important or if I see something that seems nice to have. Go over my `next` notes. Then setup an apollo server, add some mock files and test if it responds. Then add an apollo client to my application and then actually start coding? I also have to add react testing library. And Jest.
+
+One step at a time!
+
+P.S should I add `/.next` to my `.gitignore` file?

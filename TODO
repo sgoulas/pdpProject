@@ -15,11 +15,12 @@ Technologies, methodologies and architecture:
   ☐ Axios
   ✔ Husky for pre-commit checking files @done(21-07-05 02:55)
   ✔ Eslint (https://eslint.org/docs/rules/) / (https://www.npmjs.com/package/eslint) @done(21-07-05 02:55)
-  ☐ SSR with node / next / express (or fake data with faker)
+  ✔ SSR with next @done(21-07-19 01:51)
+  ☐ fake data with faker
   ☐ GraphQL calls
   ☐ Animations
   ☐ Responsive, mobile first design
-  ☐ Hosted (if possible) on github pages
+  ☐ Hosted somewhere
   ☐ Persistent state
   ☐ Dynamic loading with suspense
   ☐ React testing library + jest + redux-saga-test-plan
