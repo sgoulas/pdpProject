@@ -85,3 +85,13 @@ Next steps: go over `next` configuration files and see if I should add anything 
 One step at a time!
 
 P.S should I add `/.next` to my `.gitignore` file?
+
+## 25 July 2012
+
+My plan for today is to setup `apollo-server`.
+
+Reading from https://www.apollographql.com/docs/apollo-server/getting-started/ I need to add `apollo-server` and `graphql` dependencies.
+
+Added `apollo-server` as development only dependency and `graphql` as a normal one.
+
+I will recreate the example project as is, meaning no typescript and all in an `index` file but as soon as it functions as expected I will transform it to typescript and also split the code to different files according to their intended functionality.
