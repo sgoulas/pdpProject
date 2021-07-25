@@ -1,3 +1,5 @@
+const faker = require('faker');
+
 const books = [
     {
         title: 'The Awakening',
@@ -6,6 +8,10 @@ const books = [
     {
         title: 'City of Glass',
         author: 'Paul Auster',
+    },
+    {
+        title: `${faker.lorem.sentence(4)}`,
+        author: `${faker.name.firstName()} ${faker.name.lastName()}`,
     },
 ];
 
