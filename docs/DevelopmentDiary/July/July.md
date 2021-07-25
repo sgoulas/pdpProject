@@ -66,7 +66,7 @@ Links I have found so far that are relavent:
 
 It seems that I can actually retain a standalone (see: explicitly defined by me) `babel` configuration according to this: https://nextjs.org/docs/advanced-features/customizing-babel-config. So even by adoptin `next` I can retain any babel configuration.
 
-I installed `next`, updated the scripts and then kept gotting a run time regenerator error even after adding the `@babel/plugin-transform-runtime` plugin. In the end I found in the babel docs that I also needed to add `@babel/runtime` and I actually managed to start my development server again, this time pre-rendered by `next`.
+I installed `next`, updated the scripts and then kept getting a run time regenerator error even after adding the `@babel/plugin-transform-runtime` plugin. In the end I found in the babel docs that I also needed to add `@babel/runtime` and I actually managed to start my development server again, this time pre-rendered by `next`.
 
 Honestly, I am feeling sad about having to remove my webpack configurations. It took me a bit of time to learn and add them and I was meticulous about adding only what I needed. To remove them before even starting developing was not a great feeling. I did create the `0.2.0` pre-release tag which contains them though, so I can always go back and see what I did. I also got to actually read and learn, so at the end of the day not a net loss by all means.
 
@@ -96,4 +96,6 @@ Added `apollo-server` as development only dependency and `graphql` as a normal o
 
 I will recreate the example project as is, meaning no typescript and all in an `index` file but as soon as it functions as expected I will transform it to typescript and also split the code to different files according to their intended functionality.
 
-Next: add faker as dev dependency, check the "next steps" section from https://www.apollographql.com/docs/apollo-server/getting-started/#combined-example
+Added faker as dev dependency, checked the "next steps" section from https://www.apollographql.com/docs/apollo-server/getting-started/#combined-example and added a sample query / schema stitching example in the server.
+
+Now I am thinking about adding a `phone` type in my server in order to replace the current `books` just so that I leave it at a state that adheres to my final aim and to not retain the docs example.

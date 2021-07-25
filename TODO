@@ -12,11 +12,11 @@ Technologies, methodologies and architecture:
   ☐ Custom CSS + Flex / Grid
   ☐ Data driven navigation
   ☐ State / UI separation
-  ☐ Axios
+  ✘ Axios @cancelled(21-07-26 01:55) (opted for apollo-client / apollo-server)
   ✔ Husky for pre-commit checking files @done(21-07-05 02:55)
   ✔ Eslint (https://eslint.org/docs/rules/) / (https://www.npmjs.com/package/eslint) @done(21-07-05 02:55)
   ✔ SSR with next @done(21-07-19 01:51)
-  ☐ fake data with faker
+  ✔ fake data with faker @done(21-07-26 01:55)
   ☐ GraphQL calls
   ☐ Animations
   ☐ Responsive, mobile first design
