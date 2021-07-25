@@ -12,6 +12,7 @@
         ]
     },
     "scripts": {
+        "startServer": "node server/index.js",
         "dev": "next dev",
         "build": "next build",
         "test": "echo \"Error: no test specified\" && exit 1",
