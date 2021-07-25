@@ -95,3 +95,5 @@ Reading from https://www.apollographql.com/docs/apollo-server/getting-started/ I
 Added `apollo-server` as development only dependency and `graphql` as a normal one.
 
 I will recreate the example project as is, meaning no typescript and all in an `index` file but as soon as it functions as expected I will transform it to typescript and also split the code to different files according to their intended functionality.
+
+Next: add faker as dev dependency, check the "next steps" section from https://www.apollographql.com/docs/apollo-server/getting-started/#combined-example

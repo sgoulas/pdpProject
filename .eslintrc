@@ -27,7 +27,8 @@
     },
     "ignorePatterns": [
         "webpack.*.js",
-        "/dist"
+        "/dist",
+        "/server"
     ],
     "rules": {
         "no-unreachable": "error",
