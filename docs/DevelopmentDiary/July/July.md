@@ -98,4 +98,4 @@ I will recreate the example project as is, meaning no typescript and all in an `
 
 Added faker as dev dependency, checked the "next steps" section from https://www.apollographql.com/docs/apollo-server/getting-started/#combined-example and added a sample query / schema stitching example in the server.
 
-Now I am thinking about adding a `phone` type in my server in order to replace the current `books` just so that I leave it at a state that adheres to my final aim and to not retain the docs example.
+Added a `phone` type in my server, as well as mocks and resolves and also splitted the schema into sub-schemas to improve efficiency and readability.
