@@ -1,21 +1,8 @@
 const { gql } = require('apollo-server');
-
-/**
- * in the future when the actual implementation takes place
- * we should define multiple subfolders for each entity
- * and import their sub-schemas (types, resolvers) from there
- * and stitch them all together here and then export the typeDefs
- */
-
-const temp = gql`
-    type Person {
-        name: String
-        lastName: String
-    }
-`;
+const { typeDefs: phone } = require('./phone');
 
 const typeDefs = gql`
-    ${temp}
+    ${phone}
     "Book description"
     type Book {
         title: String
@@ -24,10 +11,12 @@ const typeDefs = gql`
 
     "The object that defines all the queries"
     type Query {
-        "Returns all the books"
+        "Returns all books"
         books: [Book]
         "Returns the book whose title matches the given param"
         getBookByTitle(title: String!): Book
+        "Returns all phones"
+        phones: [Phone]
     }
 `;
 
