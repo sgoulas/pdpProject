@@ -1,6 +1,6 @@
 const { gql } = require('apollo-server');
 
-const typeDefs = gql`
+const PhoneTypeDefs = gql`
     "Details the Phone properties"
     type Phone {
         "The id corresponding to the parent product"
@@ -36,6 +36,11 @@ const typeDefs = gql`
         "Product name"
         name: String
     }
+
+    extend type Query {
+        "Returns all phones"
+        phones: [Phone]
+    }
 `;
 
-module.exports = { typeDefs };
+module.exports = { PhoneTypeDefs };

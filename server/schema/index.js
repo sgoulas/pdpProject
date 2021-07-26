@@ -1,8 +1,8 @@
 const { gql } = require('apollo-server');
-const { typeDefs: phone } = require('./phone');
+const { PhoneTypeDefs: Phone } = require('./phone');
 
 const typeDefs = gql`
-    ${phone}
+    ${Phone}
     "Book description"
     type Book {
         title: String
@@ -15,8 +15,6 @@ const typeDefs = gql`
         books: [Book]
         "Returns the book whose title matches the given param"
         getBookByTitle(title: String!): Book
-        "Returns all phones"
-        phones: [Phone]
     }
 `;
 
