@@ -99,3 +99,17 @@ I will recreate the example project as is, meaning no typescript and all in an `
 Added faker as dev dependency, checked the "next steps" section from https://www.apollographql.com/docs/apollo-server/getting-started/#combined-example and added a sample query / schema stitching example in the server.
 
 Added a `phone` type in my server, as well as mocks and resolves and also splitted the schema into sub-schemas to improve efficiency and readability.
+
+## 31 July 2012
+
+Having successfully configured my back end I need to decide my next course of action. As I see it I have two options, the first is to start working on the main page of the site. This means installing a component library and SEO related libraries, creating a layout, adding / creating components that I am going to need etc. The second option is to finish the networking part on the front end, meaning installing `apollo-client` and, considering I want the network layer to exist outside of the components, `redux`, `redux-saga` and `redux-toolkit`. The second option will complete the setup and allow me to focus more or less on the UI of the app. It does mean however that I will coding the logic layer of the application without having a UI in mind. This does help separating these two areas of the codebase (and one could make the argument that the logical layer of how and when a network call is performed has no business knowing the UI of the app) but it is important to keep in mind that sometimes the way one structures the UI reveals a desired pattern for structruring the application logic too. Maybe I like the folder structure `nextJS` imposes and I decide to follow a similar approach for my redux actions or reducers folders, who knows.
+
+That being said, in the spirit of finishing one part of the codebase before moving on to the next and considering that said "next" part is UI/SEO/semantic HTML (meaning: huge), I will finish setting up the network / async layer first.
+
+This means:
+
+-   Installing `apollo-client`, creating a `client` and exposing custom `query` and `mutate` functions that can be called by redux (I already made the decision not to use the declarative data fetching options in the spirit of separation of concerns).
+-   Installing `redux`, `redux-saga` and checking what `redux-toolkit` offers and if it is worth installing (also which of its features to use).
+-   Installing `jest` for writing the related tests (maybe alongside `redux-saga-test-plan`).
+
+The last point is of special importance. I have come to realize that writing tests before or in parallel with writing code is the best way to ensure tests are actually written. Writting code upon code and leaving writing tests for later is the best way to not write tests at all.
