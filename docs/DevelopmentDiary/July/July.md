@@ -113,3 +113,7 @@ This means:
 -   Installing `jest` for writing the related tests (maybe alongside `redux-saga-test-plan`).
 
 The last point is of special importance. I have come to realize that writing tests before or in parallel with writing code is the best way to ensure tests are actually written. Writting code upon code and leaving writing tests for later is the best way to not write tests at all.
+
+Also, after talking with my coach, I should change my folder structure to be feature based, so that means instead of having a "resolvers" folder and then a "schemas" folder, to have an entities folder which contains "phones" and the latter contains the phones resolver, phones schema, etc. I should follow this approach for the front end as well. I will add an ADR doc for this change since it is an important one.
+
+https://en.wikipedia.org/wiki/Law_of_Demeter
