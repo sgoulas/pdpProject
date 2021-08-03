@@ -53,7 +53,7 @@ Also, it is lowkey unreal that most of the articles are about migrating from CRA
 -   migrating from CRA
 -   migrating from react router
 
-## 18 July 2012
+## 18 July 2021
 
 My aim for today is to reach a conclusion regarding `next` and `webpack` so I can setup an `apollo-server` and actually start coding. I want to see if (and to what extend) `next` supports custom webpack configuration, with the aim of preserving my existing configurations. If this can not be, then I will replace the latter with `next` since I already managed to setup `webpack` and `next` plays an integral part in routing, SEO and code splitting, which are all concepts that I want to explore in this project.
 
@@ -86,7 +86,7 @@ One step at a time!
 
 P.S should I add `/.next` to my `.gitignore` file?
 
-## 25 July 2012
+## 25 July 2021
 
 My plan for today is to setup `apollo-server`.
 
@@ -100,7 +100,7 @@ Added faker as dev dependency, checked the "next steps" section from https://www
 
 Added a `phone` type in my server, as well as mocks and resolves and also splitted the schema into sub-schemas to improve efficiency and readability.
 
-## 31 July 2012
+## 31 July 2021
 
 Having successfully configured my back end I need to decide my next course of action. As I see it I have two options, the first is to start working on the main page of the site. This means installing a component library and SEO related libraries, creating a layout, adding / creating components that I am going to need etc. The second option is to finish the networking part on the front end, meaning installing `apollo-client` and, considering I want the network layer to exist outside of the components, `redux`, `redux-saga` and `redux-toolkit`. The second option will complete the setup and allow me to focus more or less on the UI of the app. It does mean however that I will coding the logic layer of the application without having a UI in mind. This does help separating these two areas of the codebase (and one could make the argument that the logical layer of how and when a network call is performed has no business knowing the UI of the app) but it is important to keep in mind that sometimes the way one structures the UI reveals a desired pattern for structruring the application logic too. Maybe I like the folder structure `nextJS` imposes and I decide to follow a similar approach for my redux actions or reducers folders, who knows.
 
