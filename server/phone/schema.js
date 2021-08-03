@@ -40,6 +40,8 @@ const PhoneTypeDefs = gql`
     extend type Query {
         "Returns all phones"
         phones: [Phone]
+        "Returns the phone whose id matches the provided one or undefined if none is found"
+        getPhoneById(id: String!): Phone
     }
 `;
 

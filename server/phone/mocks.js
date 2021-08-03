@@ -1,5 +1,5 @@
 const faker = require('faker');
-const { TOTAL_PHONES } = require('../../constants');
+const { TOTAL_PHONES } = require('./constants');
 
 const createRandomPhone = () => ({
     availability: faker.datatype.number(5),
