@@ -76,7 +76,7 @@ With ducks based architecture the folders become more complex because each one h
 
 ## Decision
 
-It was decided to duckss.
+It was decided to use the ducks pattern.
 
 First of all, I have never used ducks before and this is a great opportunity to familiarise myself with the pattern. Secondly, I have first hand professional experience on working in large codebases that follow the feature based structure and I know full well how daunting jumping between directories and files to change a single thing can be. Concentrating all the code that an entity requires under a single directory should make my life easier both during development and during maintainance of the project and will also introduce the concept of modulatiry in the codebase, which I think is closely related to the separation of concerns approach that I would like to follow.
 
