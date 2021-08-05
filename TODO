@@ -23,7 +23,7 @@ Technologies, methodologies and architecture:
   ☐ Hosted somewhere
   ☐ Persistent state
   ☐ Dynamic loading with suspense
-  ☐ React testing library + jest + redux-saga-test-plan
+  ☐ React testing library + jest + jest config file with coverage option + redux-saga-test-plan
 
 Main Goals:
   ☐ Landing Page
