@@ -27,8 +27,14 @@ My reasoning boils down to incrementary additions. `redux` and `@reduxjs/toolkit
 
 So, I will be reading the `@reduxjs/toolkit` documentation (https://redux-toolkit.js.org/) to familiarize myself with what is offers, then proceed as described above.
 
-My first simple example will be to create a simple "app state" reducer, that will have a boolean `isRunning` property, initially set to false, that will be set to true as soon as the main `App.tsx` component mounts.
+My first simple example will be to create a simple "app state" reducer, that will have a boolean `running` property, initially set to false, that will be set to true as soon as the main `App.tsx` component mounts.
 
 Then, I will add `redux-saga` and refactor the above code to work with sagas.
 
 Since this is going to be a simple proof of concept example, I will create the necessary files directly under the `store` directory, that is to say I will not try to follow the ducks pattern so I can take it one step at a time.
+
+After adding the first two dependencies and configuring the individual files, I tried to wrap my `App` component with the store provider. At this point the realization hits me, there is no centralized `App` component because I am using `NextJS`. How do I provide a centralized `store` to all the different pages?
+
+Going back to the docs it seems the main idea is that if the page is SSG or SSR, the client receives a server side created store which is a new store instance every time, in other cases the client gets the same store. The way to provide a centralized store throught the application is by overriding the (under the hood) `App` component with one of my own.
+
+The official example is here: https://github.com/vercel/next.js/tree/canary/examples/with-redux.
