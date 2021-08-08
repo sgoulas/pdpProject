@@ -1,6 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
 
-import { ActionHandler } from '@core/types';
+import type { ActionHandler } from '@core/types';
 
 import setRunning from './actions';
 import { SetRunningActionPayload } from './types';
