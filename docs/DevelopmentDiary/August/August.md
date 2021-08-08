@@ -38,3 +38,5 @@ After adding the first two dependencies and configuring the individual files, I 
 Going back to the docs it seems the main idea is that if the page is SSG or SSR, the client receives a server side created store which is a new store instance every time, in other cases the client gets the same store. The way to provide a centralized store throught the application is by overriding the (under the hood) `App` component with one of my own.
 
 The official example is here: https://github.com/vercel/next.js/tree/canary/examples/with-redux.
+
+btw: https://github.com/vercel/next.js/tree/canary/examples/with-redux-toolkit-typescript WOW!!!! (The whole repo is a text book case on how to scale your product by providing community working examples using a multitude of tools.)
