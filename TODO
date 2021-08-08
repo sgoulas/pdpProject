@@ -12,7 +12,7 @@ Technologies, methodologies and architecture:
   ☐ Custom CSS + Flex / Grid
   ☐ Data driven navigation
   ☐ State / UI separation
-  ☐ relative paths (tsconfig paths prop)
+  ✔ relative paths (tsconfig paths prop) @done(21-08-08 17:10)
   ✘ Axios @cancelled(21-07-26 01:55) (opted for apollo-client / apollo-server)
   ✔ Husky for pre-commit checking files @done(21-07-05 02:55)
   ✔ Eslint (https://eslint.org/docs/rules/) / (https://www.npmjs.com/package/eslint) @done(21-07-05 02:55)
