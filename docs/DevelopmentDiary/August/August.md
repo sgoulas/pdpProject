@@ -40,3 +40,11 @@ Going back to the docs it seems the main idea is that if the page is SSG or SSR,
 The official example is here: https://github.com/vercel/next.js/tree/canary/examples/with-redux.
 
 btw: https://github.com/vercel/next.js/tree/canary/examples/with-redux-toolkit-typescript WOW!!!! (The whole repo is a text book case on how to scale your product by providing community working examples using a multitude of tools.)
+
+## 9 August 2021
+
+I want to add `redux-saga` to the application and after going through the examples provided in the previously mentioned repository it seems the suggested way to do so is by using the `next-redux-wrapper` library. At the time of writing these lines however the package has only 137k weekly downloads with 6 open issues and 2 pull requests and if it's to add a dependency to the application I would like it to have a bit more usage. In fact, I am a bit curious if another, better, option is available. `NextJS` is extremely popular and `redux-saga` has almost 900k weekly downloads. One would guess that a package that eases the combined usage of the two would be more popular.
+
+I added `redux-saga` and was able to set it up, without using `next-redux-wrapper`. I understand the motivation behind the library (handling store persistence in case of pages that are navigated on the server and end up getting a new store instance everytime, thus forcing large re-renders) but truth be told, the provided examples are a bit convoludated for my tastes and in any case, I prefer using a solution after I have encountered the problem, at least in cases where I am not sure I will face the problem in the first place (I am a bit curious to see how redux toolkit will handle things).
+
+Before adding jest to my project I would like to solve some linter warnings in my saga files, due to functions with no return type and `action` params having implicitly `any` type.
