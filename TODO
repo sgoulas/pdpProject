@@ -4,8 +4,8 @@ Project aims:
 
 Technologies, methodologies and architecture:
   ✔ React with typescript @done(21-06-14 03:32)
-  ☐ Redux saga
-  ☐ Redux toolkit (with care for memoized selectors)
+  ✔ Redux saga @done(21-08-09 19:09)
+  ✔ Redux toolkit (with care for memoized selectors) @done(21-08-09 19:09)
   ☐ SEO
   ☐ Performance optimization
   ☐ Semantic HTML
