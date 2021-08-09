@@ -47,4 +47,37 @@ I want to add `redux-saga` to the application and after going through the exampl
 
 I added `redux-saga` and was able to set it up, without using `next-redux-wrapper`. I understand the motivation behind the library (handling store persistence in case of pages that are navigated on the server and end up getting a new store instance everytime, thus forcing large re-renders) but truth be told, the provided examples are a bit convoludated for my tastes and in any case, I prefer using a solution after I have encountered the problem, at least in cases where I am not sure I will face the problem in the first place (I am a bit curious to see how redux toolkit will handle things).
 
-Before adding jest to my project I would like to solve some linter warnings in my saga files, due to functions with no return type and `action` params having implicitly `any` type.
+Before adding jest to my project I would like to solve some linter warnings in my saga files, due to functions with no return type and `action` params having implicitly `any` type. Reading more into it, I found the `Genetaror` type in the official Typescript docs and the `StrictEffect` type in `redux-saga`, but it seems there are several types to describe the action the function generators receive and also the return value of `yield` is of type `any`. I think this is one of those cases that being ultra strict on adding typing to everything may yield less clarity than more (see what I did there?).
+
+I did find two solution for typing the received `action` param of my generator functions.
+
+The first one uses Typescript's type guard (https://basarat.gitbook.io/typescript/type-system/typeguard)
+
+```ts
+import { Action } from '@reduxjs/toolkit';
+import { setRunningAction } from './actions';
+
+function* setOnline(action: Action) {
+    if (setRunningAction.match(action)) {
+        const { running } = action.payload;
+
+        yield put(setOnlineAction({ online: running }));
+    }
+}
+```
+
+The second one uses `ReturnType` to dynamically expect the type of the expected action.
+
+```ts
+import { setRunningAction } from './actions';
+
+function* setOnline(action: ReturnType<typeof setRunningAction>) {
+    const { running } = action.payload;
+
+    yield put(setOnlineAction({ online: running }));
+}
+```
+
+The second approach has one less import and no `if` block so it seems better.
+
+It is important to stress out however, that the firt solution is the officially suggested one from the redux toolkit docs (https://redux-toolkit.js.org/api/createAction#actioncreatormatch) while the second one is just something I found on stackoverflow. Considering what I want to do is fairly simple (assume the received action type is the one I expect it to be and to be able see its payload props as suggested options in my IDE), I see no possible problems arising from using the second solution.
