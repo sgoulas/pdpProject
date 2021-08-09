@@ -1,13 +1,14 @@
 import { createAction } from '@reduxjs/toolkit';
 
-import addNameSpace from '@utils/addNameSpace';
+import { withPrefix } from '@utils/withPrefix';
 
 import { SetRunningActionPayload } from './types';
 
-const namespace = 'APP';
+const nameSpace = 'APP';
+const withNameSpacePrefix = withPrefix(nameSpace);
 
 const setRunning = createAction<SetRunningActionPayload>(
-    addNameSpace(namespace, 'set_running')
+    withNameSpacePrefix('set_running')
 );
 
 export default setRunning;
