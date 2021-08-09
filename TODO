@@ -23,8 +23,9 @@ Technologies, methodologies and architecture:
   ☐ Responsive, mobile first design
   ☐ Hosted somewhere
   ☐ Persistent state
-  ☐ Dynamic loading with suspense
-  ☐ React testing library + jest + jest config file with coverage option + redux-saga-test-plan
+  ✘ Dynamic loading with suspense @cancelled(21-08-10 01:59) suspense is at the time still an experimental feature, NextJS provides dynamic loading
+  ✔ jest + + jest config file with coverage option @done(21-08-10 01:57)
+  ☐ React testing library + redux-saga-test-plan
 
 Main Goals:
   ☐ Landing Page
