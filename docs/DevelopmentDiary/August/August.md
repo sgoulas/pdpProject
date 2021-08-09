@@ -80,4 +80,4 @@ function* setOnline(action: ReturnType<typeof setRunningAction>) {
 
 The second approach has one less import and no `if` block so it seems better.
 
-It is important to stress out however, that the firt solution is the officially suggested one from the redux toolkit docs (https://redux-toolkit.js.org/api/createAction#actioncreatormatch) while the second one is just something I found on stackoverflow. Considering what I want to do is fairly simple (assume the received action type is the one I expect it to be and to be able see its payload props as suggested options in my IDE), I see no possible problems arising from using the second solution.
+It is important to stress out however, that the first solution is the officially suggested one from the redux toolkit docs (https://redux-toolkit.js.org/api/createAction#actioncreatormatch) while the second one is just something I found on stackoverflow. Considering what I want to do is fairly simple (assume the received action type is the one I expect it to be and to be able to see its payload props as suggested autocomplete options in my IDE), I see no possible problems arising from using the second solution.
