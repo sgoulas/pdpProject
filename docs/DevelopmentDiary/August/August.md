@@ -85,3 +85,7 @@ It is important to stress out however, that the first solution is the officially
 Also I found out that `redux-saga-test-plan` is the suggested way to test `redux-saga` as per the latter's documentation.
 
 Trying to add `jest` and I am facing some issues regarding the global availability of the `describe` variable, despite running the `jest --innit` command + adding `ts-node`, jest types and node types AND configuring a `ts.spec.config` file. I probably missed something since I was in a hurry. Should check https://stackoverflow.com/questions/54139158/cannot-find-name-describe-do-you-need-to-install-type-definitions-for-a-test after I resume work.
+
+In the end I added `jest`, `@types/jest`, `@types/node`, `ts-node`, the `types` property to my `ts-config` with values "jest" and "node" and the `jest` property set to `true` in my eslint `env` property and I was able to get it to work. Also, just for the fun of it I added `jest-extended`. It has some extra matchers that might be proven useful. Usually I don't add something before I actually need it, but in this case I also wanted to test adding custom setup files that customize the testing environment and it was a good chance to do so.
+
+I also added coverage check for the application and that introduced some new concerns, as I am not exactly sure as to how to test fairly straightforward files like action creators, or the redux toolkit hooks (`useAppDispatch` and `useAppSelector`). I will need to look into that in the future or maybe even exclude them from the test coverage.
