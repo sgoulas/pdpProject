@@ -130,3 +130,5 @@ A couple of points of interest:
 I also added all the other aliases I already use and it also means this configuration property will need to always be up to date with the `paths` property of `tsconfig.json` file.
 
 Next I have to add `react-testing-library` (should I write an ADR for that? It feels like I should write an ADR for that).
+
+I wrote an ADR for that.

@@ -31,9 +31,9 @@ It was decided to move with `react-testing-library`.
 The reasons for our decision are the following:
 
 -   **It is what React suggests**, this is also coupled with the fact that it is build on top of what `react-dom` offers, so it is safe to assume a certain degree of integration ease.
--   **Bigger community**, `enzyme` has a single repository maintainer and no matter their dedication, the bus factor of their repository is 1.
+-   **Bigger community**, `enzyme` has a single developer (https://github.com/enzymejs/enzyme/issues/2429#issuecomment-858010582) and no matter their dedication, the bus factor of the project is 1.
 -   **Testing philosophy**, we want to write meaningful tests, that means we want to test that what we want the user to experiece actually happens. This have little to do with function calls and component renders and everything to do with DOM elements. Approaching testing from the user's perspective means they are bound to be more intuitive.
--   **Enzyme lags behind supporting new React features**, `enzyme` is behind when it comes to supporting new `React` features, like hooks.
+-   **Enzyme lags behind supporting new React features**, `enzyme` is behind when it comes to supporting new `React` features. In the past that was hooks, in the present in the same comment listed above (https://github.com/enzymejs/enzyme/issues/2429#issuecomment-858010582) the sole developer commented "The official position of enzyme is, don’t use react 17 yet." This blog post (https://www.piotrstaniow.pl/goodbye-enzyme) was also taken into consideration in making this decision.
 -   **We have little experience using it**, at the end of the day this is a personal development project and since we already have professional experience writing tests with `enzyme` it only makes sense to find value in learning something new.
 
 ## Consequences
