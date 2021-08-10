@@ -161,4 +161,4 @@ For some reason I also had `"@babel/react"`. Not sure how it ended up there, cou
 
 The problem I am currently facing is that the page I am currently trying to test is connected to the store in order to dispatch a simple action and I am getting the error "could not find react-redux context value; please ensure the component is wrapped in a <Provider>", which makes sense. I remember the `testing-library` docs mentioning something about a custom `render` component that I can use in order to wrap my component-to-test with any provider that I need. But I know I am on a good path to solving the issue because removing the `dispatch` action and testing for something simple I am able to render the component and run the test successfually.
 
-This is what I was remembering ---> https://testing-library.com/docs/react-testing-library/setup#custom-render should resume from here.
+This is what I was remembering: https://testing-library.com/docs/react-testing-library/setup#custom-render should resume from here.
