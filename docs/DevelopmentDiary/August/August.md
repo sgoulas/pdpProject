@@ -138,3 +138,27 @@ I always have to google for a couple of minutes the "refers to a value, but is b
 I also encountered a little bit of a rabbit hole while trying to add import `'@testing-library/jest-dom/extend-expect'`. Apparently later versions of the library lack the type definitions as described here: https://github.com/testing-library/jest-dom/issues/123, in order to avoid the "risk people getting autocomplete suggestions when jest-dom has not been configured properly."
 
 I have to say, when it comes to toolchain configuration stack overflow tends to be a bit of a wild place, with people's answers starting with "in my case I had to `[block of code]` which means they got it to work, but are not sure why it is working. Like, in the post I read (https://stackoverflow.com/questions/57861187/property-tobeinthedocument-does-not-exist-on-type-matchersany) the accepted answer suggests installing an _earlier_ version of the library in order to get the built-in type definitions, while one could argue that the supposedly best approach is to bear the burden of the additional dependencies / configuration and get the latest version, while also ensuring your toolchain configuration is ready to support future versions of the library.
+
+I spent an hour trying to configure `jest` to make sense of `tsx` components and `import` statements, reading many answers and blog posts suggesting a variety of different configurations. In the end the solution was to set the `testEnvironment` to `jsdom` in the `jest.config.ts` file and updating my `.babelrc` file with react preset and node as the target environment:
+
+```json
+{
+    "presets": [
+        [
+            "@babel/preset-env",
+            {
+                "targets": {
+                    "node": "current"
+                }
+            }
+        ],
+        "@babel/preset-react"
+    ]
+}
+```
+
+For some reason I also had `"@babel/react"`. Not sure how it ended up there, could not find a preset named like that in the docs either (https://babeljs.io/docs/en/presets/). Could it be that I was meaning to add `"@babel/preset-react"` and made a typo?
+
+The problem I am currently facing is that the page I am currently trying to test is connected to the store in order to dispatch a simple action and I am getting the error "could not find react-redux context value; please ensure the component is wrapped in a <Provider>", which makes sense. I remember the `testing-library` docs mentioning something about a custom `render` component that I can use in order to wrap my component-to-test with any provider that I need. But I know I am on a good path to solving the issue because removing the `dispatch` action and testing for something simple I am able to render the component and run the test successfually.
+
+This is what I was remembering ---> https://testing-library.com/docs/react-testing-library/setup#custom-render should resume from here.

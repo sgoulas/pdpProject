@@ -1,9 +1,16 @@
 {
     "presets": [
+        [
+            "@babel/preset-env",
+            {
+                "targets": {
+                    "node": "current"
+                }
+            }
+        ],
         "next/babel",
-        "@babel/preset-env",
-        "@babel/react",
-        "@babel/preset-typescript"
+        "@babel/preset-typescript",
+        "@babel/preset-react"
     ],
     "plugins": [
         "@babel/plugin-transform-runtime",
