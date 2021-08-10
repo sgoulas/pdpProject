@@ -90,7 +90,12 @@ export default {
     // ],
 
     // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
-    // moduleNameMapper: {},
+    moduleNameMapper: {
+        '@hooks(.*)$': '<rootDir>/src/hooks$1',
+        '@store(.*)$': '<rootDir>/src/store$1',
+        '@core(.*)$': '<rootDir>/src/core$1',
+        '@utils(.*)$': '<rootDir>/src/utils$1',
+    },
 
     // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
     // modulePathIgnorePatterns: [],

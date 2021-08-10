@@ -3,7 +3,7 @@ import { takeEvery, put, spawn } from 'redux-saga/effects';
 
 import { setRunningAction, setOnlineAction } from './actions';
 
-function* setOnline(action: ReturnType<typeof setRunningAction>) {
+export function* setOnline(action: ReturnType<typeof setRunningAction>) {
     const { running } = action.payload;
 
     yield put(setOnlineAction({ online: running }));

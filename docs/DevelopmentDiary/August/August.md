@@ -89,3 +89,42 @@ Trying to add `jest` and I am facing some issues regarding the global availabili
 In the end I added `jest`, `@types/jest`, `@types/node`, `ts-node`, the `types` property to my `ts-config` with values "jest" and "node" and the `jest` property set to `true` in my eslint `env` property and I was able to get it to work. Also, just for the fun of it I added `jest-extended`. It has some extra matchers that might be proven useful. Usually I don't add something before I actually need it, but in this case I also wanted to test adding custom setup files that customize the testing environment and it was a good chance to do so.
 
 I also added coverage check for the application and that introduced some new concerns, as I am not exactly sure as to how to test fairly straightforward files like action creators, or the redux toolkit hooks (`useAppDispatch` and `useAppSelector`). I will need to look into that in the future or maybe even exclude them from the test coverage.
+
+## 10 August 2021
+
+I am trying to make `redux-saga-test-plan` to work and it seems there is an issue with `jest`, because when I run my test, it uses an action from another file, in which I import a function from another file and said file is a module which my test can't find. It seems like a configuration issue with either `jest` or maybe `tsconfig.json` or even `package.json`.
+
+Basically what is happening is that the test fails to run because it imports a file which imports
+
+```ts
+import { withPrefix } from '@utils/withPrefix';
+```
+
+If I chance the above import statement to
+
+```ts
+import { withPrefix } from '../utils/withPrefix';
+```
+
+The test runs, so it seems that `jest` fails to recognize the paths specified in the `tsconfig.json` file.
+
+Going over the jest docs it seems there is a property called `moduleNameMapper` (https://jestjs.io/docs/configuration#modulenamemapper-objectstring-string--arraystring) that is used to stub out modules, so I should try to map my aliases to their absolute paths to make them visible to my `jest` configuration.
+
+Fixed it by adding
+
+```json
+{
+    "moduleNameMapper": {
+        "@utils(.*)$": "<rootDir>/src/utils$1"
+    }
+}
+```
+
+to my `jest.config.ts`.
+
+A couple of points of interest:
+
+-   I thought `<rootDir>` was a placeholder value for my actual rootDir. It is not. You have to literally add it to the path.
+-   It seems it follows a unix like arguments format, basically handling anything past `@utils` with the `$` symbol. So everything I type past the alias is used as a param to be added on the property value to the right. Did not expect this kind of dynamic coding in a configuration file.
+
+I also added all the other aliases I already use and it also means this configuration property will need to always be up to date with the `paths` property of `tsconfig.json` file.
