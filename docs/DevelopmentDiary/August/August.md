@@ -128,3 +128,5 @@ A couple of points of interest:
 -   It seems it follows a unix like arguments format, basically handling anything past `@utils` with the `$` symbol. So everything I type past the alias is used as a param to be added on the property value to the right. Did not expect this kind of dynamic coding in a configuration file.
 
 I also added all the other aliases I already use and it also means this configuration property will need to always be up to date with the `paths` property of `tsconfig.json` file.
+
+Next I have to add `react-testing-library` (should I write an ADR for that? It feels like I should write an ADR for that).
