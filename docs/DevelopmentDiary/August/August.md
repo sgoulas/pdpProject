@@ -132,3 +132,9 @@ I also added all the other aliases I already use and it also means this configur
 Next I have to add `react-testing-library` (should I write an ADR for that? It feels like I should write an ADR for that).
 
 I wrote an ADR for that.
+
+I always have to google for a couple of minutes the "refers to a value, but is being used as a type here" error when it always ends up being a `.test.ts` file that should be named `.test.tsx`.
+
+I also encountered a little bit of a rabbit hole while trying to add import `'@testing-library/jest-dom/extend-expect'`. Apparently later versions of the library lack the type definitions as described here: https://github.com/testing-library/jest-dom/issues/123, in order to avoid the "risk people getting autocomplete suggestions when jest-dom has not been configured properly."
+
+I have to say, when it comes to toolchain configuration stack overflow tends to be a bit of a wild place, with people's answers starting with "in my case I had to `[block of code]` which means they got it to work, but are not sure why it is working. Like, in the post I read (https://stackoverflow.com/questions/57861187/property-tobeinthedocument-does-not-exist-on-type-matchersany) the accepted answer suggests installing an _earlier_ version of the library in order to get the built-in type definitions, while one could argue that the supposedly best approach is to bear the burden of the additional dependencies / configuration and get the latest version, while also ensuring your toolchain configuration is ready to support future versions of the library.

@@ -13,7 +13,7 @@
       "dom.iterable",
       "esnext"
     ],
-    "types": ["jest", "node"],
+    "types": ["jest", "node", "@testing-library/jest-dom"],
     "allowJs": true, // Allow JavaScript files to be imported inside your project
     "skipLibCheck": true, // Skip type checking of declaration files. This can save time during compilation at the expense of type-system accuracy. For example, two libraries could define two copies of the same type in an inconsistent way.
     "esModuleInterop": true, // fixes improts errors that are present due to differences between how typescript handles imports and the import spec's recommendations. https://www.typescriptlang.org/tsconfig#compilerOptions
