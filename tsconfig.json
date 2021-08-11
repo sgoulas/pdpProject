@@ -2,9 +2,10 @@
   "compilerOptions": {
     "baseUrl": "src",
     "paths": {
+      "@core/*": ["core/*"],
       "@hooks/*":["hooks/*"],
       "@store/*":["store/*"],
-      "@core/*":["core/*"],
+      "@testUtils/*": ["testUtils/*"],
       "@utils/*": ["utils/*"]
     },
     "target": "es5",
