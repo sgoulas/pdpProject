@@ -1,11 +1,11 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { renderWithProviders } from '@utils/testUtils';
 
 import Page from './index';
 
 describe('index page suite', () => {
     it('renders hello world message', () => {
-        const { getByText } = render(<Page />);
+        const { getByText } = renderWithProviders(<Page />);
         const expectedText = 'Hello World!!';
 
         expect(getByText(expectedText)).toBeInTheDocument();
