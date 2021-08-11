@@ -1,0 +1,1 @@
+export { withPrefix } from './withPrefix';

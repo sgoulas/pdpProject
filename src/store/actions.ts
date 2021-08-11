@@ -1,6 +1,6 @@
 import { createAction } from '@reduxjs/toolkit';
 
-import { withPrefix } from '@utils/withPrefix';
+import { withPrefix } from '@utils';
 
 import { SetRunningActionPayload, SetOnlineActionPayload } from './types';
 

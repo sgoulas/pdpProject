@@ -5,8 +5,8 @@
       "@core/*": ["core/*"],
       "@hooks/*":["hooks/*"],
       "@store/*":["store/*"],
-      "@testUtils/*": ["testUtils/*"],
-      "@utils/*": ["utils/*"]
+      "@testUtils": ["testUtils"],
+      "@utils": ["utils"]
     },
     "target": "es5",
     "lib": [
