@@ -100,7 +100,7 @@ Basically what is happening is that the test fails to run because it imports a f
 import { withPrefix } from '@utils/withPrefix';
 ```
 
-If I chance the above import statement to
+If I change the above import statement to
 
 ```ts
 import { withPrefix } from '../utils/withPrefix';
@@ -159,18 +159,20 @@ I spent an hour trying to configure `jest` to make sense of `tsx` components and
 
 For some reason I also had `"@babel/react"`. Not sure how it ended up there, could not find a preset named like that in the docs either (https://babeljs.io/docs/en/presets/). Could it be that I was meaning to add `"@babel/preset-react"` and made a typo?
 
-The problem I am currently facing is that the page I am currently trying to test is connected to the store in order to dispatch a simple action and I am getting the error "could not find react-redux context value; please ensure the component is wrapped in a <Provider>", which makes sense. I remember the `testing-library` docs mentioning something about a custom `render` component that I can use in order to wrap my component-to-test with any provider that I need. But I know I am on a good path to solving the issue because removing the `dispatch` action and testing for something simple I am able to render the component and run the test successfually.
+The problem I am currently facing is that the page I am currently trying to test is connected to the store in order to dispatch a simple action and I am getting the error "could not find react-redux context value; please ensure the component is wrapped in a `Provider`", which makes sense. I remember the `testing-library` docs mentioning something about a custom `render` component that I can use in order to wrap my component-to-test with any provider that I need. But I know I am on a good path to solving the initial issue because removing the `dispatch` action and testing for something simple I am able to render the component and run the test successfually.
 
 This is what I was remembering: https://testing-library.com/docs/react-testing-library/setup#custom-render should resume from here.
 
 ## 11 August 2021
 
-I added a custom `testUtils` file that exports everything from `@testing-library/react` plus an overriden version of the `render` function that wraps the component it receives will all the application providers (currently just the store provider) of the application. Took me around 10 mins to correctly type everything, since the example provided above has some clashes with my eslint setup (I also had to provide typing for the `wrapper` prop and `AllTheProviders` component).
+I added a custom `testUtils` file that exports everything from `@testing-library/react` plus an overriden version of the `render` function that wraps the component it receives will all the application providers (currently just the store provider). Took me around 10 mins to correctly type everything, since the example provided above has some clashes with my eslint setup (I also had to provide typing for the `wrapper` prop and `AllTheProviders` component).
 
 With this addition the test runs and I am able to test a component that is connected to the redux store. I do wonder though if instead of overriding the current `render` export with my `customRender` one, it would be best to export both of them, in order to retain the flexibility of using the simpler `render` function when I want to test components that are not connected to the store. I think this makes sense, especially for presentational components (although this classification is slowly fading away these days).
 
-In the end I did rename `customRender` to `renderWithProviders` in order to keep the default `render` around. I contemplated naming the new function `renderWithStore` to be more specific since in the future I might add more providers (like the class light / dark theme one for example), but this would mean that I would have to make a mental or typed note to go back to this file and rename the function to `renderWithProviders` since `renderWithStore` would be lacking. No reason to have suck kinds of notes in the back of one's head in my opinion, so I chose the more generic variable name to be at peace.
+In the end I did rename `customRender` to `renderWithProviders` in order to keep the default `render` around. I contemplated naming the new function `renderWithStore` to be more specific since in the future I might add more providers (like the classic light / dark theme one for example), but this would mean that I would have to make a mental or typed note to go back to this file and rename the function to `renderWithProviders` since `renderWithStore` would be lacking. No reason to have such kind of notes in the back of one's head in my opinion, so I chose the more generic variable name to be future proof.
 
 Now, considering I am overriding (even for a single function) the `@testing-library/react`, this means (as the docs suggest) that instead of importing my testing functions from `@testing-library/react`, I will be importing them from my `testUtils` file. This immediately differentiates this file from all the other "utility" files of the `utils` directory and makes me want to add it to a directory of its own.
 
 I also added `index` files to `utils` and `testUtils` directories. This meant updating the `paths` property in `tsconfig.son` but not in `jest.config.ts`. This makes sense, `tsconfig.json` was hard-replacing `@path/*` with `@path/*` so the existence of `/` made a difference, whereas `jest.config.ts` is a bit more clever with its replacements. I may do that for all other directories too to avoid having to specify the directory sub-folder when I import something specific from an alias. Will leave that change for later as the need naturally occurs.
+
+All in all, it's coming along nicely. Now I need to setup the network layer of the front end application, meaning installing the apollo client dependency, configuring a client instance and exporting its `query` and `mutate` methods, then creating relevant redux actions for both of them and a redux saga (or two, we will see) to handle the dispatched actions.
