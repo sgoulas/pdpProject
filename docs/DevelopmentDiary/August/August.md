@@ -176,3 +176,15 @@ Now, considering I am overriding (even for a single function) the `@testing-libr
 I also added `index` files to `utils` and `testUtils` directories. This meant updating the `paths` property in `tsconfig.son` but not in `jest.config.ts`. This makes sense, `tsconfig.json` was hard-replacing `@path/*` with `@path/*` so the existence of `/` made a difference, whereas `jest.config.ts` is a bit more clever with its replacements. I may do that for all other directories too to avoid having to specify the directory sub-folder when I import something specific from an alias. Will leave that change for later as the need naturally occurs.
 
 All in all, it's coming along nicely. Now I need to setup the network layer of the front end application, meaning installing the apollo client dependency, configuring a client instance and exporting its `query` and `mutate` methods, then creating relevant redux actions for both of them and a redux saga (or two, we will see) to handle the dispatched actions.
+
+## 16 August 2021
+
+Continuing from where I stopped, I want to create the network layer of the front end part of the application. This means:
+
+-   installing `@apollo/client`
+-   creating a `client` and then exposing its `query` and `mutate` functions.
+-   creating corresponding redux actions, sagas and reducer cases that will handle said actions.
+-   wrapping everything up by performing a query to my back end, retrieving results and then exposing them.
+-   making sure each of the above cases is tested.
+
+I restructured the `pages` directory a bit, creating a `Main` folder to contain the previously named `index.tsx` file, which now was renamed to `Main.tsx`. My aim was to prepare the `pages` directory for the `ducks` pattern, meaning I had to have folders to contain my modules. Since I want my new `Main.tsx` component to match the `/` route I also created a new `pages/index.ts` file that exports the `Main.tsx` component
