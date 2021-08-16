@@ -91,6 +91,7 @@ export default {
 
     // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
     moduleNameMapper: {
+        '@api(.*)$': '<rootDir>/src/api$1',
         '@core(.*)$': '<rootDir>/src/core$1',
         '@hooks(.*)$': '<rootDir>/src/hooks$1',
         '@store(.*)$': '<rootDir>/src/store$1',

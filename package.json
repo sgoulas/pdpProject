@@ -23,6 +23,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@apollo/client": "^3.4.7",
     "@babel/runtime": "^7.14.6",
     "@reduxjs/toolkit": "^1.6.1",
     "graphql": "^15.5.1",

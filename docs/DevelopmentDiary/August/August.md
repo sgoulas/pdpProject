@@ -188,3 +188,15 @@ Continuing from where I stopped, I want to create the network layer of the front
 -   making sure each of the above cases is tested.
 
 I restructured the `pages` directory a bit, creating a `Main` folder to contain the previously named `index.tsx` file, which now was renamed to `Main.tsx`. My aim was to prepare the `pages` directory for the `ducks` pattern, meaning I had to have folders to contain my modules. Since I want my new `Main.tsx` component to match the `/` route I also created a new `pages/index.ts` file that exports the `Main.tsx` component
+
+At this point I considered installing `apollo-boost`, but I quickly dropped the idea. Firstly, bootstraping anything goes against the core idea of this project, which is to manually add everything by myself in order to experience and learn from the configuration process. Secondly, inspecting the `apollo-boost` dependencies I can see that it lists `apollo-client` and not `@apollo/client`, meaning it has no `3.x.x` version support. Also, for what it's worth and if we abide by what versioning numbers are supposed to indicate, at the time of writing this `apollo-boost` is at version `0.4.9` and any `0.x.x` version is considered not stable and prone to be updated without backwards compatibility in mind. For the above stated reasons, forward with installing each package on my own is the most sensible thing to do.
+
+I created an `api` directory to initialize my apollo client configuration. I quickly reminded myself that I should use the ducks pattern, meaning this new directory should _not_ contain sub-directories that refer to pages, components, containers etc. Instead, I will just create and export the client configuration and then create `api` sub-directories in each (modular) folder.
+
+I created an `errorLink` as per the docs example, however I do need to make sure I handle the error logging in the redux layer and certainly not by console logging the errors.
+
+Also, I would like to take a look at schema introspection, to make sure that my server exposes its `schema` to my client and any changes are easily cascaded to it.
+
+I added the `apollo.ts` file which exposes an apollo client as well as custom `query` and `mutation` methods on it. In order to fully type these two methods I used a couple fancy types (specified in `src/api/types.ts`) which basically boils down to copying how `apollo-boost` defines `ExecutionResult` and then wrapping everyhing in a high level function type.
+
+Right now I wonder what is the best approach to expose these network calls as redux actions.
