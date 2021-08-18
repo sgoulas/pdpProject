@@ -231,3 +231,5 @@ Having a more clear view on the matter, I decided to use apollo's hook API.
 I wrapped my `_app.tsx` component with the `ApolloProvider` and updated my `api` folder to only export the apollo `client`. I also removed the custom types I had previously added since they were redundant. I also added the new provider to the custom `render` method I am exporting from the `testUtils` directory. Naming the variable `AllTheProviders` paid off :P.
 
 Now I want to add a simple network call to my `Main.tsx` component (the `/` route of the application) to fetch some data from my server and display them on the front end. This is the moment of truth!
+
+In the end it was wrong to have my actual apollo provider in the testing utilities file. Makes sense. I added an additional type to be exported that describes the graphQL mocks, basically the `MockedProviderProps['mocks']` type, so that I don't have to type it each time.

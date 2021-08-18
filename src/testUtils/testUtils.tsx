@@ -1,11 +1,11 @@
 import React, { FC, ReactElement, ReactNode } from 'react';
 import { render, RenderOptions, RenderResult } from '@testing-library/react';
 import { Provider as ReduxProvider } from 'react-redux';
-import { ApolloProvider } from '@apollo/client';
-
-import { client } from '@api';
+import { MockedProviderProps } from '@apollo/client/testing';
 
 import store from '@store/store';
+
+export type GQLmocks = MockedProviderProps['mocks'];
 
 interface AllTheProvidersProps {
     children?: ReactNode;
@@ -14,9 +14,7 @@ interface AllTheProvidersProps {
 const AllTheProviders: FC<AllTheProvidersProps> = ({
     children,
 }: AllTheProvidersProps) => (
-    <ReduxProvider store={store}>
-        <ApolloProvider client={client}>{children}</ApolloProvider>
-    </ReduxProvider>
+    <ReduxProvider store={store}>{children}</ReduxProvider>
 );
 
 const renderWithProviders: (
