@@ -233,3 +233,58 @@ I wrapped my `_app.tsx` component with the `ApolloProvider` and updated my `api`
 Now I want to add a simple network call to my `Main.tsx` component (the `/` route of the application) to fetch some data from my server and display them on the front end. This is the moment of truth!
 
 In the end it was wrong to have my actual apollo provider in the testing utilities file. Makes sense. I added an additional type to be exported that describes the graphQL mocks, basically the `MockedProviderProps['mocks']` type, so that I don't have to type it each time.
+
+Currently, what I kind of don't like is that my tests need to wrap the component with apollo's `MockProvider` component and I also have to set `addTypesNames` property to false each time:
+
+```tsx
+it('fetches and displays the server information message', async () => {
+    const expected = `server message: ${mockServerMessage}`;
+    const { getByText } = renderWithProviders(
+        <MockedProvider mocks={GQL_MOCKS} addTypename={false}>
+            <Main />
+        </MockedProvider>
+    );
+
+    expect(getByText('loading')).toBeInTheDocument();
+    await waitFor(() => expect(getByText(expected)).toBeInTheDocument());
+    expect(getByText('finished loading')).toBeInTheDocument();
+});
+```
+
+I am thinking of creating a HOC that will wrap my `Main` component with `MockedProvider` and also provide it with the `mocks` and `addTypename` (set to false) properties.
+
+My custom solution was the following:
+
+```tsx
+///testUtils.tsx
+import { MockedProvider, MockedProviderProps } from '@apollo/client/testing';
+
+export type GQLmocks = MockedProviderProps['mocks'];
+
+export const withApolloMock =
+    (mocks: GQLmocks) =>
+    (Component: ReactElement): JSX.Element =>
+        (
+            <MockedProvider mocks={mocks} addTypename={false}>
+                {Component}
+            </MockedProvider>
+        );
+```
+
+and now the previous snippet:
+
+```tsx
+const { getByText } = renderWithProviders(
+    <MockedProvider mocks={GQL_MOCKS} addTypename={false}>
+        <Main />
+    </MockedProvider>
+);
+```
+
+can be written like this:
+
+```tsx
+const { getByText } = renderWithProviders(
+    withApolloMocks(GQL_MOCKS_ERROR)(<Main {...defaultProps} />)
+);
+```

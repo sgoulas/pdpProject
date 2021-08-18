@@ -1,11 +1,21 @@
+/* eslint-disable react/display-name */
 import React, { FC, ReactElement, ReactNode } from 'react';
 import { render, RenderOptions, RenderResult } from '@testing-library/react';
 import { Provider as ReduxProvider } from 'react-redux';
-import { MockedProviderProps } from '@apollo/client/testing';
+import { MockedProvider, MockedProviderProps } from '@apollo/client/testing';
 
 import store from '@store/store';
 
 export type GQLmocks = MockedProviderProps['mocks'];
+
+export const withApolloMocks =
+    (mocks: GQLmocks) =>
+    (Component: ReactElement): JSX.Element =>
+        (
+            <MockedProvider mocks={mocks} addTypename={false}>
+                {Component}
+            </MockedProvider>
+        );
 
 interface AllTheProvidersProps {
     children?: ReactNode;

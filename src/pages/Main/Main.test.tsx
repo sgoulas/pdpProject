@@ -1,12 +1,20 @@
 import React from 'react';
-import { MockedProvider } from '@apollo/client/testing';
 
-import { GQLmocks, renderWithProviders, waitFor } from '@testUtils';
+import {
+    GQLmocks,
+    renderWithProviders,
+    waitFor,
+    withApolloMocks,
+} from '@testUtils';
 
-import Main from './Main';
+import Main, { MainProps } from './Main';
 import { GET_SERVER_INFO } from './api';
 
 describe('Main page suite', () => {
+    const defaultProps: MainProps = {
+        name: 'mock name',
+    };
+
     const mockServerMessage = 'mock server message';
     const mockServerErrorMessage = 'an error occured';
 
@@ -34,9 +42,7 @@ describe('Main page suite', () => {
 
     it('renders hello world message', () => {
         const { getByText } = renderWithProviders(
-            <MockedProvider mocks={GQL_MOCKS} addTypename={false}>
-                <Main />
-            </MockedProvider>
+            withApolloMocks(GQL_MOCKS)(<Main {...defaultProps} />)
         );
         const expectedText = 'Hello World!!';
 
@@ -46,9 +52,7 @@ describe('Main page suite', () => {
     it('fetches and displays the server information message', async () => {
         const expected = `server message: ${mockServerMessage}`;
         const { getByText } = renderWithProviders(
-            <MockedProvider mocks={GQL_MOCKS} addTypename={false}>
-                <Main />
-            </MockedProvider>
+            withApolloMocks(GQL_MOCKS)(<Main {...defaultProps} />)
         );
 
         expect(getByText('loading')).toBeInTheDocument();
@@ -59,9 +63,7 @@ describe('Main page suite', () => {
     it('displays the error message if it encounters an error while fetching the server information message', async () => {
         const expected = `error: ${mockServerErrorMessage}`;
         const { getByText } = renderWithProviders(
-            <MockedProvider mocks={GQL_MOCKS_ERROR} addTypename={false}>
-                <Main />
-            </MockedProvider>
+            withApolloMocks(GQL_MOCKS_ERROR)(<Main {...defaultProps} />)
         );
 
         expect(getByText('loading')).toBeInTheDocument();

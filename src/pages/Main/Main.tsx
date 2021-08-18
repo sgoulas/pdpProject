@@ -6,7 +6,11 @@ import { setRunningAction } from '@store/actions';
 
 import { GET_SERVER_INFO } from './api';
 
-const Main: React.FC = () => {
+export interface MainProps {
+    name?: string;
+}
+
+const Main: React.FC<MainProps> = ({ name }: MainProps) => {
     const dispatch = useAppDispatch();
     const { loading, error, data } = useQuery(GET_SERVER_INFO);
 
@@ -16,6 +20,7 @@ const Main: React.FC = () => {
 
     return (
         <>
+            <h1>{name}</h1>
             <h1 style={{ color: 'orange' }}>Hello World!!</h1>
             <h2>{loading ? 'loading' : 'finished loading'}</h2>
             <h2>{error && `error: ${error.message}`}</h2>
