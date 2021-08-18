@@ -1,6 +1,9 @@
 import React, { FC, ReactElement, ReactNode } from 'react';
 import { render, RenderOptions, RenderResult } from '@testing-library/react';
-import { Provider } from 'react-redux';
+import { Provider as ReduxProvider } from 'react-redux';
+import { ApolloProvider } from '@apollo/client';
+
+import { client } from '@api';
 
 import store from '@store/store';
 
@@ -10,7 +13,11 @@ interface AllTheProvidersProps {
 
 const AllTheProviders: FC<AllTheProvidersProps> = ({
     children,
-}: AllTheProvidersProps) => <Provider store={store}>{children}</Provider>;
+}: AllTheProvidersProps) => (
+    <ReduxProvider store={store}>
+        <ApolloProvider client={client}>{children}</ApolloProvider>
+    </ReduxProvider>
+);
 
 const renderWithProviders: (
     ui: ReactElement,

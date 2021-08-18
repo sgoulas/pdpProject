@@ -7,7 +7,6 @@ import {
     CLIENT_OPTIONS,
     CLIENT_DEFAULT_OPTIONS,
 } from './constants';
-import type { ClientAction } from './types';
 
 const httpLink = new HttpLink({
     uri: BACK_END_URL,
@@ -31,22 +30,3 @@ export const client = new ApolloClient({
     cache: new InMemoryCache(CACHE_OPTIONS),
     defaultOptions: CLIENT_DEFAULT_OPTIONS,
 });
-
-export const query: ClientAction = (gql, variables) =>
-    client
-        .query({
-            query: gql,
-            variables,
-        })
-        .then(response => ({ data: response.data, errors: response.errors }));
-
-export const mutate: ClientAction = (gql, variables) =>
-    client
-        .mutate({
-            mutation: gql,
-            variables,
-        })
-        .then(response => ({
-            data: response.data,
-            errors: response.errors,
-        }));

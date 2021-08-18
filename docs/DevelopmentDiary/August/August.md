@@ -227,3 +227,7 @@ acenarke was also kind enough to provide external resources. for further reading
 To wrap up this extremely interesting discussion in acemarke's own words: **code that changes together should stay together**.
 
 Having a more clear view on the matter, I decided to use apollo's hook API.
+
+I wrapped my `_app.tsx` component with the `ApolloProvider` and updated my `api` folder to only export the apollo `client`. I also removed the custom types I had previously added since they were redundant. I also added the new provider to the custom `render` method I am exporting from the `testUtils` directory. Naming the variable `AllTheProviders` paid off :P.
+
+Now I want to add a simple network call to my `Main.tsx` component (the `/` route of the application) to fetch some data from my server and display them on the front end. This is the moment of truth!
