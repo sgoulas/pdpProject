@@ -285,7 +285,7 @@ can be written like this:
 
 ```tsx
 const { getByText } = renderWithProviders(
-    withApolloMocks(GQL_MOCKS_ERROR)(<Main {...defaultProps} />)
+    withApolloMocks(GQL_MOCKS)(<Main {...defaultProps} />)
 );
 ```
 
@@ -293,7 +293,7 @@ Next I want to enable schema introspection for my back end server, so that the c
 
 https://www.graphql-code-generator.com/
 
-update: I have been trying to find a good way to introspect my server for a good hour now. Am I missing something? The previous link assumes I have the `schema.graphql` file at my server. I found the `rover` package on `npm` and I was actually able to introspect my server, but I have been having a hard time writing the ouput (which is not exactly a schema, not sure of the format) to a file. Am I missing something obvious?
+update: I have been trying to find a sensible way to introspect my server for a good hour now. Am I missing something? The previous link assumes I have the `schema.graphql` file at my server. I found the `rover` package on `npm` and I was actually able to introspect my server, but I have been having a hard time writing the ouput (which is not exactly a schema, not sure of the format) to a file. Am I missing something obvious?
 
 Hitting the 2 hours mark, I have to say writing `.yml` files and, most imporantly, trying to make sense of their weird errors is a bit irritating.
 
@@ -306,6 +306,8 @@ I finally got it to work. Basically, it came down to showing **absolute and iron
 
 and also exclude `codegen.template.yml` and `codegen.yml` from my prettier configuration.
 
-I also created a script to generate the schema from a target environement, or `localhost:4000` if one is not provided.
+I also created a script to generate the schema from a target environement, or `http://localhost:4000` if one is not provided.
 
 So now I can generate an `api.ts` file containing all the types defined by my server `schema` and thus I can quickly cascade any schema changes to my client (prefixed with `Api` to denote they correspond to server defined types).
+
+Currently considering what I should do next. I think I should revisit my `NextJS` notes, to refresh what I learned regarding SSG and SSR, as well as check out some examples of `NextJS` + `Redux` implementations. Then it would probably be time to add `@material-ui` to my codebase and start setting up the UI layer of the application. This includes deciding on a UI to copy (:P this is **not** a _design_ personal development project :P), designing with a mobile-first approach, taking care of SEO and accessibility (the latter is a super gray area for me, there is some reading to do there) and building the pages one by one. But generally speaking, I think the overall infrastructure is at a good (all things consider) point and I can focus my attention on the UI layer, at least for now.
