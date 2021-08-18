@@ -261,7 +261,7 @@ import { MockedProvider, MockedProviderProps } from '@apollo/client/testing';
 
 export type GQLmocks = MockedProviderProps['mocks'];
 
-export const withApolloMock =
+export const withApolloMocks =
     (mocks: GQLmocks) =>
     (Component: ReactElement): JSX.Element =>
         (
