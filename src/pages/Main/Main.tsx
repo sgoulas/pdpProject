@@ -18,7 +18,7 @@ const Main: React.FC = () => {
         <>
             <h1 style={{ color: 'orange' }}>Hello World!!</h1>
             <h2>{loading ? 'loading' : 'finished loading'}</h2>
-            <h2>{error && 'error'}</h2>
+            <h2>{error && `error: ${error.message}`}</h2>
             <h2>server message: {data ? data.info : 'loading'}</h2>
         </>
     );
