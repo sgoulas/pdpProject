@@ -288,3 +288,7 @@ const { getByText } = renderWithProviders(
     withApolloMocks(GQL_MOCKS_ERROR)(<Main {...defaultProps} />)
 );
 ```
+
+Next I want to enable schema introspection for my back end server, so that the client can always be up to date with any schema updates. I should pick up my reading from here:
+
+https://www.graphql-code-generator.com/
