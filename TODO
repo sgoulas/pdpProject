@@ -11,14 +11,14 @@ Technologies, methodologies and architecture:
   ☐ Semantic HTML
   ☐ Custom CSS + Flex / Grid
   ☐ Data driven navigation
-  ☐ State / UI separation
+  ✘ State / UI separation @cancelled(21-08-19 00:39) (partially re-considered under the ducks design approach that was decided, relevant diary entry: 18/8/2021)
   ✔ relative paths (tsconfig paths prop) @done(21-08-08 17:10)
   ✘ Axios @cancelled(21-07-26 01:55) (opted for apollo-client / apollo-server)
   ✔ Husky for pre-commit checking files @done(21-07-05 02:55)
   ✔ Eslint (https://eslint.org/docs/rules/) / (https://www.npmjs.com/package/eslint) @done(21-07-05 02:55)
   ✔ SSR with next @done(21-07-19 01:51)
   ✔ fake data with faker @done(21-07-26 01:55)
-  ☐ GraphQL calls
+  ✔ GraphQL calls @done(21-08-19 00:38)
   ☐ Animations
   ☐ Responsive, mobile first design
   ☐ Hosted somewhere
