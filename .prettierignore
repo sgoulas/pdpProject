@@ -1,2 +1,4 @@
 # Ignore artifacts:
 dist
+codegen.template.yml
+codegen.yml

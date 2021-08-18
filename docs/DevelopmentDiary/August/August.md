@@ -292,3 +292,20 @@ const { getByText } = renderWithProviders(
 Next I want to enable schema introspection for my back end server, so that the client can always be up to date with any schema updates. I should pick up my reading from here:
 
 https://www.graphql-code-generator.com/
+
+update: I have been trying to find a good way to introspect my server for a good hour now. Am I missing something? The previous link assumes I have the `schema.graphql` file at my server. I found the `rover` package on `npm` and I was actually able to introspect my server, but I have been having a hard time writing the ouput (which is not exactly a schema, not sure of the format) to a file. Am I missing something obvious?
+
+Hitting the 2 hours mark, I have to say writing `.yml` files and, most imporantly, trying to make sense of their weird errors is a bit irritating.
+
+I finally got it to work. Basically, it came down to showing **absolute and ironclad** respect to the format (spacing, columns, etc) of the `.yml` file. I also had to add the following packages:
+
+-   `@graphql-codegen/add`
+-   `@graphql-codegen/cli`
+-   `@graphql-codegen/typescript`
+-   `@graphql-codegen/typescript-resolvers`
+
+and also exclude `codegen.template.yml` and `codegen.yml` from my prettier configuration.
+
+I also created a script to generate the schema from a target environement, or `localhost:4000` if one is not provided.
+
+So now I can generate an `api.ts` file containing all the types defined by my server `schema` and thus I can quickly cascade any schema changes to my client (prefixed with `Api` to denote they correspond to server defined types).

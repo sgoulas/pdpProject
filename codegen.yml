@@ -1,0 +1,24 @@
+overwrite: true
+schema: http://localhost:4000/graphql
+generates:
+  src/api/types/api.ts:
+    plugins:
+      - add:
+          content:
+            - '/** THIS IS A GENERATED FILE. DO NOT EDIT MANUALLY! **/'
+      - add:
+          content:
+            - '/** GENERATED FROM http://localhost:4000/graphql **/'
+      - typescript
+config:
+    skipTypename: true
+    typesPrefix: Api
+    scalars:
+    Long: number
+    BigDecimal: number
+    Date: string
+    DateTime: string
+    EcosystemTimestamp: string
+hooks:
+  afterAllFileWrite:
+    - eslint --fix

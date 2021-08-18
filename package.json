@@ -13,6 +13,7 @@
   },
   "scripts": {
     "startServer": "node server/index.js",
+    "generateSchema":"./scripts/generateSchema.sh",
     "dev": "next dev",
     "build": "next build",
     "test": "jest",
@@ -42,6 +43,10 @@
     "@babel/preset-env": "^7.14.5",
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.14.5",
+    "@graphql-codegen/add": "^3.0.0",
+    "@graphql-codegen/cli": "^2.0.1",
+    "@graphql-codegen/typescript": "^2.0.0",
+    "@graphql-codegen/typescript-resolvers": "^2.0.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
     "@types/jest": "^26.0.24",
