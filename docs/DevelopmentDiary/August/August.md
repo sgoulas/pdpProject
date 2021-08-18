@@ -206,3 +206,24 @@ In my current professional project, my team uses a custom `actionCreator` that b
 My only concern is actually going to these lengths in order to be able to impose my way of handling network calls on my current apollo client configuration. Also, creating a custom action creator would mean messing around with the way `redux toolkit` is currently handling things, either by bypassing it or by using it in my custom solution.
 
 This does make me wonder if it is worth adding all this custom code on top of `@apollo/client` in pursuit of the separation of concerns paradigm. I think I might have to revisit my decision, at the very least to confirm it.
+
+## 18 August 2021
+
+I decided to post a question over at `/r/reactjs` regarding my concerns. I was lucky enough to have acemarke (among other things: a redux maintainer) answer, providing
+excellent food for thought.
+
+Fully separating the concerns means fully separating the technologies. Indeed, in my current development plan my component dispatches a generic "fetch" action, a saga detects it and performs the network call, then receives the data from the back end, stores it in the redux store, then the component detects the change to the store connected variable and proceeds with using it. In this scenario the component does not know how the call is performed (axios or apollo, graphql or rest), actually it does not even know that a call is performed at all. For all it is concerned, it just dispatches an action. Separating the concerns of "fetching" and "displaying" effectively meant separating the technologies of "apollo" and "react".
+
+Think of the ducks.
+
+Previously I wrote that I plan on using the ducks pattern, which advocates for modularity. I was wrong to think that by separating the technologies in different files (under the same folder), I would also be achieving separation of concerns. By structuring each component folder as a separate but fully fledged module, I mesh the technologies together into a single folder-entity, thus merging the concerns.
+
+acemarke mentioned that the introduction of hooks fundamentaly changes the way we perceive our applications. A trully "concern free" component would be receiving additional functionality / data via its `props`. This means a development style that implements higher order components to enhance basic components. The moment external functionality or store variables are introduced via hooks (not via `connect`), the component is "concerned" (has knowledge of) `redux`, `dispatch`, and `selectors`. It is no longer "concern free".
+
+The full reddit thread can be found here: https://www.reddit.com/r/reactjs/comments/p6e9m4/separation_of_concerns_design_principle_and/
+
+acenarke was also kind enough to provide external resources. for further reading. I am ashamed to admit that I had read his blog post regarding separation of concerns when using redux in the past. This means it was a resource that if applied to my case, it was answering my question, but I had not fully understood at the time I was reading it. This is a lesson in being more focused and open minded with my studies. Also, a lesson that all developers learn: you best learn something when you build it.
+
+To wrap up this extremely interesting discussion in acemarke's own words: **code that changes together should stay together**.
+
+Having a more clear view on the matter, I decided to use apollo's hook API.
