@@ -8,9 +8,9 @@ The problem I am currently facing is that there is a multitude of articles detai
 
 The official react docs https://reactjs.org/docs/create-a-new-react-app.html contain a small list for required tools namely:
 
-- A package manager (yarn or npm)
-- A bundler (webpack or parcel)
-- A compiler (like babel)
+-   A package manager (yarn or npm)
+-   A bundler (webpack or parcel)
+-   A compiler (like babel)
 
 An article linked in the official docs contains a better explanation of why specific packages are needed. This article can be found here https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658.
 
@@ -34,7 +34,7 @@ I was also under the impression that every page had to be SSR but it seems that 
 
 [update]
 
-It seems that SG can be paired with data fetching via the (async) `getStaticPros` in order to fetch data before rendering the page. Since the data can (and are expected to) change over time this means that SG can be actually used to rendering pages with varied content (like a product listing page). Does this mean that SSR should be used for pages that vary greatly to their expected rendered result? And to what degree?
+It seems that SG can be paired with data fetching via the (async) `getStaticProps` in order to fetch data before rendering the page. Since the data can (and are expected to) change over time this means that SG can be actually used to rendering pages with varied content (like a product listing page). Does this mean that SSR should be used for pages that vary greatly to their expected rendered result? And to what degree?
 
 [update]
 
