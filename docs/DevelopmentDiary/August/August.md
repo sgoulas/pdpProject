@@ -222,7 +222,7 @@ acemarke mentioned that the introduction of hooks fundamentaly changes the way w
 
 The full reddit thread can be found here: https://www.reddit.com/r/reactjs/comments/p6e9m4/separation_of_concerns_design_principle_and/
 
-acenarke was also kind enough to provide external resources. for further reading. I am ashamed to admit that I had read his blog post regarding separation of concerns when using redux in the past. This means it was a resource that if applied to my case, it was answering my question, but I had not fully understood at the time I was reading it. This is a lesson in being more focused and open minded with my studies. Also, a lesson that all developers learn: you best learn something when you build it.
+acenarke was also kind enough to provide external resources. for further reading. I am ashamed to admit that I had read his blog post regarding separation of concerns when using redux in the past. This means it was a resource that if applied to my case, was answering my question, but I had not fully understood at the time I was reading it. This is a lesson in being more focused and open minded with my studies. Also, a lesson that all developers learn: you best learn something when you build it.
 
 To wrap up this extremely interesting discussion in acemarke's own words: **code that changes together should stay together**.
 
