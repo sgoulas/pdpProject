@@ -311,3 +311,30 @@ I also created a script to generate the schema from a target environement, or `h
 So now I can generate an `api.ts` file containing all the types defined by my server `schema` and thus I can quickly cascade any schema changes to my client (prefixed with `Api` to denote they correspond to server defined types).
 
 Currently considering what I should do next. I think I should revisit my `NextJS` notes, to refresh what I learned regarding SSG and SSR, as well as check out some examples of `NextJS` + `Redux` implementations. Then it would probably be time to add `@material-ui` to my codebase and start setting up the UI layer of the application. This includes deciding on a UI to copy (:P this is **not** a _design_ personal development project :P), designing with a mobile-first approach, taking care of SEO and accessibility (the latter is a super gray area for me, there is some reading to do there) and building the pages one by one. But generally speaking, I think the overall infrastructure is at a good (all things consider) point and I can focus my attention on the UI layer, at least for now.
+
+## 18 August 2021
+
+I am reading through `NextJS`'s documentation, going over the SEO parts that interest me, starting with the `<Head />` component. It seems that each distinct page imports it then uses it with its own set of properties, so there is no "merging" of different `<Head />` components going on.
+
+The documentation itself is clear on that:
+
+_"The contents of head get cleared upon unmounting the component, so make sure each page completely defines what it needs in head, without making assumptions about what other pages added."_
+
+What I want to do next is actually start building the UI of my application. This means (considering I do not plan to create the components myself but merely style the overall result a bit) that I need a component library. I will be using Material-UI (https://material-ui.com/), mainly because I have experience in using and setting it up and I would like to speed up the UI development. But for the sake of keeping a development diary, I want to point out that if I wanted to actually make a case study of how to style / create the UI of the application I would follow these steps:
+
+-   Identify application scope and needs (maybe this is an application that really needs to stand out and be unique in terms of design).
+-   Based on previous, consider bootstrap-like solutions like component libraries (e.g `material-ui`) or opt for solutions that facilitate custom styling options (like `styled-components`). Consider libraries like `TailwindCSS ` that exist in the middle of the spectrum, allowing centralized styling with enhanced customization options.
+-   Estimate implementation effort (integrating it into the existing project) and how easy it would be to opt out for a different design solution in the future (how easy would it be to transition from one solution to the other, what reasons would lead to that decision, are said reasons present now or possible to be present in the future?).
+
+Before installing `material-ui` and setting it up (I intend to set up a custom theme, for the sake of displaying how to do so and because in a professional setting I would have a designer suggesting alterations on the default theme so I would need a centralized way to cascade all the changes) I want to decide on...what to copy. I will be looking around the web for professional and personal projects alike, in order to find a design that I like (this needs some clarification) and then proceed to recreate it with `material-ui`.
+
+What I am looking for:
+
+-   Simple, clean, intuitive design (I am fully aware I just recited the holy trinity of application design).
+-   All the basic options one would expect from an e-commerce site: navigation to products / other pages, search bar, mini cart.
+-   Simple color palette.
+-   No "attack the eye" solutions (huge jumbotrons, flashing texts, striking contrast, fast carousels).
+
+The site will include a "login" button, but considering what a logged in user commonly has access to (wishlists, purchase history, personalized suggestions) it falls under the "extra milestones" of the project, so upon clicking it the button will just display a mock. And now that I think about it, it would be a nice place to have a CSS animation of some kind playing, which _is_ a milestone of the project.
+
+I will check out domestic and international retail sites, as well as portfolio projects. Will not list what I checked and what I like / dislike about them. I am not a designer and also don't think that critiquing other people's work publicly is a nice thing to do, _especially_ when not asked to do so. I will just focus on finding an approach that I like and implement it.
