@@ -368,3 +368,5 @@ Some sites that are useful for this kind of task:
 -   https://coolors.co/palettes/trending (multi color palette)
 
 I added the `@material-ui/core` and `@material-ui/icons` dependencies and set up a custom theme. My current problem is that I need variations on my palette. I already decided on a color palette, but by default material-ui defines three version for each color, `main`, `light` and `dark`, using them for hover animations and such. So I need to find a way to translate my `main` colors in their respective `light` and `dark` versions.
+
+Actually, after going throught the official docs (https://material-ui.com/customization/palette/) it seems I do _not_ need to provide the `light` and `dark` variations, as they will be dynamically calculated if I provide the `main` one. That's cool.
