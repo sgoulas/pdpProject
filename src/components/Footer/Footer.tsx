@@ -10,8 +10,6 @@ const Footer: React.FC = () => {
     return (
         <footer className={classes.footer}>
             <Typography variant="body2">footer element</Typography>
-            <Typography variant="body2">footer element</Typography>
-            <Typography variant="body2">footer element</Typography>
         </footer>
     );
 };
