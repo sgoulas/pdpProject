@@ -8,6 +8,9 @@ import useStyles from './Footer.styles';
 const Footer: React.FC = () => {
     const classes = useStyles();
 
+    //?maybe create a custom <OutwardsLink /> specific for the external links?
+    //todo adds icon for bigger screens
+
     return (
         <footer className={classes.footer}>
             <div className={classes.container}>

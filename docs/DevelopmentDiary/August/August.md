@@ -489,3 +489,5 @@ update, I got it to work by...doing the exact same thing I previously did:
 ```
 
 is it getting late? Am I too tired?
+
+I styled the footer component, making sure to utilize `flexbox` for nicely spreading the links over the screen width, added some notes on how to proceed (mainly adding some icons for bigger screens and creating a custom `<OutwardsLink />` component for links that direct outside of the application) and called it a day.
