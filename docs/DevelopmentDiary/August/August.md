@@ -462,3 +462,11 @@ I guess if I want to serve a font I have to do it either via material-ui (https:
 Material-ui's way of doing it requires more code and also to install a plugir or loader in my build process to handle the different font file formats. Considering my "build process" is entirely NextJS' business I would rather just import the font file in the `_document.tsx` file and move on with my life.
 
 I added a sample `Layout` component and wrapped my `_app.tsx` with it. Ideally I want to support per-page layouts but currently I am having a bit of trouble finding the correct typing for all the components.
+
+Decided to postpone working on per page layout in order to start working on the navbar component. Will add a todo to make sure I will not forget it.
+
+Right now I am facing a problem with styling my components, getting the `react-dom.development.js:67 Warning: Prop `className` did not match.` warning in my browser console and seeing no changes being applied while in dev environment.
+
+The problem appears to be that "the SSR functionality of NextJS produces the style fragment before the page is rendered" (https://stackoverflow.com/questions/50685175/react-material-ui-warning-prop-classname-did-not-match).
+
+The material-ui author has a solution posted in the examples: https://github.com/mui-org/material-ui/blob/master/examples/nextjs/pages/_document.js. Updating the `_document.tsx` component as per the instructions got it to work.
