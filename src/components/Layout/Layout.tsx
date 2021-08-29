@@ -8,9 +8,9 @@ export interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }: LayoutProps) => (
     <>
         <h1>nav bar element</h1>
-        <main>
-            <Container>{children}</Container>
-        </main>
+        <Container>
+            <main>{children}</main>
+        </Container>
         <footer>footer element</footer>
     </>
 );
