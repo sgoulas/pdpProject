@@ -470,3 +470,5 @@ Right now I am facing a problem with styling my components, getting the `react-d
 The problem appears to be that "the SSR functionality of NextJS produces the style fragment before the page is rendered" (https://stackoverflow.com/questions/50685175/react-material-ui-warning-prop-classname-did-not-match).
 
 The material-ui author has a solution posted in the examples: https://github.com/mui-org/material-ui/blob/master/examples/nextjs/pages/_document.js. Updating the `_document.tsx` component as per the instructions got it to work.
+
+I created the footer element and its placeholders using flexbox. My problem is that eslint shows errors for using magic numbers with material-ui's `spacing` function. I am trying to use eslint's `override` property to ignore the `no-magic-numbers` rule only for `*.styles.ts` files but it's not working for some reason.

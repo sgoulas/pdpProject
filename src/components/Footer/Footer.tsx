@@ -9,7 +9,30 @@ const Footer: React.FC = () => {
 
     return (
         <footer className={classes.footer}>
-            <Typography variant="body2">footer element</Typography>
+            <div className={classes.container}>
+                <div className={classes.containerItem}>
+                    <Typography component="h4" variant="h6">
+                        Contact
+                    </Typography>
+                    <Typography variant="body2">word</Typography>
+                    <Typography variant="body2">word</Typography>
+                    <Typography variant="body2">word</Typography>
+                    <Typography variant="body2">word</Typography>
+                    <Typography variant="body2">word</Typography>
+                </div>
+                <div className={classes.containerItem}>
+                    <Typography component="h4" variant="h6">
+                        FAQ
+                    </Typography>
+                    <Typography variant="body2">word</Typography>
+                </div>
+                <div className={classes.containerItem}>
+                    <Typography component="h4" variant="h6">
+                        Git Repo
+                    </Typography>
+                    <Typography variant="body2">word</Typography>
+                </div>
+            </div>
         </footer>
     );
 };
