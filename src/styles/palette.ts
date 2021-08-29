@@ -1,5 +1,6 @@
 import { PaletteOptions } from '@material-ui/core/styles/createPalette';
 
+//https://www.happyhues.co/palettes/3
 const palette: PaletteOptions = {
     type: 'light',
     common: {
