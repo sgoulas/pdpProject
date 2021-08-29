@@ -13,14 +13,16 @@ const useStyles = makeStyles(({ palette, spacing, breakpoints }) => ({
         flexDirection: 'row',
         flexWrap: 'wrap',
         alignItems: 'flex-start',
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
     },
     containerItem: {
         [breakpoints.down('md')]: {
-            padding: spacing(1, 2),
+            paddingTop: spacing(2),
+            paddingBottom: spacing(2),
         },
         [breakpoints.up('md')]: {
-            padding: spacing(2, 14),
+            paddingTop: spacing(4),
+            paddingBottom: spacing(4),
         },
         textAlign: 'center',
     },
