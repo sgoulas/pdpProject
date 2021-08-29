@@ -398,3 +398,65 @@ import '../styles/font.css';
 But I do not really like this approach, because I would rather let `Next` handle serving my font and also it's generally good approach to serve your application's fonts yourself and not force the user's browser to fetch it, so I will be ditching this solution to make it work the right way.
 
 While meddling around I added a `public` folder with `robots.txt` and a `favicon.ico` files.
+
+Hitting the one hour mark, why is this so hard? Am I missing something obvious?
+
+The official documentation exampels does not work:
+
+```tsx
+// pages/_document.js
+
+import Document, { Html, Head, Main, NextScript } from 'next/document';
+
+class MyDocument extends Document {
+    render() {
+        return (
+            <Html>
+                <Head>
+                    <link
+                        href="https://fonts.googleapis.com/css2?family=Inter"
+                        rel="stylesheet"
+                    />
+                </Head>
+                <body>
+                    <Main />
+                    <NextScript />
+                </body>
+            </Html>
+        );
+    }
+}
+
+export default MyDocument;
+```
+
+Alright, so, I was indeed missing something.
+
+Adding the stylesheet link to my app head meant the font was available to my application. Trying to add the font to my material-ui theme was not working, but hardcoding the `fontFamily` in my tsx code was actually working.
+
+this works:
+
+```tsx
+//Main.tsx
+
+//...
+<h1 style={{ color: 'orange', fontFamily: 'Inter' }}>Hello World!!</h1>
+//...
+```
+
+but this doesn't:
+
+```ts
+const typography: TypographyOptions = {
+    fontSize: 16,
+    fontFamily: 'Inter',
+    h1: {
+        color: '#094067',
+        fontFamily: 'Inter',
+    },
+};
+```
+
+I guess if I want to serve a font I have to do it either via material-ui (https://material-ui.com/customization/typography/#self-hosted-fonts), or by creating a generic css file and importing it in my application (basically what I initially did).
+
+Material-ui's way of doing it requires more code and also to install a plugir or loader in my build process to handle the different font file formats. Considering my "build process" is entirely NextJS' business I would rather just import the font file in the `_document.tsx` file and move on with my life.

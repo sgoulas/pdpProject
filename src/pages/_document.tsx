@@ -11,8 +11,8 @@ class MyDocument extends Document {
                         type="image/x-icon"
                         href="/static/favicon.ico"
                     ></link>
+                    <link href="/fonts.css" rel="stylesheet"></link>
                 </Head>
-
                 <body>
                     <Main />
                     <NextScript />
