@@ -6,6 +6,7 @@
       "@core/*": ["core/*"],
       "@hooks/*":["hooks/*"],
       "@store/*":["store/*"],
+      "@styles":["styles"],
       "@testUtils": ["testUtils"],
       "@utils": ["utils"]
     },

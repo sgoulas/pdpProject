@@ -13,7 +13,7 @@
   },
   "scripts": {
     "startServer": "node server/index.js",
-    "generateSchema":"./scripts/generateSchema.sh",
+    "generateSchema": "./scripts/generateSchema.sh",
     "dev": "next dev",
     "build": "next build",
     "test": "jest",
@@ -26,6 +26,8 @@
   "dependencies": {
     "@apollo/client": "^3.4.7",
     "@babel/runtime": "^7.14.6",
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
     "@reduxjs/toolkit": "^1.6.1",
     "graphql": "^15.5.1",
     "next": "^11.0.1",

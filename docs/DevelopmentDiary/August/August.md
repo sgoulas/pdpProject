@@ -366,3 +366,5 @@ Some sites that are useful for this kind of task:
 -   https://2colors.colorion.co/ (2 color palette)
 -   https://www.happyhues.co/palettes/1 (6 color palette)
 -   https://coolors.co/palettes/trending (multi color palette)
+
+I added the `@material-ui/core` and `@material-ui/icons` dependencies and set up a custom theme. My current problem is that I need variations on my palette. I already decided on a color palette, but by default material-ui defines three version for each color, `main`, `light` and `dark`, using them for hover animations and such. So I need to find a way to translate my `main` colors in their respective `light` and `dark` versions.

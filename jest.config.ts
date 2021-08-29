@@ -95,6 +95,7 @@ export default {
         '@core(.*)$': '<rootDir>/src/core$1',
         '@hooks(.*)$': '<rootDir>/src/hooks$1',
         '@store(.*)$': '<rootDir>/src/store$1',
+        '@styles(.*)$': '<rootDir>/src/styles$1',
         '@testUtils(.*)$': '<rootDir>/src/testUtils$1',
         '@utils(.*)$': '<rootDir>/src/utils$1',
     },
