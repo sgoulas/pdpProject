@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from '@material-ui/core/Link';
 
 import { Typography } from 'components';
 
@@ -14,23 +15,30 @@ const Footer: React.FC = () => {
                     <Typography component="h4" variant="h6">
                         Contact
                     </Typography>
-                    <Typography variant="body2">word</Typography>
-                    <Typography variant="body2">word</Typography>
-                    <Typography variant="body2">word</Typography>
-                    <Typography variant="body2">word</Typography>
-                    <Typography variant="body2">word</Typography>
+                    <Typography variant="body1">word</Typography>
+                    <Typography variant="body1">word</Typography>
+                    <Typography variant="body1">word</Typography>
+                    <Typography variant="body1">word</Typography>
+                    <Typography variant="body1">word</Typography>
                 </div>
                 <div className={classes.containerItem}>
                     <Typography component="h4" variant="h6">
                         FAQ
                     </Typography>
-                    <Typography variant="body2">word</Typography>
+                    <Typography variant="body1">word</Typography>
                 </div>
                 <div className={classes.containerItem}>
                     <Typography component="h4" variant="h6">
                         Git Repo
                     </Typography>
-                    <Typography variant="body2">word</Typography>
+                    <Link
+                        href="https://github.com/sgoulas/pdpProject"
+                        rel="noopener"
+                        target="_blank"
+                        underline="none"
+                    >
+                        <Typography variant="body1">link</Typography>
+                    </Link>
                 </div>
             </div>
         </footer>
