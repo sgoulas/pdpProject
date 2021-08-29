@@ -312,7 +312,7 @@ So now I can generate an `api.ts` file containing all the types defined by my se
 
 Currently considering what I should do next. I think I should revisit my `NextJS` notes, to refresh what I learned regarding SSG and SSR, as well as check out some examples of `NextJS` + `Redux` implementations. Then it would probably be time to add `@material-ui` to my codebase and start setting up the UI layer of the application. This includes deciding on a UI to copy (:P this is **not** a _design_ personal development project :P), designing with a mobile-first approach, taking care of SEO and accessibility (the latter is a super gray area for me, there is some reading to do there) and building the pages one by one. But generally speaking, I think the overall infrastructure is at a good (all things consider) point and I can focus my attention on the UI layer, at least for now.
 
-## 18 August 2021
+## 28 August 2021
 
 I am reading through `NextJS`'s documentation, going over the SEO parts that interest me, starting with the `<Head />` component. It seems that each distinct page imports it then uses it with its own set of properties, so there is no "merging" of different `<Head />` components going on.
 
@@ -338,3 +338,31 @@ What I am looking for:
 The site will include a "login" button, but considering what a logged in user commonly has access to (wishlists, purchase history, personalized suggestions) it falls under the "extra milestones" of the project, so upon clicking it the button will just display a mock. And now that I think about it, it would be a nice place to have a CSS animation of some kind playing, which _is_ a milestone of the project.
 
 I will check out domestic and international retail sites, as well as portfolio projects. Will not list what I checked and what I like / dislike about them. I am not a designer and also don't think that critiquing other people's work publicly is a nice thing to do, _especially_ when not asked to do so. I will just focus on finding an approach that I like and implement it.
+
+## 29 August 2021
+
+I set up a codebox to quickly experiment with layouts and ideas. The way I am thinking it I will need:
+
+Landing Page:
+
+-   a container to hold everything centered in the page
+-   navigation bar on the top
+-   footer with basic info, maybe some links like faq, my bio, something like that.
+
+Product Listing Page:
+
+-   Same as above plus a sidebar with filtering options and a breadcrumb menu.
+
+Product Details Page:
+
+-   Same as Landing Page and a breadcrumb menu.
+
+What I am going to do is have a `components` folder that will strictly define all the material ui or custom components that I will be using (the simple, low level re-usuable ones, that is) and then use them to create higher level yet still re-usuable components like the navigation bar and the footer. I will then create a `Layouts` folder that will wrap all my pages with the default layout.
+
+I also need to decide on a color pallete.
+
+Some sites that are useful for this kind of task:
+
+-   https://2colors.colorion.co/ (2 color palette)
+-   https://www.happyhues.co/palettes/1 (6 color palette)
+-   https://coolors.co/palettes/trending (multi color palette)
