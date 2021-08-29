@@ -367,6 +367,34 @@ Some sites that are useful for this kind of task:
 -   https://www.happyhues.co/palettes/1 (6 color palette)
 -   https://coolors.co/palettes/trending (multi color palette)
 
-I added the `@material-ui/core` and `@material-ui/icons` dependencies and set up a custom theme. My current problem is that I need variations on my palette. I already decided on a color palette, but by default material-ui defines three version for each color, `main`, `light` and `dark`, using them for hover animations and such. So I need to find a way to translate my `main` colors in their respective `light` and `dark` versions.
+I added the `@material-ui/core` and `@material-ui/icons` dependencies and set up a custom theme. My current problem is that I need variations on my palette. I already decided on a color palette that I like (https://www.happyhues.co/palettes/3), but by default material-ui defines three version for each color, `main`, `light` and `dark`, using them for hover animations and such. So I need to find a way to translate my `main` colors in their respective `light` and `dark` versions.
 
 Actually, after going throught the official docs (https://material-ui.com/customization/palette/) it seems I do _not_ need to provide the `light` and `dark` variations, as they will be dynamically calculated if I provide the `main` one. That's cool.
+
+Next I would like to use a custom font, so I will be using https://fonts.google.com/ to find one.
+
+It seems I need to override the default `document` component (https://nextjs.org/docs/basic-features/font-optimization).
+
+For reference, importing itvia a custom `font.css` file in `_app.tsx` also seems to work
+
+```css
+/* /src/styles/font.css */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR');
+
+body {
+    font-family: 'Noto Sans KR';
+}
+```
+
+```tsx
+import React from 'react';
+import { AppProps } from 'next/app';
+
+import '../styles/font.css';
+
+//...
+```
+
+But I do not really like this approach, because I would rather let `Next` handle serving my font and also it's generally good approach to serve your application's fonts yourself and not force the user's browser to fetch it, so I will be ditching this solution to make it work the right way.
+
+While meddling around I added a `public` folder with `robots.txt` and a `favicon.ico` files.

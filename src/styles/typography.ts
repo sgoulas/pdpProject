@@ -1,7 +1,6 @@
 import { TypographyOptions } from '@material-ui/core/styles/createTypography';
 
 const typography: TypographyOptions = {
-    fontFamily: 'inherit',
     fontSize: 16,
     h1: {
         color: '#094067',
