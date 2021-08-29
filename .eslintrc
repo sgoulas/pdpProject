@@ -29,8 +29,7 @@
     "ignorePatterns": [
         "webpack.*.js",
         "/dist",
-        "/server",
-        "*.styles.ts"
+        "/server"
     ],
     "rules": {
         "no-unreachable": "error",
@@ -62,5 +61,15 @@
                 ]
             }
         ]
-    }
+    },
+    "overrides": [
+        {
+            "files": [
+                "*.styles.ts"
+            ],
+            "rules": {
+                "no-magic-numbers":"off"
+            }
+        }
+    ]
 }
