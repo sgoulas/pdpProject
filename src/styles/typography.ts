@@ -20,6 +20,9 @@ const typography: TypographyOptions = {
     h6: {
         color: '#094067',
     },
+    body2: {
+        fontSize: '12px',
+    },
 };
 
 export { typography };
