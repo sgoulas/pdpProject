@@ -20,8 +20,13 @@ const typography: TypographyOptions = {
     h6: {
         color: '#094067',
     },
+    body1: {
+        fontSize: '16px',
+        color: '#5f6c7b',
+    },
     body2: {
         fontSize: '12px',
+        color: '#5f6c7b',
     },
 };
 

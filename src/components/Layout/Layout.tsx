@@ -1,17 +1,21 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
 
+import { Typography } from 'components';
+
 export interface LayoutProps {
     children: React.ReactElement;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }: LayoutProps) => (
     <>
-        <h1>nav bar element</h1>
+        <Typography variant="h1">nav bar element</Typography>
         <Container>
             <main>{children}</main>
         </Container>
-        <footer>footer element</footer>
+        <footer>
+            <Typography variant="body2">footer element</Typography>
+        </footer>
     </>
 );
 
