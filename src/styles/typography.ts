@@ -2,6 +2,7 @@ import { TypographyOptions } from '@material-ui/core/styles/createTypography';
 
 const typography: TypographyOptions = {
     fontSize: 16,
+    fontFamily: 'Noto Sans KR',
     h1: {
         color: '#094067',
     },
