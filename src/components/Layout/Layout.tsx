@@ -1,13 +1,16 @@
 import React from 'react';
+import Container from '@material-ui/core/Container';
 
 export interface LayoutProps {
-    children: React.ReactChildren;
+    children: React.ReactElement;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }: LayoutProps) => (
     <>
         <h1>nav bar element</h1>
-        {children}
+        <main>
+            <Container>{children}</Container>
+        </main>
         <footer>footer element</footer>
     </>
 );

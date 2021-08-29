@@ -460,3 +460,5 @@ const typography: TypographyOptions = {
 I guess if I want to serve a font I have to do it either via material-ui (https://material-ui.com/customization/typography/#self-hosted-fonts), or by creating a generic css file and importing it in my application (basically what I initially did).
 
 Material-ui's way of doing it requires more code and also to install a plugir or loader in my build process to handle the different font file formats. Considering my "build process" is entirely NextJS' business I would rather just import the font file in the `_document.tsx` file and move on with my life.
+
+I added a sample `Layout` component and wrapped my `_app.tsx` with it. Ideally I want to support per-page layouts but currently I am having a bit of trouble finding the correct typing for all the components.

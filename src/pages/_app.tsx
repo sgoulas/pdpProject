@@ -5,6 +5,7 @@ import { ApolloProvider } from '@apollo/client';
 import { ThemeProvider } from '@material-ui/core/styles';
 
 import { theme } from '@styles';
+import Layout from 'components/Layout/Layout';
 
 import { client } from '@api';
 import store from '@store/store';
@@ -13,7 +14,9 @@ const App: React.FC<AppProps> = ({ Component, pageProps }: AppProps) => (
     <ReduxProvider store={store}>
         <ApolloProvider client={client}>
             <ThemeProvider theme={theme}>
-                <Component {...pageProps} />
+                <Layout>
+                    <Component {...pageProps} />
+                </Layout>
             </ThemeProvider>
         </ApolloProvider>
     </ReduxProvider>
