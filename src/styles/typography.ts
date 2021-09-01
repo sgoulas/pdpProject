@@ -22,7 +22,7 @@ const typography: TypographyOptions = {
         color: '#094067',
     },
     body1: {
-        fontSize: '16px',
+        fontSize: '14px',
         color: '#5f6c7b',
     },
     body2: {

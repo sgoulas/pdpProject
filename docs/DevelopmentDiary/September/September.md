@@ -91,3 +91,15 @@ Oh my goooooooooooooood, the changes I was doing were correct, they were not tak
 `Note: you need to restart dev server to reflect modifications done in tsconfig.json / jsconfig.json`.
 
 this fixed the issue.
+
+As a sidenote, am I spoiled for expecting import configuration settings to take effect while the dev server is running?
+
+I could start working on the navigation bar element, but I want to take a break from creating elements and start implementing some SEO features.
+
+Now, the list of things that needs to be implemented is quite long, but the first ones I want to add are structured data and head meta attributes. What I want to find out is the best way to get the dynamic data. Some pages are going to have their meta elements hardcoded, because they depend on the page, but some information is by nature dynamic (like json-ld data) so I want to find the best way to render them dynamically. I know there are 3 ways to do it:
+
+-   `dangerouslySetInnerHTML`
+-   `react-helmet`
+-   `next/head` (overriding the default head component of `NextJS`).
+
+The first one was the go to option, that is if you knew what you were doing, the second one is a widely used solution and the third one is the way `NextJS` handles it. I feel inclined to start from the latter and work my way up the list if need be.
