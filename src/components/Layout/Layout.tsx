@@ -1,7 +1,7 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
 
-import { NavBar, Footer } from 'components';
+import { NavBar, Footer } from '@components';
 
 import useStyles from './Layout.styles';
 

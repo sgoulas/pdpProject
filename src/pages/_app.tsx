@@ -5,7 +5,7 @@ import { ApolloProvider } from '@apollo/client';
 import { ThemeProvider } from '@material-ui/core/styles';
 
 import { theme } from '@styles';
-import { Layout } from 'components';
+import { Layout } from '@components';
 
 import { client } from '@api';
 import store from '@store/store';

@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from '@material-ui/core/Link';
 
-import { Typography } from 'components';
+import { Typography } from '@components';
 
 interface LinkExternalProps {
     url: string;

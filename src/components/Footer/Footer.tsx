@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Typography } from 'components';
+import { Typography } from '@components';
 
 import useStyles from './Footer.styles';
 import { LinkExternal, Copyright } from './components';

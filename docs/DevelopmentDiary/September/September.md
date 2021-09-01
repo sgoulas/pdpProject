@@ -83,3 +83,11 @@ export { default as Footer } from './Footer';
 ```
 
 because if I leave only one export statement then the `@` path works.
+
+(15 minutes later)
+
+Oh my goooooooooooooood, the changes I was doing were correct, they were not taking effect because I had to restart the server jsnvlanjanvjanjienadsfngladfsg, the NextJS docs (https://nextjs.org/docs/advanced-features/module-path-aliases) have a relevant note about that:
+
+`Note: you need to restart dev server to reflect modifications done in tsconfig.json / jsconfig.json`.
+
+this fixed the issue.
