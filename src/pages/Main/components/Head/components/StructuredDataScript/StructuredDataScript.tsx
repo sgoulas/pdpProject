@@ -19,6 +19,7 @@ const StructuredDataScript: React.FC = () => {
         founder: 'Spyros Goulas',
         foundingDate: '2021-5-15',
         numberOfEmployees: '1',
+        slogan: `${SITE_NAME}, it has it all!`,
     };
 
     return (
