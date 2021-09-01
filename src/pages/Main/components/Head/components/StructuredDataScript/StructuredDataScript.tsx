@@ -9,6 +9,9 @@ const StructuredDataScript: React.FC = () => {
         name: SITE_NAME,
         url: SITE_URL,
         sameAs: [GIT_REPO_URL],
+        email: 'sprgoulas@gmail.com',
+        founder: 'Spyros Goulas',
+        foundingDate: '2021-5-15',
     };
 
     return (
