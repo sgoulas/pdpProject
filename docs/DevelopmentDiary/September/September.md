@@ -107,3 +107,52 @@ The first one was the go to option, that is if you knew what you were doing, the
 In the NextJS documentation (https://nextjs.org/docs/api-reference/next/head) it is adviced to use `next/script` instead of manually creating a `<script>` tag, however at the relevant documentation (https://nextjs.org/docs/basic-features/script) it is stated that `next/script must not be placed in either a next/head component or in pages/_document.js`. So basically it has to be appended to the body of the page, which does sound nice since for dynamic data I can access them with `getStaticProps `, although I guess since this is an ecommerce site and I need up to date data `getServerSideProps` would be the better option.
 
 I checked the `og` tags from https://ogp.me/ and will check the `ld+json` ones from https://schema.org/.
+
+Trying with the `Script` component does not yield results:
+
+```tsx
+import React from 'react';
+import Script from 'next/script';
+
+import { GIT_REPO_URL, SITE_NAME, SITE_URL } from '@core';
+
+const StructuredDataScript: React.FC = () => {
+    const JSON_LD = {
+        '@context': 'http://schema.org',
+        '@type': 'Organization',
+        name: SITE_NAME,
+        url: SITE_URL,
+        sameAs: [GIT_REPO_URL],
+    };
+
+    return (
+        <Script type="application/ld+json">{JSON.stringify(JSON_LD)}</Script>
+    );
+};
+
+export default StructuredDataScript;
+
+//Main.tsx
+
+//...
+return (
+    <>
+        <Head />
+        <StructuredDataScript />
+        <h1>PDP project</h1>
+        <h2>{name}</h2>
+        <h2 style={{ color: 'orange' }}>Hello World!!</h2>
+        <h2>{loading ? 'loading' : 'finished loading'}</h2>
+        <h2>{error && `error: ${error.message}`}</h2>
+        <h2>server message: {data ? data.info : 'loading'}</h2>
+    </>
+);
+```
+
+The data are rendered on the page but are not present in page source.
+
+BUT, there is a `strategy` prop and by setting it to `beforeInteractive` the script renders in page source, albeit escaped
+
+```
+<script src="" type="application/ld+json" defer="">{&quot;@context&quot;:&quot;http://schema.org&quot;,&quot;@...
+```

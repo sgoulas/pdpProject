@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
-import { Head } from './components';
+import { Head, StructuredDataScript } from './components';
 
 import { useAppDispatch } from '@hooks/store';
 import { setRunningAction } from '@store/actions';
@@ -22,6 +22,7 @@ const Main: React.FC<MainProps> = ({ name }: MainProps) => {
     return (
         <>
             <Head />
+            <StructuredDataScript />
             <h1>PDP project</h1>
             <h2>{name}</h2>
             <h2 style={{ color: 'orange' }}>Hello World!!</h2>

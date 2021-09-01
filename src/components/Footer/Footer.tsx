@@ -1,6 +1,13 @@
 import React from 'react';
 
 import { Typography } from '@components';
+import {
+    DEV_PROFILE_URL,
+    GIT_PROFILE_URL,
+    GIT_REPO_URL,
+    LINKEDIN_PROFILE_URL,
+    STACK_OVERFLOW_PROFILE_URL,
+} from '@core';
 
 import useStyles from './Footer.styles';
 import { LinkExternal, Copyright } from './components';
@@ -15,15 +22,12 @@ const Footer: React.FC = () => {
                     <Typography component="h4" variant="h6">
                         Social
                     </Typography>
+                    <LinkExternal url={LINKEDIN_PROFILE_URL} text="linkedIn" />
                     <LinkExternal
-                        url="https://www.linkedin.com/in/spyros-goulas/"
-                        text="linkedIn"
-                    />
-                    <LinkExternal
-                        url="https://stackoverflow.com/users/6950690/%ce%a3%cf%80%cf%8d%cf%81%ce%bf%cf%82-%ce%93%ce%bf%cf%8d%ce%bb%ce%b1%cf%82"
+                        url={STACK_OVERFLOW_PROFILE_URL}
                         text="stack overflow"
                     />
-                    <LinkExternal url="https://dev.to/sgoulas" text="DEV.to" />
+                    <LinkExternal url={DEV_PROFILE_URL} text="DEV.to" />
                 </div>
                 <div className={classes.containerItem}>
                     <Typography component="h4" variant="h6">
@@ -36,13 +40,10 @@ const Footer: React.FC = () => {
                         github
                     </Typography>
                     <LinkExternal
-                        url="https://github.com/sgoulas/pdpProject"
+                        url={GIT_REPO_URL}
                         text="project repository"
                     />
-                    <LinkExternal
-                        url="https://github.com/sgoulas"
-                        text="github profile"
-                    />
+                    <LinkExternal url={GIT_PROFILE_URL} text="github profile" />
                 </div>
             </div>
             <Copyright />
