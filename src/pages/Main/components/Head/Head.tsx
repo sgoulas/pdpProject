@@ -20,10 +20,7 @@ const Head: React.FC = () => (
             name="viewport"
             content="width=device-width, initial-scale=1.0"
         ></meta>
-        <meta
-            httpEquiv="content-type"
-            content="text/html; charset=UTF-8"
-        ></meta>
+        <meta charSet="UTF-8" />
         <meta name="google" content="nositelinkssearchbox" />
         <link rel="canonical" href={SITE_URL}></link>
 

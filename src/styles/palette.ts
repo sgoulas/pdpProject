@@ -14,7 +14,7 @@ const palette: PaletteOptions = {
         main: '#90b4ce',
     },
     error: {
-        main: '##ef4565',
+        main: '#ef4565',
     },
     text: {
         primary: '#5f6c7b',

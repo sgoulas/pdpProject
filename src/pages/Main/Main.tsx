@@ -23,10 +23,10 @@ const Main: React.FC<MainProps> = ({ name }: MainProps) => {
         <>
             <Head />
             <h1>PDP project</h1>
-            <h2>{name}</h2>
+            <h2>{name ?? 'name'}</h2>
             <h2 style={{ color: 'orange' }}>Hello World!!</h2>
             <h2>{loading ? 'loading' : 'finished loading'}</h2>
-            <h2>{error && `error: ${error.message}`}</h2>
+            <h2>{error ? `error: ${error.message}` : 'no errors'}</h2>
             <h2>server message: {data ? data.info : 'loading'}</h2>
         </>
     );
