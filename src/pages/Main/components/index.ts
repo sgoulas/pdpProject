@@ -1,2 +1,2 @@
 export { Head } from './Head';
-export { StructuredDataScript } from './StructuredDataScript';
+export { StructuredDataScript } from './Head/components/StructuredDataScript';

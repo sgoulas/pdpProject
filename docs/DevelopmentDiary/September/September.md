@@ -156,3 +156,64 @@ BUT, there is a `strategy` prop and by setting it to `beforeInteractive` the scr
 ```
 <script src="" type="application/ld+json" defer="">{&quot;@context&quot;:&quot;http://schema.org&quot;,&quot;@...
 ```
+
+Now, in order to prevent React from escaping the string it seems I have to... use `dangerouslySetInnerHTML` (I also checked out the advised-not-to-use `unescape` function mentioned at https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/unescape but decided against using it for obvious reasons).
+
+```tsx
+import React from 'react';
+
+import { GIT_REPO_URL, SITE_NAME, SITE_URL } from '@core';
+
+const StructuredDataScript: React.FC = () => {
+    const JSON_LD = {
+        '@context': 'http://schema.org',
+        '@type': 'Organization',
+        name: SITE_NAME,
+        url: SITE_URL,
+        sameAs: [GIT_REPO_URL],
+    };
+
+    return (
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
+        ></script>
+    );
+};
+
+export default StructuredDataScript;
+```
+
+After that the schema validator (https://validator.schema.org/) was able to correctly identify my structured data.
+
+Now, I wondered if it was best to place the data at the `<head>` tag. It used to be that `<body>` was equally acceptable but in the "if you don't place it at the head you can also place it at the body of the document", which while subtle, meant placing the data at the `<head>` was the better option.
+
+But, we want to be as professional as we resonably can here, so considering the W3 org specification of the `<head>` element (https://www.w3.org/TR/2014/REC-html5-20141028/document-metadata.html#the-head-element) states that `The head element represents a collection of metadata for the Document` and since structured data are textbook case of metadata, I will be adding them to the `<Head />` component of the page rather than its `<body />`.
+
+Now, I got a bit carried away and added quite a few folders, files etc. The structure strategy I followed was that each component that needs components, defines a `components` folder which contains all the components the main components needs
+
+e.g
+
+```
+Main
+    components
+              Head
+```
+
+what about the `<StructuredDataScript />`? Strictly speaking, it's need in `<Main />` but also strictly speaking, `<Main />` does not use it directly. In actuallity it is imported and subsequently used by `<Head />`. If I open the `Main/components` directory I expect to find components that are also present in the return value of `<Main />`. With that in mind placing `<StructuredDataScript />` at the same level as `<Head />` seems hierarchically misguiding.
+
+My solution was to define one more `components` directory
+
+```
+Main
+    components
+              Head
+                   components
+                              StructuredDataScript
+```
+
+Deeply nested, yes, but now it is evident that `<StructuredDataScript />` is a subcomponent (a _direct_ subcomponent) of `<Head />` and that is explicitly placed there. In turn, the same applies for the relationship between `<Head />` and `<Main />`,
+
+This also allows me to futher break down the `<Head />` component in the future, maybe by creating separate components for `open graph` tags, `twitter cards` and other `meta tags`, if I choose to do so.
+
+What is also important is to decide on how I will be handling the `ld+json` data. Right now the values in `Main` page are hardcoded and that is acceptable, they are not values that are expected to change dynamically. But the same is not the case for the `ld+json` data that will be added in future pages like `<Product />` or `<ProductsListing />` or `<Categories />`. Will I be creating page-specific versions of the `<StructuredDataScript />`? Do I need to consider a generic utility function that will generate the strings? https://json-ld.org/ has a list of available third party packages that I can use but I am hesitant adding dependencies (and thus affecting bundle size) for things that I can make myself with a reasonable degree of quality and useability.

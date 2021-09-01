@@ -2,6 +2,7 @@ import React from 'react';
 import NextHead from 'next/head';
 
 import { SITE_NAME, SITE_URL, SITE_IMAGE_URL } from '@core';
+import { StructuredDataScript } from './components';
 
 const Head: React.FC = () => (
     <NextHead>
@@ -48,6 +49,7 @@ const Head: React.FC = () => (
             property="og:image:alt"
             content={`${SITE_NAME} ecommerce site logo`}
         />
+        <StructuredDataScript />
     </NextHead>
 );
 

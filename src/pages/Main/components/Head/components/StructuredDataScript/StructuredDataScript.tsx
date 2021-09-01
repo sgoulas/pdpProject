@@ -1,5 +1,4 @@
 import React from 'react';
-import Script from 'next/script';
 
 import { GIT_REPO_URL, SITE_NAME, SITE_URL } from '@core';
 
@@ -13,9 +12,10 @@ const StructuredDataScript: React.FC = () => {
     };
 
     return (
-        <Script type="application/ld+json" strategy="beforeInteractive">
-            {JSON.stringify(JSON_LD)}
-        </Script>
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
+        ></script>
     );
 };
 

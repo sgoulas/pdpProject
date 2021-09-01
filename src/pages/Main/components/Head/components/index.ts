@@ -1,0 +1,1 @@
+export { StructuredDataScript } from './StructuredDataScript';
