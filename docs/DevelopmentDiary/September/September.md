@@ -103,3 +103,7 @@ Now, the list of things that needs to be implemented is quite long, but the firs
 -   `next/head` (overriding the default head component of `NextJS`).
 
 The first one was the go to option, that is if you knew what you were doing, the second one is a widely used solution and the third one is the way `NextJS` handles it. I feel inclined to start from the latter and work my way up the list if need be.
+
+In the NextJS documentation (https://nextjs.org/docs/api-reference/next/head) it is adviced to use `next/script` instead of manually creating a `<script>` tag, however at the relevant documentation (https://nextjs.org/docs/basic-features/script) it is stated that `next/script must not be placed in either a next/head component or in pages/_document.js`. So basically it has to be appended to the body of the page, which does sound nice since for dynamic data I can access them with `getStaticProps `, although I guess since this is an ecommerce site and I need up to date data `getServerSideProps` would be the better option.
+
+I checked the `og` tags from https://ogp.me/ and will check the `ld+json` ones from https://schema.org/.

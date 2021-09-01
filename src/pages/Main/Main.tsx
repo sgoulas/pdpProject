@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
-import Head from 'next/head';
+import { Head } from './components';
 
 import { useAppDispatch } from '@hooks/store';
 import { setRunningAction } from '@store/actions';
@@ -21,60 +21,7 @@ const Main: React.FC<MainProps> = ({ name }: MainProps) => {
 
     return (
         <>
-            <Head>
-                <title>PDP project</title>
-                <meta
-                    name="description"
-                    content="PDP project is the best place to buy Videos, Electronics, Computers, Tablets, Cell Phones, Toys, Games, Watches and hardware, free shipping to Europe."
-                ></meta>
-                <meta name="author" content="Spyros Goulas"></meta>
-                <meta
-                    name="keywords"
-                    content="Online Shopping, Videos, Electronics, Computers, Tablets, Cell Phones, Toys, Games, Watches, Hardware"
-                ></meta>
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1.0"
-                ></meta>
-                <meta
-                    httpEquiv="content-type"
-                    content="text/html; charset=UTF-8"
-                ></meta>
-                <meta name="google" content="nositelinkssearchbox" />
-                <link rel="canonical" href="http://localhost:3000/"></link>
-
-                {/* Open Graph protocol Basic Metadata*/}
-                <meta property="og:title" content="PDP project" />
-                <meta property="og:type" content="website" />
-                <meta
-                    property="og:image"
-                    content="http://localhost:3000/ecommerce.jpg"
-                />
-                <meta property="og:url" content="https://www.public.gr/" />
-
-                {/* Open Graph protocol Optional Metadata*/}
-                <meta property="og:site_name" content="PDP project" />
-                <meta
-                    property="og:description"
-                    content="PDP project is the best place to buy Videos, Electronics, Computers, Tablets, Cell Phones, Toys, Games, Watches and hardware, free shipping to Europe."
-                />
-                <meta property="og:locale" content="en_GB" />
-                <meta
-                    property="og:image"
-                    content="https://example.com/ogp.jpg"
-                />
-                <meta
-                    property="og:image:secure_url"
-                    content="https://localhost:3000"
-                />
-                <meta property="og:image:type" content="image/jpeg" />
-                <meta property="og:image:width" content="400" />
-                <meta property="og:image:height" content="300" />
-                <meta
-                    property="og:image:alt"
-                    content="PDP project ecommerce site logo"
-                />
-            </Head>
+            <Head />
             <h1>PDP project</h1>
             <h2>{name}</h2>
             <h2 style={{ color: 'orange' }}>Hello World!!</h2>
