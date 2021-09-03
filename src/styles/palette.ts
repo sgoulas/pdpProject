@@ -4,10 +4,6 @@ import { PaletteOptions } from '@material-ui/core/styles/createPalette';
 //https://www.color-hex.com/color-palette/26593
 const palette: PaletteOptions = {
     type: 'light',
-    common: {
-        black: '#000000',
-        white: '#ffffff',
-    },
     primary: {
         main: '#146eb4',
     },
