@@ -5,7 +5,7 @@ import { GIT_REPO_URL, SITE_IMAGE_URL, SITE_NAME, SITE_URL } from '@core';
 const StructuredDataScript: React.FC = () => {
     const JSON_LD = {
         '@context': 'http://schema.org',
-        '@type': 'Organization',
+        '@type': 'LocalBusiness',
         name: SITE_NAME,
         description: 'An ecommerce site selling technology products',
         url: SITE_URL,
@@ -20,6 +20,8 @@ const StructuredDataScript: React.FC = () => {
         foundingDate: '2021-5-15',
         numberOfEmployees: '1',
         slogan: `${SITE_NAME}, it has it all!`,
+        currenciesAccepted: 'EUR, USD, BTC',
+        paymentAccepted: 'Cash, Credit Card, Cryptocurrency',
     };
 
     return (
