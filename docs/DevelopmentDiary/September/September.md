@@ -236,3 +236,7 @@ For example, I get the error that the links in my `footer` element have low cont
 [45 minutes later]
 
 Alright, so, basically, I straight up copied Amazon's color palette. Jeff forgive me.
+
+Btw, a note on git workflows.
+
+Right now, considering I move and break things a ton, I prefer to stick to my main branch and just be mindful about not doing (too many) "test" or "wip" commits. Under normal circumstances, tasks like "create the footer of the application" would be separate tasks, with separate acceptance criteria, descriptions and, most importantly, git branches and merge requests. I plan to introduce git workflows in the project at a later stage, when the application has a stable release version so any additional feature (something defined as "extra milestone" for example) will be a "new" feature when compared to the initial scope. Until then, working with git workflows will probably prove detrimental to my development experience and time management. I will, however, add a "define git workflow policy" in my TODO list.
