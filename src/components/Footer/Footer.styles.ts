@@ -2,10 +2,10 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(({ palette, spacing, breakpoints }) => ({
     footer: {
-        position: 'absolute',
+        position: 'fixed',
         width: '100%',
         bottom: 0,
-        right: 0,
+        left: 0,
         backgroundColor: palette.secondary.main,
     },
     container: {
