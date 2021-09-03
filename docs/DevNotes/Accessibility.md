@@ -1,0 +1,3 @@
+-   https://www.w3.org/WAI/design-develop/
+-   Use `<figure />` tag.
+-   https://www.w3.org/WAI/WCAG21/working-examples/link-contrast/
