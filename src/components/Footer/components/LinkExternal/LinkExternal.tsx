@@ -12,10 +12,11 @@ const LinkExternal: React.FC<LinkExternalProps> = ({
     url,
     text,
 }: LinkExternalProps) => (
-        <Link href={url} rel="noopener" target="_blank" underline="none">
-            <Typography variant="body2" color="textSecondary">
-                {text}
-            </Typography>
-        </Link>
-    );
+    <Link href={url} rel="noopener" target="_blank" underline="none">
+        <Typography variant="body2" color="textSecondary">
+            {text}
+        </Typography>
+    </Link>
+);
+
 export default LinkExternal;
