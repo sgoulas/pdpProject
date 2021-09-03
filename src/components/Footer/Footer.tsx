@@ -20,7 +20,11 @@ const Footer: React.FC = () => {
             <footer className={classes.footer}>
                 <div className={classes.container}>
                     <div className={classes.containerItem}>
-                        <Typography component="h4" variant="h6">
+                        <Typography
+                            component="h4"
+                            variant="body1"
+                            className={classes.title}
+                        >
                             Social
                         </Typography>
                         <LinkExternal
@@ -34,15 +38,23 @@ const Footer: React.FC = () => {
                         <LinkExternal url={DEV_PROFILE_URL} text="DEV.to" />
                     </div>
                     <div className={classes.containerItem}>
-                        <Typography component="h4" variant="h6">
+                        <Typography
+                            component="h4"
+                            variant="body1"
+                            className={classes.title}
+                        >
                             FAQ
                         </Typography>
-                        <Typography variant="body1">
+                        <Typography variant="body2" color="textSecondary">
                             about this project
                         </Typography>
                     </div>
                     <div className={classes.containerItem}>
-                        <Typography component="h4" variant="h6">
+                        <Typography
+                            component="h4"
+                            variant="body1"
+                            className={classes.title}
+                        >
                             github
                         </Typography>
                         <LinkExternal

@@ -225,3 +225,14 @@ Next I will resume working on the user interface, this time by creating the navi
 I said I would continue with the navbar, but I thought I would read about accessibility a bit more, to make sure my footer component is up to par. Now, I know there are a lot of thing you have to implement to make sure your application is accessible (font scaling options, color-blind friendly palette, specific attreibutes for DOM elements to offer different way to access them) but the first thing I wanted to cover was aria roles (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA). I also would like to find a validator so that I can pinpoint areas of the application that need change. I will create an appopriately named file under `DevNotes/` directory to keep some notes about accessibility.
 
 Reading the documentation, it seems that many aria roles are covered by HTML semantic tags (https://w3c.github.io/using-aria/#rule1), not sure about how much the first overlaps with the latter.
+
+I did find two online validator tools:
+
+-   https://achecker.achecks.ca/checker/index.php
+-   https://wave.webaim.org/
+
+For example, I get the error that the links in my `footer` element have low contrast with their background.
+
+[45 minutes later]
+
+Alright, so, basically, I straight up copied Amazon's color palette. Jeff forgive me.

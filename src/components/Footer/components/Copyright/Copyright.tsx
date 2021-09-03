@@ -8,7 +8,13 @@ const Copyright: React.FC = () => {
     const classes = useStyles();
 
     return (
-        <Typography variant="body2" align="right" className={classes.text}>
+        <Typography
+            variant="caption"
+            component="p"
+            color="textSecondary"
+            align="right"
+            className={classes.text}
+        >
             made by Spyros Goulas
         </Typography>
     );

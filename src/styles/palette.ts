@@ -1,6 +1,7 @@
 import { PaletteOptions } from '@material-ui/core/styles/createPalette';
 
 //https://www.happyhues.co/palettes/3
+//https://www.color-hex.com/color-palette/26593
 const palette: PaletteOptions = {
     type: 'light',
     common: {
@@ -8,16 +9,21 @@ const palette: PaletteOptions = {
         white: '#ffffff',
     },
     primary: {
-        main: '#3da9fc',
+        main: '#146eb4',
     },
     secondary: {
-        main: '#90b4ce',
+        main: '#dddddd',
     },
     error: {
         main: '#ef4565',
     },
     text: {
-        primary: '#5f6c7b',
+        primary: '#146eb4',
+        secondary: '#dddddd',
+    },
+    background: {
+        default: '#232F3E',
+        paper: '#f2f2f2',
     },
 };
 

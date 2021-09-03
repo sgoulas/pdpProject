@@ -4,6 +4,7 @@ import { Head } from './components';
 
 import { useAppDispatch } from '@hooks/store';
 import { setRunningAction } from '@store/actions';
+import { Typography } from '@components';
 
 import { GET_SERVER_INFO } from './api';
 
@@ -27,7 +28,9 @@ const Main: React.FC<MainProps> = ({ name }: MainProps) => {
             <h2 style={{ color: 'orange' }}>Hello World!!</h2>
             <h2>{loading ? 'loading' : 'finished loading'}</h2>
             <h2>{error ? `error: ${error.message}` : 'no errors'}</h2>
-            <h2>server message: {data ? data.info : 'loading'}</h2>
+            <Typography variant="body1" color="textPrimary">
+                server message: {data ? data.info : 'loading'}
+            </Typography>
         </>
     );
 };
