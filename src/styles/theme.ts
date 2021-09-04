@@ -11,9 +11,6 @@ const theme = createTheme({
             '@global': {
                 body: {
                     backgroundColor: '#EAEDED',
-                    minHeight: '400px',
-                    marginBottom: '100px', //todo this should be the height of the fooder
-                    clear: 'both',
                 },
             },
         },

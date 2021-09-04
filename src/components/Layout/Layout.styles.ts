@@ -5,7 +5,9 @@ const useStyles = makeStyles(({ spacing }) => ({
         width: '100%',
         display: 'grid',
         placeContent: 'center',
-        margin: spacing(8, 0),
+        minHeight: spacing(50),
+        marginTop: spacing(6),
+        marginBottom: spacing(20),
     },
 }));
 
