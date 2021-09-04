@@ -244,3 +244,9 @@ Right now, considering I move and break things a ton, I prefer to stick to my ma
 I improved my footer element's style, updated my palette and typography defaults and added the `<CssBaseline />` component from `material-ui` to normalize my CSS.
 
 Next, I noticed that my content is not scrollable, so I should continue from there (maybe also check out this: https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/).
+
+## 4 September 2021
+
+I made the navbar and the footer fixed, and added min height and margin-bottom to the body element to make my main content scrollable.
+
+todo:make it more tidy, maybe move the margin-bottom from body to main, maybe add margin top, investigate the `margin: spacing(8, 0),` and if it's good to be there. Ideally body should have top / bottom margin equal to the height of the navbar / footer elements + something for styling reasons.
