@@ -254,3 +254,5 @@ todo:make it more tidy, maybe move the margin-bottom from body to main, maybe ad
 [done]
 
 Now I want to start working on the navbar element, which is one of the most important ones. My current plan is to merge the "app bar" and "drawer" examples from the material ui docs (https://material-ui.com/components/app-bar/ and https://material-ui.com/components/drawers/ respectively) to create a navigaton bar wth a primary search field and a button that opens a sidedrawer. The sidedrawer will contain my navigation menu. I would also like to have more than one levels in the menu, each level covering the previous menu display when clicked, so that if a user navigates to a deep level they will continue to see just one navigation window and not an ever expanding sequense of them.
+
+I implemented the toggle functionality and refactored the side menu with some text and icons. I only added one category, technology, alongside some subcategories. I will most probably refactor this section in the future depending on the products and categories I decided to display, but for now it's alright.
