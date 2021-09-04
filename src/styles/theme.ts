@@ -6,6 +6,15 @@ import { typography } from './typography';
 const theme = createTheme({
     palette,
     typography,
+    overrides: {
+        MuiCssBaseline: {
+            '@global': {
+                body: {
+                    backgroundColor: '#EAEDED',
+                },
+            },
+        },
+    },
 });
 
 export { theme };

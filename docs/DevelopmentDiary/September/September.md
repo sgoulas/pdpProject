@@ -222,9 +222,9 @@ Next I will resume working on the user interface, this time by creating the navi
 
 ## 3 September 2021
 
-I said I would continue with the navbar, but I thought I would read about accessibility a bit more, to make sure my footer component is up to par. Now, I know there are a lot of thing you have to implement to make sure your application is accessible (font scaling options, color-blind friendly palette, specific attreibutes for DOM elements to offer different way to access them) but the first thing I wanted to cover was aria roles (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA). I also would like to find a validator so that I can pinpoint areas of the application that need change. I will create an appopriately named file under `DevNotes/` directory to keep some notes about accessibility.
+I said I would continue with the navbar, but I thought I would read about accessibility a bit more, to make sure my footer component is up to par. Now, I know there are a lot of thing you have to implement to make sure your application is accessible (font scaling options, color-blind friendly palette, specific attributes for DOM elements to offer different way to access them) but the first thing I wanted to cover was aria roles (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA). I also would like to find a validator so that I can pinpoint areas of the application that need change. I will create an appopriately named file under `DevNotes/` directory to keep some notes about accessibility.
 
-Reading the documentation, it seems that many aria roles are covered by HTML semantic tags (https://w3c.github.io/using-aria/#rule1), not sure about how much the first overlaps with the latter.
+Reading the documentation, it seems that many aria roles are covered by HTML5 semantic tags (https://w3c.github.io/using-aria/#rule1), not sure about how much the first overlaps with the latter.
 
 I did find two online validator tools:
 
@@ -240,3 +240,5 @@ Alright, so, basically, I straight up copied Amazon's color palette. Jeff forgiv
 Btw, a note on git workflows.
 
 Right now, considering I move and break things a ton, I prefer to stick to my main branch and just be mindful about not doing (too many) "test" or "wip" commits. Under normal circumstances, tasks like "create the footer of the application" would be separate tasks, with separate acceptance criteria, descriptions and, most importantly, git branches and merge requests. I plan to introduce git workflows in the project at a later stage, when the application has a stable release version so any additional feature (something defined as "extra milestone" for example) will be a "new" feature when compared to the initial scope. Until then, working with git workflows will probably prove detrimental to my development experience and time management. I will, however, add a "define git workflow policy" in my TODO list.
+
+I improved my footer element's style, updated my palette and typography defaults and added the `<CssBaseline />` component from `material-ui` to normalize my CSS.

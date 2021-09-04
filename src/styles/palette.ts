@@ -19,7 +19,7 @@ const palette: PaletteOptions = {
     },
     background: {
         default: '#232F3E',
-        paper: '#f2f2f2',
+        paper: '#FFFFFF',
     },
     divider: '#3a4553',
 };
