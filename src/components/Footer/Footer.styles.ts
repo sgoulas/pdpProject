@@ -27,7 +27,7 @@ const useStyles = makeStyles(
             },
             textAlign: 'center',
         },
-        title: {
+        section: {
             color: palette.common.white,
             fontWeight: typography.fontWeightBold,
         },

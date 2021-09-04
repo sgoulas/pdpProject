@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Typography } from '@components';
+import { Typography, Divider } from '@components';
 import {
     DEV_PROFILE_URL,
     GIT_PROFILE_URL,
@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
                         <Typography
                             component="h4"
                             variant="body1"
-                            className={classes.title}
+                            className={classes.section}
                         >
                             Social
                         </Typography>
@@ -41,7 +41,7 @@ const Footer: React.FC = () => {
                         <Typography
                             component="h4"
                             variant="body1"
-                            className={classes.title}
+                            className={classes.section}
                         >
                             FAQ
                         </Typography>
@@ -53,7 +53,7 @@ const Footer: React.FC = () => {
                         <Typography
                             component="h4"
                             variant="body1"
-                            className={classes.title}
+                            className={classes.section}
                         >
                             github
                         </Typography>
@@ -67,6 +67,7 @@ const Footer: React.FC = () => {
                         />
                     </div>
                 </div>
+                <Divider variant="middle" />
                 <Copyright />
             </footer>
         </article>
