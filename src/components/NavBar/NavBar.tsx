@@ -3,6 +3,7 @@ import React from 'react';
 import { Typography } from '@components';
 
 import useStyles from './NavBar.styles';
+import { Sidemenu } from './components';
 
 const NavBar: React.FC = () => {
     const classes = useStyles();
@@ -12,6 +13,7 @@ const NavBar: React.FC = () => {
             <Typography component="h1" variant="h4" color="textSecondary">
                 nav bar element
             </Typography>
+            <Sidemenu />
         </div>
     );
 };

@@ -250,3 +250,7 @@ Next, I noticed that my content is not scrollable, so I should continue from the
 I made the navbar and the footer fixed, and added min height and margin-bottom to the body element to make my main content scrollable.
 
 todo:make it more tidy, maybe move the margin-bottom from body to main, maybe add margin top, investigate the `margin: spacing(8, 0),` and if it's good to be there. Ideally body should have top / bottom margin equal to the height of the navbar / footer elements + something for styling reasons.
+
+[done]
+
+Now I want to start working on the navbar element, which is one of the most important ones. My current plan is to merge the "app bar" and "drawer" examples from the material ui docs (https://material-ui.com/components/app-bar/ and https://material-ui.com/components/drawers/ respectively) to create a navigaton bar wth a primary search field and a button that opens a sidedrawer. The sidedrawer will contain my navigation menu. I would also like to have more than one levels in the menu, each level covering the previous menu display when clicked, so that if a user navigates to a deep level they will continue to see just one navigation window and not an ever expanding sequense of them.
