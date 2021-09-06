@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sidemenu component matches snapshot 1`] = `
+<div>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-text"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      toggle
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+  <div
+    class="PrivateSwipeArea-root-6 PrivateSwipeArea-anchorLeft-7"
+    style="width: 20px;"
+  />
+</div>
+`;

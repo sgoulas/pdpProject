@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer component matches snapshot 1`] = `
+<article>
+  <footer
+    class="makeStyles-footer-1"
+  >
+    <div
+      class="makeStyles-container-2"
+    >
+      <div
+        class="makeStyles-containerItem-3"
+      >
+        <h4
+          class="MuiTypography-root makeStyles-section-4 MuiTypography-body1"
+        >
+          Social
+        </h4>
+        <a
+          class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary"
+          href="https://www.linkedin.com/in/spyros-goulas"
+          rel="noopener"
+          target="_blank"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary"
+          >
+            linkedIn
+          </p>
+        </a>
+        <a
+          class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary"
+          href="https://stackoverflow.com/users/6950690/%ce%a3%cf%80%cf%8d%cf%81%ce%bf%cf%82-%ce%93%ce%bf%cf%8d%ce%bb%ce%b1%cf%82"
+          rel="noopener"
+          target="_blank"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary"
+          >
+            stack overflow
+          </p>
+        </a>
+        <a
+          class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary"
+          href="https://dev.to/sgoulas"
+          rel="noopener"
+          target="_blank"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary"
+          >
+            DEV.to
+          </p>
+        </a>
+      </div>
+      <div
+        class="makeStyles-containerItem-3"
+      >
+        <h4
+          class="MuiTypography-root makeStyles-section-4 MuiTypography-body1"
+        >
+          FAQ
+        </h4>
+        <p
+          class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary"
+        >
+          about this project
+        </p>
+      </div>
+      <div
+        class="makeStyles-containerItem-3"
+      >
+        <h4
+          class="MuiTypography-root makeStyles-section-4 MuiTypography-body1"
+        >
+          github
+        </h4>
+        <a
+          class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary"
+          href="https://github.com/sgoulas/pdpProject"
+          rel="noopener"
+          target="_blank"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary"
+          >
+            project repository
+          </p>
+        </a>
+        <a
+          class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary"
+          href="https://github.com/sgoulas"
+          rel="noopener"
+          target="_blank"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary"
+          >
+            github profile
+          </p>
+        </a>
+      </div>
+    </div>
+    <hr
+      class="MuiDivider-root MuiDivider-middle"
+    />
+    <p
+      class="MuiTypography-root makeStyles-text-5 MuiTypography-caption MuiTypography-colorTextSecondary MuiTypography-alignRight"
+    >
+      made by Spyros Goulas
+    </p>
+  </footer>
+</article>
+`;
