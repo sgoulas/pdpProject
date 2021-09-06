@@ -52,7 +52,7 @@ const Sidemenu: React.FC = () => {
         },
     ];
 
-    const MenuOptions = () => (
+    const MenuOptions: React.FC = () => (
         <div
             className={[classes.list, classes.fullList].join(' ')}
             // role="presentation"
