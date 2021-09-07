@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const GET_PRODUCT_BY_NAME = gql`
-    query getProductByName($name: String!) {
-        getProductByName(name: $name) {
+    query getProductsByName($name: String!) {
+        products(name: $name) {
             __typename
             ... on Phone {
                 name

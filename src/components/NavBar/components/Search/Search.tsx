@@ -13,7 +13,7 @@ const Search: React.FC = () => {
     const [searchTerm, setSearchTerm] = useState<string>('');
     const debouncedSearchTerm = useDebounce(searchTerm);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [getProductByName, { loading, error, data }] =
+    const [getProductsByName, { loading, error, data }] =
         useLazyQuery(GET_PRODUCT_BY_NAME);
 
     const MIN_INPUT_LENGTH = 4;
@@ -23,12 +23,12 @@ const Search: React.FC = () => {
 
     useEffect(() => {
         debouncedSearchTerm.length >= MIN_INPUT_LENGTH &&
-            getProductByName({ variables: { name: debouncedSearchTerm } });
+            getProductsByName({ variables: { name: debouncedSearchTerm } });
     }, [debouncedSearchTerm]);
 
     useEffect(() => {
         data &&
-            data.getProductByName.forEach(({ name }: { name: string }) =>
+            data.products.forEach(({ name }: { name: string }) =>
                 console.log('product found:', name)
             );
     }, [data]);

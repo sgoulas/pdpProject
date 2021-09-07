@@ -56,11 +56,11 @@ export type ApiQuery = {
   /** Returns the Tablet whose id matches the provided one or undefined if none is found */
   getTabletById?: Maybe<ApiTablet>;
   /** Returns all products */
-  products?: Maybe<Array<Maybe<ApiProduct>>>;
+  allProducts?: Maybe<Array<Maybe<ApiProduct>>>;
   /** Returns products that include the input name in their name */
-  getProductByName?: Maybe<Array<Maybe<ApiProduct>>>;
+  products?: Maybe<Array<Maybe<ApiProduct>>>;
   /** Returns product with matching id */
-  getProductByID?: Maybe<ApiProduct>;
+  product?: Maybe<ApiProduct>;
 };
 
 
@@ -77,13 +77,13 @@ export type ApiQueryGetTabletByIdArgs = {
 
 
 /** The object that defines all the queries */
-export type ApiQueryGetProductByNameArgs = {
+export type ApiQueryProductsArgs = {
   name: Scalars['String'];
 };
 
 
 /** The object that defines all the queries */
-export type ApiQueryGetProductByIdArgs = {
+export type ApiQueryProductArgs = {
   id: Scalars['String'];
 };
 

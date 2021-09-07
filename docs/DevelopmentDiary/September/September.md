@@ -363,4 +363,6 @@ const ProductTypeDef = gql`
 `;
 ```
 
-I think I should change my schema to be more generic. What I want to find before that is if I will be polluting the name space. For example, I may want a `products` query that has only the name as an input param but also another `products` that will maybe have a price range too. Should I create a general one? Can I declare two and make the server differentiate them somehow?
+I think I should change my schema to be more generic (this feels very `REST` like). What I want to find before that is if I will be polluting the name space. For example, I may want a `products` query that has only the name as an input param but also another `products` that will maybe have a price range too. Should I create a general one? Can I declare two and make the server differentiate them somehow?
+
+That being said, I feel that defining a single query and playing around with default args to customize the resolver based on the number and type of provided arguments leans a bit on the back end side of things.

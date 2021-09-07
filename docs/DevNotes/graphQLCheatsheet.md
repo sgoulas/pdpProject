@@ -3,3 +3,6 @@
 
 -   fetch policies:
     https://medium.com/@galen.corey/understanding-apollo-fetch-policies-705b5ad71980
+
+-   anatomy of a query
+    https://www.apollographql.com/blog/graphql/basics/the-anatomy-of-a-graphql-query/

@@ -5,13 +5,13 @@ const ProductTypeDef = gql`
 
     extend type Query {
         "Returns all products"
-        products: [Product]
+        allProducts: [Product]
 
         "Returns products that include the input name in their name"
-        getProductByName(name: String!): [Product]
+        products(name: String!): [Product]
 
         "Returns product with matching id"
-        getProductByID(id: String!): Product
+        product(id: String!): Product
     }
 `;
 
