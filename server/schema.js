@@ -1,5 +1,7 @@
 const { gql } = require('apollo-server');
-const { PhoneTypeDefs } = require('./phone');
+const {
+    PHONE: { PhoneTypeDefs },
+} = require('./products');
 
 const typeDefs = gql`
     ${PhoneTypeDefs}

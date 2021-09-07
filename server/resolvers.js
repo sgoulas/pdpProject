@@ -1,4 +1,6 @@
-const { phoneResolvers } = require('./phone');
+const {
+    PHONE: { phoneResolvers },
+} = require('./products');
 
 const resolvers = {
     Query: {
