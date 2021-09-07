@@ -1,7 +1,7 @@
 const faker = require('faker');
-const { TOTAL_PHONES } = require('./constants');
+const { TOTAL_TABLETS } = require('./constants');
 
-const createRandomPhone = () => ({
+const createRandomTablet = () => ({
     availability: faker.datatype.number(5),
     brand: faker.lorem.word(10),
     description: faker.lorem.sentences(4),
@@ -15,6 +15,6 @@ const createRandomPhone = () => ({
     url: faker.internet.url(),
 });
 
-const MOCK_PHONES = Array.from({ length: TOTAL_PHONES }, createRandomPhone);
+const MOCK_TABLETS = Array.from({ length: TOTAL_TABLETS }, createRandomTablet);
 
-module.exports = { MOCK_PHONES };
+module.exports = { MOCK_TABLETS };

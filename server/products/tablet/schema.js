@@ -1,15 +1,15 @@
 const { gql } = require('apollo-server');
 
-const PhoneTypeDefs = gql`
+const TabletTypeDefs = gql`
     "Details the Phone properties"
-    type Phone {
+    type Tablet {
         "The id corresponding to the product"
         id: String
 
         "The stock keeping unit identifier to differentiate between similar products based on their different attribute values"
         sku: String
 
-        "Phone brand"
+        "Tablet brand"
         brand: String
 
         "The aggregated rating of the sku"
@@ -38,11 +38,11 @@ const PhoneTypeDefs = gql`
     }
 
     extend type Query {
-        "Returns all phones"
-        phones: [Phone]
-        "Returns the phone whose id matches the provided one or undefined if none is found"
-        getPhoneById(id: String!): Phone
+        "Returns all tablets"
+        tablets: [Tablet]
+        "Returns the Tablet whose id matches the provided one or undefined if none is found"
+        getTabletById(id: String!): Tablet
     }
 `;
 
-module.exports = { PhoneTypeDefs };
+module.exports = { TabletTypeDefs };

@@ -1,10 +1,10 @@
-const { PHONES } = require('./mocks');
+const { MOCK_PHONES } = require('./mocks');
 
 const phoneResolvers = {
     queries: {
-        phones: () => PHONES,
+        phones: () => MOCK_PHONES,
         getPhoneById: (parent, args, context, info) =>
-            PHONES.find(({ id }) => id === args.id),
+            MOCK_PHONES.find(({ id }) => id === args.id),
     },
 };
 
