@@ -56,7 +56,7 @@ const Sidemenu: React.FC = () => {
     const MenuOptions: React.FC = () => (
         <div
             className={[classes.list, classes.fullList].join(' ')}
-            // role="presentation"
+            role="presentation"
             onClick={toggleDrawer(false)}
             onKeyDown={toggleDrawer(false)}
         >

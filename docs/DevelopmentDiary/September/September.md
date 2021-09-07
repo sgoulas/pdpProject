@@ -366,3 +366,9 @@ const ProductTypeDef = gql`
 I think I should change my schema to be more generic (this feels very `REST` like). What I want to find before that is if I will be polluting the name space. For example, I may want a `products` query that has only the name as an input param but also another `products` that will maybe have a price range too. Should I create a general one? Can I declare two and make the server differentiate them somehow?
 
 That being said, I feel that defining a single query and playing around with default args to customize the resolver based on the number and type of provided arguments leans a bit on the back end side of things.
+
+In any case, I renamed my queries to be more GraphQL-like (for example renamed `getProductById` to simply `product`).
+
+Now, since I can fetch data on my search bar, I need to display them. This means displaying a list with the returned products as links, each one directing the user to it's assocciated product details page. This means that my mock data can not be randomly generated (at least not all of them), since at the very least I need the image urls to be specific, so that I can actually serve them from my `static` folder. I think this is what I should do next, especially since what's left to finish the landing page is displaying a bunch of products / categories on the front page, and this needs some properties of my generated data to be the specific.
+
+So, I need to find some random phone / tablet images (or a single one) and create a not-so-random mock generator function for these two products.
