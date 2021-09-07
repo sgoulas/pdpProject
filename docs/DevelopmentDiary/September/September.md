@@ -278,3 +278,89 @@ Btw, how life saving is that server introspection script now huh?
 In the scope of implementing the search product functionality I will create a `useDebounce` hook with a standard 500ms delay to handle user input then query the server.
 
 I encountered a weird problem where the graphql call was successful but I was getting empty objects in my react component (although the network tab was showing correct values). After some searching it turns out this was caused because I was quering for a union type and I had to also include `__typename` in my query results so that apollo could make sense of the returned `type` during runtime.
+
+Now, let's take a lookat my `graphql` query:
+
+```ts
+import { gql } from '@apollo/client';
+
+export const GET_PRODUCT_BY_NAME = gql`
+    query getProductByName($name: String!) {
+        getProductByName(name: $name) {
+            __typename
+            ... on Phone {
+                name
+                image
+                price
+                url
+            }
+            ... on Tablet {
+                name
+                image
+                price
+                url
+            }
+        }
+    }
+`;
+```
+
+what happens with a structure like this is that my data return with the following structure:
+
+```json
+{
+    "data": {
+        "getProductByName": {
+            "__typename": "Phone",
+            "url": "https://rhiannon.name",
+            "price": 97,
+            "name": "recusandae"
+        }
+    }
+}
+```
+
+and this means I have to access them by accessing the `getProductByName` property.
+
+```ts
+useEffect(() => {
+    data &&
+        data.getProductByName.forEach(({ name }: { name: string }) =>
+            console.log('product found:', name)
+        );
+}, [data]);
+```
+
+This is ugly right?
+
+Digging around it seems that `getProductByName` **is not** a query name, but rather a regular field on the root query type `Query` and that having results on the exact same shape as the query is one of the core design principles of GraphQL (https://stackoverflow.com/questions/45238631/any-reason-i-am-getting-back-the-query-name-in-the-graphql-results).
+
+This explains the format of my `gql` queries. I create a `query` of name whatever (but this time, of name `getProductByName`), which calls the `getProductByName` query that I have actually declared on my server.
+
+If I need the returned values to be under `products` I would have to change my schema definition from this:
+
+```ts
+const ProductTypeDef = gql`
+    union Product = Phone | Tablet
+
+    extend type Query {
+        "Returns products that include the input name in their name"
+        getProductByName(name: String!): [Product]
+    }
+`;
+```
+
+to this:
+
+```ts
+const ProductTypeDef = gql`
+    union Product = Phone | Tablet
+
+    extend type Query {
+        "Returns products that include the input name in their name"
+        products(name: String!): [Product]
+    }
+`;
+```
+
+I think I should change my schema to be more generic. What I want to find before that is if I will be polluting the name space. For example, I may want a `products` query that has only the name as an input param but also another `products` that will maybe have a price range too. Should I create a general one? Can I declare two and make the server differentiate them somehow?
