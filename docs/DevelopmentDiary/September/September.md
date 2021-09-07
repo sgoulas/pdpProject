@@ -268,3 +268,5 @@ Regarding the navbar element I will be using `grid` to align the different eleme
 I styled the navigation bar with a menu icon (the classc humburger one) and a search icon, using css grid. As a sidenote, if I didn't have (as per the initially set requirements) to do it with css grid, I would most definitely use material-ui's `<Grid />` component, especially for more complex grids (an option I would like to reserve for the future if the use case demmands it).
 
 Now, while I work on the `<Search />` component, the next thinkg I will be doing is add a dedicated `api` sub-directory to handle the "search product" query and subsequent data / no data results. This means jumping back in the server and addding the relevant query and query resolver. After that I will also have to write the tests.
+
+I refactored the server files to have a central `products` folder that contains all the product directories (so again, a by-feature architecture pattern like ducks) and created a `union` named `Product` that is either of the actual products. This also meant I had to add some unique per product props so that the `__resolveType` function could differentiate them.
