@@ -3,14 +3,25 @@
 exports[`Sidemenu component matches snapshot 1`] = `
 <div>
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-text"
+    aria-label="toggle menu"
+    class="MuiButtonBase-root MuiIconButton-root"
+    data-testid="toggle-sidemenu-button"
     tabindex="0"
     type="button"
   >
     <span
-      class="MuiButton-label"
+      class="MuiIconButton-label"
     >
-      toggle
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSvgIcon-colorSecondary"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+        />
+      </svg>
     </span>
     <span
       class="MuiTouchRipple-root"

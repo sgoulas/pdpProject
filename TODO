@@ -9,7 +9,7 @@ Technologies, methodologies and architecture:
   ☐ SEO
   ☐ Performance optimization
   ☐ Semantic HTML
-  ☐ Custom CSS + Flex / Grid
+  ✔ Custom CSS + Flex / Grid @done(07-09-08 03:10)
   ☐ Data driven navigation
   ✘ State / UI separation @cancelled(21-08-19 00:39) (partially re-considered under the ducks design approach that was decided, relevant diary entry: 18/8/2021)
   ✔ relative paths (tsconfig paths prop) @done(21-08-08 17:10)
@@ -45,3 +45,4 @@ Extra milestones:
   ☐ Per page layout (https://www.tomasgildev.com/posts/next-persistent-layout-typescript)
   ☐ Define and showcase a Git workflow
   ☐ Consider clsx package for styles class assignemnt
+  ☐ Remove comment about cart component from Search.styles.tsx.

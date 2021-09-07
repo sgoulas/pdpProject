@@ -262,3 +262,9 @@ I implemented the toggle functionality and refactored the side menu with some te
 I am going to write a couple of tests for my sidemenu component then probably work on further styling the navigation bar.
 
 I am trying to use RTL to find a button. I want to use the `name` property by the library notes it's deprecated. The same comment provides no information about what I should use instead and the official documentation still uses the `name` property. It's on of those days I suppose.
+
+Regarding the navbar element I will be using `grid` to align the different elements (the logo/text, the search field, possible additional buttons on the far right). I could do it with material-ui's `<Grid />` component, but I will try to make it with the css `grid` rule, which I have never used in the past and is a primary goal of this project, as defined in the `TODO` document.
+
+I styled the navigation bar with a menu icon (the classc humburger one) and a search icon, using css grid. As a sidenote, if I didn't have (as per the initially set requirements) to do it with css grid, I would most definitely use material-ui's `<Grid />` component, especially for more complex grids (an option I would like to reserve for the future if the use case demmands it).
+
+Now, while I work on the `<Search />` component, the next thinkg I will be doing is add a dedicated `api` sub-directory to handle the "search product" query and subsequent data / no data results. This means jumping back in the server and addding the relevant query and query resolver. After that I will also have to write the tests.

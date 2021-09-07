@@ -18,9 +18,9 @@ describe('Sidemenu component', () => {
     });
 
     it('opens the sidedrawer on toggle action', () => {
-        const { getByText, queryByText } = renderWithProviders(<Sidemenu />);
+        const { queryByText, getByTestId } = renderWithProviders(<Sidemenu />);
 
-        fireEvent.click(getByText('toggle'));
+        fireEvent.click(getByTestId('toggle-sidemenu-button'));
 
         expect(queryByText('Hello, Sign in')).toBeVisible();
     });

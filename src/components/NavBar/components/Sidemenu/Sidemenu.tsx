@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
@@ -10,6 +9,8 @@ import LanguageIcon from '@material-ui/icons/Language';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import PaymentIcon from '@material-ui/icons/Payment';
+import MenuIcon from '@material-ui/icons/Menu';
+import IconButton from '@material-ui/core/IconButton';
 
 import { Typography } from '@components';
 
@@ -104,7 +105,13 @@ const Sidemenu: React.FC = () => {
     return (
         <div>
             <>
-                <Button onClick={toggleDrawer(true)}>toggle</Button>
+                <IconButton
+                    onClick={toggleDrawer(true)}
+                    data-testid="toggle-sidemenu-button"
+                    aria-label="toggle menu"
+                >
+                    <MenuIcon color="secondary" />
+                </IconButton>
                 <SwipeableDrawer
                     anchor={'left'}
                     open={isOpen}

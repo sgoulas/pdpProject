@@ -1,19 +1,30 @@
 import React from 'react';
 
 import { Typography } from '@components';
+import { SITE_NAME } from '@core';
 
 import useStyles from './NavBar.styles';
-import { Sidemenu } from './components';
+import { Sidemenu, Search } from './components';
 
 const NavBar: React.FC = () => {
     const classes = useStyles();
 
     return (
         <div className={classes.navBar}>
-            <Typography component="h1" variant="h4" color="textSecondary">
-                nav bar element
-            </Typography>
-            <Sidemenu />
+            <div>
+                <Sidemenu />
+            </div>
+            <div>
+                <Typography
+                    component="h1"
+                    variant="h5"
+                    color="textSecondary"
+                    className={classes.siteName}
+                >
+                    {SITE_NAME}
+                </Typography>
+            </div>
+            <Search />
         </div>
     );
 };
