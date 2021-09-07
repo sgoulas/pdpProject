@@ -35,6 +35,9 @@ const TabletTypeDefs = gql`
 
         "Product name"
         name: String
+
+        "Tablet only prop"
+        tabletProp: String
     }
 
     extend type Query {

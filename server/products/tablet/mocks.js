@@ -13,6 +13,7 @@ const createRandomTablet = () => ({
     reviewCount: faker.datatype.number(100),
     sku: faker.random.alphaNumeric(15),
     url: faker.internet.url(),
+    tabletProp: 'tablet',
 });
 
 const MOCK_TABLETS = Array.from({ length: TOTAL_TABLETS }, createRandomTablet);

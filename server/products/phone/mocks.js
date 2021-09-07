@@ -13,6 +13,7 @@ const createRandomPhone = () => ({
     reviewCount: faker.datatype.number(100),
     sku: faker.random.alphaNumeric(15),
     url: faker.internet.url(),
+    phoneProp: 'phone',
 });
 
 const MOCK_PHONES = Array.from({ length: TOTAL_PHONES }, createRandomPhone);

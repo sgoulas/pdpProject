@@ -35,6 +35,9 @@ const PhoneTypeDefs = gql`
 
         "Product name"
         name: String
+
+        "Phone only prop"
+        phoneProp: String
     }
 
     extend type Query {

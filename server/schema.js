@@ -9,10 +9,14 @@ const typeDefs = gql`
     ${PhoneTypeDefs}
     ${TabletTypeDefs}
 
+    union Product = Phone | Tablet
+
     "The object that defines all the queries"
     type Query {
         "Returns information about the server"
         info: String
+        "Returns all products"
+        products: [Product]
     }
 `;
 
