@@ -257,7 +257,7 @@ Now I want to start working on the navbar element, which is one of the most impo
 
 I implemented the toggle functionality and refactored the side menu with some text and icons. I only added one category, technology, alongside some subcategories. I will most probably refactor this section in the future depending on the products and categories I decided to display, but for now it's alright.
 
-## 5 September 2021
+## 6 September 2021
 
 I am going to write a couple of tests for my sidemenu component then probably work on further styling the navigation bar.
 
