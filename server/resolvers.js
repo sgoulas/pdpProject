@@ -1,7 +1,7 @@
 const {
     PHONE: { phoneResolvers },
     TABLET: { tabletResolvers },
-    PRODUCT: { MOCK_PRODUCTS },
+    PRODUCT: { productResolvers },
 } = require('./products');
 
 const resolvers = {
@@ -9,7 +9,7 @@ const resolvers = {
         info: () => `Server info string`,
         ...phoneResolvers.queries,
         ...tabletResolvers.queries,
-        products: () => MOCK_PRODUCTS,
+        ...productResolvers.queries,
     },
     Product: {
         __resolveType(data, ctx, info) {
