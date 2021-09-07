@@ -276,3 +276,5 @@ I refactored the server files to have a central `products` folder that contains 
 Btw, how life saving is that server introspection script now huh?
 
 In the scope of implementing the search product functionality I will create a `useDebounce` hook with a standard 500ms delay to handle user input then query the server.
+
+I encountered a weird problem where the graphql call was successful but I was getting empty objects in my react component (although the network tab was showing correct values). After some searching it turns out this was caused because I was quering for a union type and I had to also include `__typename` in my query results so that apollo could make sense of the returned `type` during runtime.

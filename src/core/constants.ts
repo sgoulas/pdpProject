@@ -1,3 +1,6 @@
+//** CONSTANTS */
+export const DEBOUNCE_DELAY = 500;
+
 //** SEO RELATED CONSTANTS */
 export const SITE_NAME = 'PDP project';
 export const SITE_URL = 'http://localhost:3000/';
