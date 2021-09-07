@@ -1,7 +1,7 @@
 const { gql } = require('apollo-server');
 
 const TabletTypeDefs = gql`
-    "Details the Phone properties"
+    "Details the Tablet properties"
     type Tablet {
         "The id corresponding to the product"
         id: String
