@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { Head } from './components';
 
-import { useAppDispatch } from '@hooks/store';
+import { useAppDispatch } from '@hooks';
 import { setRunningAction } from '@store/actions';
 import { Typography } from '@components';
 

@@ -269,6 +269,10 @@ I styled the navigation bar with a menu icon (the classc humburger one) and a se
 
 Now, while I work on the `<Search />` component, the next thinkg I will be doing is add a dedicated `api` sub-directory to handle the "search product" query and subsequent data / no data results. This means jumping back in the server and addding the relevant query and query resolver. After that I will also have to write the tests.
 
+## 7 September 2021
+
 I refactored the server files to have a central `products` folder that contains all the product directories (so again, a by-feature architecture pattern like ducks) and created a `union` named `Product` that is either of the actual products. This also meant I had to add some unique per product props so that the `__resolveType` function could differentiate them.
 
 Btw, how life saving is that server introspection script now huh?
+
+In the scope of implementing the search product functionality I will create a `useDebounce` hook with a standard 500ms delay to handle user input then query the server.

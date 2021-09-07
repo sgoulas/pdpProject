@@ -5,7 +5,7 @@
       "@api": ["api"],
       "@components": ["components"],
       "@core": ["core"],
-      "@hooks/*":["hooks/*"],
+      "@hooks":["hooks"],
       "@store/*":["store/*"],
       "@styles":["styles"],
       "@testUtils": ["testUtils"],
