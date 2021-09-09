@@ -28,7 +28,7 @@ const Search: React.FC = () => {
 
     useEffect(() => {
         data &&
-            data.products.forEach(({ name }: { name: string }) =>
+            data.results.forEach(({ name }: { name: string }) =>
                 console.log('product found:', name)
             );
     }, [data]);

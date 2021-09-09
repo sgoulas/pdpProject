@@ -372,3 +372,41 @@ In any case, I renamed my queries to be more GraphQL-like (for example renamed `
 Now, since I can fetch data on my search bar, I need to display them. This means displaying a list with the returned products as links, each one directing the user to it's assocciated product details page. This means that my mock data can not be randomly generated (at least not all of them), since at the very least I need the image urls to be specific, so that I can actually serve them from my `static` folder. I think this is what I should do next, especially since what's left to finish the landing page is displaying a bunch of products / categories on the front page, and this needs some properties of my generated data to be the specific.
 
 So, I need to find some random phone / tablet images (or a single one) and create a not-so-random mock generator function for these two products.
+
+## 8 September 2021
+
+Found out I could alias the result of my graphQL query
+
+```ts
+export const GET_PRODUCT_BY_NAME = gql`
+    query getProductsByName($name: String!) {
+        results: products(name: $name) { //notice the alias results here
+            __typename
+            ... on Phone {
+                name
+                image
+                price
+                url
+            }
+            ... on Tablet {
+                name
+                image
+                price
+                url
+            }
+        }
+    }
+`;
+```
+
+impostor syndrome intesifies.
+
+Generally speaking, the search component needs only to display its results and can be considered ready. That being said, this consideration can only be done in the context of the scope of this project. What I am going to do is grab the first 5 results and display them. What happens if the results are more than 5? What happens if they are 30? Or 50? In a production setting I would add a "see more" on the bottom of the result mini list and then navigate the user to a dedicated "search page" where they will be able to see all the results of their query. I am not going to do that, since it would only add to the initially specified scope of the project, a scope that so far has only expanded.
+
+I add this note to indicate that while "done", the component will not be "optimal" or close to what I consider "optimal". This is in order to rein a bit on the developement effort and to try to reach the (self imposed) deadline of December 1st. I will however add this note as an entry under "maybe" in the TODO list.
+
+Now I think I will be using material-ui's `Autocomplete` component to implement the dropdown I have in mind, replacing the current input base I am using.
+
+[later]
+
+Tried setting something up but I was too tired, messed it up, reverted everything but some minor clean up changes and called it a day.

@@ -4,13 +4,13 @@ const TabletTypeDefs = gql`
     "Details the Tablet properties"
     type Tablet {
         "The id corresponding to the product"
-        id: String
+        id: String!
 
         "The stock keeping unit identifier to differentiate between similar products based on their different attribute values"
-        sku: String
+        sku: String!
 
         "Tablet brand"
-        brand: String
+        brand: String!
 
         "The aggregated rating of the sku"
         ratingValue: Float
@@ -19,22 +19,22 @@ const TabletTypeDefs = gql`
         reviewCount: Int
 
         "The price of the sku"
-        price: Float
+        price: Float!
 
         "Stock availability of the sku"
-        availability: Int
+        availability: Int!
 
         "The product page url for the sku"
-        url: String
+        url: String!
 
         "Product description"
-        description: String
+        description: String!
 
         "Image url"
-        image: String
+        image: String!
 
         "Product name"
-        name: String
+        name: String!
 
         "Tablet only prop"
         tabletProp: String

@@ -45,4 +45,5 @@ Extra milestones:
   ☐ Per page layout (https://www.tomasgildev.com/posts/next-persistent-layout-typescript)
   ☐ Define and showcase a Git workflow
   ☐ Consider clsx package for styles class assignemnt
-  ☐ Remove comment about cart component from Search.styles.tsx.
+  ☐ Search page to show more search results
+  ✔ Remove comment about cart component from Search.styles.tsx. @done(21-09-09 01:00)

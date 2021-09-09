@@ -16,29 +16,29 @@ export type Scalars = {
 /** Details the Phone properties */
 export type ApiPhone = {
   /** The id corresponding to the product */
-  id?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
   /** The stock keeping unit identifier to differentiate between similar products based on their different attribute values */
-  sku?: Maybe<Scalars['String']>;
+  sku: Scalars['String'];
   /** Phone brand */
-  brand?: Maybe<Scalars['String']>;
+  brand: Scalars['String'];
   /** The aggregated rating of the sku */
   ratingValue?: Maybe<Scalars['Float']>;
   /** The number of ratings */
   reviewCount?: Maybe<Scalars['Int']>;
   /** The price of the sku */
-  price?: Maybe<Scalars['Float']>;
+  price: Scalars['Float'];
   /** Stock availability of the sku */
-  availability?: Maybe<Scalars['Int']>;
+  availability: Scalars['Int'];
   /** The product page url for the sku */
-  url?: Maybe<Scalars['String']>;
+  url: Scalars['String'];
   /** Product description */
-  description?: Maybe<Scalars['String']>;
+  description: Scalars['String'];
   /** Image url */
-  image?: Maybe<Scalars['String']>;
+  image: Scalars['String'];
   /** Product name */
-  name?: Maybe<Scalars['String']>;
+  name: Scalars['String'];
   /** Phone only prop */
-  phoneProp?: Maybe<Scalars['String']>;
+  phoneProp: Scalars['String'];
 };
 
 export type ApiProduct = ApiPhone | ApiTablet;
@@ -58,9 +58,9 @@ export type ApiQuery = {
   /** Returns all products */
   allProducts?: Maybe<Array<Maybe<ApiProduct>>>;
   /** Returns products that include the input name in their name */
-  products?: Maybe<Array<Maybe<ApiProduct>>>;
+  getProductsByName?: Maybe<Array<Maybe<ApiProduct>>>;
   /** Returns product with matching id */
-  product?: Maybe<ApiProduct>;
+  getProductById?: Maybe<ApiProduct>;
 };
 
 
@@ -77,40 +77,40 @@ export type ApiQueryGetTabletByIdArgs = {
 
 
 /** The object that defines all the queries */
-export type ApiQueryProductsArgs = {
+export type ApiQueryGetProductsByNameArgs = {
   name: Scalars['String'];
 };
 
 
 /** The object that defines all the queries */
-export type ApiQueryProductArgs = {
+export type ApiQueryGetProductByIdArgs = {
   id: Scalars['String'];
 };
 
 /** Details the Tablet properties */
 export type ApiTablet = {
   /** The id corresponding to the product */
-  id?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
   /** The stock keeping unit identifier to differentiate between similar products based on their different attribute values */
-  sku?: Maybe<Scalars['String']>;
+  sku: Scalars['String'];
   /** Tablet brand */
-  brand?: Maybe<Scalars['String']>;
+  brand: Scalars['String'];
   /** The aggregated rating of the sku */
   ratingValue?: Maybe<Scalars['Float']>;
   /** The number of ratings */
   reviewCount?: Maybe<Scalars['Int']>;
   /** The price of the sku */
-  price?: Maybe<Scalars['Float']>;
+  price: Scalars['Float'];
   /** Stock availability of the sku */
-  availability?: Maybe<Scalars['Int']>;
+  availability: Scalars['Int'];
   /** The product page url for the sku */
-  url?: Maybe<Scalars['String']>;
+  url: Scalars['String'];
   /** Product description */
-  description?: Maybe<Scalars['String']>;
+  description: Scalars['String'];
   /** Image url */
-  image?: Maybe<Scalars['String']>;
+  image: Scalars['String'];
   /** Product name */
-  name?: Maybe<Scalars['String']>;
+  name: Scalars['String'];
   /** Tablet only prop */
   tabletProp?: Maybe<Scalars['String']>;
 };

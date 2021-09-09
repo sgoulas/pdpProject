@@ -8,10 +8,10 @@ const ProductTypeDef = gql`
         allProducts: [Product]
 
         "Returns products that include the input name in their name"
-        products(name: String!): [Product]
+        getProductsByName(name: String!): [Product]
 
         "Returns product with matching id"
-        product(id: String!): Product
+        getProductById(id: String!): Product
     }
 `;
 

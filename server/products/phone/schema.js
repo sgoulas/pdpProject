@@ -4,13 +4,13 @@ const PhoneTypeDefs = gql`
     "Details the Phone properties"
     type Phone {
         "The id corresponding to the product"
-        id: String
+        id: String!
 
         "The stock keeping unit identifier to differentiate between similar products based on their different attribute values"
-        sku: String
+        sku: String!
 
         "Phone brand"
-        brand: String
+        brand: String!
 
         "The aggregated rating of the sku"
         ratingValue: Float
@@ -19,25 +19,25 @@ const PhoneTypeDefs = gql`
         reviewCount: Int
 
         "The price of the sku"
-        price: Float
+        price: Float!
 
         "Stock availability of the sku"
-        availability: Int
+        availability: Int!
 
         "The product page url for the sku"
-        url: String
+        url: String!
 
         "Product description"
-        description: String
+        description: String!
 
         "Image url"
-        image: String
+        image: String!
 
         "Product name"
-        name: String
+        name: String!
 
         "Phone only prop"
-        phoneProp: String
+        phoneProp: String!
     }
 
     extend type Query {
