@@ -3,6 +3,9 @@ import { useLazyQuery } from '@apollo/client';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import useAutocomplete from '@material-ui/lab/useAutocomplete';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
 import { ApiProduct } from '@api';
 import { useDebounce } from '@hooks';
@@ -71,18 +74,24 @@ const Search: React.FC = () => {
                 }}
                 inputProps={{ 'aria-label': 'search' }}
             />
-
             {groupedOptions.length > 0 ? (
-                <ul className={classes.optionsList} {...getListboxProps()}>
+                <List
+                    dense
+                    className={classes.optionsList}
+                    {...getListboxProps()}
+                >
                     {groupedOptions.map((option, index) => (
-                        <li
+                        <ListItem
                             {...getOptionProps({ option, index })}
                             key={option.id}
                         >
-                            {option.name}
-                        </li>
+                            <ListItemText
+                                primary={option.name}
+                                className={classes.searchOption}
+                            />
+                        </ListItem>
                     ))}
-                </ul>
+                </List>
             ) : null}
         </div>
     );

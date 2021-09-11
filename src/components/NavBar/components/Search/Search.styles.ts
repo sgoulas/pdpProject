@@ -32,7 +32,6 @@ const useStyles = makeStyles(
         },
         inputInput: {
             padding: spacing(1, 1, 1, 0),
-            // vertical padding + font size from searchIcon
             paddingLeft: `calc(1em + ${spacing(4)}px)`,
             transition: transitions.create('width'),
             width: '100%',
@@ -47,7 +46,7 @@ const useStyles = makeStyles(
             },
         },
         optionsList: {
-            width: 200,
+            width: '100%',
             margin: 0,
             padding: 0,
             zIndex: 1,
@@ -56,16 +55,19 @@ const useStyles = makeStyles(
             backgroundColor: palette.background.paper,
             overflow: 'auto',
             maxHeight: 200,
-            border: '1px solid rgba(0,0,0,.25)',
+            border: `1px solid ${alpha(palette.common.black, 0.25)}`,
             '& li[data-focus="true"]': {
-                backgroundColor: '#4a8df6',
+                backgroundColor: palette.text.secondary,
                 color: 'white',
                 cursor: 'pointer',
             },
             '& li:active': {
-                backgroundColor: '#2977f5',
+                backgroundColor: palette.text.secondary,
                 color: 'white',
             },
+        },
+        searchOption: {
+            color: palette.common.black,
         },
     })
 );
