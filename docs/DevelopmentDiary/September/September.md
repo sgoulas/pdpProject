@@ -413,4 +413,10 @@ Tried setting something up but I was too tired, messed it up, reverted everythin
 
 ## 11 September 2021
 
-Ideally I would like to finish with the autocomplete component today. Since I don't really have a clear implementation in mind (desing-wise) I will work in a separate branch.
+Ideally I would like to finish with the autocomplete component today. Since I don't really have a clear implementation in mind (desing-wise) I will work in a separate branch. I decided that since I have the styling ready I can use the headless variation of the `Autocomplete` component, the problem is enforcing a consistent typing, since my autocomplete input can be `string`, `null` or `SearchOption` where the latter is the type of the data that the query returns `type SearchOption = Pick<ApiProduct, 'name' | 'image' | 'price' | 'url'>;`.
+
+In the end, I was baited by the component's `onChange` prop. What I actually needed was `onInputChange` to specifically target user input (which is always string) and not user's selection (which is `string`, `null` or `Option`).
+
+With that change I am able to retain my search bar's style as well as display possible results. Now I need to style the list and also fix a problem where an `<li />` key is not unique (caused by me assigning the product name to it and the server actually generating non-unique product names, which is acceptable in the scope of a real world scenario).
+
+Regarding the generation of unique ids, I know I can use lodash, a uuid library or native javascript code. Regarding the latter I know you can implement an rfc4122 compliant string but you have to rely on the poor entropy of `Math.random`. On the other hand you I remember reading about generating a uuid by leveraging a native javascript function, but can't really remember details. I remember you were creating "something" and that something had a prop which had to be implemented in a specific way that made it rfc4122 compliant. In any case, I can just also retrieve the `id` property of the `Product` and be done with it, especially since I already generate it as a `uuid`.
