@@ -410,3 +410,7 @@ Now I think I will be using material-ui's `Autocomplete` component to implement 
 [later]
 
 Tried setting something up but I was too tired, messed it up, reverted everything but some minor clean up changes and called it a day.
+
+## 11 September 2021
+
+Ideally I would like to finish with the autocomplete component today. Since I don't really have a clear implementation in mind (desing-wise) I will work in a separate branch.
