@@ -7,8 +7,11 @@ import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import PaymentIcon from '@material-ui/icons/Payment';
 import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
-import { Typography, Divider, List, ListItem, ListItemText } from '@components';
+import { Typography, Divider } from '@components';
 
 import useStyles from './Sidemenu.styles';
 

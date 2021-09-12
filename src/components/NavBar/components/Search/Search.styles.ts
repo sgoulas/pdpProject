@@ -68,6 +68,8 @@ const useStyles = makeStyles(
         },
         searchOption: {
             color: palette.common.black,
+            textDecoration: 'none',
+            fontSize: 18,
         },
     })
 );
