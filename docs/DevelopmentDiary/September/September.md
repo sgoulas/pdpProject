@@ -434,3 +434,7 @@ Now the only thing left is to add some tests and the MR should be finished.
 Also, just realized the `url` property in my products is not needed, since the pages are dynamically created via the `id` prop.
 
 To do tomorrow: finish test, consider adding toastify.
+
+## 12 September 2021
+
+I spent two hours trying to test the search autocomplete functionality. For a while I thought the problem was that my DOM selectors were wrong, but in the end the problem was that my mock graphql call did not include any "variables". I thought if you mocked the results you did not have to be explicit (or include in any capacity) the query variables but it seems they have to be sent as well, probably because the query fails on a declaration level.

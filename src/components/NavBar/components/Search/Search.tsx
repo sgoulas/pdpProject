@@ -13,7 +13,12 @@ import { useDebounce } from '@hooks';
 import useStyles from './Search.styles';
 import { GET_PRODUCT_BY_NAME } from './api';
 
-export type SearchOption = Pick<ApiProduct, 'name' | 'image' | 'price' | 'id'>;
+export type SearchOption = Pick<
+    ApiProduct,
+    'name' | 'image' | 'price' | 'id'
+> & {
+    __typename: string;
+};
 
 const Search: React.FC = () => {
     const MIN_INPUT_LENGTH = 4;
@@ -58,7 +63,11 @@ const Search: React.FC = () => {
     // if (error) return `Error! ${error}`;
 
     return (
-        <div className={classes.search} {...getRootProps()}>
+        <div
+            className={classes.search}
+            {...getRootProps()}
+            data-testid="autocomplete"
+        >
             <div className={classes.searchIcon}>
                 <SearchIcon />
             </div>
