@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import LanguageIcon from '@material-ui/icons/Language';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import PaymentIcon from '@material-ui/icons/Payment';
 import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
-import { Typography } from '@components';
+import { Typography, Divider } from '@components';
 
 import useStyles from './Sidemenu.styles';
 

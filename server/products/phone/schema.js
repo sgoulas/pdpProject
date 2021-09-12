@@ -24,9 +24,6 @@ const PhoneTypeDefs = gql`
         "Stock availability of the sku"
         availability: Int!
 
-        "The product page url for the sku"
-        url: String!
-
         "Product description"
         description: String!
 

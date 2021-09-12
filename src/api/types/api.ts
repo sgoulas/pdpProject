@@ -29,8 +29,6 @@ export type ApiPhone = {
   price: Scalars['Float'];
   /** Stock availability of the sku */
   availability: Scalars['Int'];
-  /** The product page url for the sku */
-  url: Scalars['String'];
   /** Product description */
   description: Scalars['String'];
   /** Image url */
@@ -41,6 +39,7 @@ export type ApiPhone = {
   phoneProp: Scalars['String'];
 };
 
+/** The union of all product types */
 export type ApiProduct = ApiPhone | ApiTablet;
 
 /** The object that defines all the queries */
@@ -103,8 +102,6 @@ export type ApiTablet = {
   price: Scalars['Float'];
   /** Stock availability of the sku */
   availability: Scalars['Int'];
-  /** The product page url for the sku */
-  url: Scalars['String'];
   /** Product description */
   description: Scalars['String'];
   /** Image url */

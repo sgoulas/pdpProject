@@ -413,4 +413,32 @@ Tried setting something up but I was too tired, messed it up, reverted everythin
 
 ## 11 September 2021
 
-Ideally I would like to finish with the autocomplete component today. Since I don't really have a clear implementation in mind (desing-wise) I will work in a separate branch.
+Ideally I would like to finish with the autocomplete component today. Since I don't really have a clear implementation in mind (desing-wise) I will work in a separate branch. I decided that since I have the styling ready I can use the headless variation of the `Autocomplete` component, the problem is enforcing a consistent typing, since my autocomplete input can be `string`, `null` or `SearchOption` where the latter is the type of the data that the query returns `type SearchOption = Pick<ApiProduct, 'name' | 'image' | 'price' | 'url'>;`.
+
+In the end, I was baited by the component's `onChange` prop. What I actually needed was `onInputChange` to specifically target user input (which is always string) and not user's selection (which is `string`, `null` or `Option`).
+
+With that change I am able to retain my search bar's style as well as display possible results. Now I need to style the list and also fix a problem where an `<li />` key is not unique (caused by me assigning the product name to it and the server actually generating non-unique product names, which is acceptable in the scope of a real world scenario).
+
+Regarding the generation of unique ids, I know I can use lodash, a uuid library or native javascript code. Regarding the latter I know you can implement an rfc4122 compliant string but you have to rely on the poor entropy of `Math.random`. On the other hand you I remember reading about generating a uuid by leveraging a native javascript function, but can't really remember details. I remember you were creating "something" and that something had a prop which had to be implemented in a specific way that made it rfc4122 compliant. In any case, I can just also retrieve the `id` property of the `Product` and be done with it, especially since I already generate it as a `uuid`.
+
+Now I could create a new component that will receive the products fetched by the query and display them in a nice manner (I am thinking of small cards, with images and whatnot), or display the `error` and `loading` states but I am checking amazon's implementation and they just display the options. I think it's a clean approach and it will definitely save development time, so I will just style a bit the existing component to better display the results
+
+I updated the styles to use my existing color palette and now I have to turn the search results into clickable hyperlinks to the product details page, plus to handle the `loading` and `error` states of the query call. Then, I should perform a clean up by moving the `material-ui` components that I am currently importing from the library inside my `components` folder. This will allow me to compress all the different "component" imports into a single import line and also will loosely define the components currently in use by my codebase. The latter seems strict but it's actually not. It exists so that a possible collaborator in the application will have a quick reference of the components we use to create the UI. If said person needs another `material-ui` not currently in use, they can just add it to the `components` folder exports and carry on. This is to avoid directly importing `material-ui` components in other components, consolidating the exports to a single point of reference, allowing me greater flexility in the future to replace a `material-ui` component I don't like with another custom or third party one. It also loosely enforces the usage of specific components, which allows a certain degree of design cohesiveness (meaning, if `material-ui` exports an `<UnecessaryComponent />` that doesn't mean it can be used just because it's available. Maybe the same UI can be achieved with some other components already available, this makes development more structured since all the developers work with the same set of components, which contains less than the total available components provided by the library). But again, just to stress it out, if someone needs another `material-ui` not currently in use, they can just add it to the `components` folder exports and carry on.
+
+Quick update on that, there seems to be a problem when dynamically using a component exported like that, in cases for example that I render a list when a fetch call is finished, the UI is broken (I am guessing it's an issue with styling not dynamically applying to the components that were not used until now or something similar). I moved the imports inside the components again for some of them.
+
+I should also consider adding a toast notification for failed calls or success messages, preferrably in a centralized way. Added it to the "maybe" list (just thinking it should be a fun integration with `redux-saga`).
+
+Now the only thing left is to add some tests and the MR should be finished.
+
+Also, just realized the `url` property in my products is not needed, since the pages are dynamically created via the `id` prop.
+
+To do tomorrow: finish test, consider adding toastify.
+
+## 12 September 2021
+
+I spent two hours trying to test the search autocomplete functionality. For a while I thought the problem was that my DOM selectors were wrong, but in the end the problem was that my mock graphql call did not include any "variables". I thought if you mocked the results you did not have to be explicit (or include in any capacity) the query variables but it seems they have to be sent as well, probably because the query fails on a declaration level.
+
+After writing the test I removed some redundant types from my query, since I only need `name` and `id` in my results (and `__typename` of course).
+
+I considered adding `react-toastify` which I had used in the past. The plan would be to leverage its customization options to replace the default rendered component with `<Alert />` from `material-ui` but this would take some time to get it right and would add to the TODO list, which I am trying to keep under control. If I need notifactions I can consider using `<Alert />` in a specific part of the page and trigger it via `redux` or go with `react-toastify` + `<Alert />`. For the time being I have to keep my deadline in mind. I hae already updated the `maybe` section of my TODO list to reconsider this feature implementation in the future, should time and energy allows it. For now, the `<Search />` component is done.
