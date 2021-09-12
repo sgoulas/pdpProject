@@ -13,10 +13,7 @@ import { useDebounce } from '@hooks';
 import useStyles from './Search.styles';
 import { GET_PRODUCT_BY_NAME } from './api';
 
-export type SearchOption = Pick<
-    ApiProduct,
-    'name' | 'image' | 'price' | 'id'
-> & {
+export type SearchOption = Pick<ApiProduct, 'name' | 'id'> & {
     __typename: string;
 };
 

@@ -438,3 +438,5 @@ To do tomorrow: finish test, consider adding toastify.
 ## 12 September 2021
 
 I spent two hours trying to test the search autocomplete functionality. For a while I thought the problem was that my DOM selectors were wrong, but in the end the problem was that my mock graphql call did not include any "variables". I thought if you mocked the results you did not have to be explicit (or include in any capacity) the query variables but it seems they have to be sent as well, probably because the query fails on a declaration level.
+
+After writing the test I removed some redundant types from my query, since I only need `name` and `id` in my results (and `__typename` of course).

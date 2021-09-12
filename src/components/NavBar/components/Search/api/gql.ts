@@ -6,14 +6,10 @@ export const GET_PRODUCT_BY_NAME = gql`
             __typename
             ... on Phone {
                 name
-                image
-                price
                 id
             }
             ... on Tablet {
                 name
-                image
-                price
                 id
             }
         }

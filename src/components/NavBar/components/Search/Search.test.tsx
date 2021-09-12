@@ -19,16 +19,12 @@ describe('Search component suite', () => {
         {
             __typename: 'Phone',
             name: 'mock name 1',
-            price: 5,
             id: '2351-asdf3-fsadfas-234',
-            image: 'image url 1',
         },
         {
             __typename: 'Phone',
             name: 'mock name 2',
-            price: 50,
             id: 'fsadfas-asdf3-2351-234',
-            image: 'image url 2',
         },
     ];
 
