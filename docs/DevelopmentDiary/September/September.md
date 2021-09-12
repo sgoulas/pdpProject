@@ -427,4 +427,10 @@ I updated the styles to use my existing color palette and now I have to turn the
 
 Quick update on that, there seems to be a problem when dynamically using a component exported like that, in cases for example that I render a list when a fetch call is finished, the UI is broken (I am guessing it's an issue with styling not dynamically applying to the components that were not used until now or something similar). I moved the imports inside the components again for some of them.
 
-I should also consider adding a toast notification for failed calls or success messages, preferrably in a centralized way.
+I should also consider adding a toast notification for failed calls or success messages, preferrably in a centralized way. Added it to the "maybe" list (just thinking it should be a fun integration with `redux-saga`).
+
+Now the only thing left is to add some tests and the MR should be finished.
+
+Also, just realized the `url` property in my products is not needed, since the pages are dynamically created via the `id` prop.
+
+To do tomorrow: finish test, consider adding toastify.

@@ -8,14 +8,12 @@ export const GET_PRODUCT_BY_NAME = gql`
                 name
                 image
                 price
-                url
                 id
             }
             ... on Tablet {
                 name
                 image
                 price
-                url
                 id
             }
         }

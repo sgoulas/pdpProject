@@ -46,4 +46,5 @@ Extra milestones:
   ☐ Define and showcase a Git workflow
   ☐ Consider clsx package for styles class assignemnt
   ☐ Search page to show more search results
+  ☐ Add centralized toast emitter
   ✔ Remove comment about cart component from Search.styles.tsx. @done(21-09-09 01:00)

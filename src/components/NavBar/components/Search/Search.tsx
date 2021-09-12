@@ -13,10 +13,7 @@ import { useDebounce } from '@hooks';
 import useStyles from './Search.styles';
 import { GET_PRODUCT_BY_NAME } from './api';
 
-export type SearchOption = Pick<
-    ApiProduct,
-    'name' | 'image' | 'price' | 'url' | 'id'
->;
+export type SearchOption = Pick<ApiProduct, 'name' | 'image' | 'price' | 'id'>;
 
 const Search: React.FC = () => {
     const MIN_INPUT_LENGTH = 4;
@@ -67,12 +64,15 @@ const Search: React.FC = () => {
             </div>
             <InputBase
                 {...getInputProps()}
-                placeholder="Search…"
+                placeholder="Search..."
                 classes={{
                     root: classes.inputRoot,
                     input: classes.inputInput,
                 }}
-                inputProps={{ 'aria-label': 'search' }}
+                inputProps={{
+                    'aria-label': 'search',
+                    'data-testid': 'search-input',
+                }}
                 autoFocus
             />
             {groupedOptions.length > 0 ? (

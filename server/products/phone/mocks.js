@@ -12,7 +12,6 @@ const createRandomPhone = () => ({
     ratingValue: faker.datatype.number(5),
     reviewCount: faker.datatype.number(100),
     sku: faker.random.alphaNumeric(15),
-    url: faker.internet.url(),
     phoneProp: 'phone',
 });
 
