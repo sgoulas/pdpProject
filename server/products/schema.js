@@ -1,6 +1,7 @@
 const { gql } = require('apollo-server');
 
 const ProductTypeDef = gql`
+    "The union of all product types"
     union Product = Phone | Tablet
 
     extend type Query {

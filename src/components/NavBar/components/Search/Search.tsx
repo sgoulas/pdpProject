@@ -3,9 +3,7 @@ import { useLazyQuery } from '@apollo/client';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import useAutocomplete from '@material-ui/lab/useAutocomplete';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
+import { List, ListItem, ListItemText } from '@components';
 
 import { ApiProduct } from '@api';
 import { useDebounce } from '@hooks';
