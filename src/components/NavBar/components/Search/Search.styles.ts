@@ -49,7 +49,7 @@ const useStyles = makeStyles(
             width: '100%',
             margin: 0,
             padding: 0,
-            // zIndex: 1,
+            zIndex: 1,
             position: 'absolute',
             listStyle: 'none',
             backgroundColor: palette.background.paper,
