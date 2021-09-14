@@ -44,6 +44,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
     //todo smaller card with product image on the left and the rest on the right for mobile view (make this one dynamic)
     //todo check the half rating visual bug
     //todo tests
+    //todo hide description if too long
 
     return (
         <Card className={classes.root} key={id}>
