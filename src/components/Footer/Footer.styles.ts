@@ -1,13 +1,14 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(
-    ({ palette, spacing, breakpoints, typography }) => ({
+    ({ palette, spacing, breakpoints, typography, zIndex }) => ({
         footer: {
             position: 'fixed',
             width: '100%',
             bottom: 0,
             left: 0,
             backgroundColor: palette.background.default,
+            zIndex: zIndex.appBar,
         },
         container: {
             display: 'flex',

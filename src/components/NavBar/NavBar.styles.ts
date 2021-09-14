@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(({ palette, spacing, breakpoints }) => ({
+const useStyles = makeStyles(({ palette, spacing, breakpoints, zIndex }) => ({
     navBar: {
         backgroundColor: palette.background.default,
         position: 'fixed',
@@ -12,6 +12,7 @@ const useStyles = makeStyles(({ palette, spacing, breakpoints }) => ({
         gridTemplateColumns: 'auto auto auto auto', // the last column will be the cart component that will be created in the future
         justifyContent: 'flex-start',
         alignItems: 'center',
+        zIndex: zIndex.appBar,
     },
     siteName: {
         [breakpoints.down('xs')]: {
