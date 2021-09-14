@@ -73,10 +73,7 @@ const Sidemenu: React.FC = () => {
                 {['Smartphones', 'Laptops', 'Tablets', 'Gaming', 'Gadgets'].map(
                     text => (
                         <ListItem button key={text}>
-                            <ListItemText
-                                primary={text}
-                                className={classes.menuItem}
-                            />
+                            <ListItemText primary={text} />
                         </ListItem>
                     )
                 )}
@@ -91,10 +88,7 @@ const Sidemenu: React.FC = () => {
                 {helpAndSettingsList.map(({ text, icon }) => (
                     <ListItem button key={text}>
                         <ListItemIcon>{icon}</ListItemIcon>
-                        <ListItemText
-                            primary={text}
-                            className={classes.menuItem}
-                        />
+                        <ListItemText primary={text} />
                     </ListItem>
                 ))}
             </List>

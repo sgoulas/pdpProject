@@ -11,12 +11,8 @@ const useStyles = makeStyles(
             },
         },
         menuTitle: {
-            color: palette.common.black,
             fontSize: 18,
             fontWeight: typography.fontWeightBold,
-        },
-        menuItem: {
-            color: palette.common.black,
         },
         menuHeader: {
             backgroundColor: palette.background.default,

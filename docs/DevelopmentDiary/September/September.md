@@ -446,3 +446,13 @@ I considered adding `react-toastify` which I had used in the past. The plan woul
 Just for the fun of it, I added a github workflow to run my jest tests when trying to merge a pull request. There is also a repository setting to enforce the pipeline be completed without errors before merging the MR (https://stackoverflow.com/questions/58654530/how-to-reject-a-pull-request-if-tests-are-failed-github-actions) but unfortunately I have to make the repository public, which is something I would like to avoid until I finish the whole thing.
 
 On to my next task: create a "product" card to display various different products and their information in the main page, create the relevant query, display them in the main section of the `Main` page, pay attention to using semantic HTML5 tags (image / figure, section, article, details) and make sure the grid is responsive for all screen sizes. Doing this will basically complete the `Main` page of the application.
+
+## 13 September 2021
+
+Continuing from yesterday, I will mess around in a codebox with material-ui's `<Card />` component (https://material-ui.com/components/cards/). What I have in mind is a fairly simple card: product image, followed by product name, rating (the good old stars of vayring fullness) and price, with the product name being a link to the product details page. I will work with an online image (absolute url of an online resource) then once the component is ready will substitute it with dynamic images. This will be a good time to check next-gen image formats (a valuable SEO metric which also cuts down on user's bandwidth usage) and things like lazy loading (with intersection observer api).
+
+Now, it bears saying that in a full professional environemnt I would consider implementing the card as a purely presentational component and have all its bussiness logic (update rating, add to cart, add to wishlist, add to compare page etc) extracted into a custom hook. Usually an ecommerce site has more than one type of "card". You have the giant "jumbotron" ones, the "normal" ones which you can find in the landing or categories pages, maybe you have some small ones to use your mini-cart or checkout page, there is a certain degree of variation. Extracting the bussiness logic in a custom hook allows the separation between UI and bussiness, thus giving me the freedom to implement different UI representations of the product which all share the same underlying logic.
+
+In my application I will be using the "normal" kind and one more at most for the mini cart, so two in total, so I will be skipping the custom hook approach.
+
+I should also check how to add multiple products to my structured data.

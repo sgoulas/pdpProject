@@ -14,7 +14,6 @@ const palette: PaletteOptions = {
         main: '#ef4565',
     },
     text: {
-        primary: '#146eb4',
         secondary: '#dddddd',
     },
     background: {
