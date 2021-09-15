@@ -472,3 +472,9 @@ and then a comment saying "just use create react app". Ok, but what happens if I
 I styled the product cart for the mobile view (this _is_ a mobile first application after all) and added `next/image` which does come with lazy loading and next gen image format, which is nice. I do wonder though if I need to ditch the `image` property of my product and just use their `id` to dynamically load the corresponding images from my `public` folder.
 
 Next: I have to read about adding structured data for the displayed products to my page's head, decide what to do with the images (also, organize them in sub-directories), style the non-mobile viewport product card and use server's data to populate the card component.
+
+## 15 September 2021
+
+I do fear these back to back entries tend to lose flavour and degrade to "style this, add this call, finish". In any case. I need to finish styling th card (desktop) and add calls.
+
+Regarding the dynamic name of the images, I decided to use the existin `image` prop which is of type `string` and just append it to the path. In an enterprise setting I would have a CMS feeding the app with such things (absolute urls and static content server from another server for example) so no reason to complicate things. So I just need to create 7-8 phones and serve them as mocks.

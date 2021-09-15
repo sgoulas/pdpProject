@@ -53,7 +53,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
                     <Grid item xs={5}>
                         <Box component="div" display="block">
                             <Image
-                                src="/iphone11.png"
+                                src="/images/iphone11.png"
                                 alt={name}
                                 layout="responsive"
                                 width={200}
