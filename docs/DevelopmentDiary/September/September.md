@@ -456,3 +456,19 @@ Now, it bears saying that in a full professional environemnt I would consider im
 In my application I will be using the "normal" kind and one more at most for the mini cart, so two in total, so I will be skipping the custom hook approach.
 
 I should also check how to add multiple products to my structured data.
+
+## 14 September 2021
+
+Not much time to work today, just want to squeeze some work before hitting the bed, mainly go throught the todo comments in my ProductCard component and make sure the final result is nice and clean. This is _the_ most important component of the application.
+
+Working with styling my latest ordeal is trying to import the product image. It is hilarious that the top google result is a stackoverflow question with the accepted answer being
+
+```tsx
+import mainLogo from './logoWhite.png';
+```
+
+and then a comment saying "just use create react app". Ok, but what happens if I want to know how to do it myself?
+
+I styled the product cart for the mobile view (this _is_ a mobile first application after all) and added `next/image` which does come with lazy loading and next gen image format, which is nice. I do wonder though if I need to ditch the `image` property of my product and just use their `id` to dynamically load the corresponding images from my `public` folder.
+
+Next: I have to read about adding structured data for the displayed products to my page's head, decide what to do with the images (also, organize them in sub-directories), style the non-mobile viewport product card and use server's data to populate the card component.

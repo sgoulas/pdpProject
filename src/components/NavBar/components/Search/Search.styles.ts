@@ -1,7 +1,7 @@
 import { makeStyles, alpha } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(
-    ({ palette, spacing, breakpoints, transitions, shape }) => ({
+    ({ palette, spacing, breakpoints, transitions, shape, zIndex }) => ({
         search: {
             position: 'relative',
             borderRadius: shape.borderRadius,
@@ -49,7 +49,7 @@ const useStyles = makeStyles(
             width: '100%',
             margin: 0,
             padding: 0,
-            zIndex: 1,
+            zIndex: zIndex.appBar,
             position: 'absolute',
             listStyle: 'none',
             backgroundColor: palette.background.paper,
@@ -67,7 +67,7 @@ const useStyles = makeStyles(
             },
         },
         searchOption: {
-            color: palette.common.black,
+            color: palette.text.primary,
             textDecoration: 'none',
             fontSize: 18,
         },

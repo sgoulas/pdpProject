@@ -1,11 +1,16 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(({ palette, spacing }) => ({
-    root: {
-        maxWidth: spacing(50),
+const useStyles = makeStyles(({ palette }) => ({
+    description: {
+        display: `-webkit-box`,
+        WebkitLineClamp: 3,
+        boxOrient: 'vertical',
+        overflow: 'hidden',
     },
-    reviewCount: {
-        color: palette.primary.main,
+    cardText: {
+        color: palette.text.primary,
+        textDecoration: 'none',
+        fontSize: 14,
     },
 }));
 

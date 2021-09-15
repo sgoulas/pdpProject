@@ -28,15 +28,18 @@ const Main: React.FC<MainProps> = ({ name }: MainProps) => {
             <h2 style={{ color: 'orange' }}>Hello World!!</h2>
             <h2>{loading ? 'loading' : 'finished loading'}</h2>
             <h2>{error ? `error: ${error.message}` : 'no errors'}</h2>
-            <ProductCard
-                id="id"
-                name="Scepter"
-                ratingValue={3.5}
-                reviewCount={6}
-                price={340}
-                availability={17}
-                description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident,"
-            />
+            <section>
+                <ProductCard
+                    id="id"
+                    name="iPhone"
+                    ratingValue={3.5}
+                    reviewCount={6}
+                    price={340}
+                    availability={17}
+                    description="superior product design, easy to open, free shipment, batteries included, please buy it"
+                />
+            </section>
+
             <Typography variant="body1" color="textPrimary">
                 server message: {data ? data.info : 'loading'}
             </Typography>

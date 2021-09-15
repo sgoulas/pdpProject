@@ -1,10 +1,10 @@
 import React from 'react';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
+import Image from 'next/image';
+import Link from 'next/link';
 
 import { Typography } from '@components';
 
@@ -29,6 +29,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
     price,
     availability,
     description,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     image,
 }: ProductCardProps) => {
     const classes = useStyles();
@@ -37,68 +38,71 @@ const ProductCard: React.FC<ProductCardProps> = ({
     //https://material-ui.com/system/display/
     //https://material-ui.com/components/cards/
     //todo structured data here or at main page for each product
-    //todo semantic HTML5 tags (image / figure, section, article, details)
-    //todo name as next link
-    //todo next gen image format
-    //todo lazy loading
-    //todo smaller card with product image on the left and the rest on the right for mobile view (make this one dynamic)
-    //todo check the half rating visual bug
     //todo tests
-    //todo hide description if too long
 
     return (
-        <Card className={classes.root} key={id}>
-            <CardActionArea>
-                <CardMedia
-                    component="img"
-                    alt={name}
-                    height="140"
-                    image={
-                        image ??
-                        'https://m.media-amazon.com/images/I/51Q2-EXm7RS._AC_UL320_.jpg'
-                    }
-                    title={name}
-                />
-                <CardContent>
-                    <Typography variant="body1" component="p">
-                        {`${name} ${description}`}
-                    </Typography>
-                    <Box
-                        component="fieldset"
-                        borderColor="transparent"
-                        display="flex"
-                    >
-                        <Box p={1} bgcolor="grey.300">
-                            <Rating
-                                name="rating"
-                                value={ratingValue}
-                                readOnly
-                                precision={0.5}
-                                size="small"
+        <article>
+            <Card key={id}>
+                <Grid
+                    container
+                    direction="row"
+                    justifyContent="center"
+                    alignItems="center"
+                    spacing={2}
+                >
+                    <Grid item xs={5}>
+                        <Box component="div" display="block">
+                            <Image
+                                src="/iphone11.png"
+                                alt={name}
+                                layout="responsive"
+                                width={200}
+                                height={200}
                             />
                         </Box>
-                        <Box p={1} bgcolor="grey.300">
-                            <Typography
-                                component="legend"
-                                className={classes.reviewCount}
-                            >
-                                {reviewCount}
-                            </Typography>
+                    </Grid>
+                    <Grid item xs={7}>
+                        <Box component="div">
+                            <Link href={`/product/${encodeURIComponent(id)}`}>
+                                <a className={classes.cardText}>
+                                    {`${name} ${description}`}
+                                </a>
+                            </Link>
                         </Box>
-                    </Box>
-                    <Typography variant="h5" component="h2">
-                        {price}
-                    </Typography>
-                    <Typography
-                        variant="body2"
-                        color="textSecondary"
-                        component="p"
-                    >
-                        {availability ? 'in stock' : 'out of stock'}
-                    </Typography>
-                </CardContent>
-            </CardActionArea>
-        </Card>
+                        <Box display="flex">
+                            <Box>
+                                <Rating
+                                    name="rating"
+                                    value={ratingValue}
+                                    readOnly
+                                    precision={0.5}
+                                    size="small"
+                                />
+                            </Box>
+                            <Box>
+                                <Typography
+                                    component="legend"
+                                    variant="body2"
+                                    color="primary"
+                                >
+                                    {reviewCount}
+                                </Typography>
+                            </Box>
+                        </Box>
+                        <Typography variant="body1" component="span">
+                            {price}€
+                        </Typography>
+                        <Typography
+                            variant="body2"
+                            color={availability ? 'primary' : 'error'}
+                            component="p"
+                        >
+                            {availability ? 'in stock' : 'out of stock'}
+                        </Typography>
+                    </Grid>
+                </Grid>
+            </Card>
+        </article>
     );
 };
 
