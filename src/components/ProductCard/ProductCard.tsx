@@ -29,7 +29,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
     price,
     availability,
     description,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     image,
 }: ProductCardProps) => {
     const classes = useStyles();
@@ -41,8 +40,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
     //todo tests
 
     return (
-        <article>
-            <Card key={id}>
+        <article className={classes.cardContainer}>
+            <Card key={id} className={classes.cardRoot}>
                 <Grid
                     container
                     direction="row"
@@ -53,7 +52,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
                     <Grid item xs={5}>
                         <Box component="div" display="block">
                             <Image
-                                src="/images/iphone11.png"
+                                src={`/images/${image}`}
                                 alt={name}
                                 layout="responsive"
                                 width={200}
@@ -64,7 +63,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
                     <Grid item xs={7}>
                         <Box component="div">
                             <Link href={`/product/${encodeURIComponent(id)}`}>
-                                <a className={classes.cardText}>
+                                <a className={classes.description}>
                                     {`${name} ${description}`}
                                 </a>
                             </Link>
@@ -89,16 +88,23 @@ const ProductCard: React.FC<ProductCardProps> = ({
                                 </Typography>
                             </Box>
                         </Box>
-                        <Typography variant="body1" component="span">
-                            {price}€
-                        </Typography>
-                        <Typography
-                            variant="body2"
-                            color={availability ? 'primary' : 'error'}
-                            component="p"
+                        <Box
+                            display="flex"
+                            flexDirection="row"
+                            justifyContent="flex-start"
                         >
-                            {availability ? 'in stock' : 'out of stock'}
-                        </Typography>
+                            <Typography variant="body1" component="span">
+                                {price}€
+                            </Typography>
+                            <Typography
+                                variant="body2"
+                                color={availability ? 'primary' : 'error'}
+                                component="span"
+                                className={classes.availability}
+                            >
+                                {availability ? 'in stock' : 'out of stock'}
+                            </Typography>
+                        </Box>
                     </Grid>
                 </Grid>
             </Card>

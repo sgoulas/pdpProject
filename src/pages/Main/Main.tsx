@@ -1,20 +1,51 @@
 import React, { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
-import { Head } from './components';
 
+import { ApiPhone } from '@api';
 import { useAppDispatch } from '@hooks';
 import { setRunningAction } from '@store/actions';
 import { Typography, ProductCard } from '@components';
 
-import { GET_SERVER_INFO } from './api';
+import { GET_SERVER_INFO, GET_FRONT_PAGE_PHONES } from './api';
+import { Head } from './components';
+import useStyles from './Main.styles';
 
 export interface MainProps {
     name?: string;
 }
 
+export type Phone = Pick<
+    ApiPhone,
+    | 'id'
+    | 'name'
+    | 'ratingValue'
+    | 'reviewCount'
+    | 'price'
+    | 'availability'
+    | 'description'
+    | 'image'
+>;
+
+export interface PhoneData {
+    results: Phone[];
+}
+
 const Main: React.FC<MainProps> = ({ name }: MainProps) => {
+    const classes = useStyles();
     const dispatch = useAppDispatch();
-    const { loading, error, data } = useQuery(GET_SERVER_INFO);
+    const {
+        loading: serverInfoLoading,
+        error: serverInfoError,
+        data: serverInfoResult,
+    } = useQuery(GET_SERVER_INFO);
+
+    const {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        loading: getPhonesLoading,
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        error: getPhonesError,
+        data: phones,
+    } = useQuery<PhoneData>(GET_FRONT_PAGE_PHONES);
 
     useEffect(() => {
         dispatch(setRunningAction({ running: true }));
@@ -26,22 +57,32 @@ const Main: React.FC<MainProps> = ({ name }: MainProps) => {
             <Typography variant="h5">PDP project</Typography>
             <h2>{name ?? 'name'}</h2>
             <h2 style={{ color: 'orange' }}>Hello World!!</h2>
-            <h2>{loading ? 'loading' : 'finished loading'}</h2>
-            <h2>{error ? `error: ${error.message}` : 'no errors'}</h2>
-            <section>
-                <ProductCard
-                    id="id"
-                    name="iPhone"
-                    ratingValue={3.5}
-                    reviewCount={6}
-                    price={340}
-                    availability={17}
-                    description="superior product design, easy to open, free shipment, batteries included, please buy it"
-                />
+            <h2>{serverInfoLoading ? 'loading' : 'finished loading'}</h2>
+            <h2>
+                {serverInfoError
+                    ? `error: ${serverInfoError.message}`
+                    : 'no errors'}
+            </h2>
+            <section className={classes.phonesContainer}>
+                {phones &&
+                    phones.results.map(phone => (
+                        <ProductCard
+                            key={phone.id}
+                            id={phone.id}
+                            name={phone.name}
+                            ratingValue={phone.ratingValue ?? 0}
+                            reviewCount={phone.reviewCount ?? 0}
+                            price={phone.price}
+                            availability={phone.availability}
+                            description={phone.description}
+                            image={phone.image}
+                        />
+                    ))}
             </section>
 
             <Typography variant="body1" color="textPrimary">
-                server message: {data ? data.info : 'loading'}
+                server message:
+                {serverInfoResult ? serverInfoResult.info : 'loading'}
             </Typography>
         </>
     );

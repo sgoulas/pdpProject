@@ -475,6 +475,14 @@ Next: I have to read about adding structured data for the displayed products to 
 
 ## 15 September 2021
 
-I do fear these back to back entries tend to lose flavour and degrade to "style this, add this call, finish". In any case. I need to finish styling th card (desktop) and add calls.
+I do fear these back to back entries tend to lose flavour and degrade to "style this, add this call, finish". In any case. I need to finish styling the card (desktop) and add calls.
 
-Regarding the dynamic name of the images, I decided to use the existin `image` prop which is of type `string` and just append it to the path. In an enterprise setting I would have a CMS feeding the app with such things (absolute urls and static content server from another server for example) so no reason to complicate things. So I just need to create 7-8 phones and serve them as mocks.
+Regarding the dynamic name of the images, I decided to use the existin `image` prop which is of type `string` and just append it to the path. In an enterprise setting I would have a CMS feeding the app with such things (absolute urls for the images and then serve them from another content server for example) so no reason to complicate things. So I just need to create 7-8 phones and serve them as mocks.
+
+Added hardcoded phones, placed them in a flexbox. My current problem is varying card height due to different text heights, even though I previously added css to truncate it if too long.
+
+Or did I? I can see the css code but it seems I did not add the class to my JSX? This is weird.
+
+I re-added the class and now my product cards are consistent.
+
+Next: Handle "error" and "loading" states for main page (at least, not sure about search bar, this is a nice time for use material-ui's `<Alert />` component), check structured data about the products, write some header text for the section and test markup with the tools I mentioned earlier. Then style for desktop and repeat the checks.
