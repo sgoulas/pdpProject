@@ -64,6 +64,13 @@ const Main: React.FC<MainProps> = ({ name }: MainProps) => {
                     : 'no errors'}
             </h2>
             <section className={classes.phonesContainer}>
+                <Typography
+                    variant="h6"
+                    component="h2"
+                    className={classes.topSellingPhonesText}
+                >
+                    Top selling smartphones
+                </Typography>
                 {phones &&
                     phones.results.map(phone => (
                         <ProductCard
