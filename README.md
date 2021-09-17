@@ -8,7 +8,7 @@ One of the major aims of this project is to set up the toolchain from the scratc
 
 -   React 18
 -   Material-UI
--   Redux, redux-saga.
+-   Redux, redux-saga, redux toolkit
 -   Webpack 5
 -   Babel
 -   Typescript
