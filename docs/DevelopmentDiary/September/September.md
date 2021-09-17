@@ -485,4 +485,4 @@ Or did I? I can see the css code but it seems I did not add the class to my JSX?
 
 I re-added the class and now my product cards are consistent.
 
-Next: Handle "error" and "loading" states for main page (at least, not sure about search bar, this is a nice time for use material-ui's `<Alert />` component), check structured data about the products, write some header text for the section and test markup with the tools I mentioned earlier. Then style for desktop and repeat the checks.
+Next: Handle "error" and "loading" states for main page (at least, not sure about search bar, this is a nice opportunity to use material-ui's `<Alert />` component), check structured data about the products, write some header text for the section and test markup with the tools I mentioned earlier. Then style for desktop and repeat the checks.
