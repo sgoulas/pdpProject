@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
+import Alert from '@material-ui/lab/Alert';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Grid from '@material-ui/core/Grid';
 
 import { ApiPhone } from '@api';
 import { useAppDispatch } from '@hooks';
@@ -40,9 +43,7 @@ const Main: React.FC<MainProps> = ({ name }: MainProps) => {
     } = useQuery(GET_SERVER_INFO);
 
     const {
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         loading: getPhonesLoading,
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         error: getPhonesError,
         data: phones,
     } = useQuery<PhoneData>(GET_FRONT_PAGE_PHONES);
@@ -63,28 +64,48 @@ const Main: React.FC<MainProps> = ({ name }: MainProps) => {
                     ? `error: ${serverInfoError.message}`
                     : 'no errors'}
             </h2>
-            <section className={classes.phonesContainer}>
-                <Typography
-                    variant="h6"
-                    component="h2"
-                    className={classes.topSellingPhonesText}
+            {getPhonesError && (
+                <Alert severity="error">
+                    Error fetching top selling phones
+                </Alert>
+            )}
+            {getPhonesLoading && (
+                <Grid
+                    container
+                    direction="row"
+                    justifyContent="center"
+                    alignItems="center"
+                    spacing={2}
                 >
-                    Top selling smartphones
-                </Typography>
-                {phones &&
-                    phones.results.map(phone => (
-                        <ProductCard
-                            key={phone.id}
-                            id={phone.id}
-                            name={phone.name}
-                            ratingValue={phone.ratingValue ?? 0}
-                            reviewCount={phone.reviewCount ?? 0}
-                            price={phone.price}
-                            availability={phone.availability}
-                            description={phone.description}
-                            image={phone.image}
-                        />
-                    ))}
+                    <CircularProgress disableShrink />
+                </Grid>
+            )}
+            <section className={classes.phonesContainer}>
+                {phones && (
+                    <>
+                        <Typography
+                            variant="h6"
+                            component="h2"
+                            className={classes.topSellingPhonesText}
+                        >
+                            Top selling smartphones
+                        </Typography>
+                        {phones.results.map(phone => (
+                            <ProductCard
+                                key={phone.id}
+                                id={phone.id}
+                                name={phone.name}
+                                ratingValue={phone.ratingValue ?? 0}
+                                reviewCount={phone.reviewCount ?? 0}
+                                price={phone.price}
+                                availability={phone.availability}
+                                description={phone.description}
+                                image={phone.image}
+                            />
+                        ))}
+                        )
+                    </>
+                )}
             </section>
 
             <Typography variant="body1" color="textPrimary">
