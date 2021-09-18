@@ -33,9 +33,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
 }: ProductCardProps) => {
     const classes = useStyles();
 
-    //https://material-ui.com/system/flexbox/
-    //https://material-ui.com/system/display/
-    //https://material-ui.com/components/cards/
     //todo structured data here or at main page for each product
     //todo tests
 

@@ -489,4 +489,8 @@ Next: Handle "error" and "loading" states for main page (at least, not sure abou
 
 ## 18 September 2021
 
-Picking up from where I left.
+Picking up from where I left, I added handlers for the `loading` and `error` states of my "phones" landing page call and a loading spinner. I contemplated extracting the spinner in a seperate component that also uses grid to place the spinner at the center, but in the future I may need to add the spinner in places where being centered is not the correct decision.
+
+Now, I need to add structured data for my front page products. After a bit of searching `ProdudctCollection` (https://schema.org/ProductCollection) seems the most reasonable choice. This structure should be part of the pre-rendered html, so that means that fetching them via the hooks exposed by Apollo is a mistake. Since the current scenario is a page that needs to be generally static, but with dynamic content it's the text book case for using `getStaticProps` (https://nextjs.org/docs/basic-features/pages).
+
+Having huuuuge trouble getting `getStaticProps` to work with `apollo`. Going through the documentation I can find some examples with big chunks of code but no sufficient explanation what purpose the code serves. Also, I think it is a more complex topic than I initially anticipated that may require multiple changes and additions (the examples I see use deep merge functions from third party libraries) so I should probably work in a new branch so that I can go wild with changes and wip commits.
