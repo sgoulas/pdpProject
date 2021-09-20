@@ -1,15 +1,13 @@
 import React, { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import Alert from '@material-ui/lab/Alert';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Grid from '@material-ui/core/Grid';
 
 import { ApiPhone } from '@api';
 import { useAppDispatch } from '@hooks';
 import { setRunningAction } from '@store/actions';
 import { Typography, ProductCard } from '@components';
 
-import { GET_SERVER_INFO, GET_FRONT_PAGE_PHONES } from './api';
+import { GET_SERVER_INFO } from './api';
 import { Head } from './components';
 import useStyles from './Main.styles';
 
@@ -42,16 +40,8 @@ const Main: React.FC<MainProps> = ({ frontPagePhones }: MainProps) => {
         data: serverInfoResult,
     } = useQuery(GET_SERVER_INFO);
 
-    const {
-        loading: getPhonesLoading,
-        error: getPhonesError,
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        data: phones,
-    } = useQuery<PhoneData>(GET_FRONT_PAGE_PHONES);
-
     useEffect(() => {
         dispatch(setRunningAction({ running: true }));
-        console.log('data: ', frontPagePhones);
     }, []);
 
     return (
@@ -66,21 +56,10 @@ const Main: React.FC<MainProps> = ({ frontPagePhones }: MainProps) => {
                     ? `error: ${serverInfoError.message}`
                     : 'no errors'}
             </h2>
-            {getPhonesError && (
+            {!frontPagePhones && (
                 <Alert severity="error">
                     Error fetching top selling phones
                 </Alert>
-            )}
-            {getPhonesLoading && (
-                <Grid
-                    container
-                    direction="row"
-                    justifyContent="center"
-                    alignItems="center"
-                    spacing={2}
-                >
-                    <CircularProgress disableShrink />
-                </Grid>
             )}
             <section className={classes.phonesContainer}>
                 {frontPagePhones && (
