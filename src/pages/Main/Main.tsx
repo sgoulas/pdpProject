@@ -34,27 +34,30 @@ export interface MainProps {
 const Main: React.FC<MainProps> = ({ frontPagePhones }: MainProps) => {
     const classes = useStyles();
     const dispatch = useAppDispatch();
-    const {
-        loading: serverInfoLoading,
-        error: serverInfoError,
-        data: serverInfoResult,
-    } = useQuery(GET_SERVER_INFO);
+    const { error: serverInfoError, data: serverInfoResult } =
+        useQuery(GET_SERVER_INFO);
 
     useEffect(() => {
         dispatch(setRunningAction({ running: true }));
     }, []);
 
+    const message = serverInfoResult ? serverInfoResult.info : 'loading';
+
     return (
         <>
             <Head productCollectionSize={frontPagePhones.results.length} />
-            <Typography variant="h5">PDP project</Typography>
-            <h2 style={{ color: 'orange' }}>Hello World!!</h2>
-            <h2>{serverInfoLoading ? 'loading' : 'finished loading'}</h2>
-            <h2>
-                {serverInfoError
-                    ? `error: ${serverInfoError.message}`
-                    : 'no errors'}
-            </h2>
+            <Typography variant="body1" color="textPrimary" noWrap>
+                {message}
+            </Typography>
+            <div>
+                {serverInfoError && (
+                    <Alert severity="error">
+                        <Typography variant="body1" color="textPrimary">
+                            {serverInfoError.message}
+                        </Typography>
+                    </Alert>
+                )}
+            </div>
             {!frontPagePhones && (
                 <Alert severity="error">
                     Error fetching top selling phones
@@ -86,11 +89,6 @@ const Main: React.FC<MainProps> = ({ frontPagePhones }: MainProps) => {
                     </>
                 )}
             </section>
-
-            <Typography variant="body1" color="textPrimary">
-                server message:
-                {serverInfoResult ? serverInfoResult.info : 'loading'}
-            </Typography>
         </>
     );
 };

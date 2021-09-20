@@ -33,7 +33,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
 }: ProductCardProps) => {
     const classes = useStyles();
 
-    //todo structured data here or at main page for each product
     //todo tests
 
     return (

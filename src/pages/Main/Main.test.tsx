@@ -12,7 +12,7 @@ import { GET_SERVER_INFO } from './api';
 
 describe('Main page suite', () => {
     const defaultProps: MainProps = {
-        name: 'mock name',
+        frontPagePhones: { results: [] },
     };
 
     const mockServerMessage = 'mock server message';
@@ -40,34 +40,23 @@ describe('Main page suite', () => {
         },
     ];
 
-    it('renders hello world message', () => {
-        const { getByText } = renderWithProviders(
-            withApolloMocks(GQL_MOCKS)(<Main {...defaultProps} />)
-        );
-        const expectedText = 'Hello World!!';
-
-        expect(getByText(expectedText)).toBeInTheDocument();
-    });
-
     it('fetches and displays the server information message', async () => {
-        const expected = `server message: ${mockServerMessage}`;
+        const expected = mockServerMessage;
         const { getByText } = renderWithProviders(
             withApolloMocks(GQL_MOCKS)(<Main {...defaultProps} />)
         );
 
         expect(getByText('loading')).toBeInTheDocument();
         await waitFor(() => expect(getByText(expected)).toBeInTheDocument());
-        expect(getByText('finished loading')).toBeInTheDocument();
     });
 
     it('displays the error message if it encounters an error while fetching the server information message', async () => {
-        const expected = `error: ${mockServerErrorMessage}`;
+        const expected = mockServerErrorMessage;
         const { getByText } = renderWithProviders(
             withApolloMocks(GQL_MOCKS_ERROR)(<Main {...defaultProps} />)
         );
 
         expect(getByText('loading')).toBeInTheDocument();
         await waitFor(() => expect(getByText(expected)).toBeInTheDocument());
-        expect(getByText('finished loading')).toBeInTheDocument();
     });
 });

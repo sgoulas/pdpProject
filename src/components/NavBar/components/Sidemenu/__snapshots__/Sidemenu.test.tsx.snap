@@ -28,7 +28,7 @@ exports[`Sidemenu component matches snapshot 1`] = `
     />
   </button>
   <div
-    class="PrivateSwipeArea-root-6 PrivateSwipeArea-anchorLeft-7"
+    class="PrivateSwipeArea-root-5 PrivateSwipeArea-anchorLeft-6"
     style="width: 20px;"
   />
 </div>
