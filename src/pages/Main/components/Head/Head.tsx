@@ -2,9 +2,15 @@ import React from 'react';
 import NextHead from 'next/head';
 
 import { SITE_NAME, SITE_URL, SITE_IMAGE_URL } from '@core';
-import { StructuredDataScript } from './components';
+import { ProductCollection as ProductCollectionStructuredData } from '@components';
 
-const Head: React.FC = () => (
+import { LocalBusiness as LocalBusinessStructuredData } from './components';
+
+interface HeadProps {
+    productCollectionSize: number;
+}
+
+const Head: React.FC<HeadProps> = ({ productCollectionSize }: HeadProps) => (
     <NextHead>
         <title>{SITE_NAME}</title>
         <meta
@@ -46,7 +52,8 @@ const Head: React.FC = () => (
             property="og:image:alt"
             content={`${SITE_NAME} ecommerce site logo`}
         />
-        <StructuredDataScript />
+        <LocalBusinessStructuredData />
+        <ProductCollectionStructuredData size={productCollectionSize} />
     </NextHead>
 );
 

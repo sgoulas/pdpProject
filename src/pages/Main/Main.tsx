@@ -46,10 +46,9 @@ const Main: React.FC<MainProps> = ({ frontPagePhones }: MainProps) => {
 
     return (
         <>
-            <Head />
+            <Head productCollectionSize={frontPagePhones.results.length} />
             <Typography variant="h5">PDP project</Typography>
             <h2 style={{ color: 'orange' }}>Hello World!!</h2>
-            {/* <h2>value: {data}</h2> */}
             <h2>{serverInfoLoading ? 'loading' : 'finished loading'}</h2>
             <h2>
                 {serverInfoError

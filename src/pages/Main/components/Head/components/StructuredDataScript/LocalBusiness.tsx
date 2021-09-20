@@ -2,7 +2,7 @@ import React from 'react';
 
 import { GIT_REPO_URL, SITE_IMAGE_URL, SITE_NAME, SITE_URL } from '@core';
 
-const StructuredDataScript: React.FC = () => {
+const LocalBusiness: React.FC = () => {
     const JSON_LD = {
         '@context': 'http://schema.org',
         '@type': 'LocalBusiness',
@@ -32,4 +32,4 @@ const StructuredDataScript: React.FC = () => {
     );
 };
 
-export default StructuredDataScript;
+export default LocalBusiness;

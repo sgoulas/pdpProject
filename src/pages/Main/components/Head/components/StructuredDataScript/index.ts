@@ -1,1 +1,1 @@
-export { default as StructuredDataScript } from './StructuredDataScript';
+export { default as LocalBusiness } from './LocalBusiness';
