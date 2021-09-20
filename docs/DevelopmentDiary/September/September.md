@@ -508,3 +508,11 @@ export const getStaticProps = async () => {
 But it doesn't.
 
 I am expecting an empty array but I still get `undefined`. This indicates a configuration error on my part somewhere in the app. There is a good chance this error is at `_app.tsx`. Will have to check.
+
+## 19 September 2021
+
+Tried getting `getStaticProps` to work with no success.
+
+## 20 September 2021
+
+Tried getting `getStaticProps` to work with no success. At this point I have read many different stack overflow posts, medium articles and the official `NextJS` documentation. I still believe I am missing something elementary and that there is a good chance it lies in `_app.tsx`. Created a stack overflow question to get some help which can be found here: https://stackoverflow.com/questions/69248001/nextjs-getstaticprops-is-not-getting-called.
