@@ -4,20 +4,26 @@ import { SITE_URL } from '@core';
 
 interface ProductCollectionProps {
     size: number;
+    headline: string;
+    keywords: string;
+    description: string;
 }
 
 const ProductCollection: React.FC<ProductCollectionProps> = ({
     size,
+    headline,
+    keywords,
+    description,
 }: ProductCollectionProps) => {
     const JSON_LD = {
         '@context': 'http://schema.org',
         '@type': 'ProductCollection',
         size,
-        headline: 'Top selling smartphones',
-        keywords: 'top-selling, mobile, smartphones, technology',
+        headline,
+        keywords,
         mainEntityOfPage: SITE_URL,
         url: SITE_URL,
-        description: 'The current top selling mobile smartphones',
+        description,
     };
 
     return (

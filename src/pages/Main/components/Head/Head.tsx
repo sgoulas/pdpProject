@@ -53,7 +53,12 @@ const Head: React.FC<HeadProps> = ({ productCollectionSize }: HeadProps) => (
             content={`${SITE_NAME} ecommerce site logo`}
         />
         <LocalBusinessStructuredData />
-        <ProductCollectionStructuredData size={productCollectionSize} />
+        <ProductCollectionStructuredData
+            size={productCollectionSize}
+            headline={'Top selling smartphones'}
+            keywords={'top-selling, mobile, smartphones, technology'}
+            description={'The current top selling mobile smartphones'}
+        />
     </NextHead>
 );
 
