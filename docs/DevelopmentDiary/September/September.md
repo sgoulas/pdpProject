@@ -516,3 +516,41 @@ Tried getting `getStaticProps` to work with no success.
 ## 20 September 2021
 
 Tried getting `getStaticProps` to work with no success. At this point I have read many different stack overflow posts, medium articles and the official `NextJS` documentation. I still believe I am missing something elementary and that there is a good chance it lies in `_app.tsx`. Created a stack overflow question to get some help which can be found here: https://stackoverflow.com/questions/69248001/nextjs-getstaticprops-is-not-getting-called.
+
+## 21 September 2021
+
+I was able to solve my issue. The culprit was my `index.ts` file. `NextJS` searches for the `getStaticProps` function in `pages`, that is files with the `js,jsx,tsx` extentions under `pages` directory. My `index.ts` file was exporting my `Main.tsx` component as it was, meaning `export { default } from './Main'`. I assumed the "new" page was the `Main.tsx` component, but the actual pages was the `index.ts` file all along, meaning the `Main.tsx` was considered a component of the page and not the page itself. `NextJS` was searching for `getStaticProps` in my `index.ts` file (which did not declare it) and was ignoring the one declared inside `Main.tsx`.
+
+I changed `index.ts` to `index.tsx` and made it so it immediately renders the `<Main />` component
+
+```tsx
+import React from 'react';
+import { GetStaticProps } from 'next';
+
+import { client } from '@api';
+
+import Main, { MainProps } from './Main';
+import { GET_FRONT_PAGE_PHONES } from './Main/api';
+
+const Index: React.FC<MainProps> = (props: MainProps) => <Main {...props} />;
+
+export const getStaticProps: GetStaticProps = async () => {
+    const { data: frontPagePhones } = await client.query({
+        query: GET_FRONT_PAGE_PHONES,
+    });
+
+    return {
+        props: {
+            frontPagePhones,
+        },
+    };
+};
+
+export default Index;
+```
+
+and it worked.
+
+This was also mentioned in a comment in my stack overflow question where a user asked if I was really declaring the function inside a page and not inside a component. I created a temporary page in a `Temp.tsx` file that I placed immediately under `pages` directory and inside it `getStaticProps` was working correctly. When I added it as an export inside `pages/index.ts` I a `NextJS` error that it was a component and not a page and this lead me back to the `NextJS` documentation where it was stated that for the landing page the `index` file was considered _the_ page, so everything inside it was but a component.
+
+This does mean that for every `page` that is somewhat complex and requires sub-directories I will have to create an `index` file to render the "actual main" page component. This did make me worry that if an error occurs in the future I will not be able to identify which of the "index" files caused it, but then again, the fact that only the "pages" main files will be named as such _and_ contain code means that at any given point in time only a single "index" file with code will be loaded, the one corresponding to the current page, so this should solve the aforementioned problem.

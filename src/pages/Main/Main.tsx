@@ -13,10 +13,6 @@ import { GET_SERVER_INFO, GET_FRONT_PAGE_PHONES } from './api';
 import { Head } from './components';
 import useStyles from './Main.styles';
 
-export interface MainProps {
-    name?: string;
-}
-
 export type Phone = Pick<
     ApiPhone,
     | 'id'
@@ -33,7 +29,11 @@ export interface PhoneData {
     results: Phone[];
 }
 
-const Main: React.FC<MainProps> = ({ name }: MainProps) => {
+export interface MainProps {
+    frontPagePhones: PhoneData;
+}
+
+const Main: React.FC<MainProps> = ({ frontPagePhones }: MainProps) => {
     const classes = useStyles();
     const dispatch = useAppDispatch();
     const {
@@ -45,19 +45,21 @@ const Main: React.FC<MainProps> = ({ name }: MainProps) => {
     const {
         loading: getPhonesLoading,
         error: getPhonesError,
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         data: phones,
     } = useQuery<PhoneData>(GET_FRONT_PAGE_PHONES);
 
     useEffect(() => {
         dispatch(setRunningAction({ running: true }));
+        console.log('data: ', frontPagePhones);
     }, []);
 
     return (
         <>
             <Head />
             <Typography variant="h5">PDP project</Typography>
-            <h2>{name ?? 'name'}</h2>
             <h2 style={{ color: 'orange' }}>Hello World!!</h2>
+            {/* <h2>value: {data}</h2> */}
             <h2>{serverInfoLoading ? 'loading' : 'finished loading'}</h2>
             <h2>
                 {serverInfoError
@@ -81,7 +83,7 @@ const Main: React.FC<MainProps> = ({ name }: MainProps) => {
                 </Grid>
             )}
             <section className={classes.phonesContainer}>
-                {phones && (
+                {frontPagePhones && (
                     <>
                         <Typography
                             variant="h6"
@@ -90,7 +92,7 @@ const Main: React.FC<MainProps> = ({ name }: MainProps) => {
                         >
                             Top selling smartphones
                         </Typography>
-                        {phones.results.map(phone => (
+                        {frontPagePhones.results.map(phone => (
                             <ProductCard
                                 key={phone.id}
                                 id={phone.id}
@@ -103,7 +105,6 @@ const Main: React.FC<MainProps> = ({ name }: MainProps) => {
                                 image={phone.image}
                             />
                         ))}
-                        )
                     </>
                 )}
             </section>
