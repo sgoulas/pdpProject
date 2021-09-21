@@ -619,3 +619,15 @@ Two notes:
 I extracted the new component into its own directory under the project widh `components` directory, with the assumption that it is general enough to be considered as the one to use everywhere.
 
 So as I said earlier: Now I need to style the desktop version of the product cards, maybe add a jumbotron of such sorts above them and I am ready to move to the product details page.
+
+## 22 September 2021
+
+I added a new prop `imageFallback` to the `ProductCard` component to make it more generic (previously I hardcoded the fall back image src inside it).
+
+Started working on the desktop style of the product cards, what's left is to make the images a bit smaller for bigger screens and investigate why my `<main />` has a max width even on large screens.
+
+[5 mins later]
+
+It was caused by the `material-ui` container component I was using in a wrong way. It had a "maxWidth" prop that by default was set to "lg" but what I actually needed was to set it to false explicitly to make the container fluid.
+
+So far in the project quite a few hiccups can be boiled down to "make sure you read the documentation and understand exactly what it is that you are using".

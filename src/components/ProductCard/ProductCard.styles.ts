@@ -1,15 +1,22 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(({ palette, spacing }) => ({
+const useStyles = makeStyles(({ palette, spacing, breakpoints }) => ({
     cardContainer: {
-        padding: spacing(0.25),
+        [breakpoints.down('md')]: {
+            padding: spacing(0.25),
+        },
+        padding: spacing(2),
     },
     cardRoot: {
-        width: spacing(40),
-        margin: spacing(0.25),
-        padding: spacing(1),
+        width: spacing(60),
+        [breakpoints.down('md')]: {
+            width: spacing(40),
+            margin: spacing(0.25),
+            padding: spacing(1),
+        },
     },
     description: {
+        height: spacing(5),
         color: palette.text.primary,
         textDecoration: 'none',
         fontSize: 14,
@@ -17,7 +24,9 @@ const useStyles = makeStyles(({ palette, spacing }) => ({
         WebkitLineClamp: 3,
         boxOrient: 'vertical',
         overflow: 'hidden',
-        maxHeight: '150px',
+        [breakpoints.down('md')]: {
+            maxHeight: '150px',
+        },
     },
     availability: {
         marginLeft: spacing(1),

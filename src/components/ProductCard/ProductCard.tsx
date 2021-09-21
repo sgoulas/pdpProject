@@ -44,7 +44,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
                     alignItems="center"
                     spacing={2}
                 >
-                    <Grid item xs={5}>
+                    <Grid item xs={5} md={12}>
                         <Box component="div" display="block">
                             <ImageWithFallback
                                 src={image ?? ''}
@@ -55,50 +55,56 @@ const ProductCard: React.FC<ProductCardProps> = ({
                             />
                         </Box>
                     </Grid>
-                    <Grid item xs={7}>
-                        <Box component="div">
-                            <Link href={`/product/${encodeURIComponent(id)}`}>
-                                <a className={classes.description}>
-                                    {`${name} ${description}`}
-                                </a>
-                            </Link>
-                        </Box>
-                        <Box display="flex">
-                            <Box>
-                                <Rating
-                                    name="rating"
-                                    value={ratingValue}
-                                    readOnly
-                                    precision={0.5}
-                                    size="small"
-                                />
-                            </Box>
-                            <Box>
-                                <Typography
-                                    component="legend"
-                                    variant="body2"
-                                    color="primary"
+                    <Grid item xs={7} md={12}>
+                        {/* outer */}
+                        <Box px={1}>
+                            <Box component="div">
+                                <Link
+                                    href={`/product/${encodeURIComponent(id)}`}
                                 >
-                                    {reviewCount}
+                                    <a className={classes.description}>
+                                        {`${name} ${description}`}
+                                    </a>
+                                </Link>
+                            </Box>
+                            <Box display="flex">
+                                <Box>
+                                    <Rating
+                                        name="rating"
+                                        value={ratingValue}
+                                        readOnly
+                                        precision={0.5}
+                                        size="small"
+                                    />
+                                </Box>
+                                <Box>
+                                    <Typography
+                                        component="legend"
+                                        variant="body2"
+                                        color="primary"
+                                    >
+                                        {reviewCount}
+                                    </Typography>
+                                </Box>
+                            </Box>
+                            <Box
+                                display="flex"
+                                flexDirection="row"
+                                justifyContent="flex-start"
+                                mb={2}
+                            >
+                                <Typography variant="body1" component="span">
+                                    {price}€
+                                </Typography>
+                                <Typography
+                                    variant="body2"
+                                    color={availability ? 'primary' : 'error'}
+                                    component="span"
+                                    className={classes.availability}
+                                >
+                                    {availability ? 'in stock' : 'out of stock'}
                                 </Typography>
                             </Box>
-                        </Box>
-                        <Box
-                            display="flex"
-                            flexDirection="row"
-                            justifyContent="flex-start"
-                        >
-                            <Typography variant="body1" component="span">
-                                {price}€
-                            </Typography>
-                            <Typography
-                                variant="body2"
-                                color={availability ? 'primary' : 'error'}
-                                component="span"
-                                className={classes.availability}
-                            >
-                                {availability ? 'in stock' : 'out of stock'}
-                            </Typography>
                         </Box>
                     </Grid>
                 </Grid>

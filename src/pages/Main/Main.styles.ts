@@ -9,6 +9,7 @@ const useStyles = makeStyles(({ palette, spacing }) => ({
         justifyContent: 'center',
         backgroundColor: palette.background.paper,
         borderRadius: spacing(0.5),
+        marginBottom: spacing(2),
     },
     topSellingPhonesText: {
         flex: '0 0 100%',
