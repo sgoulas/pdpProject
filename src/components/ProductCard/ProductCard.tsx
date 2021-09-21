@@ -18,6 +18,7 @@ export interface ProductCardProps {
     availability: number;
     description: string;
     image?: string;
+    imageFallback: string;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
@@ -29,6 +30,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
     availability,
     description,
     image,
+    imageFallback,
 }: ProductCardProps) => {
     const classes = useStyles();
 
@@ -46,7 +48,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
                         <Box component="div" display="block">
                             <ImageWithFallback
                                 src={image ?? ''}
-                                fallbackSrc={'phoneFallBack.png'}
+                                fallbackSrc={imageFallback}
                                 alt={name}
                                 width={200}
                                 height={200}

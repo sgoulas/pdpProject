@@ -14,6 +14,7 @@ describe('ProductCard suite', () => {
         availability: 200,
         description:
             'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam',
+        imageFallback: 'imageFallbackSrc',
     };
 
     it('matches snapshot', () => {

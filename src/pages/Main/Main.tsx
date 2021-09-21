@@ -84,6 +84,7 @@ const Main: React.FC<MainProps> = ({ frontPagePhones }: MainProps) => {
                                 availability={phone.availability}
                                 description={phone.description}
                                 image={phone.image}
+                                imageFallback={'phoneFallBack.png'}
                             />
                         ))}
                     </>
