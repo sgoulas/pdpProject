@@ -639,3 +639,5 @@ In the previous days I have been using material-ui's `Box` component in conjunct
 Started working on my `Jumbotron` component and noticed that I kind of disliked the footer and then I realized it had `fixed` position, so it was always at the bottom of my screen, whereas I wanted it to appear only when I scrolled to the end of the page.
 
 I changed the position to absolute, changed the containing `React.Fragment` of the `Layout` to `Box` with `position` set to `relative` and set the height of `body` to `100vh` and now the footer was working as intended.
+
+I removed the `getServerInfo` query from the `Main` page. It existed so I could test how `useQuery` functions, now that I am close to finishing the styling of the landing page it should be removed.

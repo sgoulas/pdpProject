@@ -36,8 +36,6 @@ const Jumbotron: React.FC = () => {
                 mx="auto"
                 position="relative"
                 className={classes.imageContainer}
-                // width={400}
-                // height={500}
             >
                 <Image
                     src={'/images/iphone13.jpg'}

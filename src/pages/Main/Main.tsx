@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { useQuery } from '@apollo/client';
 import Alert from '@material-ui/lab/Alert';
 
 import { ApiPhone } from '@api';
@@ -7,7 +6,6 @@ import { useAppDispatch } from '@hooks';
 import { setRunningAction } from '@store/actions';
 import { Typography, ProductCard } from '@components';
 
-import { GET_SERVER_INFO } from './api';
 import { Head, Jumbotron } from './components';
 import useStyles from './Main.styles';
 
@@ -34,31 +32,15 @@ export interface MainProps {
 const Main: React.FC<MainProps> = ({ frontPagePhones }: MainProps) => {
     const classes = useStyles();
     const dispatch = useAppDispatch();
-    const { error: serverInfoError, data: serverInfoResult } =
-        useQuery(GET_SERVER_INFO);
 
     useEffect(() => {
         dispatch(setRunningAction({ running: true }));
     }, []);
 
-    const message = serverInfoResult ? serverInfoResult.info : 'loading';
-
     return (
         <>
             <Head productCollectionSize={frontPagePhones.results.length} />
             <Jumbotron />
-            <Typography variant="body1" color="textPrimary" noWrap>
-                {message}
-            </Typography>
-            <div>
-                {serverInfoError && (
-                    <Alert severity="error">
-                        <Typography variant="body1" color="textPrimary">
-                            {serverInfoError.message}
-                        </Typography>
-                    </Alert>
-                )}
-            </div>
             {!frontPagePhones && (
                 <Alert severity="error">
                     Error fetching top selling phones
