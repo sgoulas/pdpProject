@@ -565,7 +565,7 @@ To consider: create an "image with fallback" component incase the image src is u
 
 [10 minutes later]
 
-Alright, I was a bit tired and in my need to "get it done before going to bed" I was a bit hasty. I went through the documentation and checked the props and had the revelation that "StaticImport" type boiled down to "a valid path under static folder". Thus, I was able to type the component and test that it actually shows the fallback image.
+Alright, I was a bit tired and in my need to "get it done before going to bed" I was hasty (I should not be, this is not a race, I just like to go to bed without letting things unfinished). I went through the documentation and checked the props and had the revelation that "StaticImport" type boiled down to "a valid path under static folder". Thus, I was able to type the component and test that it actually shows the fallback image.
 
 ```tsx
 import React, { useState } from 'react';
@@ -616,3 +616,5 @@ Two notes:
 -   I did not include an "it renders fallback image on img src error" in my `ProductCard.test.tsx` file. `NextJS` uses (I think) base64 strings as image paths and I have no idea how to match them, nor I think I should had.
 
 I extracted the new component into its own directory under the project widh `components` directory, with the assumption that it is general enough to be considered as the one to use everywhere.
+
+So as I said earlier: Now I need to style the desktop version of the product cards, maybe add a jumbotron of such sorts above them and I am ready to move to the product details page.
