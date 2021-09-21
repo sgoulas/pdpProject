@@ -3,14 +3,14 @@ import Card from '@material-ui/core/Card';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
-import Image from 'next/image';
 import Link from 'next/link';
 
 import { Typography } from '@components';
 
 import useStyles from './ProductCard.styles';
+import { ImageWithFallback } from './components';
 
-interface ProductCardProps {
+export interface ProductCardProps {
     id: string;
     name: string;
     ratingValue: number;
@@ -33,8 +33,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
 }: ProductCardProps) => {
     const classes = useStyles();
 
-    //todo tests
-
     return (
         <article className={classes.cardContainer}>
             <Card key={id} className={classes.cardRoot}>
@@ -47,10 +45,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
                 >
                     <Grid item xs={5}>
                         <Box component="div" display="block">
-                            <Image
-                                src={`/images/${image}`}
+                            <ImageWithFallback
+                                src={image ?? ''}
+                                fallbackSrc={'phoneFallBack.png'}
                                 alt={name}
-                                layout="responsive"
                                 width={200}
                                 height={200}
                             />

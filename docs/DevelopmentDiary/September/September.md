@@ -557,4 +557,60 @@ This does mean that for every `page` that is somewhat complex and requires sub-d
 
 I added a new type of `ld+json` structured data, of type `ProductCollection` (https://schema.org/ProductCollection) to denote the landing page offers. In a real world scenario I would have a single request for the "top sellers" by category and the split them depending on their product category then use multiple times the same `ProductCollection` component to adds multiple structured data entries with dynamic values for each product category. For the purpose of this exercice project a single category is enough (the scalability option is still present, one would just need to implement the fetching, which would be a general query for `Product` type products, like the union query present in the `Search` component).
 
+Added tests for the product card.
+
 Now I need to style the desktop version of the product cards, maybe add a jumbotron of such sorts above them and I am ready to move to the product details page.
+
+To consider: create an "image with fallback" component incase the image src is unavailable. This answer has a nice implementation but I got some problems getting the typings correct (https://stackoverflow.com/questions/66949606/what-is-the-best-way-to-have-a-fallback-image-in-nextjs).
+
+[10 minutes later]
+
+Alright, I was a bit tired and in my need to "get it done before going to bed" I was a bit hasty. I went through the documentation and checked the props and had the revelation that "StaticImport" type boiled down to "a valid path under static folder". Thus, I was able to type the component and test that it actually shows the fallback image.
+
+```tsx
+import React, { useState } from 'react';
+import Image from 'next/image';
+
+interface ImageFallbackProps {
+    src: string;
+    fallbackSrc: string;
+    alt: string;
+    width: number;
+    height: number;
+}
+
+const ImageFallback: React.FC<ImageFallbackProps> = ({
+    src,
+    fallbackSrc,
+    alt,
+    width,
+    height,
+}: ImageFallbackProps) => {
+    const [imgSrc, setImgSrc] = useState(false);
+    const [oldSrc, setOldSrc] = useState(src);
+    if (oldSrc !== src) {
+        setImgSrc(false);
+        setOldSrc(src);
+    }
+
+    const handleImgSrcError = () => setImgSrc(true);
+
+    return (
+        <Image
+            src={imgSrc ? `/images/${fallbackSrc}` : `/images/${src}`}
+            alt={alt}
+            layout="responsive"
+            width={width}
+            height={height}
+            onError={handleImgSrcError}
+        />
+    );
+};
+
+export default ImageFallback;
+```
+
+Two notes:
+
+-   I have to hardcode the `layout="responsive"` property. Depending on the `layout` value the `width` and `height` properties should not be present. Going through the hoops to make `ImageFallbackProps` component "smart enough" seems unnecessary considering `responsive` as a value covers my use cases.
+-   I did not include an "it renders fallback image on img src error" in my `ProductCard.test.tsx` file. `NextJS` uses (I think) base64 strings as image paths and I have no idea how to match them, nor I think I should had.
