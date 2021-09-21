@@ -45,7 +45,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
                     spacing={2}
                 >
                     <Grid item xs={5} md={12}>
-                        <Box component="div" display="block">
+                        <Box
+                            component="div"
+                            display="block"
+                            className={classes.image}
+                            mx="auto"
+                        >
                             <ImageWithFallback
                                 src={image ?? ''}
                                 fallbackSrc={imageFallback}
@@ -56,7 +61,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
                         </Box>
                     </Grid>
                     <Grid item xs={7} md={12}>
-                        {/* outer */}
                         <Box px={1}>
                             <Box component="div">
                                 <Link

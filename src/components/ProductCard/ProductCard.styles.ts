@@ -31,6 +31,11 @@ const useStyles = makeStyles(({ palette, spacing, breakpoints }) => ({
     availability: {
         marginLeft: spacing(1),
     },
+    image: {
+        [breakpoints.up('md')]: {
+            maxWidth: '50%',
+        },
+    },
 }));
 
 export default useStyles;

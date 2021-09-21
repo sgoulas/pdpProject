@@ -630,4 +630,8 @@ Started working on the desktop style of the product cards, what's left is to mak
 
 It was caused by the `material-ui` container component I was using in a wrong way. It had a "maxWidth" prop that by default was set to "lg" but what I actually needed was to set it to false explicitly to make the container fluid.
 
-So far in the project quite a few hiccups can be boiled down to "make sure you read the documentation and understand exactly what it is that you are using".
+So far in the project quite a few hiccups can be boiled down to "make sure you read the documentation and understand exactly what it is that you are using before you do use it".
+
+## 23 September 2021
+
+In the previous days I have been using material-ui's `Box` component in conjunction with external `.styles.ts` files. This is not something that I normally do. I prefer a singular styling approach and `Box` breaks it because it introduces inline styling, whereas up until now all they styles are defined in external files. The component's wide array of properties makes it very useful as a generic (or specialized) container. I have not used it before so this is the reason I opted to use it alongside external style files. In a real world scenario I would probably discuss it with my team and try to establish a usage pattern. Maybe only style on `Box` if it's paddings or margins to leverage the spacing properties? Only use it as a container instead of `div` tags? In the context of this project I use it to see how it turns out and how well it plays with my existing styling architecture.
