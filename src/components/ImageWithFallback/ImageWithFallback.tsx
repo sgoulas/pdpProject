@@ -18,12 +18,13 @@ const ImageFallback: React.FC<ImageFallbackProps> = ({
 }: ImageFallbackProps) => {
     const [imgSrc, setImgSrc] = useState(false);
     const [oldSrc, setOldSrc] = useState(src);
+
+    const handleImgSrcError = () => setImgSrc(true);
+
     if (oldSrc !== src) {
         setImgSrc(false);
         setOldSrc(src);
     }
-
-    const handleImgSrcError = () => setImgSrc(true);
 
     return (
         <Image
