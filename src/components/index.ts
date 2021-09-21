@@ -5,3 +5,4 @@ export { default as Footer } from './Footer';
 export { default as Divider } from '@material-ui/core/Divider';
 export { ProductCard } from './ProductCard';
 export * from './StructuredData';
+export { default as ImageWithFallback } from './ImageWithFallback';

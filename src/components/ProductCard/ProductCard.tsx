@@ -5,10 +5,9 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Link from 'next/link';
 
-import { Typography } from '@components';
+import { Typography, ImageWithFallback } from '@components';
 
 import useStyles from './ProductCard.styles';
-import { ImageWithFallback } from './components';
 
 export interface ProductCardProps {
     id: string;
