@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(
     ({ palette, spacing, breakpoints, typography, zIndex }) => ({
         footer: {
-            position: 'fixed',
+            position: 'absolute',
             width: '100%',
             bottom: 0,
             left: 0,

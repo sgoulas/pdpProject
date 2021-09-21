@@ -8,7 +8,7 @@ import { setRunningAction } from '@store/actions';
 import { Typography, ProductCard } from '@components';
 
 import { GET_SERVER_INFO } from './api';
-import { Head } from './components';
+import { Head, Jumbotron } from './components';
 import useStyles from './Main.styles';
 
 export type Phone = Pick<
@@ -46,6 +46,7 @@ const Main: React.FC<MainProps> = ({ frontPagePhones }: MainProps) => {
     return (
         <>
             <Head productCollectionSize={frontPagePhones.results.length} />
+            <Jumbotron />
             <Typography variant="body1" color="textPrimary" noWrap>
                 {message}
             </Typography>

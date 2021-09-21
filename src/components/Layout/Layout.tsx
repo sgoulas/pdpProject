@@ -1,5 +1,6 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
 
 import { NavBar, Footer } from '@components';
 
@@ -13,13 +14,15 @@ const Layout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
     const classes = useStyles();
 
     return (
-        <>
+        <Box position="relative">
             <NavBar />
             <Container className={classes.layout} maxWidth={false}>
-                <main>{children}</main>
+                <Box pb={20}>
+                    <main>{children}</main>
+                </Box>
             </Container>
             <Footer />
-        </>
+        </Box>
     );
 };
 

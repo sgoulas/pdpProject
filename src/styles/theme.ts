@@ -11,6 +11,7 @@ const theme = createTheme({
             '@global': {
                 body: {
                     backgroundColor: '#EAEDED',
+                    height: '100vh',
                 },
             },
         },
