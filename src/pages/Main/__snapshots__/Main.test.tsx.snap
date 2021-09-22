@@ -10,11 +10,11 @@ exports[`Main page suite matches snapshot 1`] = `
     <div
       class="MuiBox-root MuiBox-root-8"
     >
-      <h3
+      <h2
         class="MuiTypography-root makeStyles-productName-4 MuiTypography-h2"
       >
         iPhone 13 Pro
-      </h3>
+      </h2>
     </div>
     <div
       class="MuiBox-root MuiBox-root-9"

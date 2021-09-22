@@ -254,11 +254,11 @@ exports[`ProductCard suite matches snapshot 1`] = `
             <div
               class="MuiBox-root MuiBox-root-11"
             >
-              <legend
+              <p
                 class="MuiTypography-root MuiTypography-body2 MuiTypography-colorPrimary"
               >
                 10
-              </legend>
+              </p>
             </div>
           </div>
           <div

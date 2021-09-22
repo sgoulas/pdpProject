@@ -83,7 +83,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
                                 </Box>
                                 <Box>
                                     <Typography
-                                        component="legend"
+                                        // component="legend"
                                         variant="body2"
                                         color="primary"
                                     >

@@ -51,7 +51,7 @@ const Main: React.FC<MainProps> = ({ frontPagePhones }: MainProps) => {
                     <>
                         <Typography
                             variant="h6"
-                            component="h2"
+                            component="h3"
                             className={classes.topSellingPhonesText}
                         >
                             Top selling smartphones

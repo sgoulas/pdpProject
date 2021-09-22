@@ -11,7 +11,7 @@ const palette: PaletteOptions = {
         main: '#dddddd',
     },
     error: {
-        main: '#ef4565',
+        main: '#AE1409',
     },
     text: {
         secondary: '#dddddd',

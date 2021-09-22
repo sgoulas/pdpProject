@@ -634,10 +634,19 @@ So far in the project quite a few hiccups can be boiled down to "make sure you r
 
 ## 23 September 2021
 
-In the previous days I have been using material-ui's `Box` component in conjunction with external `.styles.ts` files. This is not something that I normally do. I prefer a singular styling approach and `Box` breaks it because it introduces inline styling, whereas up until now all they styles are defined in external files. The component's wide array of properties makes it very useful as a generic (or specialized) container. I have not used it before so this is the reason I opted to use it alongside external style files. In a real world scenario I would probably discuss it with my team and try to establish a usage pattern. Maybe only style on `Box` if it's paddings or margins to leverage the spacing properties? Only use it as a container instead of `div` tags? In the context of this project I use it to see how it turns out and how well it plays with my existing styling architecture.
+In the previous days I have been using material-ui's `Box` component in conjunction with external `.styles.ts` files. This is not something that I normally do. I prefer a singular styling approach and `Box` breaks it because it introduces inline styling, whereas up until now all the styles are defined in external files. The component's wide array of properties makes it very useful as a generic (or specialized) container. I have not used it before so this is the reason I opted to use it alongside external style files. In a real world scenario I would probably discuss it with my team and try to establish a usage pattern. Maybe only style on `Box` if it's paddings or margins to leverage the spacing properties? Only use it as a container instead of `div` tags? In the context of this project I use it to see how it turns out and how well it plays with my existing styling architecture.
 
 Started working on my `Jumbotron` component and noticed that I kind of disliked the footer and then I realized it had `fixed` position, so it was always at the bottom of my screen, whereas I wanted it to appear only when I scrolled to the end of the page.
 
 I changed the position to absolute, changed the containing `React.Fragment` of the `Layout` to `Box` with `position` set to `relative` and set the height of `body` to `100vh` and now the footer was working as intended.
 
 I removed the `getServerInfo` query from the `Main` page. It existed so I could test how `useQuery` functions, now that I am close to finishing the styling of the landing page it should be removed.
+
+## 24 September 2021
+
+I fixes some markup errors indicated by the W3C validation rule and updated my error color to increase its contrast in accordance to the WAVE inspection tool I use. The last two things to fix (mark up wise) in the main page is an erro caused by the usage of `box-orient` property (which is not standard and thus not recommended for production, firefox why you do this to me) and a warning about the lack of heading tags in my product cards (which are wrapped in `article` tags). The reason I am using `box-orient` is in order to achieve truncating the last line of a multi-line text if it's too long. I should do it in a standard way tho.
+
+Next:
+
+-   achieve the same truncation result with a standard implementation, see https://css-tricks.com/line-clampin/ for some approaches.
+-   add an `h4` heading tag to the product cards and change the existing `h4` tags at the footer component to `h5`.

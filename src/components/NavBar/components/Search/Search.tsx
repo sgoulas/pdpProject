@@ -71,6 +71,8 @@ const Search: React.FC = () => {
             <InputBase
                 {...getInputProps()}
                 placeholder="Search..."
+                role="combobox"
+                aria-expanded
                 classes={{
                     root: classes.inputRoot,
                     input: classes.inputInput,

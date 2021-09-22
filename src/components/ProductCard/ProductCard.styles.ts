@@ -16,7 +16,7 @@ const useStyles = makeStyles(({ palette, spacing, breakpoints }) => ({
         },
     },
     description: {
-        height: spacing(5),
+        height: spacing(8),
         color: palette.text.primary,
         textDecoration: 'none',
         fontSize: 14,

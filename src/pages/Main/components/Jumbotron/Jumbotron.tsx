@@ -13,11 +13,7 @@ const Jumbotron: React.FC = () => {
         <Container maxWidth={false} className={classes.container}>
             <Box textAlign="center">
                 <Box pt={8}>
-                    <Typography
-                        variant="h2"
-                        component="h3"
-                        className={classes.productName}
-                    >
+                    <Typography variant="h2" className={classes.productName}>
                         iPhone 13 Pro
                     </Typography>
                 </Box>
