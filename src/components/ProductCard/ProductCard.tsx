@@ -82,11 +82,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
                                     />
                                 </Box>
                                 <Box>
-                                    <Typography
-                                        // component="legend"
-                                        variant="body2"
-                                        color="primary"
-                                    >
+                                    <Typography variant="body2" color="primary">
                                         {reviewCount}
                                     </Typography>
                                 </Box>
