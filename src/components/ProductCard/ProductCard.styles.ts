@@ -20,9 +20,9 @@ const useStyles = makeStyles(({ palette, spacing, breakpoints }) => ({
         color: palette.text.primary,
         textDecoration: 'none',
         fontSize: 14,
-        display: `-webkit-box`,
-        WebkitLineClamp: 3,
-        boxOrient: 'vertical',
+        display: '-webkit-box',
+        '-webkit-line-clamp': 3,
+        '-webkit-box-orient': 'vertical',
         overflow: 'hidden',
         [breakpoints.down('md')]: {
             maxHeight: '150px',

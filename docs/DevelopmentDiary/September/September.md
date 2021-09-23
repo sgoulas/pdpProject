@@ -642,11 +642,15 @@ I changed the position to absolute, changed the containing `React.Fragment` of t
 
 I removed the `getServerInfo` query from the `Main` page. It existed so I could test how `useQuery` functions, now that I am close to finishing the styling of the landing page it should be removed.
 
-## 24 September 2021
+## 24 September 2021 (early morning)
 
-I fixes some markup errors indicated by the W3C validation rule and updated my error color to increase its contrast in accordance to the WAVE inspection tool I use. The last two things to fix (mark up wise) in the main page is an erro caused by the usage of `box-orient` property (which is not standard and thus not recommended for production, firefox why you do this to me) and a warning about the lack of heading tags in my product cards (which are wrapped in `article` tags). The reason I am using `box-orient` is in order to achieve truncating the last line of a multi-line text if it's too long. I should do it in a standard way tho.
+I fixed some markup errors indicated by the W3C validation rule and updated my error color to increase its contrast in accordance to the WAVE inspection tool I use. The last two things to fix (mark up wise) in the main page is an erro caused by the usage of `box-orient` property (which is not standard and thus not recommended for production, firefox why you do this to me) and a warning about the lack of heading tags in my product cards (which are wrapped in `article` tags). The reason I am using `box-orient` is in order to achieve truncating the last line of a multi-line text if it's too long. I should do it in a standard way tho.
 
 Next:
 
 -   achieve the same truncation result with a standard implementation, see https://css-tricks.com/line-clampin/ for some approaches.
 -   add an `h4` heading tag to the product cards and change the existing `h4` tags at the footer component to `h5`.
+
+## 24 September 2021
+
+I fixed the `box-orient` warning by replacing the property name with `-webkit-box-orient`.
