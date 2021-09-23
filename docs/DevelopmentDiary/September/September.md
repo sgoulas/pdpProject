@@ -653,4 +653,8 @@ Next:
 
 ## 24 September 2021
 
-I fixed the `box-orient` warning by replacing the property name with `-webkit-box-orient`.
+I fixed the `box-orient` warning by replacing the property name with `-webkit-box-orient` and made the name part of the product card description to be an `h4` header tag with `display` set to `inline` so that is does not force a line break. I also changed the footer tags from `h4` to `h5` to better streamline my heading tags flow.
+
+The `https://validator.w3.org/` markup validation tool finds zero errors and / or warnings and the `WAVE` accessibility evaluation tool finds zero errors. I do get two warnings caused by `NextJS` injecting two `noscript` elements but considering that they are injected by the framework and that they don't actually contain anything (and I certainly don't use them for anything) the UI is not affected and neither does the user's experience.
+
+And with this change, I can consider the landing page of the application officially **completed**.

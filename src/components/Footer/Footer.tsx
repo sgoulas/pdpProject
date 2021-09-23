@@ -21,7 +21,7 @@ const Footer: React.FC = () => {
                 <div className={classes.container}>
                     <div className={classes.containerItem}>
                         <Typography
-                            component="h4"
+                            component="h5"
                             variant="body1"
                             className={classes.section}
                         >
@@ -39,7 +39,7 @@ const Footer: React.FC = () => {
                     </div>
                     <div className={classes.containerItem}>
                         <Typography
-                            component="h4"
+                            component="h5"
                             variant="body1"
                             className={classes.section}
                         >
@@ -51,7 +51,7 @@ const Footer: React.FC = () => {
                     </div>
                     <div className={classes.containerItem}>
                         <Typography
-                            component="h4"
+                            component="h5"
                             variant="body1"
                             className={classes.section}
                         >

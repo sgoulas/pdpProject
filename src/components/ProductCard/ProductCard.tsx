@@ -67,7 +67,16 @@ const ProductCard: React.FC<ProductCardProps> = ({
                                     href={`/product/${encodeURIComponent(id)}`}
                                 >
                                     <a className={classes.description}>
-                                        {`${name} ${description}`}
+                                        <Box
+                                            component="h4"
+                                            display="inline"
+                                            mr={0.5}
+                                        >
+                                            {name}
+                                        </Box>
+                                        <Box component="p" display="inline">
+                                            {description}
+                                        </Box>
                                     </a>
                                 </Link>
                             </Box>

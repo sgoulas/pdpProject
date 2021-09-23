@@ -11,11 +11,11 @@ exports[`Footer component matches snapshot 1`] = `
       <div
         class="makeStyles-containerItem-3"
       >
-        <h4
+        <h5
           class="MuiTypography-root makeStyles-section-4 MuiTypography-body1"
         >
           Social
-        </h4>
+        </h5>
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary"
           href="https://www.linkedin.com/in/spyros-goulas"
@@ -56,11 +56,11 @@ exports[`Footer component matches snapshot 1`] = `
       <div
         class="makeStyles-containerItem-3"
       >
-        <h4
+        <h5
           class="MuiTypography-root makeStyles-section-4 MuiTypography-body1"
         >
           FAQ
-        </h4>
+        </h5>
         <p
           class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary"
         >
@@ -70,11 +70,11 @@ exports[`Footer component matches snapshot 1`] = `
       <div
         class="makeStyles-containerItem-3"
       >
-        <h4
+        <h5
           class="MuiTypography-root makeStyles-section-4 MuiTypography-body1"
         >
           github
-        </h4>
+        </h5>
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary"
           href="https://github.com/sgoulas/pdpProject"

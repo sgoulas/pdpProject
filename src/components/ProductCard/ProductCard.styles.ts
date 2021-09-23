@@ -15,17 +15,21 @@ const useStyles = makeStyles(({ palette, spacing, breakpoints }) => ({
             padding: spacing(1),
         },
     },
+    productName: {
+        display: 'inline',
+        marginRight: spacing(1),
+    },
     description: {
         height: spacing(8),
         color: palette.text.primary,
         textDecoration: 'none',
         fontSize: 14,
         display: '-webkit-box',
-        '-webkit-line-clamp': 3,
+        '-webkit-line-clamp': 4,
         '-webkit-box-orient': 'vertical',
         overflow: 'hidden',
         [breakpoints.down('md')]: {
-            maxHeight: '150px',
+            height: spacing(10),
         },
     },
     availability: {
