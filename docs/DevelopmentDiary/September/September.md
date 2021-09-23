@@ -616,7 +616,7 @@ export default ImageFallback;
 Two notes:
 
 -   I have to hardcode the `layout="responsive"` property. Depending on the `layout` value the `width` and `height` properties should not be present. Going through the hoops to make `ImageFallbackProps` component "smart enough" seems unnecessary considering `responsive` as a value covers my use cases.
--   I did not include an "it renders fallback image on img src error" in my `ProductCard.test.tsx` file. `NextJS` uses (I think) base64 strings as image paths and I have no idea how to match them, nor I think I should try to do so.
+-   I did not include an "it renders fallback image on img src error" in my `ProductCard.test.tsx` file. `NextJS` uses (I think) base64 strings as image paths and I have no idea how to verify that the base64 representation of the image src I am getting is the expected one, nor I think I should try to do so.
 
 I extracted the new component into its own directory under the project widh `components` directory, with the assumption that it is general enough to be considered as the one to use everywhere.
 
