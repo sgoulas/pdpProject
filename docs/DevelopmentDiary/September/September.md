@@ -188,7 +188,7 @@ After that the schema validator (https://validator.schema.org/) was able to corr
 
 Now, I wondered if it was best to place the data at the `<head>` tag. It used to be that `<body>` was equally acceptable but in the "if you don't place it at the head you can also place it at the body of the document" kind of way, which while subtle, meant placing the data at the `<head>` was the better option.
 
-But, we want to be as professional as we resonably can here, so considering the W3 org specification for the `<head>` element (https://www.w3.org/TR/2014/REC-html5-20141028/document-metadata.html#the-head-element) states that `The head element represents a collection of metadata for the Document` and since structured data are a textbook case of metadata, I will be adding them to the `<Head />` component of the page rather than its `<body />`.
+But we want to be as professional as we resonably can here, so considering the W3 org specification for the `<head>` element (https://www.w3.org/TR/2014/REC-html5-20141028/document-metadata.html#the-head-element) states that `The head element represents a collection of metadata for the Document` and since structured data are a textbook case of metadata, I will be adding them to the `<Head />` component of the page rather than its `<body />`.
 
 Now, I got a bit carried away and added quite a few folders, files etc. The structure strategy I followed was that each component that needs components, defines a `components` folder which contains all the components the component (in this case the `Main` pages) needs
 
@@ -215,6 +215,8 @@ Main
 Deeply nested, yes, but now it is evident that `<StructuredDataScript />` is a subcomponent (a _direct_ subcomponent) of `<Head />` and that is explicitly placed there. In turn, the same applies for the relationship between `<Head />` and `<Main />`,
 
 This also allows me to futher break down the `<Head />` component in the future, maybe by creating separate components for `open graph` tags, `twitter cards` and other `meta tags`, if I choose to do so.
+
+Of cource, I still do have the generic `components` folder under `/src` but I am opting to use this directory for the re-useable components. Anything that is strictly needed by only one component goes into said component's `components` directory and if in the future the same component is deemed necessary elsewhere, it will be refactored and exported from the generic `components` directory. This way the generic `components` directly trully only contains re-useable components and each `components` sub-folder only contains components needed by the specific component which contains them.
 
 What is also important is to decide on how I will be handling the `ld+json` data. Right now the values in `Main` page are hardcoded and that is acceptable, they are not values that are expected to change dynamically. But the same is not the case for the `ld+json` data that will be added in future pages like `<Product />` or `<ProductsListing />` or `<Categories />`. Will I be creating page-specific versions of the `<StructuredDataScript />`? Do I need to consider a generic utility function that will generate the strings? https://json-ld.org/ has a list of available third party packages that I can use but I am hesitant adding dependencies (and thus affecting bundle size) for things that I can make myself with a reasonable degree of quality and useability. At the end of the day, shaving some kilobytes from my served application is expected to have a non-zero impact on the performance metrics.
 
@@ -249,7 +251,7 @@ Next, I noticed that my content is not scrollable, so I should continue from the
 
 I made the navbar and the footer fixed, and added min height and margin-bottom to the body element to make my main content scrollable.
 
-todo:make it more tidy, maybe move the margin-bottom from body to main, maybe add margin top, investigate the `margin: spacing(8, 0),` and if it's good to be there. Ideally body should have top / bottom margin equal to the height of the navbar / footer elements + something for styling reasons.
+todo: make it more tidy, maybe move the margin-bottom from body to main, maybe add margin top, investigate the `margin: spacing(8, 0),` and if it's good to be there. Ideally body should have top / bottom margin equal to the height of the navbar / footer elements + something for styling reasons.
 
 [done]
 
@@ -380,7 +382,7 @@ Found out I could alias the result of my graphQL query
 ```ts
 export const GET_PRODUCT_BY_NAME = gql`
     query getProductsByName($name: String!) {
-        results: products(name: $name) { //notice the alias results here
+        results: products(name: $name) { // notice the alias results here
             __typename
             ... on Phone {
                 name
@@ -419,7 +421,7 @@ In the end, I was baited by the component's `onChange` prop. What I actually nee
 
 With that change I am able to retain my search bar's style as well as display possible results. Now I need to style the list and also fix a problem where an `<li />` key is not unique (caused by me assigning the product name to it and the server actually generating non-unique product names, which is acceptable in the scope of a real world scenario).
 
-Regarding the generation of unique ids, I know I can use lodash, a uuid library or native javascript code. Regarding the latter I know you can implement an rfc4122 compliant string but you have to rely on the poor entropy of `Math.random`. On the other hand you I remember reading about generating a uuid by leveraging a native javascript function, but can't really remember details. I remember you were creating "something" and that something had a prop which had to be implemented in a specific way that made it rfc4122 compliant. In any case, I can just also retrieve the `id` property of the `Product` and be done with it, especially since I already generate it as a `uuid`.
+Regarding the generation of unique ids, I know I can use lodash, a uuid library or native javascript code. Regarding the latter I know you can implement an `rfc4122` compliant string but you have to rely on the poor entropy of `Math.random`. On the other hand I remember reading about generating a uuid by leveraging a native javascript function, but can't really remember details. I remember you were creating "something" and that something had a prop which had to be implemented in a specific way that made it `rfc4122` compliant. In any case, I can just also retrieve the `id` property of the `Product` and be done with it, especially since I already generate it as a `uuid`.
 
 Now I could create a new component that will receive the products fetched by the query and display them in a nice manner (I am thinking of small cards, with images and whatnot), or display the `error` and `loading` states but I am checking amazon's implementation and they just display the options. I think it's a clean approach and it will definitely save development time, so I will just style a bit the existing component to better display the results
 
@@ -451,7 +453,7 @@ On to my next task: create a "product" card to display various different product
 
 Continuing from yesterday, I will mess around in a codebox with material-ui's `<Card />` component (https://material-ui.com/components/cards/). What I have in mind is a fairly simple card: product image, followed by product name, rating (the good old stars of vayring fullness) and price, with the product name being a link to the product details page. I will work with an online image (absolute url of an online resource) then once the component is ready will substitute it with dynamic images. This will be a good time to check next-gen image formats (a valuable SEO metric which also cuts down on user's bandwidth usage) and things like lazy loading (with intersection observer api).
 
-Now, it bears saying that in a full professional environemnt I would consider implementing the card as a purely presentational component and have all its bussiness logic (update rating, add to cart, add to wishlist, add to compare page etc) extracted into a custom hook. Usually an ecommerce site has more than one type of "card". You have the giant "jumbotron" ones, the "normal" ones which you can find in the landing or categories pages, maybe you have some small ones to use your mini-cart or checkout page, there is a certain degree of variation. Extracting the bussiness logic in a custom hook allows the separation between UI and bussiness, thus giving me the freedom to implement different UI representations of the product which all share the same underlying logic.
+Now, it bears saying that in a full professional environemnt I would consider implementing the card as a purely presentational component and have all its bussiness logic (update rating, add to cart, add to wishlist, add to compare page etc) extracted into a custom hook. Usually an ecommerce site has more than one type of "card". You have the giant "jumbotron" ones, the "normal" ones which you can find in the landing or category pages, maybe you have some small ones to use in your mini-cart or checkout page, there is a certain degree of variation. Extracting the bussiness logic in a custom hook allows the separation between UI and bussiness, thus giving me the freedom to implement different UI representations of the product which all share the same underlying logic.
 
 In my application I will be using the "normal" kind and one more at most for the mini cart, so two in total, so I will be skipping the custom hook approach.
 
@@ -477,7 +479,7 @@ Next: I have to read about adding structured data for the displayed products to 
 
 I do fear these back to back entries tend to lose flavour and degrade to "style this, add this call, finish". In any case. I need to finish styling the card (desktop) and add calls.
 
-Regarding the dynamic name of the images, I decided to use the existin `image` prop which is of type `string` and just append it to the path. In an enterprise setting I would have a CMS feeding the app with such things (absolute urls for the images and then serve them from another content server for example) so no reason to complicate things. So I just need to create 7-8 phones and serve them as mocks.
+Regarding the dynamic name of the images, I decided to use the existing `image` prop which is of type `string` and just append it to the path. In an enterprise setting I would have a CMS feeding the app with such things (absolute urls for the images and then serve them from another content server for example) so no reason to complicate things. So I just need to create 7-8 phones and serve them as mocks.
 
 Added hardcoded phones, placed them in a flexbox. My current problem is varying card height due to different text heights, even though I previously added css to truncate it if too long.
 
@@ -565,7 +567,7 @@ To consider: create an "image with fallback" component incase the image src is u
 
 [10 minutes later]
 
-Alright, I was a bit tired and in my need to "get it done before going to bed" I was hasty (I should not be, this is not a race, I just like to go to bed without letting things unfinished). I went through the documentation and checked the props and had the revelation that "StaticImport" type boiled down to "a valid path under static folder". Thus, I was able to type the component and test that it actually shows the fallback image.
+Alright, I was a bit tired and in my need to "get it done before going to bed" I was hasty (I should not be, this is not a race, I just like going to bed without letting things unfinished). I went through the documentation and checked the props and had the revelation that "StaticImport" type boiled down to "a valid path under static folder". Thus, I was able to type the component and test that it actually shows the fallback image.
 
 ```tsx
 import React, { useState } from 'react';
@@ -614,11 +616,11 @@ export default ImageFallback;
 Two notes:
 
 -   I have to hardcode the `layout="responsive"` property. Depending on the `layout` value the `width` and `height` properties should not be present. Going through the hoops to make `ImageFallbackProps` component "smart enough" seems unnecessary considering `responsive` as a value covers my use cases.
--   I did not include an "it renders fallback image on img src error" in my `ProductCard.test.tsx` file. `NextJS` uses (I think) base64 strings as image paths and I have no idea how to match them, nor I think I should had.
+-   I did not include an "it renders fallback image on img src error" in my `ProductCard.test.tsx` file. `NextJS` uses (I think) base64 strings as image paths and I have no idea how to match them, nor I think I should try to do so.
 
 I extracted the new component into its own directory under the project widh `components` directory, with the assumption that it is general enough to be considered as the one to use everywhere.
 
-So as I said earlier: Now I need to style the desktop version of the product cards, maybe add a jumbotron of such sorts above them and I am ready to move to the product details page.
+So as I said earlier: Now I need to style the desktop version of the product cards, maybe add a jumbotron of some sorts above them and I am ready to move to the product details page.
 
 ## 22 September 2021
 
@@ -644,7 +646,7 @@ I removed the `getServerInfo` query from the `Main` page. It existed so I could 
 
 ## 24 September 2021 (early morning)
 
-I fixed some markup errors indicated by the W3C validation rule and updated my error color to increase its contrast in accordance to the WAVE inspection tool I use. The last two things to fix (mark up wise) in the main page is an erro caused by the usage of `box-orient` property (which is not standard and thus not recommended for production, firefox why you do this to me) and a warning about the lack of heading tags in my product cards (which are wrapped in `article` tags). The reason I am using `box-orient` is in order to achieve truncating the last line of a multi-line text if it's too long. I should do it in a standard way tho.
+I fixed some markup errors indicated by the W3C validation rule and updated my error color to increase its contrast in accordance to the WAVE inspection tool I use. The last two things to fix (mark up wise) in the main page is an error caused by the usage of `box-orient` property (which is not standard and thus not recommended for production, firefox why you do this to me) and a warning about the lack of heading tags in my product cards (which are wrapped in `article` tags). The reason I am using `box-orient` is in order to achieve truncating the last line of a multi-line text if it's too long. I _should_ do it in a standard way though.
 
 Next:
 
