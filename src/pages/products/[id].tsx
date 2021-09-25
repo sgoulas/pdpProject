@@ -1,5 +1,6 @@
 import React from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
+import { ParsedUrlQuery } from 'querystring';
 
 // import { ApiProduct } from '@api';
 
@@ -18,9 +19,14 @@ export const Product: React.FC<ProductProps> = ({ name, id }: ProductProps) => {
     );
 };
 
+interface ProductPageParams extends ParsedUrlQuery {
+    id: string;
+}
+
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+    const { id } = params as ProductPageParams;
     //fetch product by params.id
-    const product: ProductProps = await { name: 'product one', id: '1' };
+    const product: ProductProps = await { name: `product ${id}`, id };
 
     return {
         props: {

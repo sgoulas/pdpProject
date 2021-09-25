@@ -697,3 +697,79 @@ This is also the indicated way described in https://nextjs.org/docs/basic-featur
 [5 minutes later]
 
 Alright, so, _mea culpa_, I was passing numbers as object props and that was not cool on my part. Typescript was complaining because `GetStaticPaths` is an object or a `promise` for an object with property names of type `string` and I was passing numbers which is not even valid javascript.
+
+Managed to get a working proof of concept:
+
+```tsx
+export interface ProductProps {
+    name: string;
+    id: string;
+}
+
+export const Product: React.FC<ProductProps> = ({ name, id }: ProductProps) => {
+    console.log('products');
+
+    return (
+        <span>
+            this is the product page for product {name} with id: {id}
+        </span>
+    );
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+    const { id } = params; // this shows an error
+    //fetch product by params.id
+    const product: ProductProps = await { name: 'product one', id: '1' };
+
+    return {
+        props: {
+            name: product.name,
+            id: product.id,
+        },
+    };
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+    const paths = await ['1', '2', '3'].map(id => ({
+        params: { id },
+    }));
+
+    return { paths, fallback: false };
+};
+
+export default Product;
+```
+
+Now, normally the `id` inside `params` in `getStaticProps` would be used to fetch each specific product based on the generated path by `getStaticPaths`, however here I was getting the error that `Property 'id' does not exist on type 'ParsedUrlQuery | undefined'` which makes sense because in this file I expect my params to include an `id` property, coming from `getStaticPaths` but `ParsedUrlQuery` does not contain such a property. The soluction was to extend `ParsedUrlQuery`.
+
+```tsx
+// ...
+import { ParsedUrlQuery } from 'querystring';
+
+interface ProductPageParams extends ParsedUrlQuery {
+    id: string;
+}
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+    const { id } = params as ProductPageParams;
+    //fetch product by params.id
+    const product: ProductProps = await { name: `product ${id}`, id };
+
+    return {
+        props: {
+            name: product.name,
+            id: product.id,
+        },
+    };
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+    const paths = await ['1', '2', '3'].map(id => ({
+        params: { id },
+    }));
+
+    return { paths, fallback: false };
+};
+```
+
+The names should probably change, but the solution is working and I get no errors in my IDE.
