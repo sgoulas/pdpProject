@@ -64,7 +64,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
                         <Box px={1}>
                             <Box component="div">
                                 <Link
-                                    href={`/product/${encodeURIComponent(id)}`}
+                                    href={`/products/${encodeURIComponent(id)}`}
                                 >
                                     <a className={classes.description}>
                                         <Box

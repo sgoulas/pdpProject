@@ -773,3 +773,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 ```
 
 The names should probably change, but the solution is working and I get no errors in my IDE.
+
+Started working on a query that would return all `Product` ids but then reverted my changes. I realized I already have a `getAllProducts` query that returns all products, which I could use to just request for the `id` property. This is exactly the type of power `GraphQL` offers me, so no reason to polute the codebase with an unnecessary query that goes against `GraphQL`'s paradigm.
+
+I set up the query and replaced the statics results with "real" mock data coming from my server. Now, before continuing with styling the product details page I should also create one additional product in my `MOCK_PHONES` array that will correspond to the one on my `Jumbotron`: the iPhone 13 Pro (oh, so, pro).
