@@ -660,3 +660,40 @@ I fixed the `box-orient` warning by replacing the property name with `-webkit-bo
 The `https://validator.w3.org/` markup validation tool finds zero errors and / or warnings and the `WAVE` accessibility evaluation tool finds zero errors. I do get two warnings caused by `NextJS` injecting two `noscript` elements but considering that they are injected by the framework and that they don't actually contain anything (and I certainly don't use them for anything) the UI is not affected and neither does the user's experience.
 
 And with this change, I can consider the landing page of the application officially **completed**.
+
+## 25 September 2021
+
+Today I will start working on the product page of the application. I already have the `layout` ready so that means I will only need to add the `main` of the page. Design wise what I have in mind is an image of the phone, description on the right (beneath for mobile view) and an "add to cart" button (disabled if product stock is zero). Add to cart button does mean that I will also work in the mini cart of the application, something for which I am stocked since it means finally getting to work more with redux-saga and redux toolkit. Oh, plus breacrumb and related SEO and structured data metadata.
+
+First of all, I need to have a dynamic route (https://nextjs.org/docs/routing/dynamic-routes).
+
+Getting typescript errors on my `getStaticPaths` function even though I followed the documentation to the letter.
+
+```tsx
+export const getStaticPaths: GetStaticPaths = async () => {
+    // eslint-disable-next-line no-magic-numbers
+    const IDs = await [1, 2, 3];
+
+    const paths = IDs.map(id => ({
+        params: { id },
+    }));
+
+    return { paths, fallback: false };
+};
+```
+
+The error I am getting is `Type '() => Promise<{ paths: { params: { id: number; }; }[]; fallback: false; }>' is not assignable to type 'GetStaticPaths<ParsedUrlQuery>'` which indicates that `getStaticPaths` needs a bit more typing information whichis weird since the documentation (https://nextjs.org/docs/basic-features/data-fetching#typescript-use-getstaticpaths) is really straighforward in what it describes:
+
+```tsx
+import { GetStaticPaths } from 'next';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+    // ...
+};
+```
+
+This is also the indicated way described in https://nextjs.org/docs/basic-features/typescript#static-generation-and-server-side-rendering.
+
+[5 minutes later]
+
+Alright, so, _mea culpa_, I was passing numbers as object props and that was not cool on my part. Typescript was complaining because `GetStaticPaths` is an object or a `promise` for an object with property names of type `string` and I was passing numbers which is not even valid javascript.
