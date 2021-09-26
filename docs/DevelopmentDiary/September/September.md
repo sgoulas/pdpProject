@@ -777,3 +777,13 @@ The names should probably change, but the solution is working and I get no error
 Started working on a query that would return all `Product` ids but then reverted my changes. I realized I already have a `getAllProducts` query that returns all products, which I could use to just request for the `id` property. This is exactly the type of power `GraphQL` offers me, so no reason to polute the codebase with an unnecessary query that goes against `GraphQL`'s paradigm.
 
 I set up the query and replaced the statics results with "real" mock data coming from my server. Now, before continuing with styling the product details page I should also create one additional product in my `MOCK_PHONES` array that will correspond to the one on my `Jumbotron`: the iPhone 13 Pro (oh, so, pro).
+
+## 26 September 2021
+
+Broke my self made promise and worked a bit more on the main page of the application, just so I could render a different application name for small viewports, so that it can be used as the "navigate to home" button.
+
+I tried writing a test for different viewports and the amount of custom hackery I encountered was daunting. All the solutions proposed overwritting the `window.resize` function so that I could fire it from inside my `jest` tests after seeting `env` to `jsdom` in the command line. Cherry on the top was RTL's `fireEvent.resize` second param being `options?: {} | undefined` which provided absolutely no help at all.
+
+At the end of the day testing different viewports is a super common need for web applications and I feel it is not easy to do so _at all_. It really should be its own section in the official documentation for `jest` and `react-testing-library` but here I am going over custom hacks and window property overrides at stack overflow.
+
+In the course of this project I don't think there was another day like this where I actually wrote code and nevertheless felt I made so little progress.

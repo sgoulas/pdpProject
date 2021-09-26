@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(({ palette, spacing, breakpoints, zIndex }) => ({
+const useStyles = makeStyles(({ palette, spacing, zIndex }) => ({
     navBar: {
         backgroundColor: palette.background.default,
         position: 'fixed',
@@ -13,11 +13,6 @@ const useStyles = makeStyles(({ palette, spacing, breakpoints, zIndex }) => ({
         justifyContent: 'flex-start',
         alignItems: 'center',
         zIndex: zIndex.appBar,
-    },
-    siteName: {
-        [breakpoints.down('xs')]: {
-            display: 'none',
-        },
     },
 }));
 

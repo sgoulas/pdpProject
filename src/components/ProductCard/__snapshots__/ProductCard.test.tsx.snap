@@ -43,7 +43,7 @@ exports[`ProductCard suite matches snapshot 1`] = `
           >
             <a
               class="makeStyles-description-4"
-              href="/product/mockId"
+              href="/products/mockId"
             >
               <h4
                 class="MuiBox-root MuiBox-root-10"
