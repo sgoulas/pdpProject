@@ -9,6 +9,9 @@ const typography: TypographyOptions = {
     body2: {
         fontSize: '14px',
     },
+    button: {
+        textTransform: 'none',
+    },
 };
 
 export { typography };
