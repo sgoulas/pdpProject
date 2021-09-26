@@ -6,11 +6,13 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     },
     productName: {
         fontWeight: typography.fontWeightBold,
+        cursor: 'pointer',
         [breakpoints.down('md')]: {
             fontSize: 48,
         },
     },
     productMoto: {
+        cursor: 'pointer',
         [breakpoints.down('md')]: {
             fontSize: 24,
         },

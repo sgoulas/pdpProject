@@ -1,8 +1,10 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
-import { Typography } from '@components';
 import Container from '@material-ui/core/Container';
 import Image from 'next/image';
+import Link from 'next/link';
+
+import { Typography } from '@components';
 
 import useStyles from './Jumbotron.styles';
 
@@ -13,18 +15,33 @@ const Jumbotron: React.FC = () => {
         <Container maxWidth={false} className={classes.container}>
             <Box textAlign="center">
                 <Box pt={8}>
-                    <Typography variant="h2" className={classes.productName}>
-                        iPhone 13 Pro
-                    </Typography>
+                    <Link
+                        href={`/products/${encodeURIComponent(
+                            '48e51f536c8dd'
+                        )}`}
+                    >
+                        <Typography
+                            variant="h2"
+                            className={classes.productName}
+                        >
+                            iPhone 13 Pro
+                        </Typography>
+                    </Link>
                 </Box>
                 <Box my={1}>
-                    <Typography
-                        variant="h4"
-                        component="h2"
-                        className={classes.productMoto}
+                    <Link
+                        href={`/products/${encodeURIComponent(
+                            '48e51f536c8dd'
+                        )}`}
                     >
-                        Oh.So.Pro
-                    </Typography>
+                        <Typography
+                            variant="h4"
+                            component="h2"
+                            className={classes.productMoto}
+                        >
+                            Oh.So.Pro
+                        </Typography>
+                    </Link>
                 </Box>
             </Box>
             <Box
