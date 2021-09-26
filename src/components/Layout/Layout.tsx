@@ -17,7 +17,7 @@ const Layout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
         <Box position="relative">
             <NavBar />
             <Container className={classes.layout} maxWidth={false}>
-                <Box pb={20}>
+                <Box pb={20} pt={1}>
                     <main>{children}</main>
                 </Box>
             </Container>
