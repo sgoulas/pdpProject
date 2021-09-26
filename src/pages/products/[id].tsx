@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import Grid from '@material-ui/core/Grid';
@@ -19,12 +19,22 @@ export interface ProductProps {
 export const Product: React.FC<ProductProps> = ({ product }: ProductProps) => {
     const classes = useStyles();
 
-    // todo add generic form actions component with 2 buttons (negative / positive)
     // todo add head, metadata, open graph, twitter card
     // todo solve the problem in the test file
     // todo add redux state slice, actions, reducer
     // todo check redux persistence
     // todo [maybe] mock @api/client
+
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    const memoizedHandleAddToCart = useCallback(
+        () => console.log('add to cart product with id: ', product.id),
+        [product.id]
+    );
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    const memoizedHandleBuyNow = useCallback(
+        () => console.log('buy now product with id: ', product.id),
+        [product.id]
+    );
 
     return (
         <Box mt={1} mb={8}>
@@ -73,7 +83,10 @@ export const Product: React.FC<ProductProps> = ({ product }: ProductProps) => {
                                 </Box>
                             </Grid>
                             <Grid item xs={12}>
-                                <Actions />
+                                <Actions
+                                    handleAddToCard={memoizedHandleAddToCart}
+                                    handleBuyNow={memoizedHandleBuyNow}
+                                />
                             </Grid>
                         </Grid>
                     </Grid>

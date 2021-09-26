@@ -95,7 +95,7 @@ const Search: React.FC = () => {
                             key={option.id}
                         >
                             <Link
-                                href={`/product/${encodeURIComponent(
+                                href={`/products/${encodeURIComponent(
                                     option.id
                                 )}`}
                             >

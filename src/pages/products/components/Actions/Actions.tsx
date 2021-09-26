@@ -7,7 +7,15 @@ import { Typography } from '@components';
 
 import useStyles from './Actions.styles';
 
-const Actions: React.FC = () => {
+export interface ActionProps {
+    handleAddToCard: () => void;
+    handleBuyNow: () => void;
+}
+
+const Actions: React.FC<ActionProps> = ({
+    handleAddToCard,
+    handleBuyNow,
+}: ActionProps) => {
     const classes = useStyles();
 
     return (
@@ -26,6 +34,7 @@ const Actions: React.FC = () => {
                             backgroundColor: '#FFD814',
                         }}
                         className={classes.button}
+                        onClick={handleAddToCard}
                     >
                         <Typography variant="body1">Add to Cart</Typography>
                     </Button>
@@ -37,6 +46,7 @@ const Actions: React.FC = () => {
                             backgroundColor: '#FFA41C',
                         }}
                         className={classes.button}
+                        onClick={handleBuyNow}
                     >
                         <Typography variant="body1"> Buy Now</Typography>
                     </Button>
