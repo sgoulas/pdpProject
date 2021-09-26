@@ -9,6 +9,7 @@ import ListItem from '@material-ui/core/ListItem';
 
 import { ApiProduct } from '@api';
 import { useDebounce } from '@hooks';
+import { productDetailsPage } from '@core';
 
 import useStyles from './Search.styles';
 import { GET_PRODUCT_BY_NAME } from './api';
@@ -94,11 +95,7 @@ const Search: React.FC = () => {
                             {...getOptionProps({ option, index })}
                             key={option.id}
                         >
-                            <Link
-                                href={`/products/${encodeURIComponent(
-                                    option.id
-                                )}`}
-                            >
+                            <Link href={productDetailsPage(option.id)}>
                                 <a className={classes.searchOption}>
                                     {option.name}
                                 </a>

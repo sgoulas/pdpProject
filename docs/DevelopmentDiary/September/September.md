@@ -787,3 +787,44 @@ I tried writing a test for different viewports and the amount of custom hackery 
 At the end of the day testing different viewports is a super common need for web applications and I feel it is not easy to do so _at all_. It really should be its own section in the official documentation for `jest` and `react-testing-library` but here I am going over custom hacks and window property overrides at stack overflow.
 
 In the course of this project I don't think there was another day like this where I actually wrote code and nevertheless felt I made so little progress.
+
+[later in the day]
+
+I added some styles and grids to the product details page as well the "add to cart" and "buy now" buttons. I also found out an error in the urls that were generated in the `Search` component (it was linking to `product/{id}` instead of `products/{id}`) and I thought this was a good chance to add some url constructors to the `core` folder.
+
+```ts
+export const productDetailsPage: (id: string) => string = id =>
+    `/products/${encodeURIComponent(id)}`;
+```
+
+so that this
+
+```tsx
+<Link href={`/products/${encodeURIComponent(option.id)}`}>
+    <a className={classes.searchOption}>{option.name}</a>
+</Link>
+```
+
+can now be written as
+
+```tsx
+<Link href={productDetailsPage(option.id)}>
+    <a className={classes.searchOption}>{option.name}</a>
+</Link>
+```
+
+which not only is easier to read but also makes sure I will not mistype any URL like I previously did.
+
+Of course, this does mean that this
+
+```tsx
+<Link href="/">landing page</Link>
+```
+
+had to be rewritten like this
+
+```tsx
+<Link href={landingPage()}>landing page</Link>
+```
+
+This is one of those cases where consistency in following a guideline forces a change that may seem silly, but it's better to be consistent across the codebase than taking the short path and leaving something as it was because it seems simple.

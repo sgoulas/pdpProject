@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 
 import { Typography } from '@components';
-import { SITE_NAME } from '@core';
+import { SITE_NAME, landingPage } from '@core';
 
 import useStyles from './SiteName.styles';
 
@@ -11,7 +11,7 @@ const SiteName: React.FC = () => {
 
     return (
         <>
-            <Link href="/">
+            <Link href={landingPage()}>
                 <Typography
                     component="h1"
                     variant="h5"
@@ -21,7 +21,7 @@ const SiteName: React.FC = () => {
                     {SITE_NAME.charAt(0)}
                 </Typography>
             </Link>
-            <Link href="/">
+            <Link href={landingPage()}>
                 <Typography
                     component="h1"
                     variant="h5"
