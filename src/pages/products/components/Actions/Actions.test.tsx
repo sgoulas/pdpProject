@@ -10,6 +10,12 @@ describe('Product page actions suite', () => {
         handleBuyNow: jest.fn(),
     };
 
+    it('renders correctly', () => {
+        const { container } = render(<Actions {...defaultProps} />);
+
+        expect(container.firstChild).toMatchSnapshot();
+    });
+
     it('calls handleAddToCard when clicking the add to cart button', () => {
         const { getByTestId } = render(<Actions {...defaultProps} />);
 
