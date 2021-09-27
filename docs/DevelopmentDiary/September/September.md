@@ -740,7 +740,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export default Product;
 ```
 
-Now, normally the `id` inside `params` in `getStaticProps` would be used to fetch each specific product based on the generated path by `getStaticPaths`, however here I was getting the error that `Property 'id' does not exist on type 'ParsedUrlQuery | undefined'` which makes sense because in this file I expect my params to include an `id` property, coming from `getStaticPaths` but `ParsedUrlQuery` does not contain such a property. The soluction was to extend `ParsedUrlQuery`.
+Now, normally the `id` inside `params` in `getStaticProps` would be used to fetch each specific product based on the generated path by `getStaticPaths`, however here I was getting the error that `Property 'id' does not exist on type 'ParsedUrlQuery | undefined'` which makes sense because in this file I expect my params to include an `id` property, coming from `getStaticPaths` but `ParsedUrlQuery` does not contain such a property. The solution was to extend `ParsedUrlQuery`.
 
 ```tsx
 // ...
