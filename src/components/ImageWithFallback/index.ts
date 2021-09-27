@@ -1,1 +1,1 @@
-export { default } from './ImageWithFallback';
+export { default as ImageWithFallback } from './ImageWithFallback';

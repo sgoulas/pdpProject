@@ -830,3 +830,7 @@ had to be rewritten like this
 This is one of those cases where consistency in following a guideline forces a change that may seem silly, but it's better to be consistent across the codebase than taking the short path and leaving something as it was because it seems simple.
 
 I added tests for the `Actions` component and called it a day.
+
+## 27 September 2021
+
+I extracted the product rating into a separate component and made `@components` folder `index` file more consistent by having it export named exports instead of "default as `<something>`".

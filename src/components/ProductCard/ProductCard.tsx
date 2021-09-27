@@ -4,7 +4,7 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Link from 'next/link';
 
-import { ImageWithFallback, ReviewRating } from '@components';
+import { ImageWithFallback, ProductRating, Typography } from '@components';
 
 import useStyles from './ProductCard.styles';
 
@@ -79,12 +79,33 @@ const ProductCard: React.FC<ProductCardProps> = ({
                                     </a>
                                 </Link>
                             </Box>
-                            <ReviewRating
-                                price={price}
+                            <ProductRating
                                 reviewCount={reviewCount}
-                                availability={availability}
                                 ratingValue={ratingValue}
                             />
+                            <Box
+                                display="flex"
+                                flexDirection="row"
+                                justifyContent="flex-start"
+                                mb={2}
+                            >
+                                <Typography variant="body1" component="span">
+                                    {price}€
+                                </Typography>
+                                <Box display="inline" ml={1}>
+                                    <Typography
+                                        variant="body2"
+                                        color={
+                                            availability ? 'primary' : 'error'
+                                        }
+                                        component="span"
+                                    >
+                                        {availability
+                                            ? 'in stock'
+                                            : 'out of stock'}
+                                    </Typography>
+                                </Box>
+                            </Box>
                         </Box>
                     </Grid>
                 </Grid>

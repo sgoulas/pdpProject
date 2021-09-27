@@ -1,10 +1,9 @@
-export { default as Layout } from './Layout';
+export { Layout } from './Layout';
 export { default as Typography } from '@material-ui/core/Typography';
-export { default as NavBar } from './NavBar';
-export { default as Footer } from './Footer';
+export { NavBar } from './NavBar';
+export { Footer } from './Footer';
 export { default as Divider } from '@material-ui/core/Divider';
 export { ProductCard } from './ProductCard';
 export * from './StructuredData';
-export { default as ImageWithFallback } from './ImageWithFallback';
-export { ReviewRating } from './ReviewRating';
-//fix the defaults
+export { ImageWithFallback } from './ImageWithFallback';
+export { ProductRating } from './ProductRating';
