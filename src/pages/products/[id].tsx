@@ -25,12 +25,10 @@ export const Product: React.FC<ProductProps> = ({ product }: ProductProps) => {
     // todo check redux persistence
     // todo [maybe] mock @api/client
 
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     const memoizedHandleAddToCart = useCallback(
         () => console.log('add to cart product with id: ', product.id),
         [product.id]
     );
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     const memoizedHandleBuyNow = useCallback(
         () => console.log('buy now product with id: ', product.id),
         [product.id]

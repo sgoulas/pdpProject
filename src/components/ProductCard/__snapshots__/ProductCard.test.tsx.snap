@@ -14,7 +14,7 @@ exports[`ProductCard suite matches snapshot 1`] = `
         class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-5 MuiGrid-grid-md-12"
       >
         <div
-          class="MuiBox-root MuiBox-root-7 makeStyles-image-6"
+          class="MuiBox-root MuiBox-root-6 makeStyles-image-5"
         >
           <div
             style="display: block; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;"
@@ -36,32 +36,32 @@ exports[`ProductCard suite matches snapshot 1`] = `
         class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-7 MuiGrid-grid-md-12"
       >
         <div
-          class="MuiBox-root MuiBox-root-8"
+          class="MuiBox-root MuiBox-root-7"
         >
           <div
-            class="MuiBox-root MuiBox-root-9"
+            class="MuiBox-root MuiBox-root-8"
           >
             <a
               class="makeStyles-description-4"
               href="/products/mockId"
             >
               <h4
-                class="MuiBox-root MuiBox-root-10"
+                class="MuiBox-root MuiBox-root-9"
               >
                 mockName
               </h4>
               <p
-                class="MuiBox-root MuiBox-root-11"
+                class="MuiBox-root MuiBox-root-10"
               >
                 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam
               </p>
             </a>
           </div>
           <div
-            class="MuiBox-root MuiBox-root-12"
+            class="MuiBox-root MuiBox-root-11"
           >
             <div
-              class="MuiBox-root MuiBox-root-13"
+              class="MuiBox-root MuiBox-root-12"
             >
               <span
                 aria-label="3.5 Stars"
@@ -261,7 +261,7 @@ exports[`ProductCard suite matches snapshot 1`] = `
               </span>
             </div>
             <div
-              class="MuiBox-root MuiBox-root-14"
+              class="MuiBox-root MuiBox-root-13"
             >
               <p
                 class="MuiTypography-root MuiTypography-body2 MuiTypography-colorPrimary"
@@ -271,7 +271,7 @@ exports[`ProductCard suite matches snapshot 1`] = `
             </div>
           </div>
           <div
-            class="MuiBox-root MuiBox-root-15"
+            class="MuiBox-root MuiBox-root-14"
           >
             <span
               class="MuiTypography-root MuiTypography-body1"
@@ -279,11 +279,15 @@ exports[`ProductCard suite matches snapshot 1`] = `
               100
               €
             </span>
-            <span
-              class="MuiTypography-root makeStyles-availability-5 MuiTypography-body2 MuiTypography-colorPrimary"
+            <div
+              class="MuiBox-root MuiBox-root-15"
             >
-              in stock
-            </span>
+              <span
+                class="MuiTypography-root MuiTypography-body2 MuiTypography-colorPrimary"
+              >
+                in stock
+              </span>
+            </div>
           </div>
         </div>
       </div>

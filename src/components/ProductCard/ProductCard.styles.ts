@@ -32,9 +32,6 @@ const useStyles = makeStyles(({ palette, spacing, breakpoints }) => ({
             height: spacing(10),
         },
     },
-    availability: {
-        marginLeft: spacing(1),
-    },
     image: {
         [breakpoints.up('md')]: {
             maxWidth: '50%',
