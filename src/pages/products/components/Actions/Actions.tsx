@@ -29,6 +29,7 @@ const Actions: React.FC<ActionProps> = ({
             >
                 <Grid item xs={6}>
                     <Button
+                        data-testid="add-to-cart-btn"
                         variant="text"
                         style={{
                             backgroundColor: '#FFD814',
@@ -41,6 +42,7 @@ const Actions: React.FC<ActionProps> = ({
                 </Grid>
                 <Grid item xs={6}>
                     <Button
+                        data-testid="buy-now-btn"
                         variant="text"
                         style={{
                             backgroundColor: '#FFA41C',

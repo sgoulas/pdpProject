@@ -2,8 +2,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(({ spacing }) => ({
     button: {
-        width: spacing(15),
-        height: spacing(5),
+        width: spacing(18),
+        height: spacing(6),
     },
 }));
 
