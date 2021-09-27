@@ -49,7 +49,7 @@ I added `redux-saga` and was able to set it up, without using `next-redux-wrappe
 
 Before adding jest to my project I would like to solve some linter warnings in my saga files, due to functions with no return type and `action` params having implicitly `any` type. Reading more into it, I found the `Genetaror` type in the official Typescript docs and the `StrictEffect` type in `redux-saga`, but it seems there are several types to describe the action the function generators receive and also the return value of `yield` is of type `any`. I think this is one of those cases that being ultra strict on adding typing to everything may yield less clarity than more (see what I did there?).
 
-I did find two solution for typing the received `action` param of my generator functions.
+I did find two solutions for typing the received `action` param of my generator functions.
 
 The first one uses Typescript's type guard (https://basarat.gitbook.io/typescript/type-system/typeguard)
 
@@ -401,7 +401,7 @@ While meddling around I added a `public` folder with `robots.txt` and a `favicon
 
 Hitting the one hour mark, why is this so hard? Am I missing something obvious?
 
-The official documentation exampels does not work:
+The official documentation example does not work:
 
 ```tsx
 // pages/_document.js
