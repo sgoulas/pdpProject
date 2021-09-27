@@ -782,7 +782,7 @@ I set up the query and replaced the statics results with "real" mock data coming
 
 Broke my self made promise and worked a bit more on the main page of the application, just so I could render a different application name for small viewports, so that it can be used as the "navigate to home" button.
 
-I tried writing a test for different viewports and the amount of custom hackery I encountered was daunting. All the solutions proposed overwritting the `window.resize` function so that I could fire it from inside my `jest` tests after seeting `env` to `jsdom` in the command line. Cherry on the top was RTL's `fireEvent.resize` second param being `options?: {} | undefined` which provided absolutely no help at all.
+I tried writing a test for different viewports and the amount of custom hackery I encountered was daunting. All the solutions proposed overwritting the `window.resize` function so that I could fire it from inside my `jest` tests after setting `env` to `jsdom` in the command line. Cherry on the top was RTL's `fireEvent.resize` second param being `options?: {} | undefined` which provided absolutely no help at all.
 
 At the end of the day testing different viewports is a super common need for web applications and I feel it is not easy to do so _at all_. It really should be its own section in the official documentation for `jest` and `react-testing-library` but here I am going over custom hacks and window property overrides at stack overflow.
 
