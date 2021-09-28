@@ -34,6 +34,60 @@ export const Product: React.FC<ProductProps> = ({ product }: ProductProps) => {
         [product.id]
     );
 
+    const image = (
+        <Box margin="auto" className={classes.imageContainer}>
+            <ImageWithFallback
+                src={product.image}
+                fallbackSrc="phoneFallBack.png"
+                alt={product.name}
+                width={200}
+                height={200}
+            ></ImageWithFallback>
+        </Box>
+    );
+
+    const description = (
+        <Box>
+            <Box mb={2}>
+                <Typography variant="h2" className={classes.productName}>
+                    {product.name}
+                </Typography>
+            </Box>
+            <Typography variant="body1" color="textPrimary">
+                {product.description}
+            </Typography>
+        </Box>
+    );
+
+    const rating = (
+        <ProductRating
+            ratingValue={product.ratingValue ?? 0}
+            reviewCount={product.reviewCount ?? 0}
+        />
+    );
+
+    const price = (
+        <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="flex-start"
+            mt={2}
+        >
+            <Typography variant="h3" component="span">
+                {product.price}€
+            </Typography>
+            <Box display="inline" ml={1}>
+                <Typography
+                    variant="body2"
+                    color={product.availability ? 'primary' : 'error'}
+                    component="span"
+                >
+                    {product.availability ? 'in stock' : 'out of stock'}
+                </Typography>
+            </Box>
+        </Box>
+    );
+
     return (
         <Box mt={1} mb={8}>
             <Paper>
@@ -41,57 +95,18 @@ export const Product: React.FC<ProductProps> = ({ product }: ProductProps) => {
                     container
                     direction="row"
                     justifyContent="center"
-                    alignItems="center"
                     spacing={2}
                 >
                     <Grid item xs={12} md={6}>
-                        <Box maxWidth={450} maxHeight={450} margin="auto">
-                            <ImageWithFallback
-                                src={product.image}
-                                fallbackSrc="phoneFallBack.png"
-                                alt={product.name}
-                                width={200}
-                                height={200}
-                            ></ImageWithFallback>
-                        </Box>
+                        {image}
                     </Grid>
                     <Grid item xs={12} md={6}>
-                        <Grid
-                            container
-                            direction="column"
-                            justifyContent="center"
-                            alignItems="center"
-                        >
+                        <Grid container direction="column" alignItems="center">
                             <Grid item xs={12}>
-                                <Box px={1}>
-                                    <Box mb={2}>
-                                        <Typography
-                                            variant="h2"
-                                            className={classes.productName}
-                                        >
-                                            {product.name}
-                                        </Typography>
-                                    </Box>
-                                    <Typography
-                                        variant="body1"
-                                        color="textPrimary"
-                                    >
-                                        {product.description}
-                                    </Typography>
-                                </Box>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <Box
-                                    style={
-                                        {
-                                            // backgroundColor: 'red',
-                                        }
-                                    }
-                                >
-                                    <ProductRating
-                                        ratingValue={product.ratingValue ?? 0}
-                                        reviewCount={product.reviewCount ?? 0}
-                                    />
+                                <Box px={2}>
+                                    {description}
+                                    {rating}
+                                    {price}
                                 </Box>
                             </Grid>
                             <Grid item xs={12}>

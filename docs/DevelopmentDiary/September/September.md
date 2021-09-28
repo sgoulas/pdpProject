@@ -834,3 +834,7 @@ I added tests for the `Actions` component and called it a day.
 ## 27 September 2021
 
 I extracted the product rating into a separate component and made `@components` folder `index` file more consistent by having it export named exports instead of "default as `<something>`".
+
+## 28 September 2021
+
+I styled the product details page for all viewports.

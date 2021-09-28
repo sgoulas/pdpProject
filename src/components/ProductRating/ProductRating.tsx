@@ -13,22 +13,20 @@ const ProductRating: React.FC<ProductRatingProps> = ({
     ratingValue,
     reviewCount,
 }: ProductRatingProps) => (
-    <Box>
-        <Box display="flex">
-            <Box>
-                <Rating
-                    name="rating"
-                    value={ratingValue}
-                    readOnly
-                    precision={0.5}
-                    size="small"
-                />
-            </Box>
-            <Box>
-                <Typography variant="body2" color="primary">
-                    {reviewCount}
-                </Typography>
-            </Box>
+    <Box display="flex">
+        <Box>
+            <Rating
+                name="rating"
+                value={ratingValue}
+                readOnly
+                precision={0.5}
+                size="small"
+            />
+        </Box>
+        <Box>
+            <Typography variant="body2" color="primary">
+                {reviewCount}
+            </Typography>
         </Box>
     </Box>
 );

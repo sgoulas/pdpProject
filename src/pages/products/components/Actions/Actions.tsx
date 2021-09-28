@@ -2,6 +2,8 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import { Typography } from '@components';
 
@@ -17,17 +19,19 @@ const Actions: React.FC<ActionProps> = ({
     handleBuyNow,
 }: ActionProps) => {
     const classes = useStyles();
+    const theme = useTheme();
+    const isLargeScreen = useMediaQuery(() => theme.breakpoints.up('md'));
 
     return (
-        <Box py={5}>
+        <Box py={8}>
             <Grid
                 container
-                direction="row"
-                justifyContent="space-between"
-                alignItems="center"
+                direction={isLargeScreen ? 'row' : 'column'}
+                justifyContent="center"
+                alignItems="stretch"
                 spacing={2}
             >
-                <Grid item xs={6}>
+                <Grid item xs={12} md={6} lg={6} xl={6}>
                     <Button
                         data-testid="add-to-cart-btn"
                         variant="text"
@@ -37,10 +41,12 @@ const Actions: React.FC<ActionProps> = ({
                         className={classes.button}
                         onClick={handleAddToCard}
                     >
-                        <Typography variant="body1">Add to Cart</Typography>
+                        <Typography variant="body1" component="span">
+                            Add to Cart
+                        </Typography>
                     </Button>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={12} md={6} lg={6} xl={6}>
                     <Button
                         data-testid="buy-now-btn"
                         variant="text"
@@ -50,7 +56,9 @@ const Actions: React.FC<ActionProps> = ({
                         className={classes.button}
                         onClick={handleBuyNow}
                     >
-                        <Typography variant="body1"> Buy Now</Typography>
+                        <Typography variant="body1" component="span">
+                            Buy Now
+                        </Typography>
                     </Button>
                 </Grid>
             </Grid>
