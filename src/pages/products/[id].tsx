@@ -6,7 +6,7 @@ import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 
 import { client, ApiProduct } from '@api';
-import { ImageWithFallback, Typography } from '@components';
+import { ImageWithFallback, ProductRating, Typography } from '@components';
 
 import { Actions } from './components';
 import { GET_ALL_PRODUCT_IDS, GET_PRODUCT_BY_ID } from './api';
@@ -78,6 +78,20 @@ export const Product: React.FC<ProductProps> = ({ product }: ProductProps) => {
                                     >
                                         {product.description}
                                     </Typography>
+                                </Box>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <Box
+                                    style={
+                                        {
+                                            // backgroundColor: 'red',
+                                        }
+                                    }
+                                >
+                                    <ProductRating
+                                        ratingValue={product.ratingValue ?? 0}
+                                        reviewCount={product.reviewCount ?? 0}
+                                    />
                                 </Box>
                             </Grid>
                             <Grid item xs={12}>

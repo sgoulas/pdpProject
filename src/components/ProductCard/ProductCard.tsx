@@ -4,6 +4,7 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Link from 'next/link';
 
+import { productDetailsPage } from '@core';
 import { ImageWithFallback, ProductRating, Typography } from '@components';
 
 import useStyles from './ProductCard.styles';
@@ -62,9 +63,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
                     <Grid item xs={7} md={12}>
                         <Box px={1}>
                             <Box component="div">
-                                <Link
-                                    href={`/products/${encodeURIComponent(id)}`}
-                                >
+                                <Link href={productDetailsPage(id)}>
                                     <a className={classes.description}>
                                         <Box
                                             component="h4"

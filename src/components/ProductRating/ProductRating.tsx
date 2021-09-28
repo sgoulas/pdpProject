@@ -13,7 +13,7 @@ const ProductRating: React.FC<ProductRatingProps> = ({
     ratingValue,
     reviewCount,
 }: ProductRatingProps) => (
-    <>
+    <Box>
         <Box display="flex">
             <Box>
                 <Rating
@@ -30,7 +30,7 @@ const ProductRating: React.FC<ProductRatingProps> = ({
                 </Typography>
             </Box>
         </Box>
-    </>
+    </Box>
 );
 
 export default ProductRating;
