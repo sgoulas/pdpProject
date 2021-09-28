@@ -837,4 +837,4 @@ I extracted the product rating into a separate component and made `@components` 
 
 ## 28 September 2021
 
-I styled the product details page for all viewports.
+I styled the product details page for all viewports. Next I plan to add head, page title, head and open grapth metadata.

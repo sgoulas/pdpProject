@@ -19,7 +19,7 @@ export interface ProductProps {
 export const Product: React.FC<ProductProps> = ({ product }: ProductProps) => {
     const classes = useStyles();
 
-    // todo add head, metadata, open graph, twitter card
+    // todo add head, page title, head and open grapth metadata.
     // todo solve the problem in the test file
     // todo add redux state slice, actions, reducer
     // todo check redux persistence
