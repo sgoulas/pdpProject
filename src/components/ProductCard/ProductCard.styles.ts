@@ -20,7 +20,7 @@ const useStyles = makeStyles(({ palette, spacing, breakpoints }) => ({
         marginRight: spacing(1),
     },
     description: {
-        height: spacing(8),
+        height: spacing(10),
         color: palette.text.primary,
         textDecoration: 'none',
         fontSize: 14,
@@ -28,9 +28,6 @@ const useStyles = makeStyles(({ palette, spacing, breakpoints }) => ({
         '-webkit-line-clamp': 4,
         '-webkit-box-orient': 'vertical',
         overflow: 'hidden',
-        [breakpoints.down('md')]: {
-            height: spacing(10),
-        },
     },
     image: {
         [breakpoints.up('md')]: {

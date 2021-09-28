@@ -4,7 +4,7 @@ const MOCK_PHONES = [
     {
         availability: 5,
         brand: 'apple',
-        description: faker.lorem.sentences(2),
+        description: faker.lorem.sentences(7),
         id: 'bfaf91b1',
         image: 'phone_bfaf91b1.png',
         name: 'iPhone 128GB',
@@ -17,7 +17,7 @@ const MOCK_PHONES = [
     {
         availability: 0,
         brand: 'apple',
-        description: faker.lorem.sentences(2),
+        description: faker.lorem.sentences(3),
         id: '48e51f536c8a',
         image: 'phone_48e51f536c8a.png',
         name: 'iPhone 12x Pro 256GB',
@@ -30,7 +30,7 @@ const MOCK_PHONES = [
     {
         availability: 240,
         brand: 'huawei',
-        description: faker.lorem.sentences(2),
+        description: faker.lorem.sentences(7),
         id: 'b20f6529',
         image: 'phone_b20f6529.png',
         name: 'HUAWEI P Smart 2021 Midnight Black',
@@ -56,7 +56,7 @@ const MOCK_PHONES = [
     {
         availability: 5,
         brand: 'apple',
-        description: faker.lorem.sentences(2),
+        description: faker.lorem.sentences(7),
         id: 'bfaf91b1a',
         image: 'phone_bfaf91b1.png',
         name: 'iPhone 11s 128GB',
@@ -69,7 +69,7 @@ const MOCK_PHONES = [
     {
         availability: 56,
         brand: 'xiaomi',
-        description: faker.lorem.sentences(2),
+        description: faker.lorem.sentences(3),
         id: '37595f12402b',
         image: 'phone_37595f12402b.png',
         name: 'Redmi 9C 32GB',
@@ -82,7 +82,7 @@ const MOCK_PHONES = [
     {
         availability: 56,
         brand: 'xiaomi',
-        description: faker.lorem.sentences(2),
+        description: faker.lorem.sentences(7),
         id: '37595f12402ba',
         image: 'phone_37595f12402b.png',
         name: 'Redmi 9C pro 32GB',
@@ -95,7 +95,7 @@ const MOCK_PHONES = [
     {
         availability: 240,
         brand: 'huawei',
-        description: faker.lorem.sentences(2),
+        description: faker.lorem.sentences(7),
         id: 'b20f6529a',
         image: 'phone_b20f6529.png',
         name: 'HUAWEI P Smart 2021 Midnight Black',
@@ -108,7 +108,7 @@ const MOCK_PHONES = [
     {
         availability: 0,
         brand: 'apple',
-        description: faker.lorem.sentences(2),
+        description: faker.lorem.sentences(7),
         id: '48e51f536c8ac',
         image: 'phone_48e51f536c8a.png',
         name: 'iPhone 12 Pro 256GB',
@@ -121,7 +121,7 @@ const MOCK_PHONES = [
     {
         availability: 100,
         brand: 'apple',
-        description: faker.lorem.sentences(3),
+        description: faker.lorem.sentences(7),
         id: '48e51f536c8dd',
         image: 'iphone-13-pro-family-hero.png',
         name: 'iPhone 13',
