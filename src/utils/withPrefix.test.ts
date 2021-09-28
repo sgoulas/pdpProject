@@ -1,10 +1,12 @@
+import faker from 'faker';
+
 import withPrefix from './withPrefix';
 
 describe('withPrefix suite', () => {
     it('returns a function that adds the provided prefix to the param it receives', () => {
-        const nameSpace = 'mockNameSpace';
+        const nameSpace = faker.datatype.string();
         const withNameSpace = withPrefix(nameSpace);
-        const stringToBePrefixed = 'stringToBePrefixed';
+        const stringToBePrefixed = faker.datatype.string();
 
         const actual = withNameSpace(stringToBePrefixed);
 

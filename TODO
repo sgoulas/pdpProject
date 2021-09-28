@@ -8,9 +8,9 @@ Technologies, methodologies and architecture:
   ✔ Redux toolkit (with care for memoized selectors) @done(21-08-09 19:09)
   ☐ SEO
   ☐ Performance optimization
-  ☐ Semantic HTML
+  ✔ Semantic HTML @done(21-09-29 02:39)
   ✔ Custom CSS + Flex / Grid @done(07-09-08 03:10)
-  ☐ Data driven navigation
+  ✔ Data driven navigation @done(21-09-29 02:37)
   ✘ State / UI separation @cancelled(21-08-19 00:39) (partially re-considered under the ducks design approach that was decided, relevant diary entry: 18/8/2021)
   ✔ relative paths (tsconfig paths prop) @done(21-08-08 17:10)
   ✘ Axios @cancelled(21-07-26 01:55) (opted for apollo-client / apollo-server)
@@ -20,7 +20,7 @@ Technologies, methodologies and architecture:
   ✔ fake data with faker @done(21-07-26 01:55)
   ✔ GraphQL calls @done(21-08-19 00:38)
   ☐ Animations
-  ☐ Responsive, mobile first design
+  ✔ Responsive, mobile first design @done(21-09-29 02:37)
   ☐ Hosted somewhere
   ☐ Persistent state (redux-persist or ADR)
   ✘ Dynamic loading with suspense @cancelled(21-08-10 01:59) suspense is at the time still an experimental feature, NextJS provides dynamic loading
@@ -28,7 +28,7 @@ Technologies, methodologies and architecture:
   ✔ React testing library + redux-saga-test-plan @done(21-08-11 15:39)
 
 Main Goals:
-  ☐ Landing Page
+  ✔ Landing Page @done(24-09-29 02:38)
   ☐ Products listing page
   ☐ Product page
   ☐ Checkout page
@@ -47,5 +47,5 @@ Extra milestones:
   ☐ Consider clsx package for styles class assignemnt
   ☐ Search page to show more search results
   ☐ Add centralized toast emitter
-  ☐ Make the repositry public and turn on the rule to enforce successful pipelines before merging (https://stackoverflow.com/questions/58654530/how-to-reject-a-pull-request-if-tests-are-failed-github-actions)
+  ☐ Make the repository public and turn on the rule to enforce successful pipelines before merging (https://stackoverflow.com/questions/58654530/how-to-reject-a-pull-request-if-tests-are-failed-github-actions)
   ✔ Remove comment about cart component from Search.styles.tsx. @done(21-09-09 01:00)
