@@ -3,7 +3,7 @@ import { GetStaticProps } from 'next';
 
 import { client } from '@api';
 
-import Main, { MainProps } from './Main/Main';
+import Main, { MainProps } from './Main';
 import { GET_FRONT_PAGE_PHONES } from './Main/api';
 
 const Index: React.FC<MainProps> = (props: MainProps) => <Main {...props} />;

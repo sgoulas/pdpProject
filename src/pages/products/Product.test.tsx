@@ -3,7 +3,7 @@ import * as faker from 'faker';
 
 import { render } from '@testUtils';
 
-import Product, { ProductProps } from './[id]';
+import Product, { ProductProps } from './[id].page';
 
 xdescribe('Main page suite', () => {
     const mockDescriptionSentences = 2;

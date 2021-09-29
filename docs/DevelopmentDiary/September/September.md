@@ -846,3 +846,30 @@ I realized that the existence of an `index` file within my `Main` folder meant t
 [later]
 
 It seems that everything under `/pages` is considered a valid url. So `/products/components/Actions/Actions` actually returns the `Actions` component. This is a major design flaw and I should immediately focus my attention on fixing it by updating the folder structure so I will suspend working on the product details. The timing is also favourable since I just finished re-designing its grid system.
+
+I found out that `NextJS` supports an indication of which type of files should be considered as "pages" via a configuration in `next.config.js` (a configuration file I did not have up until that point). This is super useful and just what I needed.
+
+```js
+/**
+ * @type {import('next').NextConfig}
+ */
+const nextConfig = {
+    /* config options here */
+    pageExtensions: ['page.tsx', 'page.ts'],
+};
+
+module.exports = nextConfig;
+```
+
+_next.config.js_
+
+```js
+    "env": {
+        //...
+        "node": true
+    },
+```
+
+_.eslintrc_
+
+After this configuration only files `page.tsx` or `page.ts` are used as pages (and routes). This also meant I was able to re-introduce my `Main/index.ts` file without fear that it will be considered a page.
