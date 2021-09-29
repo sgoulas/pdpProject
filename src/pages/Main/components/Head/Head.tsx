@@ -4,7 +4,7 @@ import NextHead from 'next/head';
 import { SITE_NAME, SITE_URL, SITE_IMAGE_URL } from '@core';
 import { ProductCollection as ProductCollectionStructuredData } from '@components';
 
-import { LocalBusiness as LocalBusinessStructuredData } from './components';
+import { LocalBusinessJSONLD } from './components';
 
 interface HeadProps {
     productCollectionSize: number;
@@ -43,7 +43,8 @@ const Head: React.FC<HeadProps> = ({ productCollectionSize }: HeadProps) => (
             content={`${SITE_NAME} is the best place to buy Videos, Electronics, Computers, Tablets, Cell Phones, Toys, Games, Watches and hardware, free shipping to Europe.`}
         />
         <meta property="og:locale" content="en_GB" />
-        <meta property="og:image" content={SITE_IMAGE_URL} />
+
+        {/* Open Graph protocol Image Metadata*/}
         <meta property="og:image:secure_url" content={SITE_URL} />
         <meta property="og:image:type" content="image/jpeg" />
         <meta property="og:image:width" content="400" />
@@ -52,7 +53,7 @@ const Head: React.FC<HeadProps> = ({ productCollectionSize }: HeadProps) => (
             property="og:image:alt"
             content={`${SITE_NAME} ecommerce site logo`}
         />
-        <LocalBusinessStructuredData />
+        <LocalBusinessJSONLD />
         <ProductCollectionStructuredData
             size={productCollectionSize}
             headline={'Top selling smartphones'}

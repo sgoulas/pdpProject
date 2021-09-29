@@ -1,3 +1,3 @@
 export { Head } from './Head';
-export { LocalBusiness } from './Head/components/StructuredDataScript';
+export { LocalBusinessJSONLD } from './Head/components/LocalBusinessJSONLD';
 export { Jumbotron } from './Jumbotron';

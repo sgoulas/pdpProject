@@ -1,0 +1,1 @@
+export { ProductJSONLD } from './ProductJSONLD';

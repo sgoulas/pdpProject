@@ -3,7 +3,7 @@ export const DEBOUNCE_DELAY = 500;
 
 //** SEO RELATED CONSTANTS */
 export const SITE_NAME = 'PDP project';
-export const SITE_URL = 'http://localhost:3000/';
+export const SITE_URL = 'http://localhost:3000';
 export const SITE_IMAGE_URL = `${SITE_URL}/ecommerce.jpg`;
 export const GIT_REPO_URL = 'https://github.com/sgoulas/pdpProject';
 export const GIT_PROFILE_URL = 'https://github.com/sgoulas';

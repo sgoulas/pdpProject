@@ -2,7 +2,7 @@ import React from 'react';
 
 import { GIT_REPO_URL, SITE_IMAGE_URL, SITE_NAME, SITE_URL } from '@core';
 
-const LocalBusiness: React.FC = () => {
+const LocalBusinessJSONLD: React.FC = () => {
     const JSON_LD = {
         '@context': 'http://schema.org',
         '@type': 'LocalBusiness',
@@ -32,4 +32,4 @@ const LocalBusiness: React.FC = () => {
     );
 };
 
-export default LocalBusiness;
+export default LocalBusinessJSONLD;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { productImageUrl } from '@core';
 
 interface ImageFallbackProps {
     src: string;
@@ -28,7 +29,7 @@ const ImageFallback: React.FC<ImageFallbackProps> = ({
 
     return (
         <Image
-            src={imgSrc ? `/images/${fallbackSrc}` : `/images/${src}`}
+            src={imgSrc ? productImageUrl(fallbackSrc) : productImageUrl(src)}
             alt={alt}
             layout="responsive"
             width={width}

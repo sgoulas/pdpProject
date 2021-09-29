@@ -1,1 +1,1 @@
-export { LocalBusiness } from './StructuredDataScript';
+export { LocalBusinessJSONLD } from './LocalBusinessJSONLD';

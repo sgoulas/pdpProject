@@ -873,3 +873,5 @@ _next.config.js_
 _.eslintrc_
 
 After this configuration only files `page.tsx` or `page.ts` are used as pages (and routes). This also meant I was able to re-introduce my `Main/index.ts` file without fear that it will be considered a page.
+
+I added the `head` element and the relevant metadata for the product details page as well as some url constructors that were needed in order to eliminate hardcoded url paths from the codebase.

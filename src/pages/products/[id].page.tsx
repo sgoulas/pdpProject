@@ -8,7 +8,7 @@ import Paper from '@material-ui/core/Paper';
 import { client, ApiProduct } from '@api';
 import { ImageWithFallback, ProductRating, Typography } from '@components';
 
-import { Actions } from './components';
+import { Actions, Head } from './components';
 import { GET_ALL_PRODUCT_IDS, GET_PRODUCT_BY_ID } from './api';
 import useStyles from './Product.styles';
 
@@ -19,7 +19,6 @@ export interface ProductProps {
 export const Product: React.FC<ProductProps> = ({ product }: ProductProps) => {
     const classes = useStyles();
 
-    // todo add head, page title, head and open grapth metadata.
     // todo solve the problem in the test file
     // todo add redux state slice, actions, reducer
     // todo check redux persistence
@@ -89,37 +88,48 @@ export const Product: React.FC<ProductProps> = ({ product }: ProductProps) => {
     );
 
     return (
-        <Box mt={1} mb={8}>
-            <Paper>
-                <Grid
-                    container
-                    direction="row"
-                    justifyContent="center"
-                    spacing={2}
-                >
-                    <Grid item xs={12} md={6}>
-                        {image}
-                    </Grid>
-                    <Grid item xs={12} md={6}>
-                        <Grid container direction="column" alignItems="center">
-                            <Grid item xs={12}>
-                                <Box px={2}>
-                                    {description}
-                                    {rating}
-                                    {price}
-                                </Box>
+        <>
+            <Head product={product} />
+            <article>
+                <Box mt={1} mb={8}>
+                    <Paper>
+                        <Grid
+                            container
+                            direction="row"
+                            justifyContent="center"
+                            spacing={2}
+                        >
+                            <Grid item xs={12} md={6}>
+                                {image}
                             </Grid>
-                            <Grid item xs={12}>
-                                <Actions
-                                    handleAddToCard={memoizedHandleAddToCart}
-                                    handleBuyNow={memoizedHandleBuyNow}
-                                />
+                            <Grid item xs={12} md={6}>
+                                <Grid
+                                    container
+                                    direction="column"
+                                    alignItems="center"
+                                >
+                                    <Grid item xs={12}>
+                                        <Box px={2}>
+                                            {description}
+                                            {rating}
+                                            {price}
+                                        </Box>
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <Actions
+                                            handleAddToCard={
+                                                memoizedHandleAddToCart
+                                            }
+                                            handleBuyNow={memoizedHandleBuyNow}
+                                        />
+                                    </Grid>
+                                </Grid>
                             </Grid>
                         </Grid>
-                    </Grid>
-                </Grid>
-            </Paper>
-        </Box>
+                    </Paper>
+                </Box>
+            </article>
+        </>
     );
 };
 
