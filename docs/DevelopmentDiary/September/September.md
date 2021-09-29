@@ -838,3 +838,7 @@ I extracted the product rating into a separate component and made `@components` 
 ## 28 September 2021
 
 I styled the product details page for all viewports. Next I plan to add head, page title, head and open grapth metadata.
+
+## 29 September 2021
+
+I realized that the existence of an `index` file within my `Main` folder meant that a `/Main` route existed in my app, which was unintended and to make things worse it also returned an error (since it was exporting the `Main` component but without getting any props from the `src/pages/index.tsx` file). I removed the file and made it so the landing page `index` file under `/src/pages` was importing the `Main` component and its props directly from the respective file and not via an `index` file and the `/Main` page was no more.
