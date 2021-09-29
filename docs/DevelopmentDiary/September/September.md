@@ -842,3 +842,7 @@ I styled the product details page for all viewports. Next I plan to add head, pa
 ## 29 September 2021
 
 I realized that the existence of an `index` file within my `Main` folder meant that a `/Main` route existed in my app, which was unintended and to make things worse it also returned an error (since it was exporting the `Main` component but without getting any props from the `src/pages/index.tsx` file). I removed the file and made it so the landing page `index` file under `/src/pages` was importing the `Main` component and its props directly from the respective file and not via an `index` file and the `/Main` page was no more.
+
+[later]
+
+It seems that everything under `/pages` is considered a valid url. So `/products/components/Actions/Actions` actually returns the `Actions` component. This is a major design flaw and I should immediately focus my attention on fixing it by updating the folder structure so I will suspend working on the product details. The timing is also favourable since I just finished re-designing its grid system.
