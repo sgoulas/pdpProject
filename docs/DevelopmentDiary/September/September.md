@@ -875,3 +875,5 @@ _.eslintrc_
 After this configuration only files `page.tsx` or `page.ts` are used as pages (and routes). This also meant I was able to re-introduce my `Main/index.ts` file without fear that it will be considered a page.
 
 I added the `head` element and the relevant metadata for the product details page as well as some url constructors that were needed in order to eliminate hardcoded url paths from the codebase.
+
+I also changed `/pages/Main` to `/pages/main`. Little fun tip: git does not detect changes in capitalization. In order to force an update I first changed `/pages/Main` to `/pages/main_`, then commited the change and immediately after removed the hyphen, so the end result was `/pages/main`.
