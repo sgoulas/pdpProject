@@ -1,30 +1,53 @@
 import React from 'react';
-import * as faker from 'faker';
 
-import { render } from '@testUtils';
+import { renderWithProviders } from '@testUtils';
 
-import Product, { ProductProps } from './[id].page';
+import Product, { ProductProps } from './Product';
 
-xdescribe('Main page suite', () => {
-    const mockDescriptionSentences = 2;
-
+describe('Main page suite', () => {
     const defaultProps: ProductProps = {
         product: {
-            availability: faker.datatype.number(),
-            brand: faker.random.word(),
-            description: faker.lorem.sentences(mockDescriptionSentences),
-            id: faker.datatype.uuid(),
+            availability: 5,
+            brand: 'mockBrand',
+            description: 'mock description',
+            id: 'mockID',
             image: 'phone_48e51f536c8a.png',
-            name: faker.commerce.productName(),
-            price: parseFloat(faker.commerce.price()),
-            ratingValue: faker.datatype.float(),
-            reviewCount: faker.datatype.number(),
-            sku: faker.datatype.uuid(),
+            name: 'mockName',
+            price: 120,
+            ratingValue: 4.5,
+            reviewCount: 1234,
+            sku: 'mockSKU',
         },
     };
 
-    xit('matches snapshot', () => {
-        const { container } = render(<Product {...defaultProps} />);
+    it('matches snapshot', () => {
+        const { container } = renderWithProviders(
+            <Product {...defaultProps} />
+        );
+        expect(container.firstChild).toMatchSnapshot();
+    });
+
+    it('matches snapshot when product availability is zero', () => {
+        const zeroAvailabilityProps: ProductProps = {
+            product: { ...defaultProps.product, availability: 0 },
+        };
+        const { container } = renderWithProviders(
+            <Product {...zeroAvailabilityProps} />
+        );
+        expect(container.firstChild).toMatchSnapshot();
+    });
+
+    it('matches snapshot when rating and reviews are zero', () => {
+        const zeroReviewsProps: ProductProps = {
+            product: {
+                ...defaultProps.product,
+                ratingValue: undefined,
+                reviewCount: undefined,
+            },
+        };
+        const { container } = renderWithProviders(
+            <Product {...zeroReviewsProps} />
+        );
         expect(container.firstChild).toMatchSnapshot();
     });
 });

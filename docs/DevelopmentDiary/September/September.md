@@ -877,3 +877,7 @@ After this configuration only files `page.tsx` or `page.ts` are used as pages (a
 I added the `head` element and the relevant metadata for the product details page as well as some url constructors that were needed in order to eliminate hardcoded url paths from the codebase.
 
 I also changed `/pages/Main` to `/pages/main`. Little fun tip: git does not detect changes in capitalization. In order to force an update I first changed `/pages/Main` to `/pages/main_`, then commited the change and immediately after removed the underscore, so the end result was `/pages/main`.
+
+## 30 September 2021
+
+I extracted the main body of my product details page in a separate file, much like what I did with the landing page. This way I can have my `.page.tsx` files be simple components that call next functions like `getStaticProps` and immediately pass them to the actual component that I want to render. This also means the main component is now easier to test since the outer logic layer has been removed from it.

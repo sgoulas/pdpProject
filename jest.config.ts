@@ -28,6 +28,7 @@ export default {
         '!src/pages/_app.tsx',
         '!src/pages/_document.tsx',
         '!src/**/gql.ts',
+        '!src/pages/**/page.tsx',
     ],
 
     // The directory where Jest should output its coverage files

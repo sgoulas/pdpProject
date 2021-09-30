@@ -20,7 +20,7 @@ describe('url constructors suite', () => {
     it('productImageUrl', () => {
         const randomImage = faker.random.image();
 
-        const expected = `$/images/${randomImage}`;
+        const expected = `/images/${randomImage}`;
 
         expect(productImageUrl(randomImage)).toEqual(expected);
     });

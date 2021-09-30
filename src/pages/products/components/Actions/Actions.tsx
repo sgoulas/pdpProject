@@ -10,11 +10,13 @@ import { Typography } from '@components';
 import useStyles from './Actions.styles';
 
 export interface ActionProps {
+    disabled: boolean;
     handleAddToCard: () => void;
     handleBuyNow: () => void;
 }
 
 const Actions: React.FC<ActionProps> = ({
+    disabled,
     handleAddToCard,
     handleBuyNow,
 }: ActionProps) => {
@@ -40,6 +42,7 @@ const Actions: React.FC<ActionProps> = ({
                         }}
                         className={classes.button}
                         onClick={handleAddToCard}
+                        disabled={disabled}
                     >
                         <Typography variant="body1" component="span">
                             Add to Cart
@@ -55,6 +58,7 @@ const Actions: React.FC<ActionProps> = ({
                         }}
                         className={classes.button}
                         onClick={handleBuyNow}
+                        disabled={disabled}
                     >
                         <Typography variant="body1" component="span">
                             Buy Now

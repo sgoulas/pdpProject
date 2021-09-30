@@ -6,7 +6,9 @@ import { client } from '@api';
 import Main, { MainProps } from './main';
 import { GET_FRONT_PAGE_PHONES } from './main/api';
 
-const Index: React.FC<MainProps> = (props: MainProps) => <Main {...props} />;
+const LandingPage: React.FC<MainProps> = (props: MainProps) => (
+    <Main {...props} />
+);
 
 export const getStaticProps: GetStaticProps = async () => {
     const { data: frontPagePhones } = await client.query({
@@ -20,4 +22,4 @@ export const getStaticProps: GetStaticProps = async () => {
     };
 };
 
-export default Index;
+export default LandingPage;

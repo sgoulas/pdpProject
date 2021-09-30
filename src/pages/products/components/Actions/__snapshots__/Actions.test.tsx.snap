@@ -58,3 +58,58 @@ exports[`Product page actions suite renders correctly 1`] = `
   </div>
 </div>
 `;
+
+exports[`Product page actions suite renders correctly with buttons disabled 1`] = `
+<div
+  class="MuiBox-root MuiBox-root-4"
+>
+  <div
+    class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-direction-xs-column MuiGrid-justify-content-xs-center"
+  >
+    <div
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 MuiGrid-grid-lg-6 MuiGrid-grid-xl-6"
+    >
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-3 Mui-disabled Mui-disabled"
+        data-testid="add-to-cart-btn"
+        disabled=""
+        style="background-color: rgb(255, 216, 20);"
+        tabindex="-1"
+        type="button"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          <span
+            class="MuiTypography-root MuiTypography-body1"
+          >
+            Add to Cart
+          </span>
+        </span>
+      </button>
+    </div>
+    <div
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 MuiGrid-grid-lg-6 MuiGrid-grid-xl-6"
+    >
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-button-3 Mui-disabled Mui-disabled"
+        data-testid="buy-now-btn"
+        disabled=""
+        style="background-color: rgb(255, 164, 28);"
+        tabindex="-1"
+        type="button"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          <span
+            class="MuiTypography-root MuiTypography-body1"
+          >
+            Buy Now
+          </span>
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
