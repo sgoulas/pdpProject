@@ -907,3 +907,7 @@ export interface MainProps {
 but of course this makes no sense, if the request fails for whatever reason I will be getting `undefined`, so I _should_ accomodate for such a scenario.
 
 This is an interesting case where the need to increase my test coverage lead me to writing tests for uncovered cases and the latter revealed a logical error in my types. Failed request means I am getting `undefined`, not zero results. Of course, what are the chances an ecommerce technology shop has zero mobile phones to sell? I could very well treat the zero results as an error, but it would not be strictly correct, since the request itself failed. In cases like that maybe a PO (product owner) could indicate that I should treat the no results as an error case, but since I am the one making these decisions I will handle it separately.
+
+Today was all about cleanup, tidying up and meeting test coverage goals so a really satisfactory session from start to finish.
+
+Next, I will be reading the `redux-toolkit` docs to check the best way to add state slices to my application and maybe about making app state persistent. The goal is to create the mini cart component and its underlying logic, most probably in a hook.

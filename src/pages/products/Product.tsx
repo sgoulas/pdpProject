@@ -16,10 +16,6 @@ export interface ProductProps {
 const Product: React.FC<ProductProps> = ({ product }: ProductProps) => {
     const classes = useStyles();
 
-    // todo add redux state slice, actions, reducer
-    // todo check redux persistence
-    // todo [maybe] mock @api/client
-
     const memoizedHandleAddToCart = useCallback(
         () => console.log('add to cart product with id: ', product.id),
         [product.id]
