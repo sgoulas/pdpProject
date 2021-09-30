@@ -38,6 +38,6 @@
   ],
   "exclude": [
     "node_modules",
-    "src/setupTests.js"
+    "setupTests.js"
   ]
 }
