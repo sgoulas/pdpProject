@@ -16,7 +16,6 @@ export interface ProductProps {
 const Product: React.FC<ProductProps> = ({ product }: ProductProps) => {
     const classes = useStyles();
 
-    // todo solve the problem in the test file
     // todo add redux state slice, actions, reducer
     // todo check redux persistence
     // todo [maybe] mock @api/client
