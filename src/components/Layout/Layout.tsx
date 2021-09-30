@@ -7,7 +7,7 @@ import { NavBar, Footer } from '@components';
 import useStyles from './Layout.styles';
 
 export interface LayoutProps {
-    children: React.ReactElement;
+    children: React.ReactNode;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {

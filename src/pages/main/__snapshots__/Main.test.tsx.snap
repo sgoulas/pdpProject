@@ -1,6 +1,50 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Main page suite matches snapshot 1`] = `
+exports[`Main page suite renders alert when the phones prop is undefined 1`] = `
+<div
+  class="MuiContainer-root makeStyles-container-38"
+>
+  <div
+    class="MuiBox-root MuiBox-root-42"
+  >
+    <div
+      class="MuiBox-root MuiBox-root-43"
+    >
+      <h2
+        class="MuiTypography-root makeStyles-productName-39 MuiTypography-h2"
+      >
+        iPhone 13 Pro
+      </h2>
+    </div>
+    <div
+      class="MuiBox-root MuiBox-root-44"
+    >
+      <h2
+        class="MuiTypography-root makeStyles-productMoto-40 MuiTypography-h4"
+      >
+        Oh.So.Pro
+      </h2>
+    </div>
+  </div>
+  <div
+    class="MuiBox-root MuiBox-root-45 makeStyles-imageContainer-41"
+  >
+    <div
+      style="display: block; overflow: hidden; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; margin: 0px;"
+    >
+      <noscript />
+      <img
+        alt="iphone 13 Pro"
+        decoding="async"
+        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: contain;"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Main page suite renders correctly 1`] = `
 <div
   class="MuiContainer-root makeStyles-container-3"
 >
@@ -28,6 +72,94 @@ exports[`Main page suite matches snapshot 1`] = `
   </div>
   <div
     class="MuiBox-root MuiBox-root-10 makeStyles-imageContainer-6"
+  >
+    <div
+      style="display: block; overflow: hidden; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; margin: 0px;"
+    >
+      <noscript />
+      <img
+        alt="iphone 13 Pro"
+        decoding="async"
+        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: contain;"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Main page suite renders correctly for no phones 1`] = `
+<div
+  class="MuiContainer-root makeStyles-container-28"
+>
+  <div
+    class="MuiBox-root MuiBox-root-32"
+  >
+    <div
+      class="MuiBox-root MuiBox-root-33"
+    >
+      <h2
+        class="MuiTypography-root makeStyles-productName-29 MuiTypography-h2"
+      >
+        iPhone 13 Pro
+      </h2>
+    </div>
+    <div
+      class="MuiBox-root MuiBox-root-34"
+    >
+      <h2
+        class="MuiTypography-root makeStyles-productMoto-30 MuiTypography-h4"
+      >
+        Oh.So.Pro
+      </h2>
+    </div>
+  </div>
+  <div
+    class="MuiBox-root MuiBox-root-35 makeStyles-imageContainer-31"
+  >
+    <div
+      style="display: block; overflow: hidden; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; margin: 0px;"
+    >
+      <noscript />
+      <img
+        alt="iphone 13 Pro"
+        decoding="async"
+        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: contain;"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Main page suite renders correctly for no rating 1`] = `
+<div
+  class="MuiContainer-root makeStyles-container-48"
+>
+  <div
+    class="MuiBox-root MuiBox-root-52"
+  >
+    <div
+      class="MuiBox-root MuiBox-root-53"
+    >
+      <h2
+        class="MuiTypography-root makeStyles-productName-49 MuiTypography-h2"
+      >
+        iPhone 13 Pro
+      </h2>
+    </div>
+    <div
+      class="MuiBox-root MuiBox-root-54"
+    >
+      <h2
+        class="MuiTypography-root makeStyles-productMoto-50 MuiTypography-h4"
+      >
+        Oh.So.Pro
+      </h2>
+    </div>
+  </div>
+  <div
+    class="MuiBox-root MuiBox-root-55 makeStyles-imageContainer-51"
   >
     <div
       style="display: block; overflow: hidden; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; margin: 0px;"

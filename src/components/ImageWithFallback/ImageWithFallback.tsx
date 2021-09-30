@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { productImageUrl } from '@core';
 
-interface ImageFallbackProps {
+export interface ImageFallbackProps {
     src: string;
     fallbackSrc: string;
     alt: string;
@@ -17,19 +17,23 @@ const ImageFallback: React.FC<ImageFallbackProps> = ({
     width,
     height,
 }: ImageFallbackProps) => {
-    const [imgSrc, setImgSrc] = useState(false);
-    const [oldSrc, setOldSrc] = useState(src);
+    const [showFallback, setShowFallback] = useState(false);
+    const [originalSrc, setOriginalSrc] = useState(src);
 
-    const handleImgSrcError = () => setImgSrc(true);
+    const handleImgSrcError = () => setShowFallback(true);
 
-    if (oldSrc !== src) {
-        setImgSrc(false);
-        setOldSrc(src);
+    if (originalSrc !== src) {
+        setShowFallback(false);
+        setOriginalSrc(src);
     }
 
     return (
         <Image
-            src={imgSrc ? productImageUrl(fallbackSrc) : productImageUrl(src)}
+            src={
+                showFallback
+                    ? productImageUrl(fallbackSrc)
+                    : productImageUrl(src)
+            }
             alt={alt}
             layout="responsive"
             width={width}

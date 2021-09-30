@@ -26,7 +26,7 @@ export interface PhoneData {
 }
 
 export interface MainProps {
-    frontPagePhones: PhoneData;
+    frontPagePhones?: PhoneData;
 }
 
 const Main: React.FC<MainProps> = ({ frontPagePhones }: MainProps) => {
@@ -39,7 +39,9 @@ const Main: React.FC<MainProps> = ({ frontPagePhones }: MainProps) => {
 
     return (
         <>
-            <Head productCollectionSize={frontPagePhones.results.length} />
+            <Head
+                productCollectionSize={frontPagePhones?.results.length ?? 0}
+            />
             <Jumbotron />
             {!frontPagePhones && (
                 <Alert severity="error">

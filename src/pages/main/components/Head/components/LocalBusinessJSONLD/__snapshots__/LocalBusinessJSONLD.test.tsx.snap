@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LocalBusinessJSONLD suite renders correctly 1`] = `
+<script
+  type="application/ld+json"
+>
+  {"@context":"http://schema.org","@type":"LocalBusiness","name":"PDP project","description":"An ecommerce site selling technology products","url":"http://localhost:3000","image":["http://localhost:3000/ecommerce.jpg"],"sameAs":["https://github.com/sgoulas/pdpProject"],"contactPoint":{"contactType":"PR","email":"sprgoulas@gmail.com","hoursAvailable":["Mo-Fri 09:00-21:00","Sa-Su 11:00-13:00"]},"founder":"Spyros Goulas","foundingDate":"2021-5-15","numberOfEmployees":"1","slogan":"PDP project, it has it all!","currenciesAccepted":"EUR, USD, BTC","paymentAccepted":"Cash, Credit Card, Cryptocurrency"}
+</script>
+`;

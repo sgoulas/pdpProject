@@ -881,3 +881,29 @@ I also changed `/pages/Main` to `/pages/main`. Little fun tip: git does not dete
 ## 30 September 2021
 
 I extracted the main body of my product details page in a separate file, much like what I did with the landing page. This way I can have my `.page.tsx` files be simple components that call next functions like `getStaticProps` and immediately pass them to the actual component that I want to render. This also means the main component is now easier to test since the outer logic layer has been removed from it.
+
+While adding more tests an interesting case came along, my `Main.test.tsx` file was missing coverage for the `Alert` component:
+
+```tsx
+// ...
+{
+    !frontPagePhones && (
+        <Alert severity="error">Error fetching top selling phones</Alert>
+    );
+}
+// ...
+```
+
+How do I test this? But of course by setting `frontPagePhones` to undefined. But I can't, because I myself do not allow it in my code:
+
+```tsx
+export interface MainProps {
+    frontPagePhones: PhoneData;
+}
+```
+
+\*`frontPagePhones` can never be `undefined` inside my test file because the typing does not allow it`
+
+but of course this makes no sense, if the request fails for whatever reason I will be getting `undefined`, so I _should_ accomodate for such a scenario.
+
+This is an interesting case where the need to increase my test coverage lead me to writing tests for uncovered cases and the latter revealed a logical error in my types. Failed request means I am getting `undefined`, not zero results. Of course, what are the chances an ecommerce technology shop has zero mobile phones to sell? I could very well treat the zero results as an error, but it would not be strictly correct, since the request itself failed. In cases like that maybe a PO (product owner) could indicate that I should treat the no results as an error case, but since I am the one making these decisions I will handle it separately.

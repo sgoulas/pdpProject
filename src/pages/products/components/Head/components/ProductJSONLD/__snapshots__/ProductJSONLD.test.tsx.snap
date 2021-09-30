@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductJSONLD suite renders correctly 1`] = `
+<script
+  type="application/ld+json"
+>
+  {"@context":"http://schema.org","@type":"Product","aggregateRating":0,"brand":"mock brand","category":"Mobile Phones","image":"http://localhost:3000/images/","model":"mock name","name":"mock name","url":"http://localhost:3000/products/mock%20id"}
+</script>
+`;

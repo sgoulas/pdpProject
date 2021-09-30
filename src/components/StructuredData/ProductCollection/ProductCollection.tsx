@@ -2,7 +2,7 @@ import React from 'react';
 
 import { SITE_URL } from '@core';
 
-interface ProductCollectionProps {
+export interface ProductCollectionProps {
     size: number;
     headline: string;
     keywords: string;
