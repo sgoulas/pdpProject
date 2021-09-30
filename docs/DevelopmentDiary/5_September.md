@@ -880,7 +880,7 @@ I also changed `/pages/Main` to `/pages/main`. Little fun tip: git does not dete
 
 ## 30 September 2021
 
-I extracted the main body of my product details page in a separate file, much like what I did with the landing page. This way I can have my `.page.tsx` files be simple components that call next functions like `getStaticProps` and immediately pass them to the actual component that I want to render. This also means the main component is now easier to test since the outer logic layer has been removed from it.
+I extracted the main body of my product details page in a separate file, much like what I did with the landing page. This way I can have my `.page.tsx` files be simple components that call `NextJS` functions like `getStaticProps` and immediately pass them to the actual component that I want to render. This also means the main component is now easier to test since the outer logic layer (which is what the library exposes) has been removed from it.
 
 While adding more tests an interesting case came along, my `Main.test.tsx` file was missing coverage for the `Alert` component:
 
@@ -902,11 +902,11 @@ export interface MainProps {
 }
 ```
 
-\*`frontPagePhones` can never be `undefined` inside my test file because the typing does not allow it`
+_`frontPagePhones` can never be `undefined` inside my test file because the typing does not allow it_
 
-but of course this makes no sense, if the request fails for whatever reason I will be getting `undefined`, so I _should_ accomodate for such a scenario.
+but of course this makes no sense, if the request fails for whatever reason I will be getting `undefined`, so I _should_ accomodate for such a scenario and I did just that by changing the prop type to optional.
 
-This is an interesting case where the need to increase my test coverage lead me to writing tests for uncovered cases and the latter revealed a logical error in my types. Failed request means I am getting `undefined`, not zero results. Of course, what are the chances an ecommerce technology shop has zero mobile phones to sell? I could very well treat the zero results as an error, but it would not be strictly correct, since the request itself failed. In cases like that maybe a PO (product owner) could indicate that I should treat the no results as an error case, but since I am the one making these decisions I will handle it separately.
+This is an interesting case where the need to increase my test coverage lead me to writing tests for uncovered cases and the latter revealed a logical error in my types. A failed request means I am getting `undefined`, not zero results. Of course, what are the chances an ecommerce technology shop has zero mobile phones to sell? I could very well treat the zero results as an error, but it would not be strictly correct, since the request itself would not have failed (but maybe someone misconfigured the CMS). In cases like this maybe a PO could indicate that I should treat no results as an error case, but since I am the one making these decisions I will handle it separately.
 
 Today was all about cleanup, tidying up and meeting test coverage goals so a really satisfactory session from start to finish.
 
