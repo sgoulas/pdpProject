@@ -49,7 +49,7 @@ describe('ImageWithFallback', () => {
         );
 
         expect(firstChild).toMatchSnapshot();
-        expect(queryByAltText(defaultProps.alt)).toBeNull();
+        expect(queryByAltText(defaultProps.alt)).not.toBeInTheDocument();
         expect(getByAltText('new phone name')).toBeInTheDocument();
     });
 });
