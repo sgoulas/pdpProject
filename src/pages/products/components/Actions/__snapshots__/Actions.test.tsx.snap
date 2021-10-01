@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Product page actions suite renders correctly 1`] = `
+exports[`Product page actions render correctly 1`] = `
 <div
   class="MuiBox-root MuiBox-root-2"
 >
@@ -59,7 +59,7 @@ exports[`Product page actions suite renders correctly 1`] = `
 </div>
 `;
 
-exports[`Product page actions suite renders correctly with buttons disabled 1`] = `
+exports[`Product page actions render correctly with buttons disabled 1`] = `
 <div
   class="MuiBox-root MuiBox-root-4"
 >

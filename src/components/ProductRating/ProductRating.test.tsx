@@ -4,7 +4,7 @@ import { render } from '@testUtils';
 
 import ProductRating, { ProductRatingProps } from './ProductRating';
 
-describe('ProductRating suite', () => {
+describe('ProductRating', () => {
     const defaultProps: ProductRatingProps = {
         ratingValue: 3.5,
         reviewCount: 10,

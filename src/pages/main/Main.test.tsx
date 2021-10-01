@@ -4,7 +4,7 @@ import { renderWithProviders } from '@testUtils';
 
 import Main, { MainProps } from './Main';
 
-describe('Main page suite', () => {
+describe('Main page', () => {
     const defaultProps: MainProps = {
         frontPagePhones: {
             results: [

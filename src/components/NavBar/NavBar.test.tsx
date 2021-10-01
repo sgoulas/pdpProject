@@ -4,7 +4,7 @@ import { render } from '@testUtils';
 
 import NavBar from './NavBar';
 
-describe('NavBar suite', () => {
+describe('NavBar', () => {
     it('renders correctly', () => {
         const {
             container: { firstChild },

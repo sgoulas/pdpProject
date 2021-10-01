@@ -12,7 +12,7 @@ import {
 import Search, { SearchOption } from './Search';
 import { GET_PRODUCT_BY_NAME } from './api';
 
-describe('Search component suite', () => {
+describe('Search', () => {
     const userInput = 'mock name';
 
     const MOCK_RESULTS: SearchOption[] = [

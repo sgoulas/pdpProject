@@ -8,7 +8,7 @@ import {
     absoluteURL,
 } from './urlConstructors';
 
-describe('url constructors suite', () => {
+describe('url constructors', () => {
     it('productDetailsPage', () => {
         const randomId = faker.random.alphaNumeric();
 

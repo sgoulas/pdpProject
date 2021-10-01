@@ -4,7 +4,7 @@ import { render } from '@testUtils';
 
 import ImageWithFallback, { ImageFallbackProps } from './ImageWithFallback';
 
-describe('ImageWithFallback suite', () => {
+describe('ImageWithFallback', () => {
     const defaultProps: ImageFallbackProps = {
         src: 'iphone11.png',
         fallbackSrc: 'phoneFallBack.png',
@@ -27,5 +27,29 @@ describe('ImageWithFallback suite', () => {
         } = render(<ImageWithFallback {...defaultProps} src="" />);
 
         expect(firstChild).toMatchSnapshot();
+    });
+
+    it('rerenders correctly when it receives a new image', () => {
+        const {
+            container: { firstChild },
+            rerender,
+            getByAltText,
+            queryByAltText,
+        } = render(<ImageWithFallback {...defaultProps} />);
+
+        expect(firstChild).toMatchSnapshot();
+        expect(getByAltText(defaultProps.alt)).toBeInTheDocument();
+
+        rerender(
+            <ImageWithFallback
+                {...defaultProps}
+                src="iphone13.jpg"
+                alt="new phone name"
+            />
+        );
+
+        expect(firstChild).toMatchSnapshot();
+        expect(queryByAltText(defaultProps.alt)).toBeNull();
+        expect(getByAltText('new phone name')).toBeInTheDocument();
     });
 });

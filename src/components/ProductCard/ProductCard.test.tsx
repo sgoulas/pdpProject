@@ -4,7 +4,7 @@ import { render } from '@testUtils';
 
 import ProductCard, { ProductCardProps } from './ProductCard';
 
-describe('ProductCard suite', () => {
+describe('ProductCard', () => {
     const defaultProps: ProductCardProps = {
         id: 'mockId',
         name: 'mockName',

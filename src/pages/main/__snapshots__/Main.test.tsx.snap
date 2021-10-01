@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Main page suite renders alert when the phones prop is undefined 1`] = `
+exports[`Main page renders alert when the phones prop is undefined 1`] = `
 <div
   class="MuiContainer-root makeStyles-container-38"
 >
@@ -44,7 +44,7 @@ exports[`Main page suite renders alert when the phones prop is undefined 1`] = `
 </div>
 `;
 
-exports[`Main page suite renders correctly 1`] = `
+exports[`Main page renders correctly 1`] = `
 <div
   class="MuiContainer-root makeStyles-container-3"
 >
@@ -88,7 +88,7 @@ exports[`Main page suite renders correctly 1`] = `
 </div>
 `;
 
-exports[`Main page suite renders correctly for no phones 1`] = `
+exports[`Main page renders correctly for no phones 1`] = `
 <div
   class="MuiContainer-root makeStyles-container-28"
 >
@@ -132,7 +132,7 @@ exports[`Main page suite renders correctly for no phones 1`] = `
 </div>
 `;
 
-exports[`Main page suite renders correctly for no rating 1`] = `
+exports[`Main page renders correctly for no rating 1`] = `
 <div
   class="MuiContainer-root makeStyles-container-48"
 >

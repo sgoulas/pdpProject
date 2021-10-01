@@ -2,7 +2,7 @@ import faker from 'faker';
 
 import withPrefix from './withPrefix';
 
-describe('withPrefix suite', () => {
+describe('withPrefix', () => {
     it('returns a function that adds the provided prefix to the param it receives', () => {
         const nameSpace = faker.datatype.string();
         const withNameSpace = withPrefix(nameSpace);

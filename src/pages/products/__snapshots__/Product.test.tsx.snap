@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Main page suite matches snapshot 1`] = `
+exports[`Main page matches snapshot 1`] = `
 <article>
   <div
     class="MuiBox-root MuiBox-root-3"
@@ -369,7 +369,7 @@ exports[`Main page suite matches snapshot 1`] = `
 </article>
 `;
 
-exports[`Main page suite matches snapshot when product availability is zero 1`] = `
+exports[`Main page matches snapshot when product availability is zero 1`] = `
 <article>
   <div
     class="MuiBox-root MuiBox-root-18"
@@ -734,7 +734,7 @@ exports[`Main page suite matches snapshot when product availability is zero 1`] 
 </article>
 `;
 
-exports[`Main page suite matches snapshot when rating and reviews are zero 1`] = `
+exports[`Main page matches snapshot when rating and reviews are zero 1`] = `
 <article>
   <div
     class="MuiBox-root MuiBox-root-33"

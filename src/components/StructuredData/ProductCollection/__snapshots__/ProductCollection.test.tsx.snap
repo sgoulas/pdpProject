@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProductCollection suite renders correctly 1`] = `
+exports[`ProductCollection renders correctly 1`] = `
 <script
   type="application/ld+json"
 >

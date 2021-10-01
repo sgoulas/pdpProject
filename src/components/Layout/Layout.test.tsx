@@ -4,7 +4,7 @@ import { render } from '@testUtils';
 
 import Layout from './Layout';
 
-describe('Layout suite', () => {
+describe('Layout', () => {
     it('renders correctly', () => {
         const {
             container: { firstChild },

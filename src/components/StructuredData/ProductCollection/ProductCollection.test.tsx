@@ -4,7 +4,7 @@ import { render } from '@testUtils';
 
 import ProductCollection, { ProductCollectionProps } from './ProductCollection';
 
-describe('ProductCollection suite', () => {
+describe('ProductCollection', () => {
     const defaultProps: ProductCollectionProps = {
         size: 10,
         headline: 'mock headline',

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProductCard suite matches snapshot 1`] = `
+exports[`ProductCard matches snapshot 1`] = `
 <article
   class="makeStyles-cardContainer-1"
 >

@@ -4,7 +4,7 @@ import { setOnlineAction, setRunningAction } from './actions';
 import { setOnline } from './saga';
 import { SetRunningActionPayload } from './types';
 
-describe('store saga suite', () => {
+describe('store saga', () => {
     describe('setOnline saga', () => {
         it('puts seOnlineAction with correct payload on receiving setRunningAction', () => {
             const mockSetRunningActionPayload: SetRunningActionPayload = {

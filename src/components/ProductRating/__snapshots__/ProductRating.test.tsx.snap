@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProductRating suite matches snapshot 1`] = `
+exports[`ProductRating matches snapshot 1`] = `
 <div
   class="MuiBox-root MuiBox-root-1"
 >

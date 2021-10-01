@@ -4,14 +4,14 @@ import { renderWithProviders } from '@testUtils';
 
 import Actions, { ActionProps } from './Actions';
 
-describe('Product page actions suite', () => {
+describe('Product page actions', () => {
     const defaultProps: ActionProps = {
         disabled: false,
         handleAddToCard: jest.fn(),
         handleBuyNow: jest.fn(),
     };
 
-    it('renders correctly', () => {
+    it('render correctly', () => {
         const { container } = renderWithProviders(
             <Actions {...defaultProps} />
         );
@@ -19,7 +19,7 @@ describe('Product page actions suite', () => {
         expect(container.firstChild).toMatchSnapshot();
     });
 
-    it('renders correctly with buttons disabled', () => {
+    it('render correctly with buttons disabled', () => {
         const { container } = renderWithProviders(
             <Actions {...defaultProps} disabled={true} />
         );
@@ -27,7 +27,7 @@ describe('Product page actions suite', () => {
         expect(container.firstChild).toMatchSnapshot();
     });
 
-    it('calls handleAddToCard when clicking the add to cart button', () => {
+    it('call handleAddToCard when clicking the add to cart button', () => {
         const { getByTestId } = renderWithProviders(
             <Actions {...defaultProps} />
         );
@@ -39,7 +39,7 @@ describe('Product page actions suite', () => {
         expect(defaultProps.handleAddToCard).toHaveBeenCalled();
     });
 
-    it('calls handleBuyNow when clicking the buy now button', () => {
+    it('call handleBuyNow when clicking the buy now button', () => {
         const { getByTestId } = renderWithProviders(
             <Actions {...defaultProps} />
         );
@@ -51,7 +51,7 @@ describe('Product page actions suite', () => {
         expect(defaultProps.handleBuyNow).toHaveBeenCalled();
     });
 
-    it('does not call handleAddToCard or handleBuyNow when their respective buttons are disabled', () => {
+    it('do not call handleAddToCard or handleBuyNow when their respective buttons are disabled', () => {
         const { getByTestId } = renderWithProviders(
             <Actions {...defaultProps} disabled={true} />
         );

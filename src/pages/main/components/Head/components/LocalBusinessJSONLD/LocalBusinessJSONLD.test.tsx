@@ -4,7 +4,7 @@ import { render } from '@testUtils';
 
 import LocalBusinessJSONLD from './LocalBusinessJSONLD';
 
-describe('LocalBusinessJSONLD suite', () => {
+describe('LocalBusinessJSONLD', () => {
     it('renders correctly', () => {
         const {
             container: { firstChild },

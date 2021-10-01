@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NavBar suite renders correctly 1`] = `
+exports[`NavBar renders correctly 1`] = `
 <div
   class="makeStyles-navBar-1"
 >

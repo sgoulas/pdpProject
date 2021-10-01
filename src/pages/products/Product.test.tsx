@@ -4,7 +4,7 @@ import { renderWithProviders } from '@testUtils';
 
 import Product, { ProductProps } from './Product';
 
-describe('Main page suite', () => {
+describe('Main page', () => {
     const defaultProps: ProductProps = {
         product: {
             availability: 5,

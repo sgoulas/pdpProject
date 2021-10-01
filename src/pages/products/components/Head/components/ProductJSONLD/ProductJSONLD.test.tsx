@@ -4,7 +4,7 @@ import { render } from '@testUtils';
 
 import ProductJSONLD, { ProductJSONLDprops } from './ProductJSONLD';
 
-describe('ProductJSONLD suite', () => {
+describe('ProductJSONLD', () => {
     const defaultsProps: ProductJSONLDprops = {
         product: {
             id: 'mock id',
