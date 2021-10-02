@@ -62,3 +62,4 @@ Pick up from:
 
 -   https://redux-toolkit.js.org/usage/usage-guide#use-with-redux-persist
 -   https://www.robinwieruch.de/redux-persist-next-js
+-   https://github.com/vercel/next.js/tree/canary/examples/with-redux-persist
