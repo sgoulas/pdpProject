@@ -98,3 +98,67 @@ Take a look at the logic that dispatched this action:  {
 I could always dive in the `types.d.ts` file and excavate the correct typing, but this would make the `store` file too complicated.
 
 At the end of the day, persistent server side store is not going to be needed in my application. It is however strictly speaking something I was not able to figure out.
+
+Now the next thing to do is create the cart. This means a number of things:
+
+-   Cart related state slice to store the cart items alongside cart related actions like `increase`/`decrease` items, `remove` item, `empty` cart etc.
+-   Mini cart component in the existing `NavBar` component that shows all the items currently in the cart plus cart related UI actions.
+
+I contemplate implementing the cart as a `useCart` hook. The cart as a concept (meaning UI or actions related to id) is something that I am going to use in the navigation bar, in the product details page and in the checkout page. All these pages are going to use actions that modify the cart. At the same time, I will create a `MiniCart` component that will display the current status of the cart. This implies a UI. This is a case where I have a `model` (the cart) whose data and data related actions are needed both per se and tied to a UI. So the best approach is to extract any logic into a reusable hook and then use this hook anywhere I need.
+
+While setting up the hook I read that `createSelector` from `redux-toolkit` is basically a re-export of the `createSelector` from `reselect` and that it (`createSelector`) actually returns a memoized version of the selector I create. This is really nice.
+
+Also, how cool is the ability to construct selectors of existing selectors?
+
+```ts
+export const cartProductsSelector: (state: RootState) => ApiProduct[] = state =>
+    state.cart.products;
+
+export const cartProductsTotalCost: (state: RootState) => number =
+    createSelector(cartProductsSelector, cartProducts =>
+        cartProducts.reduce((acc, curr) => acc + curr.price, 0)
+    );
+```
+
+My initial `useCart` is this:
+
+```ts
+export interface UseCart {
+    totalPrice: number;
+    products: ApiProduct[];
+    actions: {
+        addToCart: (product: ApiProduct) => void;
+        removeFromCart: (id: string) => void;
+        emptyCart: () => void;
+    };
+}
+
+const useCart: () => UseCart = () => {
+    const totalPrice = useSelector(cartProductsTotalCostSelector);
+    const products = useSelector(cartProductsSelector);
+
+    const addToCart = useCallback(
+        (product: ApiProduct) => addToCartAction({ product }),
+        []
+    );
+
+    const removeFromCart = useCallback(
+        (id: string) => removeFromCartAction({ productId: id }),
+        []
+    );
+
+    const emptyCart = useCallback(() => emptyCartAction(), []);
+
+    return {
+        totalPrice,
+        products,
+        actions: {
+            addToCart,
+            removeFromCart,
+            emptyCart,
+        },
+    };
+};
+```
+
+The reason I am memoizing the actions is so that I can use them from inside the hook. This is because `useCart` should expose everything related to the cart, its store actions included.

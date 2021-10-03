@@ -12,6 +12,8 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
+import { cartReducer } from '@hooks';
+
 import appReducer from './reducer';
 import rootSaga from './saga';
 
@@ -23,7 +25,7 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(
     persistConfig,
-    combineReducers({ app: appReducer })
+    combineReducers({ app: appReducer, cart: cartReducer })
 );
 
 const sagaMiddleware = createSagaMiddleware();
