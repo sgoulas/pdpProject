@@ -4,8 +4,9 @@ import { render, RenderOptions, RenderResult } from '@testing-library/react';
 import { Provider as ReduxProvider } from 'react-redux';
 import { MockedProvider, MockedProviderProps } from '@apollo/client/testing';
 import { ThemeProvider } from '@material-ui/core/styles';
+import { PersistGate } from 'redux-persist/integration/react';
 
-import store from '@store/store';
+import store, { persistor } from '@store/store';
 import { theme } from '@styles';
 
 export type GQLmocks = MockedProviderProps['mocks'];
@@ -27,7 +28,9 @@ const AllTheProviders: FC<AllTheProvidersProps> = ({
     children,
 }: AllTheProvidersProps) => (
     <ReduxProvider store={store}>
-        <ThemeProvider theme={theme}>{children}</ThemeProvider>
+        <PersistGate loading={null} persistor={persistor}>
+            <ThemeProvider theme={theme}>{children}</ThemeProvider>
+        </PersistGate>
     </ReduxProvider>
 );
 

@@ -22,7 +22,7 @@ Technologies, methodologies and architecture:
   ☐ Animations
   ✔ Responsive, mobile first design @done(21-09-29 02:37)
   ☐ Hosted somewhere
-  ☐ Persistent state (redux-persist or ADR)
+  ✔ Persistent state (redux-persist or ADR) @done(21-10-03 20:09)
   ✘ Dynamic loading with suspense @cancelled(21-08-10 01:59) suspense is at the time still an experimental feature, NextJS provides dynamic loading
   ✔ jest + jest config file with coverage option @done(21-08-10 01:57)
   ✔ React testing library + redux-saga-test-plan @done(21-08-11 15:39)
