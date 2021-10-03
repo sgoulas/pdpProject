@@ -97,4 +97,4 @@ Take a look at the logic that dispatched this action:  {
 
 I could always dive in the `types.d.ts` file and excavate the correct typing, but this would make the `store` file too complicated.
 
-At the end of the day, persistent server side store is not going to be needed in my application
+At the end of the day, persistent server side store is not going to be needed in my application. It is however strictly speaking something I was not able to figure out.
