@@ -1,4 +1,4 @@
-## 1 September 2021
+## 1 October 2021
 
 I further improved the test coverage by leveraging the `rerender` function exposed by react testing library's `render` method to test that the `ImageWithFallback` component rerenders as expected. Furthermore, upon inspecting the jest snapshot I found out that the text of the `describe` function gets prepended to the text of each `it` function. That means that I should remove the `suite` word from my `describe`s in order to have my test ouputs resemble more natural language.
 
@@ -57,3 +57,44 @@ For the reasons above I will be moving forward with separate files for each redu
 Having decided on that, I contemplate between implementing the `cart` module and its relevant files or investigating redux state persistence. At the end of the day I will do both, but I think the order matters. I believe investigating persistence first makes sense, because it will probably affect the central `store` files and possibly others that I do not foresee now, whereas the `cart` module will be exactly that, a module that I can work in isolation without affect the rest of the application, so it makes sense to break some eggs now before adding more eggs to the basket.
 
 And I _will_ work in a separate branch for that. This was a big reason I worked on improving the test coverage to levels acceptable by the initial scope (a line I like to consider red, at least in the context of an educational project like that), so that my MRs can pass the simple pipeline I introduced. This is also an interesting take on organizing things, I myself decided on test coverage, but by working on the `main` branch I was able to circumvent them. The moment I made a simple pipeline, I needed a real life scenario to test it, so I added a pull request test coverage rule. Later, when I need to work on a fairly complext feature, I have to work in a separate branch, which means having to have good test coverage, which means I had to write tests before starting work on the actul thing I wanted to make. But the actual thing I want to make is not an ecommerce site, it's a good project that will teach me stuff. And this also means tests. And self discipline I guess.
+
+Pick up from:
+
+-   https://redux-toolkit.js.org/usage/usage-guide#use-with-redux-persist
+-   https://www.robinwieruch.de/redux-persist-next-js
+-   https://github.com/vercel/next.js/tree/canary/examples/with-redux-persist
+
+## 3 October 2021
+
+I was able to make the redux state persist by following the documentation of redux-toolkit (https://redux-toolkit.js.org/usage/usage-guide#use-with-redux-persist). However, I was not able to find any solution to making it work with `NextJS`. The main idea is that if the code runs on the web (so, the app is compiled and deployed and runs in a browser) the `store` that is returned should be the persisted store, whereas if the code runs in `Node` (so in my case at build time) it should return a new store instance (and this could be merged with an existing store instance or whatever).
+
+My main obstacle is making everything work together. I have found documentation for `redux-persist` + `redux-toolkit` and I have found documentation for `redux-persist` + `NextJS`. But I was not able to find an example of all of them working together, let alone in `typescript`. `Typescript` + `redux-toolkit` means I export `RootState` and `AppDispatch` alongside my `store` instance and the first two require the latter. All the `NextJS` examples I found were exporting a `makeStore` function that depending on whether the code was running in the client or in the server was returning the result of the `createStore` with or withought the `persistedReducer` configuation. When I tried to replace
+
+```ts
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+```
+
+with
+
+```ts
+export type RootState = ReturnType<typeof makeStore().getState>;
+export type AppDispatch = typeof makeStore().dispatch;
+```
+
+I was getting the following error:
+
+```
+A non-serializable value was detected in an action, in the path: `register`. Value: [Function: register]
+Take a look at the logic that dispatched this action:  {
+  type: 'persist/PERSIST',
+  register: [Function: register],
+  rehydrate: [Function: rehydrate]
+}
+(See https://redux.js.org/faq/actions#why-should-type-be-a-string-or-at-least-serializable-why-should-my-action-types-be-constants)
+(To allow non-serializable values see: https://redux-toolkit.js.org/usage/usage-guide#working-with-non-serializable-data)
+```
+
+I could always dive in the `types.d.ts` file and excavate the correct typing, but this would make the `store` file too complicated.
+
+At the end of the day, persistent server side store is not going to be needed in my application
