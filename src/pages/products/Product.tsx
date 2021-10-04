@@ -17,7 +17,7 @@ export interface ProductProps {
 const Product: React.FC<ProductProps> = ({ product }: ProductProps) => {
     const classes = useStyles();
     const {
-        actions: { addToCart },
+        actions: { addToCart, buyNow },
     } = useCart();
 
     const memoizedHandleAddToCart = useCallback(
@@ -25,7 +25,7 @@ const Product: React.FC<ProductProps> = ({ product }: ProductProps) => {
         [product.id]
     );
     const memoizedHandleBuyNow = useCallback(
-        () => console.log('buy now product with id: ', product.id),
+        () => buyNow(product),
         [product.id]
     );
 
