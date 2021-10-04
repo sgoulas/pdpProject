@@ -15,3 +15,8 @@ export interface IncreaseCartInventoryActionPayload {
 export interface DecreaseCartInventoryActionPayload {
     productId: ApiProduct['id'];
 }
+
+export interface CartProduct {
+    product: ApiProduct;
+    quantity: number;
+}

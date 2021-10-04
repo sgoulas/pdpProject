@@ -162,3 +162,62 @@ const useCart: () => UseCart = () => {
 ```
 
 The reason I am memoizing the actions is so that I can use them from inside the hook. This is because `useCart` should expose everything related to the cart, its store actions included.
+
+As I am writing my reducers I decided to check the difference between relying on the built-in `immer` vs handling immutability on my own:
+
+without relying on `immer` and by making sure I handle the state in an immutable way:
+
+```ts
+const handleAddToCart: ActionHandler<CartState, AddToCartActionPayload> = (
+    state,
+    { payload: { product } }
+) => {
+    const indexOfProductInCart = state.products.findIndex(
+        cartProduct => cartProduct.product.id === product.id
+    );
+
+    if (indexOfProductInCart === -1) {
+        return { products: [...state.products, { product, quantity: 1 }] };
+    } else {
+        const newState: CartState = {
+            products: state.products.map((cartProduct, index) =>
+                index === indexOfProductInCart
+                    ? {
+                          product: cartProduct.product,
+                          quantity: cartProduct.quantity + 1,
+                      }
+                    : cartProduct
+            ),
+        };
+
+        return newState;
+    }
+};
+```
+
+with relying on `immer` and handling the state in a mutable way:
+
+_notice that the handler in this case returns void (https://redux-toolkit.js.org/usage/immer-reducers#immer-usage-patterns)_.
+
+```ts
+const handleAddToCart: ActionHandler<CartState, AddToCartActionPayload> = (
+    state,
+    { payload: { product } }
+) => {
+    const indexOfProductInCart = state.products.findIndex(
+        cartProduct => cartProduct.product.id === product.id
+    );
+
+    if (indexOfProductInCart === -1) {
+        state.products.push({ product, quantity: 1 });
+    } else {
+        state.products[indexOfProductInCart].quantity += 1;
+    }
+};
+```
+
+I got to say, there is a big difference even in this simple reducer case.
+
+Added `jest-mock-extended` so that I can mock my interfaces and thus reduce the amount of setup code I have to write in tests.
+
+I am also going to add a central "mock" state of the same type as me application state so that I can import it in my selector tests. Tried mocking the whole state but for some reason when it runs inside `expect` it returns undefined.

@@ -52,6 +52,7 @@
         "no-lonely-if":"error",
         "no-nested-ternary":"error",
         "require-await":"error",
+        "newline-before-return":"error",
         "no-magic-numbers":[
             "error",
             {

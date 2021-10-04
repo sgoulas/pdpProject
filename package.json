@@ -70,6 +70,7 @@
     "husky": "^7.0.0",
     "jest": "^27.0.6",
     "jest-extended": "^0.11.5",
+    "jest-mock-extended": "^2.0.4",
     "lint-staged": "^11.0.0",
     "prettier": "^2.3.2",
     "redux-saga-test-plan": "^4.0.3",

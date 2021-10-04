@@ -13,10 +13,11 @@ import {
     cartProductsTotalCostSelector,
 } from './store/selectors';
 import { useAppDispatch } from '@hooks';
+import { CartProduct } from './store/types';
 
 export interface UseCart {
     totalPrice: number;
-    products: ApiProduct[];
+    products: CartProduct[];
     actions: {
         addToCart: (product: ApiProduct) => void;
         removeFromCart: (id: string) => void;
