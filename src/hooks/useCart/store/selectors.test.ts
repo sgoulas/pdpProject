@@ -1,6 +1,7 @@
 import { mock } from 'jest-mock-extended';
 import faker from 'faker';
 
+import { ApiProduct } from '@api';
 import { RootState } from '@store/store';
 import { mockState } from '@testUtils';
 
@@ -9,7 +10,6 @@ import {
     cartProductsTotalCostSelector,
 } from './selectors';
 import { CartProduct } from './types';
-import { ApiProduct } from '@api';
 
 describe('CartState selectors', () => {
     it('cartProductsSelector', () => {
