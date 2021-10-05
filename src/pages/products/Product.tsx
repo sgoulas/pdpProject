@@ -21,11 +21,11 @@ const Product: React.FC<ProductProps> = ({ product }: ProductProps) => {
     } = useCart();
 
     const memoizedHandleAddToCart = useCallback(
-        () => addToCart(product),
+        () => addToCart({ product }),
         [product.id]
     );
     const memoizedHandleBuyNow = useCallback(
-        () => buyNow(product),
+        () => buyNow({ product }),
         [product.id]
     );
 

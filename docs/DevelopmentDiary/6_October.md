@@ -223,3 +223,27 @@ Added `jest-mock-extended` so that I can mock my interfaces and thus reduce the 
 I am also going to add a central "mock" state of the same type as me application state so that I can import it in my selector tests. Tried mocking the whole state but for some reason when it runs inside `expect` it returns undefined.
 
 I think that memoizing the functions exposed from `useCart` provides no optimization value. A custom hook runs at each render of the component so memoizing its functions is not going to prevent re-renders. If the hook exposes some value and this value changes then the component will re-render. If the component renders because something out of the scope of the hook changed, then the hook is going to run again nevertheless. If the hook returns a function and I need to pass this function to child component _then_ I can memoized it with `useCallback` to prevent unnecessary re-renders in the child component. The only case in which I would need a memoizing of the functions in the hook would be one where a parent uses the hooks and passes its exposed functions to a child component as they are, but in this case one would wonder why I am not using the hook inside the child in the first place.
+
+## 5 October 2021
+
+I cleaned up my `useCart` hook so that the exposed functions that dispatch a store action did not duplicate the existing types:
+
+so this
+
+```ts
+addToCart: (product: ApiProduct) => void;
+```
+
+changed to this
+
+```ts
+addToCart: (payload: AddToCartActionPayload) => void;
+```
+
+which is strictly better because the single source of truth for the type of this function is `AddToCartActionPayload` whereas `product: ApiProduct` merely copied the typing and acted as a weird and redundant proxy.
+
+I also added the `increaseCartInventory` and `decreaseCartInventory` to the hook.
+
+One thing that I contemplated was changing the return type of `useCart` hoom from `UseCart` to `Cart` or `HeadlessCart`. I think the latter makes the most sense considering my custom hook is everything related to the cart component minus the user interface. Material ui has a "headless" `useAutocomplete` hook that exposes all the autocomplete functions and props and leaves the UI implementation to me, so changing my hook's return type to `HeadlessCart` seems logical. I am not going to make this change right now though, I would like to spend some more time on it.
+
+Apart from that I think that the only thing remaining before merging this MR is to write some tests for the hook `useCart` itself (maybe for the `useDebounce` hook as well while I am on it).

@@ -1,28 +1,41 @@
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/dist/client/router';
 
-import { ApiProduct } from '@api';
+import { checkoutPage } from '@core';
+import { useAppDispatch } from '@hooks';
 
 import {
     addToCartAction,
     removeFromCartAction,
+    increaseCartInventoryAction,
     emptyCartAction,
+    decreaseCartInventoryAction,
 } from './store/actions';
 import {
     cartProductsSelector,
     cartProductsTotalCostSelector,
 } from './store/selectors';
-import { useAppDispatch } from '@hooks';
-import { CartProduct } from './store/types';
-import { checkoutPage } from '@core';
+import {
+    AddToCartActionPayload,
+    CartProduct,
+    IncreaseCartInventoryActionPayload,
+    DecreaseCartInventoryActionPayload,
+    RemoveFromCartActionPayload,
+} from './store/types';
 
 export interface UseCart {
     totalPrice: number;
     products: CartProduct[];
     actions: {
-        addToCart: (product: ApiProduct) => void;
-        buyNow: (product: ApiProduct) => void;
-        removeFromCart: (id: string) => void;
+        addToCart: (payload: AddToCartActionPayload) => void;
+        buyNow: (payload: AddToCartActionPayload) => void;
+        removeFromCart: (payload: RemoveFromCartActionPayload) => void;
+        increaseCartInventory: (
+            paylaod: IncreaseCartInventoryActionPayload
+        ) => void;
+        decreaseCartInventory: (
+            paylaod: DecreaseCartInventoryActionPayload
+        ) => void;
         emptyCart: () => void;
     };
 }
@@ -33,16 +46,26 @@ const useCart: () => UseCart = () => {
     const products = useSelector(cartProductsSelector);
     const router = useRouter();
 
-    const addToCart = (product: ApiProduct) =>
+    const addToCart = ({ product }: AddToCartActionPayload) =>
         dispatch(addToCartAction({ product }));
 
-    const buyNow = (product: ApiProduct) => {
+    const buyNow = ({ product }: AddToCartActionPayload) => {
         dispatch(addToCartAction({ product }));
         router.push(checkoutPage());
     };
 
-    const removeFromCart = (id: string) =>
-        dispatch(removeFromCartAction({ productId: id }));
+    const removeFromCart = ({ productId }: RemoveFromCartActionPayload) =>
+        dispatch(removeFromCartAction({ productId }));
+
+    const increaseCartInventory = ({
+        productId,
+    }: IncreaseCartInventoryActionPayload) =>
+        dispatch(increaseCartInventoryAction({ productId }));
+
+    const decreaseCartInventory = ({
+        productId,
+    }: DecreaseCartInventoryActionPayload) =>
+        dispatch(decreaseCartInventoryAction({ productId }));
 
     const emptyCart = () => dispatch(emptyCartAction());
 
@@ -53,6 +76,8 @@ const useCart: () => UseCart = () => {
             addToCart,
             buyNow,
             removeFromCart,
+            increaseCartInventory,
+            decreaseCartInventory,
             emptyCart,
         },
     };
