@@ -41,32 +41,35 @@ export interface UseCart {
 
 const useCart: () => UseCart = () => {
     const dispatch = useAppDispatch();
-    const totalPrice = useSelector(cartProductsTotalCostSelector);
+    const totalPrice: number = useSelector(cartProductsTotalCostSelector);
     const products: CartProduct[] = useSelector(cartProductsSelector);
     const router = useRouter();
 
-    const addToCart = ({ product }: AddToCartActionPayload) =>
-        dispatch(addToCartAction({ product }));
+    const addToCart: ({ product }: AddToCartActionPayload) => void = ({
+        product,
+    }) => dispatch(addToCartAction({ product }));
 
-    const buyNow = ({ product }: AddToCartActionPayload) => {
+    const buyNow: ({ product }: AddToCartActionPayload) => void = ({
+        product,
+    }) => {
         dispatch(addToCartAction({ product }));
         router.push(checkoutPage());
     };
 
-    const removeFromCart = ({ productId }: RemoveFromCartActionPayload) =>
-        dispatch(removeFromCartAction({ productId }));
+    const removeFromCart: ({ productId }: RemoveFromCartActionPayload) => void =
+        ({ productId }) => dispatch(removeFromCartAction({ productId }));
 
-    const increaseCartInventory = ({
+    const increaseCartInventory: ({
         productId,
-    }: IncreaseCartInventoryActionPayload) =>
+    }: IncreaseCartInventoryActionPayload) => void = ({ productId }) =>
         dispatch(increaseCartInventoryAction({ productId }));
 
-    const decreaseCartInventory = ({
+    const decreaseCartInventory: ({
         productId,
-    }: DecreaseCartInventoryActionPayload) =>
+    }: DecreaseCartInventoryActionPayload) => void = ({ productId }) =>
         dispatch(decreaseCartInventoryAction({ productId }));
 
-    const emptyCart = () => dispatch(emptyCartAction());
+    const emptyCart: () => void = () => dispatch(emptyCartAction());
 
     return {
         totalPrice,

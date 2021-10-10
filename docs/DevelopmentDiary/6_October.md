@@ -337,3 +337,5 @@ it('buyNow', () => {
 Really not sure what was the problem with the first approach.
 
 Now I have to create the mini cart component.
+
+I also explicitly defined the types of the `useCart` actions so that VS code can infer them when using the hook in another component (previously it inferred them as `any` so I had no autocomplete functionality).
