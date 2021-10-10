@@ -1,6 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
 
-import type { ActionHandler } from '@core';
+import type { ActionHandler, CartProduct } from '@core';
 
 import {
     addToCartAction,
@@ -10,7 +10,6 @@ import {
     decreaseCartInventoryAction,
 } from './actions';
 import {
-    CartProduct,
     AddToCartActionPayload,
     DecreaseCartInventoryActionPayload,
     IncreaseCartInventoryActionPayload,

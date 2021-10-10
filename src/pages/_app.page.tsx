@@ -11,6 +11,8 @@ import { Layout } from '@components';
 import { client } from '@api';
 import store, { persistor } from '@store/store';
 
+import '../../public/fonts.css';
+
 const App: React.FC<AppProps> = ({ Component, pageProps }: AppProps) => (
     <>
         <ReduxProvider store={store}>

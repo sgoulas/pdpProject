@@ -19,6 +19,7 @@ const Jumbotron: React.FC = () => {
                         href={`/products/${encodeURIComponent(
                             '48e51f536c8dd'
                         )}`}
+                        passHref
                     >
                         <Typography
                             variant="h2"
@@ -33,6 +34,7 @@ const Jumbotron: React.FC = () => {
                         href={`/products/${encodeURIComponent(
                             '48e51f536c8dd'
                         )}`}
+                        passHref
                     >
                         <Typography
                             variant="h4"

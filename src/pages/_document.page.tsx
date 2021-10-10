@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react';
-import Document, { Html, Head, Main, NextScript } from 'next/document';
+// eslint-disable-next-line @next/next/no-document-import-in-page
+import Document, { Html, Head, Main, NextScript } from 'next/document'; // there is no actual error here, the rule thinks _document.page.tsx is different from _document.tsx
 import { ServerStyleSheets } from '@material-ui/core/styles';
 
 import { theme } from '@styles';
@@ -14,7 +15,6 @@ class MyDocument extends Document {
                         type="image/x-icon"
                         href="/static/favicon.ico"
                     ></link>
-                    <link href="/fonts.css" rel="stylesheet"></link>
                     <meta
                         name="theme-color"
                         content={theme.palette.primary.main}

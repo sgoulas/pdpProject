@@ -11,7 +11,7 @@ const SiteName: React.FC = () => {
 
     return (
         <>
-            <Link href={landingPage()}>
+            <Link href={landingPage()} passHref>
                 <Typography
                     component="h1"
                     variant="h5"
@@ -21,7 +21,7 @@ const SiteName: React.FC = () => {
                     {SITE_NAME.charAt(0)}
                 </Typography>
             </Link>
-            <Link href={landingPage()}>
+            <Link href={landingPage()} passHref>
                 <Typography
                     component="h1"
                     variant="h5"
