@@ -247,3 +247,26 @@ I also added the `increaseCartInventory` and `decreaseCartInventory` to the hook
 One thing that I contemplated was changing the return type of `useCart` hoom from `UseCart` to `Cart` or `HeadlessCart`. I think the latter makes the most sense considering my custom hook is everything related to the cart component minus the user interface. Material ui has a "headless" `useAutocomplete` hook that exposes all the autocomplete functions and props and leaves the UI implementation to me, so changing my hook's return type to `HeadlessCart` seems logical. I am not going to make this change right now though, I would like to spend some more time on it.
 
 Apart from that I think that the only thing remaining before merging this MR is to write some tests for the hook `useCart` itself (maybe for the `useDebounce` hook as well while I am on it).
+
+## 9 October 2021
+
+Not sure why I wrote that only testing remains, I still have to create the mini cart component. Anyways. I found that `react-testing-library` has a specific package to test hooks (https://www.npmjs.com/package/@testing-library/react-hooks) which seems super useful, so I added it as a dependency.
+
+## 10 October 2021
+
+Wrote a test for `useDebounce` hook to test the waters with `@testing-library/react-hooks` and started working on a test for `useCart` hook.
+
+I was able to test `addToCart` action of `useCart` but when I begin writing the `removeFromCart` test I realized that in the context of my test file store updates persist through the tests. This means that if in the first test of the suite I add a product to the store, in the second test of the suite this product is still there. However, if I run only the second test, the store has no products because the first test did not run.
+
+This does allow me to write sequential test cases where each test assumes the previous one run, but on the other hand there are two problems:
+
+-   the tests can no longer run in isolation because each one assumes the previous ones run before it.
+-   one test failing means all the tests after that may also fail if they rely on the first tests operations.
+
+for these reasons I should reset the store between each test (and probably after all tests, I did not test it but there is a good chance the store updates persist between different jest tests.)
+
+Now, I could create a `makeStore` function inside `@store/store.ts` and get a new store instance everytime I call it. The other option would be to create a `reset` action that resets the store state to its original one and call it inbetween tests.
+
+I would normally opt for the `makeStore` approach, but my problem is that I have to export the types of `store.getState` and `store.dispatch` and I get errors when trying to do so with `makeStore()` instead of `store`.
+
+This is closely related, if not the same, to the problem I had with trying to configure a global state for both server rendered and static pages when implementing the persisted store. I added a new section in the `TODO` file called `Questions` to make sure I revisit the subject in the future.

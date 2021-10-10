@@ -49,3 +49,7 @@ Extra milestones:
   ☐ Add centralized toast emitter
   ☐ Make the repository public and turn on the rule to enforce successful pipelines before merging (https://stackoverflow.com/questions/58654530/how-to-reject-a-pull-request-if-tests-are-failed-github-actions)
   ✔ Remove comment about cart component from Search.styles.tsx. @done(21-09-09 01:00)
+
+  Questions:
+  ☐ makeStore function (problem was the RootState and AppDispatch exports)
+  ☐ Same as aboves, but for handling global state in NextJS apps (SSG, SSR).
