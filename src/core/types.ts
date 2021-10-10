@@ -1,3 +1,5 @@
+import { ApiProduct } from '@api';
+
 /**
  * @typedef {Object} ActionHandler - creates a new type named 'ActionHandler'
  * @property {S} S - an interface that describes a state (or state slice)
@@ -12,3 +14,8 @@ type ActionHandler<S, A = Record<string, never>> = (
 ) => S | void;
 
 export type { ActionHandler };
+
+export interface CartProduct {
+    product: ApiProduct;
+    quantity: number;
+}

@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 
-import { checkoutPage } from '@core';
+import { checkoutPage, CartProduct } from '@core';
 import { useAppDispatch } from '@hooks';
 
 import {
@@ -17,7 +17,6 @@ import {
 } from './store/selectors';
 import {
     AddToCartActionPayload,
-    CartProduct,
     IncreaseCartInventoryActionPayload,
     DecreaseCartInventoryActionPayload,
     RemoveFromCartActionPayload,
@@ -43,7 +42,7 @@ export interface UseCart {
 const useCart: () => UseCart = () => {
     const dispatch = useAppDispatch();
     const totalPrice = useSelector(cartProductsTotalCostSelector);
-    const products = useSelector(cartProductsSelector);
+    const products: CartProduct[] = useSelector(cartProductsSelector);
     const router = useRouter();
 
     const addToCart = ({ product }: AddToCartActionPayload) =>

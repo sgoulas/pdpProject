@@ -1,6 +1,7 @@
 import { mock } from 'jest-mock-extended';
 
 import { ApiProduct } from '@api';
+import { CartProduct } from '@core';
 
 import reducer, { CartState, initialState } from './reducer';
 import {
@@ -15,7 +16,6 @@ import {
     RemoveFromCartActionPayload,
     IncreaseCartInventoryActionPayload,
     DecreaseCartInventoryActionPayload,
-    CartProduct,
 } from './types';
 
 describe('CartState reducer', () => {

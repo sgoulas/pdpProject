@@ -4,12 +4,12 @@ import faker from 'faker';
 import { ApiProduct } from '@api';
 import { RootState } from '@store/store';
 import { mockState } from '@testUtils';
+import { CartProduct } from '@core';
 
 import {
     cartProductsSelector,
     cartProductsTotalCostSelector,
 } from './selectors';
-import { CartProduct } from './types';
 
 describe('CartState selectors', () => {
     it('cartProductsSelector', () => {
