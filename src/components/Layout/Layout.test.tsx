@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from '@testUtils';
+import { renderWithProviders } from '@testUtils';
 
 import Layout from './Layout';
 
@@ -8,7 +8,7 @@ describe('Layout', () => {
     it('renders correctly', () => {
         const {
             container: { firstChild },
-        } = render(<Layout>mockChildren</Layout>);
+        } = renderWithProviders(<Layout>mockChildren</Layout>);
 
         expect(firstChild).toMatchSnapshot();
     });
