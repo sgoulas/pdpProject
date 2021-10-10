@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(({ palette, spacing, zIndex }) => ({
+const useStyles = makeStyles(({ palette, spacing, breakpoints, zIndex }) => ({
     navBar: {
         backgroundColor: palette.background.default,
         position: 'fixed',
@@ -9,7 +9,17 @@ const useStyles = makeStyles(({ palette, spacing, zIndex }) => ({
         width: '100%',
         display: 'grid',
         gridColumnGap: spacing(1),
-        gridTemplateColumns: 'auto auto auto auto', // the last column will be the cart component that will be created in the future
+        gridTemplateColumns: '15% 10% 50% 25%',
+        [breakpoints.up('sm')]: {
+            gridTemplateColumns: '5% 35% 50% 5%',
+        },
+        [breakpoints.up('md')]: {
+            gridTemplateColumns: '5% 25% 60% 5%',
+        },
+        [breakpoints.up('lg')]: {
+            gridTemplateColumns: '3% 12% 81% 3%',
+        },
+        [breakpoints.between('xs', 'md')]: {},
         justifyContent: 'flex-start',
         alignItems: 'center',
         zIndex: zIndex.appBar,

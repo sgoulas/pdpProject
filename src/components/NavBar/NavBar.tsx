@@ -1,7 +1,7 @@
 import React from 'react';
 
 import useStyles from './NavBar.styles';
-import { Search, Sidemenu, SiteName } from './components';
+import { Search, Sidemenu, SiteName, MiniCart } from './components';
 
 const NavBar: React.FC = () => {
     const classes = useStyles();
@@ -11,6 +11,7 @@ const NavBar: React.FC = () => {
             <Sidemenu />
             <SiteName />
             <Search />
+            <MiniCart />
         </div>
     );
 };

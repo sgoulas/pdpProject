@@ -335,3 +335,5 @@ it('buyNow', () => {
 ```
 
 Really not sure what was the problem with the first approach.
+
+Now I have to create the mini cart component.
