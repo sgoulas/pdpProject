@@ -270,3 +270,68 @@ Now, I could create a `makeStore` function inside `@store/store.ts` and get a ne
 I would normally opt for the `makeStore` approach, but my problem is that I have to export the types of `store.getState` and `store.dispatch` and I get errors when trying to do so with `makeStore()` instead of `store`.
 
 This is closely related, if not the same, to the problem I had with trying to configure a global state for both server rendered and static pages when implementing the persisted store. I added a new section in the `TODO` file called `Questions` to make sure I revisit the subject in the future.
+
+I left the `buyNow` test of the `useCart` action last, because inside its body it also redirects the user to a new page and this meant I will have to mock the `router` and test that it will be called with the expected parameters.
+
+btw
+
+How freaking awesome is `jest.requireActual` (https://stackoverflow.com/questions/59312671/mock-only-one-function-from-module-but-leave-rest-with-original-functionality).
+
+In my current professional project we spy on the default hooks with `React.use<Hook>`, but with this I can spy on the specific hook without having to change the way I write my component code. Sweet.
+
+After spending almost 3 hours digging through stackoverflow questions, jest's documentation and nextjs' github issues I was able to mock the `useRouter` and test the `buyNow` function.
+
+What did **not** work:
+
+```tsx
+it('buyNow', () => {
+    const mockPush = jest.fn();
+    jest.mock('next/router', () => ({
+        ...jest.requireActual('next/router'),
+        useRouter: () => ({ push: mockPush }),
+    }));
+
+    const { result } = renderHook(() => useCart(), {
+        wrapper: ({ children }: { children: React.ReactNode }) => (
+            <ReduxProvider store={store}>{children}</ReduxProvider>
+        ),
+    });
+
+    act(() => {
+        result.current.actions.buyNow({ product: mockProduct });
+    });
+
+    expect(store.getState().cart.products).toStrictEqual([
+        { product: mockProduct, quantity: 1 },
+    ]);
+    expect(mockPush).toHaveBeenLastCalledWith(checkoutPage());
+});
+```
+
+what **did** work was using good old `spy`:
+
+```tsx
+it('buyNow', () => {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const useRouter = jest.spyOn(require('next/router'), 'useRouter');
+    const mockPush = jest.fn();
+    useRouter.mockImplementation(() => ({ push: mockPush }));
+
+    const { result } = renderHook(() => useCart(), {
+        wrapper: ({ children }: { children: React.ReactNode }) => (
+            <ReduxProvider store={store}>{children}</ReduxProvider>
+        ),
+    });
+
+    act(() => {
+        result.current.actions.buyNow({ product: mockProduct });
+    });
+
+    expect(store.getState().cart.products).toStrictEqual([
+        { product: mockProduct, quantity: 1 },
+    ]);
+    expect(mockPush).toHaveBeenLastCalledWith(checkoutPage());
+});
+```
+
+Really not sure what was the problem with the first approach.

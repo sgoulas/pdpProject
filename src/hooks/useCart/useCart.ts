@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { useRouter } from 'next/dist/client/router';
+import { useRouter } from 'next/router';
 
 import { checkoutPage } from '@core';
 import { useAppDispatch } from '@hooks';

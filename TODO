@@ -52,4 +52,4 @@ Extra milestones:
 
   Questions:
   ☐ makeStore function (problem was the RootState and AppDispatch exports)
-  ☐ Same as aboves, but for handling global state in NextJS apps (SSG, SSR).
+  ☐ Same as above, but for handling global state in NextJS apps (SSG, SSR).

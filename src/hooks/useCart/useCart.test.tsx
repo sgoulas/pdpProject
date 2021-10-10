@@ -5,6 +5,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 
 import store from '@store/store';
 import { ApiProduct } from '@api';
+import { checkoutPage } from '@core';
 
 import useCart from './useCart';
 import { emptyCartAction } from './store/actions';
@@ -12,7 +13,10 @@ import { CartProduct } from './store/types';
 
 describe('useCart', () => {
     afterEach(() => store.dispatch(emptyCartAction()));
-    afterAll(() => cleanup());
+    afterAll(() => {
+        jest.restoreAllMocks();
+        cleanup();
+    });
 
     const mockProduct: ApiProduct = {
         id: 'mock-id',
@@ -48,7 +52,27 @@ describe('useCart', () => {
         ]);
     });
 
-    // it('buyNow', () => {});
+    it('buyNow', () => {
+        // eslint-disable-next-line @typescript-eslint/no-var-requires
+        const useRouter = jest.spyOn(require('next/router'), 'useRouter');
+        const mockPush = jest.fn();
+        useRouter.mockImplementation(() => ({ push: mockPush }));
+
+        const { result } = renderHook(() => useCart(), {
+            wrapper: ({ children }: { children: React.ReactNode }) => (
+                <ReduxProvider store={store}>{children}</ReduxProvider>
+            ),
+        });
+
+        act(() => {
+            result.current.actions.buyNow({ product: mockProduct });
+        });
+
+        expect(store.getState().cart.products).toStrictEqual([
+            { product: mockProduct, quantity: 1 },
+        ]);
+        expect(mockPush).toHaveBeenLastCalledWith(checkoutPage());
+    });
     it('removeFromCart', () => {
         const { result } = renderHook(() => useCart(), {
             wrapper: ({ children }: { children: React.ReactNode }) => (
