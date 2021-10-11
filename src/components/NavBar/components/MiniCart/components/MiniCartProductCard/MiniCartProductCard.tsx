@@ -1,12 +1,10 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
-import IconButton from '@material-ui/core/IconButton';
 import RemoveIcon from '@material-ui/icons/RemoveOutlined';
 import AddIcon from '@material-ui/icons/AddCircleOutlineOutlined';
 import DeleteIcon from '@material-ui/icons/DeleteOutline';
-
-// import Link from 'next/link';
+import Button from '@material-ui/core/Button';
 
 import { CartProduct } from '@core';
 import { ImageWithFallback, Typography } from '@components';
@@ -31,72 +29,86 @@ const MiniCartProductCard: React.FC<MiniCartProductCardProps> = ({
 
     return (
         <article>
-            <Grid
-                container
-                direction="row"
-                justifyContent="flex-start"
-                alignItems="flex-start"
-            >
-                <Grid item xs={4}>
-                    <Box component="div" display="block">
-                        <ImageWithFallback
-                            src={product.image ?? ''}
-                            fallbackSrc={'phoneFallBack.png'}
-                            alt={product.name}
-                            width={100}
-                            height={100}
-                        />
-                    </Box>
-                </Grid>
-                <Grid item xs={8}>
-                    <Typography display="inline">{product.name}</Typography>
-                    <Typography display="inline" color="primary">
-                        {' '}
-                        (x{quantity})
-                    </Typography>
-                    <Box mt={1}>
-                        <Typography>{product.price}€</Typography>
-                    </Box>
-                    <Grid
-                        container
-                        direction="row"
-                        justifyContent="space-between"
-                        alignItems="center"
-                    >
-                        <Grid xs={6}>
-                            <IconButton
-                                onClick={() =>
-                                    decreaseCartInventory({
-                                        productId: product.id,
-                                    })
-                                }
-                            >
-                                <RemoveIcon color="error" />
-                            </IconButton>
-                        </Grid>
-                        <Grid xs={6}>
-                            <IconButton
-                                onClick={() =>
-                                    increaseCartInventory({
-                                        productId: product.id,
-                                    })
-                                }
-                            >
-                                <AddIcon color="primary" />
-                            </IconButton>
-                        </Grid>
+            <Box my={2}>
+                <Grid
+                    container
+                    direction="row"
+                    justifyContent="flex-start"
+                    alignItems="flex-start"
+                >
+                    <Grid item xs={4}>
+                        <Box component="div" display="block">
+                            <ImageWithFallback
+                                src={product.image ?? ''}
+                                fallbackSrc={'phoneFallBack.png'}
+                                alt={product.name}
+                                width={100}
+                                height={100}
+                            />
+                        </Box>
                     </Grid>
-                    <div>
-                        <IconButton
-                            onClick={() =>
-                                removeFromCart({ productId: product.id })
-                            }
+                    <Grid item xs={8}>
+                        <Typography display="inline">{product.name}</Typography>
+                        <Typography display="inline" color="primary">
+                            {' '}
+                            (x{quantity})
+                        </Typography>
+                        <Box mt={1}>
+                            <Typography>{product.price}€</Typography>
+                        </Box>
+                        <Grid
+                            container
+                            direction="row"
+                            justifyContent="space-between"
+                            alignItems="center"
                         >
-                            <DeleteIcon color="error" />
-                        </IconButton>
-                    </div>
+                            <Grid xs={6}>
+                                <Button
+                                    variant="text"
+                                    startIcon={<RemoveIcon color="error" />}
+                                    onClick={() =>
+                                        decreaseCartInventory({
+                                            productId: product.id,
+                                        })
+                                    }
+                                >
+                                    <Typography variant="body2">
+                                        decrease
+                                    </Typography>
+                                </Button>
+                            </Grid>
+                            <Grid xs={6}>
+                                <Button
+                                    variant="text"
+                                    startIcon={<AddIcon color="primary" />}
+                                    onClick={() =>
+                                        increaseCartInventory({
+                                            productId: product.id,
+                                        })
+                                    }
+                                >
+                                    <Typography variant="body2">
+                                        increase
+                                    </Typography>
+                                </Button>
+                            </Grid>
+                        </Grid>
+                        <div>
+                            <Button
+                                variant="text"
+                                startIcon={<DeleteIcon color="error" />}
+                                onClick={() =>
+                                    removeFromCart({ productId: product.id })
+                                }
+                            >
+                                <Typography variant="body2">
+                                    remove from cart
+                                </Typography>
+                            </Button>
+                        </div>
+                    </Grid>
                 </Grid>
-            </Grid>
+            </Box>
         </article>
     );
 };

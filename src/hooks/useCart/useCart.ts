@@ -25,6 +25,7 @@ import {
 export interface UseCart {
     totalPrice: number;
     products: CartProduct[];
+    totalQuantity: number;
     actions: {
         addToCart: (payload: AddToCartActionPayload) => void;
         buyNow: (payload: AddToCartActionPayload) => void;
@@ -43,6 +44,10 @@ const useCart: () => UseCart = () => {
     const dispatch = useAppDispatch();
     const totalPrice: number = useSelector(cartProductsTotalCostSelector);
     const products: CartProduct[] = useSelector(cartProductsSelector);
+    const totalQuantity: number = products.reduce(
+        (acc, curr) => acc + curr.quantity,
+        0
+    );
     const router = useRouter();
 
     const addToCart: ({ product }: AddToCartActionPayload) => void = ({
@@ -74,6 +79,7 @@ const useCart: () => UseCart = () => {
     return {
         totalPrice,
         products,
+        totalQuantity,
         actions: {
             addToCart,
             buyNow,

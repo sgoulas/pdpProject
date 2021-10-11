@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import IconButton from '@material-ui/core/IconButton';
+import Badge from '@material-ui/core/Badge';
 import ShoppingCart from '@material-ui/icons/ShoppingCartOutlined';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Grid from '@material-ui/core/Grid';
@@ -16,17 +17,16 @@ import { checkoutPage } from '@core';
 
 //todo maybe change products to items?
 //todo add a css animation for "you have no items in your cart" message
-//todo add counter to the cart icon to indicate items quantity
-//add padding once instead of margin everywhere?
 //tests
 
 const MiniCart: React.FC = () => {
     const classes = useStyles();
-    const { products: items, totalPrice } = useCart();
+    const { products: items, totalPrice, totalQuantity } = useCart();
     const router = useRouter();
     const [isOpen, setIsOpen] = useState(false);
 
     const priceDecimals = 2;
+    const hasItemsInCart = items.length > 0;
 
     const openCart = () => setIsOpen(true);
     const closeCart = () => setIsOpen(false);
@@ -39,7 +39,9 @@ const MiniCart: React.FC = () => {
     return (
         <>
             <IconButton onClick={openCart}>
-                <ShoppingCart color="secondary" />
+                <Badge badgeContent={totalQuantity} color="error">
+                    <ShoppingCart color="secondary" />
+                </Badge>
             </IconButton>
             <SwipeableDrawer
                 anchor="right"
@@ -47,48 +49,56 @@ const MiniCart: React.FC = () => {
                 onOpen={openCart}
                 onClose={closeCart}
             >
-                this is the mini cart
+                <Box mx={2} my={0.5}>
+                    <Typography variant="body2">
+                        you have {totalQuantity} items in your cart
+                    </Typography>
+                </Box>
                 <Divider variant="middle" />
                 {items.map(item => (
                     <MiniCartProductCard key={item.product.id} item={item} />
                 ))}
                 <Divider variant="middle" />
-                <Grid
-                    container
-                    direction="row"
-                    justifyContent="space-between"
-                    alignItems="center"
-                >
-                    <Grid item>
-                        <Box ml={2}>
-                            <Typography variant="body1">
-                                total price:
-                            </Typography>
-                        </Box>
-                    </Grid>
-                    <Grid item>
-                        <Box mr={2}>
-                            <Typography variant="h5" component="p">
-                                {totalPrice.toFixed(priceDecimals)}€
-                            </Typography>
-                        </Box>
-                    </Grid>
-                </Grid>
-                <Box textAlign="center" mt={8} mr="auto" ml="auto">
-                    <Button
-                        data-testid="checkout-button"
-                        variant="text"
-                        style={{
-                            backgroundColor: '#FFA41C',
-                        }}
-                        className={classes.checkoutBtn}
-                        onClick={goToCheckoutPage}
+                {hasItemsInCart && (
+                    <Grid
+                        container
+                        direction="row"
+                        justifyContent="space-between"
+                        alignItems="center"
                     >
-                        <Typography variant="body1" component="span">
-                            checkout
-                        </Typography>
-                    </Button>
-                </Box>
+                        <Grid item>
+                            <Box ml={2}>
+                                <Typography variant="body1">
+                                    total price:
+                                </Typography>
+                            </Box>
+                        </Grid>
+                        <Grid item>
+                            <Box mr={2}>
+                                <Typography variant="h5" component="p">
+                                    {totalPrice.toFixed(priceDecimals)}€
+                                </Typography>
+                            </Box>
+                        </Grid>
+                    </Grid>
+                )}
+                {hasItemsInCart && (
+                    <Box textAlign="center" mt={8} mr="auto" ml="auto">
+                        <Button
+                            data-testid="checkout-button"
+                            variant="text"
+                            style={{
+                                backgroundColor: '#FFA41C',
+                            }}
+                            className={classes.checkoutBtn}
+                            onClick={goToCheckoutPage}
+                        >
+                            <Typography variant="body1" component="span">
+                                checkout
+                            </Typography>
+                        </Button>
+                    </Box>
+                )}
             </SwipeableDrawer>
         </>
     );

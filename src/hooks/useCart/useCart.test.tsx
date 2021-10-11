@@ -212,4 +212,27 @@ describe('useCart', () => {
 
         expect(store.getState().cart.products).toStrictEqual(expected);
     });
+
+    it('totalQuantity', () => {
+        const expectedQuantity = 3;
+        const { result } = renderHook(() => useCart(), {
+            wrapper: ({ children }: { children: React.ReactNode }) => (
+                <ReduxProvider store={store}>{children}</ReduxProvider>
+            ),
+        });
+
+        act(() => {
+            result.current.actions.addToCart({
+                product: mockProduct,
+            });
+            result.current.actions.addToCart({
+                product: secondMockProduct,
+            });
+            result.current.actions.increaseCartInventory({
+                productId: secondMockProduct.id,
+            });
+        });
+
+        expect(result.current.totalQuantity).toEqual(expectedQuantity);
+    });
 });

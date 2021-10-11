@@ -34,17 +34,19 @@ exports[`Layout renders correctly 1`] = `
         />
       </button>
       <div
-        class="PrivateSwipeArea-root-22 PrivateSwipeArea-anchorLeft-23"
+        class="PrivateSwipeArea-root-24 PrivateSwipeArea-anchorLeft-25"
         style="width: 20px;"
       />
     </div>
     <h1
       class="MuiTypography-root makeStyles-siteNameMobile-9 MuiTypography-h5 MuiTypography-colorTextSecondary"
+      href="/"
     >
       P
     </h1>
     <h1
       class="MuiTypography-root makeStyles-siteName-8 MuiTypography-h5 MuiTypography-colorTextSecondary"
+      href="/"
     >
       PDP project
     </h1>
@@ -96,23 +98,32 @@ exports[`Layout renders correctly 1`] = `
       <span
         class="MuiIconButton-label"
       >
-        <svg
-          aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-colorSecondary"
-          focusable="false"
-          viewBox="0 0 24 24"
+        <span
+          class="MuiBadge-root"
         >
-          <path
-            d="M15.55 13c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.37-.66-.11-1.48-.87-1.48H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.44C4.52 15.37 5.48 17 7 17h12v-2H7l1.1-2h7.45zM6.16 6h12.15l-2.76 5H8.53L6.16 6zM7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"
-          />
-        </svg>
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-colorSecondary"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M15.55 13c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.37-.66-.11-1.48-.87-1.48H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.44C4.52 15.37 5.48 17 7 17h12v-2H7l1.1-2h7.45zM6.16 6h12.15l-2.76 5H8.53L6.16 6zM7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"
+            />
+          </svg>
+          <span
+            class="MuiBadge-badge MuiBadge-anchorOriginTopRightRectangle MuiBadge-colorError MuiBadge-invisible"
+          >
+            0
+          </span>
+        </span>
       </span>
       <span
         class="MuiTouchRipple-root"
       />
     </button>
     <div
-      class="PrivateSwipeArea-root-22 PrivateSwipeArea-anchorRight-24"
+      class="PrivateSwipeArea-root-24 PrivateSwipeArea-anchorRight-26"
       style="width: 20px;"
     />
   </div>
@@ -120,7 +131,7 @@ exports[`Layout renders correctly 1`] = `
     class="MuiContainer-root makeStyles-layout-1"
   >
     <div
-      class="MuiBox-root MuiBox-root-16"
+      class="MuiBox-root MuiBox-root-18"
     >
       <main>
         mockChildren
@@ -129,16 +140,16 @@ exports[`Layout renders correctly 1`] = `
   </div>
   <article>
     <footer
-      class="makeStyles-footer-17"
+      class="makeStyles-footer-19"
     >
       <div
-        class="makeStyles-container-18"
+        class="makeStyles-container-20"
       >
         <div
-          class="makeStyles-containerItem-19"
+          class="makeStyles-containerItem-21"
         >
           <h5
-            class="MuiTypography-root makeStyles-section-20 MuiTypography-body1"
+            class="MuiTypography-root makeStyles-section-22 MuiTypography-body1"
           >
             Social
           </h5>
@@ -180,10 +191,10 @@ exports[`Layout renders correctly 1`] = `
           </a>
         </div>
         <div
-          class="makeStyles-containerItem-19"
+          class="makeStyles-containerItem-21"
         >
           <h5
-            class="MuiTypography-root makeStyles-section-20 MuiTypography-body1"
+            class="MuiTypography-root makeStyles-section-22 MuiTypography-body1"
           >
             FAQ
           </h5>
@@ -194,10 +205,10 @@ exports[`Layout renders correctly 1`] = `
           </p>
         </div>
         <div
-          class="makeStyles-containerItem-19"
+          class="makeStyles-containerItem-21"
         >
           <h5
-            class="MuiTypography-root makeStyles-section-20 MuiTypography-body1"
+            class="MuiTypography-root makeStyles-section-22 MuiTypography-body1"
           >
             github
           </h5>
@@ -231,7 +242,7 @@ exports[`Layout renders correctly 1`] = `
         class="MuiDivider-root MuiDivider-middle"
       />
       <p
-        class="MuiTypography-root makeStyles-text-21 MuiTypography-caption MuiTypography-colorTextSecondary MuiTypography-alignRight"
+        class="MuiTypography-root makeStyles-text-23 MuiTypography-caption MuiTypography-colorTextSecondary MuiTypography-alignRight"
       >
         made by Spyros Goulas
       </p>
