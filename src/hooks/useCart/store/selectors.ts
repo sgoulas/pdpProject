@@ -8,5 +8,8 @@ export const cartProductsSelector: (state: RootState) => CartProduct[] =
 
 export const cartProductsTotalCostSelector: (state: RootState) => number =
     createSelector(cartProductsSelector, cartProducts =>
-        cartProducts.reduce((acc, curr) => acc + curr.product.price, 0)
+        cartProducts.reduce(
+            (acc, curr) => acc + curr.product.price * curr.quantity,
+            0
+        )
     );

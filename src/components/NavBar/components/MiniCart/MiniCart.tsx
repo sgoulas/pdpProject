@@ -17,12 +17,15 @@ import { checkoutPage } from '@core';
 //todo maybe change products to items?
 //todo add a css animation for "you have no items in your cart" message
 //todo add counter to the cart icon to indicate items quantity
+//add padding once instead of margin everywhere?
 
 const MiniCart: React.FC = () => {
     const classes = useStyles();
     const { products: items, totalPrice } = useCart();
     const router = useRouter();
     const [isOpen, setIsOpen] = useState(false);
+
+    const priceDecimals = 2;
 
     const openCart = () => setIsOpen(true);
     const closeCart = () => setIsOpen(false);
@@ -65,7 +68,7 @@ const MiniCart: React.FC = () => {
                     <Grid item>
                         <Box mr={2}>
                             <Typography variant="h5" component="p">
-                                {totalPrice}€
+                                {totalPrice.toFixed(priceDecimals)}€
                             </Typography>
                         </Box>
                     </Grid>

@@ -178,10 +178,15 @@ describe('useCart', () => {
             result.current.actions.addToCart({
                 product: secondMockProduct,
             });
+            result.current.actions.increaseCartInventory({
+                productId: secondMockProduct.id,
+            });
         });
 
         expect(result.current.totalPrice).toEqual(
-            mockProduct.price + secondMockProduct.price
+            mockProduct.price +
+                secondMockProduct.price *
+                    store.getState().cart.products[1].quantity
         );
     });
     it('products', () => {
