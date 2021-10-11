@@ -5,11 +5,10 @@ import { Provider as ReduxProvider } from 'react-redux';
 
 import store from '@store/store';
 import { ApiProduct } from '@api';
-import { checkoutPage } from '@core';
+import { checkoutPage, CartProduct } from '@core';
 
 import useCart from './useCart';
 import { emptyCartAction } from './store/actions';
-import { CartProduct } from './store/types';
 
 describe('useCart', () => {
     afterEach(() => store.dispatch(emptyCartAction()));

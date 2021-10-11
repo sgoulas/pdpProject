@@ -1,6 +1,8 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
 // import Link from 'next/link';
 
 import { CartProduct } from '@core';
@@ -37,6 +39,16 @@ const MiniCartProductCard: React.FC<MiniCartProductCardProps> = ({
                 <Typography>
                     {product.name} x {quantity}
                 </Typography>
+                <Grid
+                    container
+                    direction="row"
+                    justifyContent="space-between"
+                    alignItems="center"
+                >
+                    <Grid xs={6}>decrease</Grid>
+                    <Grid xs={6}>increase</Grid>
+                </Grid>
+                <div>remove</div>
             </Grid>
         </Grid>
     </article>
