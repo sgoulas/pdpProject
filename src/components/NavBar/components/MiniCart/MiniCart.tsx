@@ -18,6 +18,7 @@ import { checkoutPage } from '@core';
 //todo add a css animation for "you have no items in your cart" message
 //todo add counter to the cart icon to indicate items quantity
 //add padding once instead of margin everywhere?
+//tests
 
 const MiniCart: React.FC = () => {
     const classes = useStyles();
