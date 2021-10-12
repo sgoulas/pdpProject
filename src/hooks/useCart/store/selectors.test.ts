@@ -31,12 +31,15 @@ describe('CartState selectors', () => {
         const mockProductA: ApiProduct = mock<ApiProduct>({ price: rndPriceA });
         const mockProductB: ApiProduct = mock<ApiProduct>({ price: rndPriceB });
 
-        const mockCartProductA: CartProduct = mock<CartProduct>({
+        const mockCartProductA: CartProduct = {
             product: mockProductA,
-        });
-        const mockCartProductB: CartProduct = mock<CartProduct>({
+            quantity: 1,
+        };
+
+        const mockCartProductB: CartProduct = {
             product: mockProductB,
-        });
+            quantity: 2,
+        };
 
         const state: RootState = {
             ...mockState,
@@ -45,7 +48,7 @@ describe('CartState selectors', () => {
             },
         };
 
-        const expected = rndPriceA + rndPriceB;
+        const expected = rndPriceA + rndPriceB * mockCartProductB.quantity;
 
         expect(cartProductsTotalCostSelector(state)).toEqual(expected);
     });
