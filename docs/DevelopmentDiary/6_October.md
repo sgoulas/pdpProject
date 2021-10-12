@@ -475,3 +475,54 @@ https://github.com/sgoulas/pdpProject/commit/53269e2322ada0c62c31d2eacb0d4d3763c
 I also faced a weird bug about too many re-renders in `customRender` function. This was caused by `jest-mock-extended`'s `mock` function. Moral of the story: do **not** pass non-serializable values to the store.
 
 Something interesting that I just noticed is that if I test a subcomponent's cases in a parent component I have test coverage for the subcomponent even if I don't test its cases in its own test file (and vice versa). So in my case testing `MiniCart` thoroughly allows me to only test `MiniCartProductCart` for its snapshot. This means I don't have to write tests for cases I have already tested in a different scope. This is something I hadn't notice in the past (probably because I was writing tests with `enzyme` and rendering the components shallowly).
+
+So, in this MR I created the `useCart` hook, the `cart` state slice, the relevant reducer and selectors, refactored the `customRender` function, added tests for the existing hooks and created the corresponding UI elements. I really feel like I stepped up my understanding of testing.
+
+What's left is going through the accessibility / markup validators and fix any errors / warning that might come up.
+
+For some reason the main page is missing the `title` property although I can see the tab named appropriately.
+
+It seems the error is caused because `redux-persist` does not run in the server, so when the HTML of the page is pre-generated it causes the title to not render (https://github.com/vercel/next.js/issues/8240).
+
+The solution is simple but ugly, if I am on the server, don't wrap the application with the persist provider:
+
+```tsx
+const App: React.FC<AppProps> = ({ Component, pageProps }: AppProps) =>
+    typeof window === 'undefined' ? (
+        <ReduxProvider store={store}>
+            <ApolloProvider client={client}>
+                <ThemeProvider theme={theme}>
+                    <CssBaseline />
+                    <Layout>
+                        <Component {...pageProps} />
+                    </Layout>
+                </ThemeProvider>
+            </ApolloProvider>
+        </ReduxProvider>
+    ) : (
+        <ReduxProvider store={store}>
+            <PersistGate loading={null} persistor={persistor}>
+                <ApolloProvider client={client}>
+                    <ThemeProvider theme={theme}>
+                        <CssBaseline />
+                        <Layout>
+                            <Component {...pageProps} />
+                        </Layout>
+                    </ThemeProvider>
+                </ApolloProvider>
+            </PersistGate>
+        </ReduxProvider>
+    );
+```
+
+If I do this change however, I am getting a console.error `react-dom.development.js:67 Warning: Did not expect server HTML to contain a <div>`.
+
+So I have to choose between:
+
+-   the page _source_ not having a `title`, which affects the SEO ranking
+-   an error in my `console`, which affects me on a personal level because anyone unsuspecting of the situation will think I just built the application _with_ console errors and disregarded them nontheless.
+-   add a `<title>` element with `${SITE_NAME}` as value and expect it will be overwritten by each page's `title` element. So the user will see the correct title and the console will have no errors. The downside of this is that the page source of each page will display the `${SITE_NAME}` as title. This is wrong on a SEO level since different pages have different titles (I am not going to take into account the unecdotal opinions that `googlebot` is clever enough to wait for page updates, it might very well be but I don't want to take any chances). The other downside is that when I fixed the bug so that the correct title appears on the page (and got the error in the console) the mark up validator displayed four errors regarding the usage of `href` on a `<heading>` element. This means that these errors pre-existed and because `<title>` was missing the mark up validator was not picking them up.
+
+SEO ranking aside, which is a major aim from the very start of this project, I think it is wrong on a principle level to disregard that existence of errors, that _are_ going to get caught by the validator if I fix the very bug that should be fixed. At least in the scope of this project, which is after all an educational one.
+
+btw I just realized that it's not an error but a warning in red. Still hurts :(

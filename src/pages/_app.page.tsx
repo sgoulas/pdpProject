@@ -13,8 +13,19 @@ import store, { persistor } from '@store/store';
 
 import '../../public/fonts.css';
 
-const App: React.FC<AppProps> = ({ Component, pageProps }: AppProps) => (
-    <>
+const App: React.FC<AppProps> = ({ Component, pageProps }: AppProps) =>
+    typeof window === 'undefined' ? (
+        <ReduxProvider store={store}>
+            <ApolloProvider client={client}>
+                <ThemeProvider theme={theme}>
+                    <CssBaseline />
+                    <Layout>
+                        <Component {...pageProps} />
+                    </Layout>
+                </ThemeProvider>
+            </ApolloProvider>
+        </ReduxProvider>
+    ) : (
         <ReduxProvider store={store}>
             <PersistGate loading={null} persistor={persistor}>
                 <ApolloProvider client={client}>
@@ -27,7 +38,6 @@ const App: React.FC<AppProps> = ({ Component, pageProps }: AppProps) => (
                 </ApolloProvider>
             </PersistGate>
         </ReduxProvider>
-    </>
-);
+    );
 
 export default App;

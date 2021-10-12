@@ -74,7 +74,7 @@ const MiniCart: React.FC = () => {
                         </Grid>
                         <Grid item>
                             <Box mr={2}>
-                                <Typography variant="h5" component="p">
+                                <Typography variant="h5">
                                     {totalPrice.toFixed(priceDecimals)}€
                                 </Typography>
                             </Box>

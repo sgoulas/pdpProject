@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import { Typography } from '@components';
 import { SITE_NAME, landingPage } from '@core';
@@ -8,29 +8,30 @@ import useStyles from './SiteName.styles';
 
 const SiteName: React.FC = () => {
     const classes = useStyles();
+    const router = useRouter();
+
+    const navigateToLandingPage = () => router.push(landingPage());
 
     return (
         <>
-            <Link href={landingPage()} passHref>
-                <Typography
-                    component="h1"
-                    variant="h5"
-                    color="textSecondary"
-                    className={classes.siteNameMobile}
-                >
-                    {SITE_NAME.charAt(0)}
-                </Typography>
-            </Link>
-            <Link href={landingPage()} passHref>
-                <Typography
-                    component="h1"
-                    variant="h5"
-                    color="textSecondary"
-                    className={classes.siteName}
-                >
-                    {SITE_NAME}
-                </Typography>
-            </Link>
+            <Typography
+                component="h1"
+                variant="h5"
+                color="textSecondary"
+                className={classes.siteNameMobile}
+                onClick={navigateToLandingPage}
+            >
+                {SITE_NAME.charAt(0)}
+            </Typography>
+            <Typography
+                component="h1"
+                variant="h5"
+                color="textSecondary"
+                className={classes.siteName}
+                onClick={navigateToLandingPage}
+            >
+                {SITE_NAME}
+            </Typography>
         </>
     );
 };
