@@ -98,4 +98,87 @@ describe('MiniCart', () => {
 
         expect(mockPush).toHaveBeenCalledWith(checkoutPage());
     });
+
+    it('shows increased inventory after clicking the add button', async () => {
+        const initialState: RootState = {
+            ...mockState,
+        };
+
+        const { getByTestId, getByText, queryByText } = renderWithProviders(
+            <MiniCart />,
+            {
+                initialState,
+            }
+        );
+
+        const miniCartIcon = getByTestId('mini-cart-icon');
+
+        miniCartIcon.click();
+
+        const increaseBtn = getByText('add');
+
+        increaseBtn.click();
+
+        await waitFor(() => expect(queryByText('(x2)')).toBeInTheDocument());
+    });
+
+    it('shows decreased inventory after clicking the remove button', async () => {
+        const initialState: RootState = {
+            ...mockState,
+            cart: {
+                products: [
+                    {
+                        product: mockState.cart.products[0].product,
+                        quantity: 2,
+                    },
+                ],
+            },
+        };
+
+        const { getByTestId, getByText, queryByText } = renderWithProviders(
+            <MiniCart />,
+            {
+                initialState,
+            }
+        );
+
+        const miniCartIcon = getByTestId('mini-cart-icon');
+
+        miniCartIcon.click();
+
+        const decreaseBtn = getByText('remove');
+
+        decreaseBtn.click();
+
+        await waitFor(() => expect(queryByText('(x1)')).toBeInTheDocument());
+    });
+
+    it('removes the product from the cart if remove from cart button is pressed', async () => {
+        const initialState: RootState = {
+            ...mockState,
+        };
+
+        const productName = initialState.cart.products[0].product.name;
+
+        const { getByTestId, getByText, queryByText } = renderWithProviders(
+            <MiniCart />,
+            {
+                initialState,
+            }
+        );
+
+        const miniCartIcon = getByTestId('mini-cart-icon');
+
+        miniCartIcon.click();
+
+        const removeBtn = getByText('remove from cart');
+
+        expect(getByText(productName)).toBeInTheDocument();
+
+        removeBtn.click();
+
+        await waitFor(() =>
+            expect(queryByText(productName)).not.toBeInTheDocument()
+        );
+    });
 });

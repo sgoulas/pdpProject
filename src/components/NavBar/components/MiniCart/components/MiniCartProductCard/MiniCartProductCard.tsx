@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import React from 'react';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
@@ -27,6 +28,18 @@ const MiniCartProductCard: React.FC<MiniCartProductCardProps> = ({
         },
     } = useCart();
 
+    const handleDecrease = () =>
+        decreaseCartInventory({
+            productId: product.id,
+        });
+
+    const handleAdd = () =>
+        increaseCartInventory({
+            productId: product.id,
+        });
+
+    const handleRemove = () => removeFromCart({ productId: product.id });
+
     return (
         <article>
             <Box my={2} minWidth={300}>
@@ -50,8 +63,7 @@ const MiniCartProductCard: React.FC<MiniCartProductCardProps> = ({
                     <Grid item xs={8}>
                         <Typography display="inline">{product.name}</Typography>
                         <Typography display="inline" color="primary">
-                            {' '}
-                            (x{quantity})
+                            {` (x${quantity})`}
                         </Typography>
                         <Box mt={1}>
                             <Typography>{product.price}€</Typography>
@@ -66,11 +78,7 @@ const MiniCartProductCard: React.FC<MiniCartProductCardProps> = ({
                                 <Button
                                     variant="text"
                                     startIcon={<RemoveIcon color="error" />}
-                                    onClick={() =>
-                                        decreaseCartInventory({
-                                            productId: product.id,
-                                        })
-                                    }
+                                    onClick={handleDecrease}
                                 >
                                     <Typography variant="body2">
                                         remove
@@ -81,11 +89,7 @@ const MiniCartProductCard: React.FC<MiniCartProductCardProps> = ({
                                 <Button
                                     variant="text"
                                     startIcon={<AddIcon color="primary" />}
-                                    onClick={() =>
-                                        increaseCartInventory({
-                                            productId: product.id,
-                                        })
-                                    }
+                                    onClick={handleAdd}
                                 >
                                     <Typography variant="body2">add</Typography>
                                 </Button>
@@ -95,9 +99,7 @@ const MiniCartProductCard: React.FC<MiniCartProductCardProps> = ({
                             <Button
                                 variant="text"
                                 startIcon={<DeleteIcon color="error" />}
-                                onClick={() =>
-                                    removeFromCart({ productId: product.id })
-                                }
+                                onClick={handleRemove}
                             >
                                 <Typography variant="body2">
                                     remove from cart

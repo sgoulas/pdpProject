@@ -467,3 +467,11 @@ const AllTheProviders: FC<AllTheProvidersProps> = ({
 ```
 
 but for some reason it was breaking the render of the components (basically it was rendering nothing and the snapshots where just the container HTML code).
+
+In any case that was a pretty wild commit so I am gonna add it here for future reference:
+
+https://github.com/sgoulas/pdpProject/commit/53269e2322ada0c62c31d2eacb0d4d3763cedc66
+
+I also faced a weird bug about too many re-renders in `customRender` function. This was caused by `jest-mock-extended`'s `mock` function. Moral of the story: do **not** pass non-serializable values to the store.
+
+Something interesting that I just noticed is that if I test a subcomponent's cases in a parent component I have test coverage for the subcomponent even if I don't test its cases in its own test file (and vice versa). So in my case testing `MiniCart` thoroughly allows me to only test `MiniCartProductCart` for its snapshot. This means I don't have to write tests for cases I have already tested in a different scope. This is something I hadn't notice in the past (probably because I was writing tests with `enzyme` and rendering the components shallowly).

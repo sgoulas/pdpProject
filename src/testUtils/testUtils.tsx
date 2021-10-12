@@ -46,7 +46,7 @@ const renderWithProviders: (
 ) => RenderResult = (ui, options) =>
     render(ui, {
         wrapper: props => (
-            <AllTheProviders {...props} initialState={options?.initialState} />
+            <AllTheProviders initialState={options?.initialState} {...props} />
         ),
         ...options,
     });
