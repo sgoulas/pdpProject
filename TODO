@@ -51,5 +51,5 @@ Extra milestones:
   ✔ Remove comment about cart component from Search.styles.tsx. @done(21-09-09 01:00)
 
   Questions:
-  ☐ makeStore function (problem was the RootState and AppDispatch exports)
-  ☐ Same as above, but for handling global state in NextJS apps (SSG, SSR).
+  ✔ makeStore function (problem was the RootState and AppDispatch exports) @done(21-10-12 13:00)
+  ✔ Same as above, but for handling global state in NextJS apps (SSG, SSR). @done(21-10-12 13:00)

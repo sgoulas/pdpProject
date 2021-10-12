@@ -342,4 +342,128 @@ I also explicitly defined the types of the `useCart` actions so that VS code can
 
 ## 11 October 2021
 
-I furhter styled the mini cart component and added a `totalQuantity` result to `useCart` hook.
+I finished styling the mini cart component and added a `totalQuantity` result to `useCart` hook. Now, the only thing missing was to add tests for the new files. The problem I am currently facing is using redux store inside my tests or, to be more precise, using the redux store at a speciic state. I already import and use the store instance in my tests, but the crucial detail is that I am using the store at its initial state. There are a number of components which assume they are rendered at a specific store state or that they need different store states to be tested (like testing the mini cart component when there are items in the cart and when there aren't).
+
+In order to work around this problem I have to implement a `makeStore` function that will accept an optional parameter for the initial store state and then create the store instance at the specific state, or a new one if no initial state was passed.
+
+Once again, the constraining factor is dynamically determining the correct types for `RootState` and `AppDispatch` out of the function call.
+
+This was my implementation:
+
+```ts
+export const makeStore: (
+    initialState?: ConfigureStoreOptions['preloadedState']
+) => EnhancedStore = (initialState = {}) => {
+    const persistConfig = {
+        key: 'root',
+        version: 1,
+        storage,
+    };
+
+    const persistedReducer = persistReducer(
+        persistConfig,
+        combineReducers({ app: appReducer, cart: cartReducer })
+    );
+
+    const sagaMiddleware = createSagaMiddleware();
+
+    const store = configureStore({
+        reducer: persistedReducer,
+        preloadedState: initialState,
+        middleware: getDefaultMiddleware =>
+            getDefaultMiddleware({
+                thunk: false,
+                serializableCheck: {
+                    ignoredActions: [
+                        FLUSH,
+                        REHYDRATE,
+                        PAUSE,
+                        PERSIST,
+                        PURGE,
+                        REGISTER,
+                    ],
+                },
+            }).concat(sagaMiddleware),
+    });
+
+    sagaMiddleware.run(rootSaga);
+
+    return store;
+};
+
+const store = makeStore();
+export const persistor = persistStore(store);
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+
+export default store;
+```
+
+The reason I am passing `store` and not `makeStore()` to `persistStore` is to make sure I use the same store instance for my persistent feature. So the end result is the same `store` I was exporting it up until now, plus a `makeStore` function that returns a new store instance everytime, which is super useful for running tests in isolation (this probably means I can remove the `afterAll -> emptyCart` clause in the `useCart` test file) and for providing an initial state to my `customRender` function.
+
+## 12 October 2021
+
+I had a problem with `RootState` being of type `any` because `EnhancedStore` is a generic that defaulted it's param to `any`. I asked on stackoverflow for the correct way to type the return value of `makeStore` and a user answered to not type it at all and leave the type to be inferred. When I asked if there was a way to fully type the `makeStore` function the user answered "I wrote these types" and what do you know, that user is a redux-tookit maintainer and the creator of RTK-Query. So that was a funny interaction. Lucky too. Getting an answer from a maintainer is as good as it gets.
+
+the question can be found here: https://stackoverflow.com/questions/69534018/how-to-dynamically-determine-rootstate-type-in-redux-toolkit-with-makestore-func
+
+So now I was able to solve the first of my `Questions` in the `TODO` file, which was correctly exporting all the types I need from a `makeStore` function. And since the second question was about the same thing (at its root level) it was answered as well.
+
+Now I am also able to extend `customRender` to accept an `initialState`
+
+```tsx
+interface AllTheProvidersProps {
+    children?: ReactNode;
+    initialState?: RootState;
+}
+
+const AllTheProviders: FC<AllTheProvidersProps> = ({
+    children,
+    initialState,
+}: AllTheProvidersProps) => (
+    <ReduxProvider store={makeStore(initialState)}>
+        <PersistGate loading={null} persistor={persistor}>
+            <ThemeProvider theme={theme}>{children}</ThemeProvider>
+        </PersistGate>
+    </ReduxProvider>
+);
+
+type RenderWithProvidersOptions = Omit<RenderOptions, 'wrapper'> & {
+    initialState?: RootState;
+};
+
+const renderWithProviders: (
+    ui: ReactElement,
+    options?: RenderWithProvidersOptions
+) => RenderResult = (ui, options) =>
+    render(ui, {
+        wrapper: props => (
+            <AllTheProviders {...props} initialState={options?.initialState} />
+        ),
+        ...options,
+    });
+```
+
+The `persistor` passed to `PersistGate` is the persistor of the default store export, so a different store instance from the one I am using inside `AllTheProviders`. I am contemplating on whether to remove or leave it as is. Removing it means my tests run on a store instance that is the same as the one getting persisted. On the other hand, I am never going to test for reload actions, so I am never going to actually test the store persists, I do however want to know if there is any error in my `wrappers`, for example if the order of the wrappers affect a component's render, or if a specific wrapper configuration broke some functionality. For this reason I will keep the `persistor` just to make sure the `wrappers` of my `customRender` correctly mirror the actual wrappers of my application.
+
+I did try to change the function body to `{}` and then create a store instance inside it and persist this instance:
+
+```tsx
+const AllTheProviders: FC<AllTheProvidersProps> = ({
+    children,
+    initialState,
+}: AllTheProvidersProps) => {
+    const store = makeStore(initialState);
+    const persistor = persistStore(store);
+
+    return (
+        <ReduxProvider store={makeStore(initialState)}>
+            <PersistGate loading={null} persistor={persistor}>
+                <ThemeProvider theme={theme}>{children}</ThemeProvider>
+            </PersistGate>
+        </ReduxProvider>
+    );
+};
+```
+
+but for some reason it was breaking the render of the components (basically it was rendering nothing and the snapshots where just the container HTML code).

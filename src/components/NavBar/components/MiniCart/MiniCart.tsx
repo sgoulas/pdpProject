@@ -17,7 +17,6 @@ import { checkoutPage } from '@core';
 
 //todo maybe change products to items?
 //todo add a css animation for "you have no items in your cart" message
-//tests
 
 const MiniCart: React.FC = () => {
     const classes = useStyles();
@@ -38,7 +37,7 @@ const MiniCart: React.FC = () => {
 
     return (
         <>
-            <IconButton onClick={openCart}>
+            <IconButton onClick={openCart} data-testid="mini-cart-icon">
                 <Badge badgeContent={totalQuantity} color="error">
                     <ShoppingCart color="secondary" />
                 </Badge>

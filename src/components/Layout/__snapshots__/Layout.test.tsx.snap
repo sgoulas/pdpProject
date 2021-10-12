@@ -92,6 +92,7 @@ exports[`Layout renders correctly 1`] = `
     </div>
     <button
       class="MuiButtonBase-root MuiIconButton-root"
+      data-testid="mini-cart-icon"
       tabindex="0"
       type="button"
     >

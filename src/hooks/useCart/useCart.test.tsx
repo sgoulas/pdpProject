@@ -3,15 +3,13 @@ import React from 'react';
 import { renderHook, act, cleanup } from '@testing-library/react-hooks';
 import { Provider as ReduxProvider } from 'react-redux';
 
-import store from '@store/store';
+import { makeStore } from '@store/store';
 import { ApiProduct } from '@api';
 import { checkoutPage, CartProduct } from '@core';
 
 import useCart from './useCart';
-import { emptyCartAction } from './store/actions';
 
 describe('useCart', () => {
-    afterEach(() => store.dispatch(emptyCartAction()));
     afterAll(() => {
         jest.restoreAllMocks();
         cleanup();
@@ -34,6 +32,7 @@ describe('useCart', () => {
         price: 30,
     };
     it('addToCart', () => {
+        const store = makeStore();
         const { result } = renderHook(() => useCart(), {
             wrapper: ({ children }: { children: React.ReactNode }) => (
                 <ReduxProvider store={store}>{children}</ReduxProvider>
@@ -52,6 +51,7 @@ describe('useCart', () => {
     });
 
     it('buyNow', () => {
+        const store = makeStore();
         // eslint-disable-next-line @typescript-eslint/no-var-requires
         const useRouter = jest.spyOn(require('next/router'), 'useRouter');
         const mockPush = jest.fn();
@@ -73,6 +73,7 @@ describe('useCart', () => {
         expect(mockPush).toHaveBeenLastCalledWith(checkoutPage());
     });
     it('removeFromCart', () => {
+        const store = makeStore();
         const { result } = renderHook(() => useCart(), {
             wrapper: ({ children }: { children: React.ReactNode }) => (
                 <ReduxProvider store={store}>{children}</ReduxProvider>
@@ -89,6 +90,7 @@ describe('useCart', () => {
         expect(store.getState().cart.products).toEqual([]);
     });
     it('increaseCartInventory', () => {
+        const store = makeStore();
         const { result } = renderHook(() => useCart(), {
             wrapper: ({ children }: { children: React.ReactNode }) => (
                 <ReduxProvider store={store}>{children}</ReduxProvider>
@@ -110,6 +112,7 @@ describe('useCart', () => {
     });
     describe('decreaseCartInventory', () => {
         it('removes product if quantity is 1', () => {
+            const store = makeStore();
             const { result } = renderHook(() => useCart(), {
                 wrapper: ({ children }: { children: React.ReactNode }) => (
                     <ReduxProvider store={store}>{children}</ReduxProvider>
@@ -126,6 +129,7 @@ describe('useCart', () => {
             expect(store.getState().cart.products).toEqual([]);
         });
         it('decreases quantity if quantity is greater than 1', () => {
+            const store = makeStore();
             const { result } = renderHook(() => useCart(), {
                 wrapper: ({ children }: { children: React.ReactNode }) => (
                     <ReduxProvider store={store}>{children}</ReduxProvider>
@@ -149,6 +153,7 @@ describe('useCart', () => {
     });
 
     it('emptyCart', () => {
+        const store = makeStore();
         const { result } = renderHook(() => useCart(), {
             wrapper: ({ children }: { children: React.ReactNode }) => (
                 <ReduxProvider store={store}>{children}</ReduxProvider>
@@ -165,6 +170,7 @@ describe('useCart', () => {
         expect(store.getState().cart.products).toEqual([]);
     });
     it('returns totalPrice', () => {
+        const store = makeStore();
         const { result } = renderHook(() => useCart(), {
             wrapper: ({ children }: { children: React.ReactNode }) => (
                 <ReduxProvider store={store}>{children}</ReduxProvider>
@@ -190,6 +196,7 @@ describe('useCart', () => {
         );
     });
     it('products', () => {
+        const store = makeStore();
         const { result } = renderHook(() => useCart(), {
             wrapper: ({ children }: { children: React.ReactNode }) => (
                 <ReduxProvider store={store}>{children}</ReduxProvider>
@@ -214,6 +221,7 @@ describe('useCart', () => {
     });
 
     it('totalQuantity', () => {
+        const store = makeStore();
         const expectedQuantity = 3;
         const { result } = renderHook(() => useCart(), {
             wrapper: ({ children }: { children: React.ReactNode }) => (

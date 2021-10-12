@@ -29,7 +29,7 @@ const MiniCartProductCard: React.FC<MiniCartProductCardProps> = ({
 
     return (
         <article>
-            <Box my={2}>
+            <Box my={2} minWidth={300}>
                 <Grid
                     container
                     direction="row"
@@ -62,7 +62,7 @@ const MiniCartProductCard: React.FC<MiniCartProductCardProps> = ({
                             justifyContent="space-between"
                             alignItems="center"
                         >
-                            <Grid xs={6}>
+                            <Grid item xs={6}>
                                 <Button
                                     variant="text"
                                     startIcon={<RemoveIcon color="error" />}
@@ -73,11 +73,11 @@ const MiniCartProductCard: React.FC<MiniCartProductCardProps> = ({
                                     }
                                 >
                                     <Typography variant="body2">
-                                        decrease
+                                        remove
                                     </Typography>
                                 </Button>
                             </Grid>
-                            <Grid xs={6}>
+                            <Grid item xs={6}>
                                 <Button
                                     variant="text"
                                     startIcon={<AddIcon color="primary" />}
@@ -87,9 +87,7 @@ const MiniCartProductCard: React.FC<MiniCartProductCardProps> = ({
                                         })
                                     }
                                 >
-                                    <Typography variant="body2">
-                                        increase
-                                    </Typography>
+                                    <Typography variant="body2">add</Typography>
                                 </Button>
                             </Grid>
                         </Grid>
