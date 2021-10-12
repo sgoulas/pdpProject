@@ -17,20 +17,38 @@ import {
     IncreaseCartInventoryActionPayload,
     DecreaseCartInventoryActionPayload,
 } from './types';
+import { mockState } from '@testUtils';
 
 describe('CartState reducer', () => {
-    it('handles addToCartAction', () => {
-        const previousState: CartState = initialState;
-        const actionPayload: AddToCartActionPayload = {
-            product: mock<ApiProduct>(),
-        };
-        const expectedState: CartState = {
-            products: [{ product: actionPayload.product, quantity: 1 }],
-        };
+    describe('handles addToCartAction', () => {
+        it('when the product is not already in the cart', () => {
+            const previousState: CartState = initialState;
+            const actionPayload: AddToCartActionPayload = {
+                product: mock<ApiProduct>(),
+            };
+            const expectedState: CartState = {
+                products: [{ product: actionPayload.product, quantity: 1 }],
+            };
 
-        expect(reducer(previousState, addToCartAction(actionPayload))).toEqual(
-            expectedState
-        );
+            expect(
+                reducer(previousState, addToCartAction(actionPayload))
+            ).toEqual(expectedState);
+        });
+        it('when the product is already in the cart', () => {
+            const previousState: CartState = {
+                ...mockState.cart,
+            };
+            const actionPayload: AddToCartActionPayload = {
+                product: mockState.cart.products[0].product,
+            };
+            const expectedState: CartState = {
+                products: [{ product: actionPayload.product, quantity: 2 }],
+            };
+
+            expect(
+                reducer(previousState, addToCartAction(actionPayload))
+            ).toEqual(expectedState);
+        });
     });
 
     it('handles removeFromCartAction', () => {
