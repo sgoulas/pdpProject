@@ -37,13 +37,11 @@ exports[`NavBar renders correctly 1`] = `
   </div>
   <h1
     class="MuiTypography-root makeStyles-siteNameMobile-7 MuiTypography-h5 MuiTypography-colorTextSecondary"
-    href="/"
   >
     P
   </h1>
   <h1
     class="MuiTypography-root makeStyles-siteName-6 MuiTypography-h5 MuiTypography-colorTextSecondary"
-    href="/"
   >
     PDP project
   </h1>

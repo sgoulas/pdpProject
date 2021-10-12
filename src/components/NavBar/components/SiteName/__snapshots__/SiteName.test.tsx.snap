@@ -3,7 +3,6 @@
 exports[`SiteName matches snapshot 1`] = `
 <h1
   class="MuiTypography-root makeStyles-siteNameMobile-2 MuiTypography-h5 MuiTypography-colorTextSecondary"
-  href="/"
 >
   P
 </h1>

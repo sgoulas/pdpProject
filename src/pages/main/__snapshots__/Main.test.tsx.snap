@@ -12,7 +12,6 @@ exports[`Main page renders alert when the phones prop is undefined 1`] = `
     >
       <h2
         class="MuiTypography-root makeStyles-productName-39 MuiTypography-h2"
-        href="/products/48e51f536c8dd"
       >
         iPhone 13 Pro
       </h2>
@@ -22,7 +21,6 @@ exports[`Main page renders alert when the phones prop is undefined 1`] = `
     >
       <h2
         class="MuiTypography-root makeStyles-productMoto-40 MuiTypography-h4"
-        href="/products/48e51f536c8dd"
       >
         Oh.So.Pro
       </h2>
@@ -59,7 +57,6 @@ exports[`Main page renders correctly 1`] = `
     >
       <h2
         class="MuiTypography-root makeStyles-productName-4 MuiTypography-h2"
-        href="/products/48e51f536c8dd"
       >
         iPhone 13 Pro
       </h2>
@@ -69,7 +66,6 @@ exports[`Main page renders correctly 1`] = `
     >
       <h2
         class="MuiTypography-root makeStyles-productMoto-5 MuiTypography-h4"
-        href="/products/48e51f536c8dd"
       >
         Oh.So.Pro
       </h2>
@@ -106,7 +102,6 @@ exports[`Main page renders correctly for no phones 1`] = `
     >
       <h2
         class="MuiTypography-root makeStyles-productName-29 MuiTypography-h2"
-        href="/products/48e51f536c8dd"
       >
         iPhone 13 Pro
       </h2>
@@ -116,7 +111,6 @@ exports[`Main page renders correctly for no phones 1`] = `
     >
       <h2
         class="MuiTypography-root makeStyles-productMoto-30 MuiTypography-h4"
-        href="/products/48e51f536c8dd"
       >
         Oh.So.Pro
       </h2>
@@ -153,7 +147,6 @@ exports[`Main page renders correctly for no rating 1`] = `
     >
       <h2
         class="MuiTypography-root makeStyles-productName-49 MuiTypography-h2"
-        href="/products/48e51f536c8dd"
       >
         iPhone 13 Pro
       </h2>
@@ -163,7 +156,6 @@ exports[`Main page renders correctly for no rating 1`] = `
     >
       <h2
         class="MuiTypography-root makeStyles-productMoto-50 MuiTypography-h4"
-        href="/products/48e51f536c8dd"
       >
         Oh.So.Pro
       </h2>
