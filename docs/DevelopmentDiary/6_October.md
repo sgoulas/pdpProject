@@ -526,3 +526,5 @@ So I have to choose between:
 SEO ranking aside, which is a major aim from the very start of this project, I think it is wrong on a principle level to disregard that existence of errors, that _are_ going to get caught by the validator if I fix the very bug that should be fixed. At least in the scope of this project, which is after all an educational one.
 
 btw I just realized that it's not an error but a warning in red. Still hurts :(
+
+In any case, I increased the test coverage to make me feel good about myself and then merged the MR.

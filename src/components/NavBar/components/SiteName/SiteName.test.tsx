@@ -6,6 +6,9 @@ import SiteName from './SiteName';
 import { landingPage, SITE_NAME } from '@core';
 
 describe('SiteName', () => {
+    afterAll(() => {
+        jest.restoreAllMocks();
+    });
     it('matches snapshot', () => {
         const { container } = renderWithProviders(<SiteName />);
         expect(container.firstChild).toMatchSnapshot();
