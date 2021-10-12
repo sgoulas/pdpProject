@@ -2,46 +2,41 @@ import React from 'react';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Image from 'next/image';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import { Typography } from '@components';
 
 import useStyles from './Jumbotron.styles';
+import { productDetailsPage } from '@core';
 
 const Jumbotron: React.FC = () => {
     const classes = useStyles();
+    const router = useRouter();
+
+    const navigateToProductPage = () =>
+        router.push(productDetailsPage('48e51f536c8dd'));
 
     return (
         <Container maxWidth={false} className={classes.container}>
             <Box textAlign="center">
                 <Box pt={8}>
-                    <Link
-                        href={`/products/${encodeURIComponent(
-                            '48e51f536c8dd'
-                        )}`}
+                    <Typography
+                        variant="h2"
+                        className={classes.productName}
+                        onClick={navigateToProductPage}
                     >
-                        <Typography
-                            variant="h2"
-                            className={classes.productName}
-                        >
-                            iPhone 13 Pro
-                        </Typography>
-                    </Link>
+                        iPhone 13 Pro
+                    </Typography>
                 </Box>
                 <Box my={1}>
-                    <Link
-                        href={`/products/${encodeURIComponent(
-                            '48e51f536c8dd'
-                        )}`}
+                    <Typography
+                        variant="h4"
+                        component="h2"
+                        className={classes.productMoto}
+                        onClick={navigateToProductPage}
                     >
-                        <Typography
-                            variant="h4"
-                            component="h2"
-                            className={classes.productMoto}
-                        >
-                            Oh.So.Pro
-                        </Typography>
-                    </Link>
+                        Oh.So.Pro
+                    </Typography>
                 </Box>
             </Box>
             <Box

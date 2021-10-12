@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { renderWithProviders, fireEvent } from '@testUtils';
+import { renderWithProviders, fireEvent, waitFor } from '@testUtils';
 
 import Sidemenu from './Sidemenu';
 
@@ -17,11 +17,33 @@ describe('Sidemenu component', () => {
         expect(queryByText(expectedText)).toBe(null);
     });
 
-    it('opens the sidedrawer on toggle action', () => {
+    it('opens the sidedrawer', async () => {
         const { queryByText, getByTestId } = renderWithProviders(<Sidemenu />);
+
+        expect(queryByText('Hello, Sign in')).toBe(null);
 
         fireEvent.click(getByTestId('toggle-sidemenu-button'));
 
-        expect(queryByText('Hello, Sign in')).toBeVisible();
+        await waitFor(() =>
+            expect(queryByText('Hello, Sign in')).toBeVisible()
+        );
+    });
+
+    it('closes the sidedrawer', async () => {
+        const { queryByText, getByTestId, getByText } = renderWithProviders(
+            <Sidemenu />
+        );
+
+        const toggleMenuBtn = getByTestId('toggle-sidemenu-button');
+
+        toggleMenuBtn.click();
+
+        await waitFor(() =>
+            expect(queryByText('Hello, Sign in')).toBeVisible()
+        );
+
+        getByText('Hello, Sign in').click();
+
+        await waitFor(() => expect(queryByText('Hello, Sign in')).toBe(null));
     });
 });

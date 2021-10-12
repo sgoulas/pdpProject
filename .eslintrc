@@ -8,7 +8,8 @@
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
-        "plugin:@typescript-eslint/recommended"
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@next/next/recommended"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -52,6 +53,7 @@
         "no-lonely-if":"error",
         "no-nested-ternary":"error",
         "require-await":"error",
+        "newline-before-return":"error",
         "no-magic-numbers":[
             "error",
             {

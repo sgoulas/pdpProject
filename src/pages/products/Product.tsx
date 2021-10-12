@@ -5,6 +5,7 @@ import Paper from '@material-ui/core/Paper';
 
 import { ApiProduct } from '@api';
 import { ImageWithFallback, ProductRating, Typography } from '@components';
+import { useCart } from '@hooks';
 
 import { Actions, Head } from './components';
 import useStyles from './Product.styles';
@@ -15,13 +16,16 @@ export interface ProductProps {
 
 const Product: React.FC<ProductProps> = ({ product }: ProductProps) => {
     const classes = useStyles();
+    const {
+        actions: { addToCart, buyNow },
+    } = useCart();
 
     const memoizedHandleAddToCart = useCallback(
-        () => console.log('add to cart product with id: ', product.id),
+        () => addToCart({ product }),
         [product.id]
     );
     const memoizedHandleBuyNow = useCallback(
-        () => console.log('buy now product with id: ', product.id),
+        () => buyNow({ product }),
         [product.id]
     );
 

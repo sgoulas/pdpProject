@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Sidemenu component matches snapshot 1`] = `
+exports[`SiteName matches snapshot 1`] = `
 <h1
   class="MuiTypography-root makeStyles-siteNameMobile-2 MuiTypography-h5 MuiTypography-colorTextSecondary"
 >

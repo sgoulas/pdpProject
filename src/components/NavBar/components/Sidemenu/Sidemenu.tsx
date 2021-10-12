@@ -19,19 +19,8 @@ const Sidemenu: React.FC = () => {
     const classes = useStyles();
     const [isOpen, setIsOpen] = useState(false);
 
-    const toggleDrawer =
-        (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-            if (
-                event &&
-                event.type === 'keydown' &&
-                ((event as React.KeyboardEvent).key === 'Tab' ||
-                    (event as React.KeyboardEvent).key === 'Shift')
-            ) {
-                return;
-            }
-
-            setIsOpen(open);
-        };
+    const openDrawer = () => setIsOpen(true);
+    const closeDrawer = () => setIsOpen(false);
 
     const helpAndSettingsList = [
         {
@@ -56,8 +45,8 @@ const Sidemenu: React.FC = () => {
         <div
             className={[classes.list, classes.fullList].join(' ')}
             role="presentation"
-            onClick={toggleDrawer(false)}
-            onKeyDown={toggleDrawer(false)}
+            onClick={closeDrawer}
+            onKeyDown={closeDrawer}
         >
             <div className={classes.menuHeader}>
                 <Typography variant="body1" color="textSecondary">
@@ -99,7 +88,7 @@ const Sidemenu: React.FC = () => {
         <div>
             <>
                 <IconButton
-                    onClick={toggleDrawer(true)}
+                    onClick={openDrawer}
                     data-testid="toggle-sidemenu-button"
                     aria-label="toggle menu"
                 >
@@ -108,8 +97,8 @@ const Sidemenu: React.FC = () => {
                 <SwipeableDrawer
                     anchor={'left'}
                     open={isOpen}
-                    onClose={toggleDrawer(false)}
-                    onOpen={toggleDrawer(true)}
+                    onClose={closeDrawer}
+                    onOpen={openDrawer}
                 >
                     <MenuOptions />
                 </SwipeableDrawer>

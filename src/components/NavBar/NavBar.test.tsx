@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from '@testUtils';
+import { renderWithProviders } from '@testUtils';
 
 import NavBar from './NavBar';
 
@@ -8,7 +8,7 @@ describe('NavBar', () => {
     it('renders correctly', () => {
         const {
             container: { firstChild },
-        } = render(<NavBar />);
+        } = renderWithProviders(<NavBar />);
 
         expect(firstChild).toMatchSnapshot();
     });

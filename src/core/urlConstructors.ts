@@ -6,6 +6,8 @@ export const productDetailsPage: (id: string) => string = id =>
 
 export const landingPage: () => string = () => '/';
 
+export const checkoutPage: () => string = () => '/checkout';
+
 /** OTHER */
 export const productImageUrl: (image: string) => string = image =>
     `/images/${image}`;
