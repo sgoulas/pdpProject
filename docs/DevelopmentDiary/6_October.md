@@ -528,3 +528,7 @@ SEO ranking aside, which is a major aim from the very start of this project, I t
 btw I just realized that it's not an error but a warning in red. Still hurts :(
 
 In any case, I increased the test coverage to make me feel good about myself and then merged the MR.
+
+## 13 October 2021
+
+Having merged the cart functionality I feel I should skip the category page and proceed straight into the checkout one, so that I can have a user journey completed from start to finish. Plus, the checkout page would require a payment method integration (currently thinking about `stripe`) and this is something I have never done before so I am definitely eager to test the waters with this one.

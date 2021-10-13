@@ -6,7 +6,7 @@ Technologies, methodologies and architecture:
   ✔ React with typescript @done(21-06-14 03:32)
   ✔ Redux saga @done(21-08-09 19:09)
   ✔ Redux toolkit (with care for memoized selectors) @done(21-08-09 19:09)
-  ☐ SEO
+  ✔ SEO @done(21-10-14 01:56)
   ☐ Performance optimization
   ✔ Semantic HTML @done(21-09-29 02:39)
   ✔ Custom CSS + Flex / Grid @done(07-09-08 03:10)
@@ -30,7 +30,7 @@ Technologies, methodologies and architecture:
 Main Goals:
   ✔ Landing Page @done(24-09-29 02:38)
   ☐ Products listing page
-  ☐ Product page
+  ✔ Product page @done(21-10-14 01:56)
   ☐ Checkout page
 
 Extra milestones:
@@ -43,7 +43,7 @@ Extra milestones:
 
   Leftovers / maybe:
   ☐ Per page layout (https://www.tomasgildev.com/posts/next-persistent-layout-typescript)
-  ☐ Define and showcase a Git workflow
+  ✔ Define and showcase a Git workflow @done(21-10-14 01:56)
   ☐ Consider clsx package for styles class assignemnt
   ☐ Search page to show more search results
   ☐ Add centralized toast emitter
