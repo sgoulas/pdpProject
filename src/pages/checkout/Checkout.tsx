@@ -5,6 +5,7 @@ import 'react-credit-cards/es/styles-compiled.css';
 //todo change the component from class to function with types, handlers etc
 //todo refactor the form with material-ui components (form, textfields, etc)
 //todo extract the component as CardPayment or something similar
+//todo if you are in checkout page with no procuts in cart --> redirect to main
 class PaymentForm extends React.Component {
     state = {
         cvc: '',
