@@ -544,3 +544,5 @@ After messing around with the existing examples, repos and sandbox, I may have t
 I did find a material-ui implementation (https://javascript.plainenglish.io/stripe-payment-form-with-reactjs-and-material-ui-part-4-118e60fca962) but to be honest, after hitting the 5 months milestone and over 300 commits (tomorrow marks exactly 5 months from my first commit and funnily enough the commit containing this entry will be my 300th) there is a certain element of fatigue. I have been burning the midnight oil for quite some time and I am reaching a point where I want to finish this thing properly, make the repo public and be done with it, at least for now.
 
 What I currently have in mind is to setup a vertical stepper with all the relevant input fields. I would like however to also find a component for accepting credit card details (this looks insane https://reactjsexample.com/a-modern-credit-card-component-for-react/), however if I am not satisfied with any solution I might create one myself.
+
+I did find this nice library https://www.npmjs.com/package/react-credit-cards which actually does work as advertised, so I am gonna use it.
