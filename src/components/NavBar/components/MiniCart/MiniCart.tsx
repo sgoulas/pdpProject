@@ -15,9 +15,6 @@ import { MiniCartProductCard } from './components';
 import useStyles from './MiniCart.styles';
 import { checkoutPage } from '@core';
 
-//todo maybe change products to items?
-//todo add a css animation for "you have no items in your cart" message
-
 const MiniCart: React.FC = () => {
     const classes = useStyles();
     const { products: items, totalPrice, totalQuantity } = useCart();
@@ -35,6 +32,10 @@ const MiniCart: React.FC = () => {
         router.push(checkoutPage());
     };
 
+    const quantityMessage = `you have ${
+        totalQuantity === 0 ? ' no ' : totalQuantity
+    } ${totalQuantity === 1 ? 'item' : 'items'} in your cart`;
+
     return (
         <>
             <IconButton onClick={openCart} data-testid="mini-cart-icon">
@@ -49,9 +50,7 @@ const MiniCart: React.FC = () => {
                 onClose={closeCart}
             >
                 <Box mx={2} my={0.5}>
-                    <Typography variant="body2">
-                        you have {totalQuantity} items in your cart
-                    </Typography>
+                    <Typography variant="body2">{quantityMessage}</Typography>
                 </Box>
                 <Divider variant="middle" />
                 {items.map(item => (
