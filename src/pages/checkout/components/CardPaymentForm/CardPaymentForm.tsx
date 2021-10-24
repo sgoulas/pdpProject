@@ -1,17 +1,46 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Cards from 'react-credit-cards';
 import 'react-credit-cards/es/styles-compiled.css';
 import { TextField } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 
+import { useDebounce, useAppDispatch } from '@hooks';
+import {
+    updateCardCvcAction,
+    updateCardExpiryAction,
+    updateCardNameAction,
+    updateCardNumberAction,
+} from 'pages/checkout/store/actions';
+
 const CardPaymentForm: React.FC = () => {
+    const dispatch = useAppDispatch();
     const [cardInfo, setCardInfo] = useState({
-        cvc: '',
-        expiry: '',
-        focus: '',
-        name: '',
         number: '',
+        name: '',
+        expiry: '',
+        cvc: '',
     });
+
+    const debouncedCardNumber = useDebounce(cardInfo.number);
+    const debouncedCardName = useDebounce(cardInfo.name);
+    const debouncedCardExpiry = useDebounce(cardInfo.expiry);
+    const debouncedCardCvc = useDebounce(cardInfo.cvc);
+
+    useEffect(() => {
+        dispatch(updateCardNumberAction({ number: debouncedCardNumber }));
+    }, [debouncedCardNumber]);
+
+    useEffect(() => {
+        dispatch(updateCardNameAction({ name: debouncedCardName }));
+    }, [debouncedCardName]);
+
+    useEffect(() => {
+        dispatch(updateCardExpiryAction({ expiry: debouncedCardExpiry }));
+    }, [debouncedCardExpiry]);
+
+    useEffect(() => {
+        dispatch(updateCardCvcAction({ cvc: debouncedCardCvc }));
+    }, [debouncedCardCvc]);
 
     const handleNumberChange = (e: React.ChangeEvent<HTMLInputElement>) =>
         setCardInfo(prevInfo => ({
