@@ -1,59 +1,52 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Cards from 'react-credit-cards';
 import 'react-credit-cards/es/styles-compiled.css';
 import { TextField } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 
+import { useAppDispatch, useAppSelector as useSelect } from '@hooks';
+
+import {
+    updateCardNumberAction,
+    updateCardNameAction,
+    updateCardExpiryAction,
+    updateCardCvcAction,
+} from '../../store/actions';
+import {
+    cardNumberSelector,
+    cardNameSelector,
+    cardExpirySelector,
+    cardCvcSelector,
+} from '../../store/selectors';
+
 const CardPaymentForm: React.FC = () => {
-    const [cardInfo, setCardInfo] = useState({
-        cvc: '',
-        expiry: '',
-        focus: '',
-        name: '',
-        number: '',
-    });
+    const dispatch = useAppDispatch();
+    const cardNumber = useSelect(cardNumberSelector);
+    const cardName = useSelect(cardNameSelector);
+    const cardExpiry = useSelect(cardExpirySelector);
+    const cardCvc = useSelect(cardCvcSelector);
 
     const handleNumberChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-        setCardInfo(prevInfo => ({
-            ...prevInfo,
-            number: e.target.value,
-        }));
+        dispatch(updateCardNumberAction({ number: e.target.value }));
 
     const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-        setCardInfo(prevInfo => ({
-            ...prevInfo,
-            name: e.target.value,
-        }));
+        dispatch(updateCardNameAction({ name: e.target.value }));
 
     const handleExpiryChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-        setCardInfo(prevInfo => ({
-            ...prevInfo,
-            expiry: e.target.value,
-        }));
+        dispatch(updateCardExpiryAction({ expiry: e.target.value }));
 
     const handleCvcChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-        setCardInfo(prevInfo => ({
-            ...prevInfo,
-            cvc: e.target.value,
-        }));
+        dispatch(updateCardCvcAction({ cvc: e.target.value }));
 
     const textFieldProps = [
         {
+            value: cardNumber,
             label: 'card number',
             onChange: handleNumberChange,
         },
-        {
-            label: 'card name',
-            onChange: handleNameChange,
-        },
-        {
-            label: 'expiry',
-            onChange: handleExpiryChange,
-        },
-        {
-            label: 'cvc',
-            onChange: handleCvcChange,
-        },
+        { value: cardName, label: 'card name', onChange: handleNameChange },
+        { value: cardExpiry, label: 'expiry', onChange: handleExpiryChange },
+        { value: cardCvc, label: 'cvc', onChange: handleCvcChange },
     ];
 
     return (
@@ -67,17 +60,18 @@ const CardPaymentForm: React.FC = () => {
             >
                 <Grid item xs={12}>
                     <Cards
-                        cvc={cardInfo.cvc}
-                        expiry={cardInfo.expiry}
-                        name={cardInfo.name}
-                        number={cardInfo.number}
+                        number={cardNumber}
+                        name={cardName}
+                        expiry={cardExpiry}
+                        cvc={cardCvc}
                     />
                 </Grid>
-                {textFieldProps.map(({ label, onChange }) => (
+                {textFieldProps.map(({ value, label, onChange }) => (
                     <Grid item xs={12} key={label}>
                         <TextField
                             label={label}
                             variant="outlined"
+                            value={value}
                             color="primary"
                             onChange={onChange}
                             inputProps={{

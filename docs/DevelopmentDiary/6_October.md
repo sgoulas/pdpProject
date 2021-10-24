@@ -550,3 +550,7 @@ I did find this nice library https://www.npmjs.com/package/react-credit-cards wh
 ## 24 October 2021
 
 Today I would like to finish the structure of the checkout page and maybe split the page in its relevant components.
+
+Up until now I did not make much use of my sagas, so I decided to store the checkout information in state and use sagas to trigger action checks. The main idea is the following: let's say I keep the credit card information in the redux state, when the user updates the relevant field, an action updates the state and then a saga is triggered, checks if the user input is valid and then it dispatches a "set error" action to indicate if the input is valid or not.
+
+Right now my payment method form has an internal state the keeps the user input, a debounced state (the return values of `useDebounce` calls on every user input) and multiple `useEffect`s and to dispatch update actions when the debounced values change. This is too much clutter. I will have the form be completely controlled by the state and then leverage redux sagas to debouce user input.
