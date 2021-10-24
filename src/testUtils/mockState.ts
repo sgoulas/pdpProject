@@ -22,6 +22,16 @@ const mockState: RootState = {
             },
         ],
     },
+    checkout: {
+        paymentInfo: {
+            card: {
+                number: '1111111111111111',
+                name: 'Jason Smith',
+                expiry: '12/25',
+                cvc: '123',
+            },
+        },
+    },
     _persist: {
         version: 1,
         rehydrated: false,

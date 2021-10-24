@@ -9,7 +9,7 @@
       "@store/*":["store/*"],
       "@styles":["styles"],
       "@testUtils": ["testUtils"],
-      "@utils": ["utils"]
+      "@utils": ["utils"],
     },
     "target": "es5",
     "lib": [

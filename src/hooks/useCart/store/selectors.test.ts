@@ -11,7 +11,7 @@ import {
     cartProductsTotalCostSelector,
 } from './selectors';
 
-describe('CartState selectors', () => {
+describe('Cart selectors', () => {
     it('cartProductsSelector', () => {
         const mockCartProduct: CartProduct = mock<CartProduct>();
         const state: RootState = {

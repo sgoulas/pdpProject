@@ -7,6 +7,16 @@ const theme = createTheme({
     palette,
     typography,
     overrides: {
+        MuiStepIcon: {
+            root: {
+                '&$active': {
+                    color: '#FFA41C',
+                },
+                '&$completed': {
+                    color: '#FFA41C',
+                },
+            },
+        },
         MuiCssBaseline: {
             '@global': {
                 body: {

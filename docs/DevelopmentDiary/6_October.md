@@ -546,3 +546,7 @@ I did find a material-ui implementation (https://javascript.plainenglish.io/stri
 What I currently have in mind is to setup a vertical stepper with all the relevant input fields. I would like however to also find a component for accepting credit card details (this looks insane https://reactjsexample.com/a-modern-credit-card-component-for-react/), however if I am not satisfied with any solution I might create one myself.
 
 I did find this nice library https://www.npmjs.com/package/react-credit-cards which actually does work as advertised, so I am gonna use it.
+
+## 24 October 2021
+
+Today I would like to finish the structure of the checkout page and maybe split the page in its relevant components.

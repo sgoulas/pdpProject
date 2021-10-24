@@ -1,141 +1,104 @@
-import React, { useState } from 'react';
-import Cards from 'react-credit-cards';
-import 'react-credit-cards/es/styles-compiled.css';
-import { TextField } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import Box from '@material-ui/core/Box';
+import Stepper from '@material-ui/core/Stepper';
+import Step from '@material-ui/core/Step';
+import StepLabel from '@material-ui/core/StepLabel';
+import StepContent from '@material-ui/core/StepContent';
+import Button from '@material-ui/core/Button';
+
+import { CardPaymentForm } from './components';
 
 import { useCart } from '@hooks';
+import { landingPage } from '@core';
 
-//todo change the component from class to function with types, handlers etc
-//todo refactor the form with material-ui components (form, textfields, etc)
-//todo extract the component as CardPayment or something similar
-//todo if you are in checkout page with no procuts in cart --> redirect to main
+const getStepContent: (step: number) => React.ReactNode = step => {
+    const personalInfoStep = 0;
+    const paymentMethodStep = 1;
+    const finishStep = 2;
 
-const CardPaymentForm: React.FC = () => {
+    switch (step) {
+        case personalInfoStep:
+            return 'step 0';
+        case paymentMethodStep:
+            return <CardPaymentForm />;
+        case finishStep:
+            return 'finish';
+        default:
+            'unexpected state';
+    }
+};
+
+const Checkout: React.FC = () => {
+    const router = useRouter();
     const { products: items } = useCart();
+    const [activeStep, setActiveStep] = useState(0);
+    const [isLoadingNewStep, setIsLoadingNewStep] = useState(false);
 
-    const [cardInfo, setCardInfo] = useState({
-        cvc: '',
-        expiry: '',
-        focus: '',
-        name: '',
-        number: '',
-    });
+    const steps = ['Personal Info', 'Payment Method', 'Finish'];
 
-    const handleNumberChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-        setCardInfo(prevInfo => ({
-            ...prevInfo,
-            number: e.target.value,
-        }));
+    useEffect(() => {
+        if (items.length === 0) {
+            router.push(landingPage());
+        }
+    }, []);
 
-    const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-        setCardInfo(prevInfo => ({
-            ...prevInfo,
-            name: e.target.value,
-        }));
+    useEffect(() => {
+        setIsLoadingNewStep(false);
+    }, [activeStep]);
 
-    const handleExpiryChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-        setCardInfo(prevInfo => ({
-            ...prevInfo,
-            expiry: e.target.value,
-        }));
+    const handleNextStep = () => {
+        setIsLoadingNewStep(true);
+        setActiveStep(prevActiveStep => prevActiveStep + 1);
+    };
 
-    const handleCvcChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-        setCardInfo(prevInfo => ({
-            ...prevInfo,
-            cvc: e.target.value,
-        }));
+    const handleBackStep = () => {
+        setActiveStep(prevActiveStep => prevActiveStep - 1);
+    };
+
+    // StepContent should only be used for vertical steppers
+    // https://v4.mui.com/components/steppers/
+    // https://codesandbox.io/s/b1fp9?file=/demo.js:819-850
 
     return (
-        <div id="PaymentForm">
-            <Cards
-                cvc={cardInfo.cvc}
-                expiry={cardInfo.expiry}
-                name={cardInfo.name}
-                number={cardInfo.number}
-            />
-            <form>
-                <TextField
-                    label="card number"
-                    variant="outlined"
-                    color="primary"
-                    onChange={handleNumberChange}
-                    inputProps={{
-                        'aria-label': 'card number',
-                    }}
-                />
-                <TextField
-                    label="card name"
-                    variant="outlined"
-                    color="primary"
-                    onChange={handleNameChange}
-                    inputProps={{
-                        'aria-label': 'card number',
-                    }}
-                />
-                <TextField
-                    label="expiry"
-                    variant="outlined"
-                    color="primary"
-                    onChange={handleExpiryChange}
-                    inputProps={{
-                        'aria-label': 'card expiry',
-                    }}
-                />
-                <TextField
-                    label="cvc"
-                    variant="outlined"
-                    color="primary"
-                    onChange={handleCvcChange}
-                    inputProps={{
-                        'aria-label': 'card cvc',
-                    }}
-                />
-            </form>
-        </div>
+        <Box>
+            <Stepper
+                activeStep={activeStep}
+                orientation="vertical"
+                style={{ minWidth: '80vw' }}
+            >
+                {steps.map(label => (
+                    <Step key={label}>
+                        <StepLabel>{label}</StepLabel>
+                        <StepContent>
+                            {isLoadingNewStep
+                                ? 'loading step'
+                                : getStepContent(activeStep)}
+                            <Box mt={2}>
+                                <Button
+                                    disabled={activeStep === 0}
+                                    onClick={handleBackStep}
+                                >
+                                    Back
+                                </Button>
+                                <Button
+                                    variant="text"
+                                    onClick={handleNextStep}
+                                    style={{
+                                        backgroundColor: '#FFA41C',
+                                    }}
+                                >
+                                    {activeStep === steps.length - 1
+                                        ? 'Finish'
+                                        : 'Next'}
+                                </Button>
+                            </Box>
+                        </StepContent>
+                    </Step>
+                ))}
+            </Stepper>
+        </Box>
     );
 };
 
-// class PaymentForm extends React.Component {
-//     state = {
-//         cvc: '',
-//         expiry: '',
-//         focus: '',
-//         name: '',
-//         number: '',
-//     };
-
-//     handleInputFocus = e => {
-//         this.setState({ focus: e.target.name });
-//     };
-
-//     handleInputChange = e => {
-//         const { name, value } = e.target;
-
-//         this.setState({ [name]: value });
-//     };
-
-//     render() {
-//         return (
-//             <div id="PaymentForm">
-//                 <Cards
-//                     cvc={this.state.cvc}
-//                     expiry={this.state.expiry}
-//                     name={this.state.name}
-//                     number={this.state.number}
-//                 />
-//                 <form>
-//                     <input
-//                         type="tel"
-//                         name="number"
-//                         placeholder="Card Number"
-//                         onChange={this.handleInputChange}
-//                         onFocus={this.handleInputFocus}
-//                     />
-//                     ...
-//                 </form>
-//             </div>
-//         );
-//     }
-// }
-
-export default CardPaymentForm;
+export default Checkout;
