@@ -40,7 +40,7 @@ const Checkout: React.FC = () => {
         if (items.length === 0) {
             router.push(landingPage());
         }
-    }, []);
+    });
 
     const handleStep = (step: number) => {
         setActiveStep(step);
