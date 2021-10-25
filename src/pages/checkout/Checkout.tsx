@@ -3,8 +3,8 @@ import { useRouter } from 'next/router';
 import Box from '@material-ui/core/Box';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
 import StepContent from '@material-ui/core/StepContent';
+import StepButton from '@material-ui/core/StepButton';
 import Button from '@material-ui/core/Button';
 
 import { CardPaymentForm } from './components';
@@ -33,9 +33,8 @@ const Checkout: React.FC = () => {
     const router = useRouter();
     const { products: items } = useCart();
     const [activeStep, setActiveStep] = useState(0);
-    const [isLoadingNewStep, setIsLoadingNewStep] = useState(false);
 
-    const steps = ['Personal Info', 'Payment Method', 'Finish'];
+    const steps = ['Billing Address', 'Payment Method', 'Finish'];
 
     useEffect(() => {
         if (items.length === 0) {
@@ -43,12 +42,11 @@ const Checkout: React.FC = () => {
         }
     }, []);
 
-    useEffect(() => {
-        setIsLoadingNewStep(false);
-    }, [activeStep]);
+    const handleStep = (step: number) => {
+        setActiveStep(step);
+    };
 
     const handleNextStep = () => {
-        setIsLoadingNewStep(true);
         setActiveStep(prevActiveStep => prevActiveStep + 1);
     };
 
@@ -62,18 +60,22 @@ const Checkout: React.FC = () => {
 
     return (
         <Box>
+            <Box my={4}>card items here</Box>
             <Stepper
                 activeStep={activeStep}
                 orientation="vertical"
-                style={{ minWidth: '80vw' }}
+                style={{ width: '80vw' }}
             >
-                {steps.map(label => (
+                {steps.map((label, index) => (
                     <Step key={label}>
-                        <StepLabel>{label}</StepLabel>
+                        <StepButton onClick={() => handleStep(index)}>
+                            {label}
+                        </StepButton>
                         <StepContent>
-                            {isLoadingNewStep
-                                ? 'loading step'
-                                : getStepContent(activeStep)}
+                            <Box minHeight={0}>
+                                {getStepContent(activeStep)}
+                            </Box>
+
                             <Box mt={2}>
                                 <Button
                                     disabled={activeStep === 0}

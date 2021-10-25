@@ -4,21 +4,56 @@ import 'react-credit-cards/es/styles-compiled.css';
 import { TextField } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 
-import { useDebounce, useAppDispatch } from '@hooks';
+import {
+    useDebounce,
+    useAppDispatch,
+    useAppSelector as useSelect,
+} from '@hooks';
 import {
     updateCardCvcAction,
     updateCardExpiryAction,
     updateCardNameAction,
     updateCardNumberAction,
 } from 'pages/checkout/store/actions';
+import {
+    cardCvcSelector,
+    cardExpirySelector,
+    cardNameSelector,
+    cardNumberSelector,
+} from 'pages/checkout/store/selectors';
+
+import useStyles from './CardPaymentForm.styles';
+
+// export const isValidCardNumber: (cardNumber: string) => boolean =
+//     cardNumber => {
+//         if (cardNumber === '') {
+//             return true;
+//         }
+//         const containsOnlyNumbers = Array.from(cardNumber).every(number =>
+//             number.match(/[0-9]/)
+//         );
+
+//         const expectedLength = 16;
+//         const hasCorrectLength =
+//             Array.from(cardNumber).length === expectedLength;
+
+//         return containsOnlyNumbers && hasCorrectLength;
+//     };
 
 const CardPaymentForm: React.FC = () => {
+    const classes = useStyles();
     const dispatch = useAppDispatch();
+
+    const cardNumber = useSelect(cardNumberSelector);
+    const cardName = useSelect(cardNameSelector);
+    const cardExpiry = useSelect(cardExpirySelector);
+    const cardCvc = useSelect(cardCvcSelector);
+
     const [cardInfo, setCardInfo] = useState({
-        number: '',
-        name: '',
-        expiry: '',
-        cvc: '',
+        number: cardNumber,
+        name: cardName,
+        expiry: cardExpiry,
+        cvc: cardCvc,
     });
 
     const debouncedCardNumber = useDebounce(cardInfo.number);
@@ -70,18 +105,27 @@ const CardPaymentForm: React.FC = () => {
         {
             label: 'card number',
             onChange: handleNumberChange,
+            value: cardInfo.number,
+            //error: isValidCardNumberSelector
         },
         {
             label: 'card name',
             onChange: handleNameChange,
+            error: false,
+            value: cardInfo.name,
         },
         {
             label: 'expiry',
             onChange: handleExpiryChange,
+            error: false,
+            value: cardInfo.expiry,
         },
         {
             label: 'cvc',
             onChange: handleCvcChange,
+            error: false,
+            value: cardInfo.cvc,
+            type: 'password',
         },
     ];
 
@@ -95,26 +139,33 @@ const CardPaymentForm: React.FC = () => {
                 spacing={2}
             >
                 <Grid item xs={12}>
-                    <Cards
-                        cvc={cardInfo.cvc}
-                        expiry={cardInfo.expiry}
-                        name={cardInfo.name}
-                        number={cardInfo.number}
-                    />
-                </Grid>
-                {textFieldProps.map(({ label, onChange }) => (
-                    <Grid item xs={12} key={label}>
-                        <TextField
-                            label={label}
-                            variant="outlined"
-                            color="primary"
-                            onChange={onChange}
-                            inputProps={{
-                                'aria-label': label,
-                            }}
+                    <div className={classes.cardImage}>
+                        <Cards
+                            cvc={cardInfo.cvc}
+                            expiry={cardInfo.expiry}
+                            name={cardInfo.name}
+                            number={cardInfo.number}
                         />
-                    </Grid>
-                ))}
+                    </div>
+                </Grid>
+                {textFieldProps.map(
+                    ({ label, onChange, error, value, ...rest }) => (
+                        <Grid item xs={12} key={label}>
+                            <TextField
+                                label={label}
+                                variant="outlined"
+                                color="primary"
+                                error={error}
+                                onChange={onChange}
+                                inputProps={{
+                                    'aria-label': label,
+                                }}
+                                value={value}
+                                {...rest}
+                            />
+                        </Grid>
+                    )
+                )}
             </Grid>
         </div>
     );
