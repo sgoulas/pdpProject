@@ -569,3 +569,5 @@ I also had to stub the css file that `CardPaymentForm` loads by adding a relevan
 ```
 
 I remember reading about this back when I started with the project. Thought I had already added it. Maybe I did so in another project and got confused?
+
+I also added an extention for inspecting the various testing library selectors I can use to get an element in my test suites (https://chrome.google.com/webstore/detail/testing-playground/hejbmebodbijjdhflfknehhcgaklhano). Learned it from a colleague at work, quite useful.
