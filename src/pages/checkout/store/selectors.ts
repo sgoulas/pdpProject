@@ -32,12 +32,13 @@ export const isValidCardNameSelector: (state: RootState) => boolean =
         );
 
         const maxLength = 60;
-        const isLessThanMaxLength = cardName.length <= maxLength;
+        const isLessThanMaxLength =
+            cardName.length > 0 && cardName.length <= maxLength;
 
         return containsOnlyLetters && isLessThanMaxLength;
     });
 
-export const isValidExpirySelector: (state: RootState) => boolean =
+export const isValidCardExpirySelector: (state: RootState) => boolean =
     createSelector(cardExpirySelector, expiry => {
         const expectedLength = 4;
 
@@ -68,9 +69,8 @@ export const isValidExpirySelector: (state: RootState) => boolean =
         return hasCorrectLength && isCorrectMonthField && isCorrectYearField;
     });
 
-export const isValidCvcSelector: (state: RootState) => boolean = createSelector(
-    cardCvcSelector,
-    cvc => {
+export const isValidCardCvcSelector: (state: RootState) => boolean =
+    createSelector(cardCvcSelector, cvc => {
         const expectedLength = 3;
         const containsOnlyNumbers = Array.from(cvc).every(number =>
             number.match(/[0-9]/)
@@ -79,15 +79,14 @@ export const isValidCvcSelector: (state: RootState) => boolean = createSelector(
         const hasCorrectLength = cvc.length === expectedLength;
 
         return containsOnlyNumbers && hasCorrectLength;
-    }
-);
+    });
 
 export const isValidCardPaymentFormSelector: (state: RootState) => boolean =
     createSelector(
         isValidCardNumberSelector,
         isValidCardNameSelector,
-        isValidExpirySelector,
-        isValidCvcSelector,
+        isValidCardExpirySelector,
+        isValidCardCvcSelector,
         (isValidCardNumber, isValidCardName, isValidExpiry, isValidCvc) =>
             isValidCardNumber && isValidCardName && isValidExpiry && isValidCvc
     );

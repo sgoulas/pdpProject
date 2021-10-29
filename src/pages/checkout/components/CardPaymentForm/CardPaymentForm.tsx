@@ -20,6 +20,10 @@ import {
     cardExpirySelector,
     cardNameSelector,
     cardNumberSelector,
+    isValidCardCvcSelector,
+    isValidCardExpirySelector,
+    isValidCardNameSelector,
+    isValidCardNumberSelector,
 } from 'pages/checkout/store/selectors';
 
 import useStyles from './CardPaymentForm.styles';
@@ -33,6 +37,18 @@ const CardPaymentForm: React.FC = () => {
     const cardExpiry = useSelect(cardExpirySelector);
     const cardCvc = useSelect(cardCvcSelector);
 
+    const isValidCardNumber = useSelect(isValidCardNumberSelector);
+    const [cardNumberError, setCardNumberError] = useState(false);
+
+    const isValidCardName = useSelect(isValidCardNameSelector);
+    const [cardNameError, setCardNameError] = useState(false);
+
+    const isValidCardExpiry = useSelect(isValidCardExpirySelector);
+    const [cardExpiryError, setCardExpiryError] = useState(false);
+
+    const isValidCardCvc = useSelect(isValidCardCvcSelector);
+    const [cardCvcError, setCardCvcError] = useState(false);
+
     const [cardInfo, setCardInfo] = useState({
         number: cardNumber,
         name: cardName,
@@ -40,10 +56,12 @@ const CardPaymentForm: React.FC = () => {
         cvc: cardCvc,
     });
 
-    const debouncedCardNumber = useDebounce(cardInfo.number);
-    const debouncedCardName = useDebounce(cardInfo.name);
-    const debouncedCardExpiry = useDebounce(cardInfo.expiry);
-    const debouncedCardCvc = useDebounce(cardInfo.cvc);
+    const inputDebounce = 250;
+
+    const debouncedCardNumber = useDebounce(cardInfo.number, inputDebounce);
+    const debouncedCardName = useDebounce(cardInfo.name, inputDebounce);
+    const debouncedCardExpiry = useDebounce(cardInfo.expiry, inputDebounce);
+    const debouncedCardCvc = useDebounce(cardInfo.cvc, inputDebounce);
 
     useEffect(() => {
         dispatch(updateCardNumberAction({ number: debouncedCardNumber }));
@@ -90,30 +108,40 @@ const CardPaymentForm: React.FC = () => {
             label: 'card number',
             onChange: handleNumberChange,
             value: cardInfo.number,
-            error: false,
-            // error: !isValidCardNumber(cardInfo.number),
-            // helperText: !isValidCardNumber(cardInfo.number)
-            //     ? 'field should contain 16 numbers'
-            //     : '',
+            onBlur: () => setCardNumberError(!isValidCardNumber),
+            error: cardNumberError,
+            helperText: cardNumberError
+                ? 'field should contain 16 numbers'
+                : '',
         },
         {
             label: 'card name',
             onChange: handleNameChange,
             value: cardInfo.name,
-            error: false,
+            onBlur: () => setCardNameError(!isValidCardName),
+            error: cardNameError,
+            helperText: cardNameError
+                ? 'field should contain a valid name'
+                : '',
         },
         {
             label: 'expiry',
             onChange: handleExpiryChange,
             value: cardInfo.expiry,
-            error: false,
+            onBlur: () => setCardExpiryError(!isValidCardExpiry),
+            error: cardExpiryError,
+            helperText: cardExpiryError
+                ? 'field should contain a valid expiry date'
+                : '',
         },
         {
             label: 'cvc',
             onChange: handleCvcChange,
             value: cardInfo.cvc,
             type: 'password',
-            error: false,
+            onBlur: () => setCardCvcError(!isValidCardCvc),
+            error: cardCvcError,
+            helperText: cardCvcError ? 'field should contain a valid cvc' : '',
         },
     ];
 

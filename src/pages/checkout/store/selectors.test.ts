@@ -10,8 +10,8 @@ import {
     cardCvcSelector,
     isValidCardNumberSelector,
     isValidCardNameSelector,
-    isValidExpirySelector,
-    isValidCvcSelector,
+    isValidCardExpirySelector,
+    isValidCardCvcSelector,
     isValidCardPaymentFormSelector,
 } from './selectors';
 
@@ -95,6 +95,19 @@ describe('Checkout selectors', () => {
                     },
                 })
             ).toBe(false);
+            expect(
+                isValidCardNameSelector({
+                    ...mockState,
+                    checkout: {
+                        paymentInfo: {
+                            card: {
+                                ...mockState.checkout.paymentInfo.card,
+                                name: faker.datatype.string(maxNameLength + 1),
+                            },
+                        },
+                    },
+                })
+            ).toBe(false);
         });
         it('returns false for invalid input characters', () => {
             expect(
@@ -104,7 +117,7 @@ describe('Checkout selectors', () => {
                         paymentInfo: {
                             card: {
                                 ...mockState.checkout.paymentInfo.card,
-                                name: 'Name with numbers 123124',
+                                name: '',
                             },
                         },
                     },
@@ -114,11 +127,11 @@ describe('Checkout selectors', () => {
     });
     describe('isValidExpirySelector', () => {
         it('returns true for valid input', () => {
-            expect(isValidExpirySelector(state)).toBe(true);
+            expect(isValidCardExpirySelector(state)).toBe(true);
         });
         it('returns false for invalid month input', () => {
             expect(
-                isValidExpirySelector({
+                isValidCardExpirySelector({
                     ...mockState,
                     checkout: {
                         paymentInfo: {
@@ -133,7 +146,7 @@ describe('Checkout selectors', () => {
         });
         it('returns false for invalid year input', () => {
             expect(
-                isValidExpirySelector({
+                isValidCardExpirySelector({
                     ...mockState,
                     checkout: {
                         paymentInfo: {
@@ -149,11 +162,11 @@ describe('Checkout selectors', () => {
     });
     describe('isValidCvcSelector', () => {
         it('returns true for valid input', () => {
-            expect(isValidCvcSelector(state)).toBe(true);
+            expect(isValidCardCvcSelector(state)).toBe(true);
         });
         it('returns false for invalid input length', () => {
             expect(
-                isValidCvcSelector({
+                isValidCardCvcSelector({
                     ...mockState,
                     checkout: {
                         paymentInfo: {
@@ -168,7 +181,7 @@ describe('Checkout selectors', () => {
         });
         it('returns false if input contains letters', () => {
             expect(
-                isValidCvcSelector({
+                isValidCardCvcSelector({
                     ...mockState,
                     checkout: {
                         paymentInfo: {

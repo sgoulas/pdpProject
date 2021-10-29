@@ -66,7 +66,15 @@ const Checkout: React.FC = () => {
     };
 
     const handleNextStep = () => {
-        setActiveStep(prevActiveStep => prevActiveStep + 1);
+        if (activeStep === finishStep) {
+            console.log('finish');
+            //todo perform checkout call
+            //clear checkout state
+            //clear cart state
+            //redirect to main page
+        } else {
+            setActiveStep(prevActiveStep => prevActiveStep + 1);
+        }
     };
 
     const handleBackStep = () => {
