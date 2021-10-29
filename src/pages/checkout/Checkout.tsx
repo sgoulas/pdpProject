@@ -47,6 +47,7 @@ const Checkout: React.FC = () => {
         window.addEventListener('beforeunload', cleanUp);
 
         return () => {
+            cleanUp();
             window.removeEventListener('beforeunload', cleanUp);
         };
     }, []);
