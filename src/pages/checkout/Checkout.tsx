@@ -9,10 +9,11 @@ import Button from '@material-ui/core/Button';
 
 import { CardPaymentForm } from './components';
 
-import { useCart, useAppSelector as useSelect } from '@hooks';
+import { useCart, useAppSelector as useSelect, useAppDispatch } from '@hooks';
 import { landingPage } from '@core';
 
 import { isValidCardPaymentFormSelector } from './store/selectors';
+import { clearCheckoutInfoAction } from './store/actions';
 
 const personalInfoStep = 0;
 const paymentMethodStep = 1;
@@ -33,11 +34,22 @@ const getStepContent: (step: number) => React.ReactNode = step => {
 
 const Checkout: React.FC = () => {
     const router = useRouter();
+    const dispatch = useAppDispatch();
     const { products: items } = useCart();
     const [activeStep, setActiveStep] = useState(0);
     const isValidCardPaymentStep = useSelect(isValidCardPaymentFormSelector);
 
     const steps = ['Billing Address', 'Payment Method', 'Finish'];
+
+    useEffect(() => {
+        const cleanUp = () => dispatch(clearCheckoutInfoAction());
+
+        window.addEventListener('beforeunload', cleanUp);
+
+        return () => {
+            window.removeEventListener('beforeunload', cleanUp);
+        };
+    }, []);
 
     useEffect(() => {
         if (items.length === 0) {

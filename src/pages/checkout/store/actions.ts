@@ -29,3 +29,7 @@ export const updateCardExpiryAction =
 export const updateCardCvcAction = createAction<UpdateCardCvcActionPayload>(
     withNameSpacePrefix('update_card_cvc')
 );
+
+export const clearCheckoutInfoAction = createAction(
+    withNameSpacePrefix('clear')
+);

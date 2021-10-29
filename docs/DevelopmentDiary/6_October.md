@@ -552,3 +552,7 @@ I did find this nice library https://www.npmjs.com/package/react-credit-cards wh
 Today I would like to finish the structure of the checkout page and maybe split the page in its relevant components.
 
 In the end I did not have much time but I connected the credit card info to redux. Now in order to finish this component I should add separate error checkers for its individual fields (that will be updated via saga triggers) and also update the next button in the stepper to be disabled if the step content is erroneous.
+
+## 29 October 2021
+
+I added multiple selectors for the card payment form fields in order to determine if the next step button should be enabled or disabled and added a clean up function so that when a user closes the tab their payment info are deleted. Under normal circumstances this clean up behaviour should exist in the `_app.page.tsx` but I liked the idea of leaving that component as simple as it is right now and in any case, the checkout page is supposed to be tightly tied to a back end, so a pure front end implementation is bound to cut some corners.

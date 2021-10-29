@@ -7,6 +7,7 @@ import {
     updateCardNameAction,
     updateCardExpiryAction,
     updateCardCvcAction,
+    clearCheckoutInfoAction,
 } from './actions';
 import {
     UpdateCardNumberActionPayload,
@@ -75,6 +76,7 @@ const checkoutReducer = createReducer(initialState, {
     [updateCardNameAction.type]: handleUpdateCardName,
     [updateCardExpiryAction.type]: handleUpdateCardExpiryName,
     [updateCardCvcAction.type]: handleUpdateCardCvcName,
+    [clearCheckoutInfoAction.type]: () => initialState,
 });
 
 export default checkoutReducer;

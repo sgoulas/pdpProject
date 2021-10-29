@@ -1,11 +1,14 @@
 import faker from 'faker';
 
+import { mockState } from '@testUtils';
+
 import reducer, { CheckoutState, initialState } from './reducer';
 import {
     updateCardNumberAction,
     updateCardNameAction,
     updateCardExpiryAction,
     updateCardCvcAction,
+    clearCheckoutInfoAction,
 } from './actions';
 import {
     UpdateCardNumberActionPayload,
@@ -102,6 +105,14 @@ describe('Checkout reducer', () => {
             expect(
                 reducer(previousState, updateCardCvcAction(actionPayload))
             ).toEqual(expectedState);
+        });
+
+        it('clearCheckoutInfoAction', () => {
+            const previousState: CheckoutState = { ...mockState.checkout };
+
+            expect(reducer(previousState, clearCheckoutInfoAction())).toEqual(
+                initialState
+            );
         });
     });
 });
