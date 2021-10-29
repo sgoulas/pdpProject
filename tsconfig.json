@@ -10,6 +10,7 @@
       "@styles":["styles"],
       "@testUtils": ["testUtils"],
       "@utils": ["utils"],
+      "@pages/*":["pages/*"]
     },
     "target": "es5",
     "lib": [

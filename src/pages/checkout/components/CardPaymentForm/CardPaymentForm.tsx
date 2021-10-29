@@ -14,7 +14,7 @@ import {
     updateCardExpiryAction,
     updateCardNameAction,
     updateCardNumberAction,
-} from 'pages/checkout/store/actions';
+} from '@pages/checkout/store/actions';
 import {
     cardCvcSelector,
     cardExpirySelector,
@@ -24,7 +24,7 @@ import {
     isValidCardExpirySelector,
     isValidCardNameSelector,
     isValidCardNumberSelector,
-} from 'pages/checkout/store/selectors';
+} from '@pages/checkout/store/selectors';
 
 import useStyles from './CardPaymentForm.styles';
 
