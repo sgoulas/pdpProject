@@ -46,6 +46,7 @@ export const isValidCardExpirySelector: (state: RootState) => boolean =
         const monthIndexEnd = 2;
         const yearIndexStart = 2;
         const yearIndexEnd = 4;
+        const lastTwoDigits = -2;
 
         const monthField = Number(
             expiry.substring(monthIndexStart, monthIndexEnd)
@@ -61,8 +62,8 @@ export const isValidCardExpirySelector: (state: RootState) => boolean =
         );
 
         const isCorrectYearField =
-            // eslint-disable-next-line no-magic-numbers
-            yearField >= Number(new Date().getFullYear().toString().substr(-2));
+            yearField >=
+            Number(new Date().getFullYear().toString().substr(lastTwoDigits));
 
         const hasCorrectLength = expiry.length === expectedLength;
 
