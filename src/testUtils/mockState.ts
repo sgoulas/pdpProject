@@ -27,7 +27,7 @@ const mockState: RootState = {
             card: {
                 number: '1111111111111111',
                 name: 'Jason Smith',
-                expiry: '12/25',
+                expiry: '1225',
                 cvc: '123',
             },
         },

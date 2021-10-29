@@ -9,14 +9,16 @@ import Button from '@material-ui/core/Button';
 
 import { CardPaymentForm } from './components';
 
-import { useCart } from '@hooks';
+import { useCart, useAppSelector as useSelect } from '@hooks';
 import { landingPage } from '@core';
 
-const getStepContent: (step: number) => React.ReactNode = step => {
-    const personalInfoStep = 0;
-    const paymentMethodStep = 1;
-    const finishStep = 2;
+import { isValidCardPaymentFormSelector } from './store/selectors';
 
+const personalInfoStep = 0;
+const paymentMethodStep = 1;
+const finishStep = 2;
+
+const getStepContent: (step: number) => React.ReactNode = step => {
     switch (step) {
         case personalInfoStep:
             return 'step 0';
@@ -33,6 +35,7 @@ const Checkout: React.FC = () => {
     const router = useRouter();
     const { products: items } = useCart();
     const [activeStep, setActiveStep] = useState(0);
+    const isValidCardPaymentStep = useSelect(isValidCardPaymentFormSelector);
 
     const steps = ['Billing Address', 'Payment Method', 'Finish'];
 
@@ -41,6 +44,10 @@ const Checkout: React.FC = () => {
             router.push(landingPage());
         }
     });
+
+    useEffect(() => {
+        console.log('isValidCardPaymentStep: ', isValidCardPaymentStep);
+    }, [isValidCardPaymentStep]);
 
     const handleStep = (step: number) => {
         setActiveStep(step);
@@ -52,6 +59,19 @@ const Checkout: React.FC = () => {
 
     const handleBackStep = () => {
         setActiveStep(prevActiveStep => prevActiveStep - 1);
+    };
+
+    const isNextStepBtnDisabled = (step: number) => {
+        switch (step) {
+            case personalInfoStep:
+                return false;
+            case paymentMethodStep:
+                return !isValidCardPaymentStep;
+            case finishStep:
+                return false;
+            default:
+                true;
+        }
     };
 
     // StepContent should only be used for vertical steppers
@@ -89,6 +109,7 @@ const Checkout: React.FC = () => {
                                     style={{
                                         backgroundColor: '#FFA41C',
                                     }}
+                                    disabled={isNextStepBtnDisabled(activeStep)}
                                 >
                                     {activeStep === steps.length - 1
                                         ? 'Finish'

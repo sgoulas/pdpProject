@@ -24,22 +24,6 @@ import {
 
 import useStyles from './CardPaymentForm.styles';
 
-// export const isValidCardNumber: (cardNumber: string) => boolean =
-//     cardNumber => {
-//         if (cardNumber === '') {
-//             return true;
-//         }
-//         const containsOnlyNumbers = Array.from(cardNumber).every(number =>
-//             number.match(/[0-9]/)
-//         );
-
-//         const expectedLength = 16;
-//         const hasCorrectLength =
-//             Array.from(cardNumber).length === expectedLength;
-
-//         return containsOnlyNumbers && hasCorrectLength;
-//     };
-
 const CardPaymentForm: React.FC = () => {
     const classes = useStyles();
     const dispatch = useAppDispatch();
@@ -106,26 +90,30 @@ const CardPaymentForm: React.FC = () => {
             label: 'card number',
             onChange: handleNumberChange,
             value: cardInfo.number,
-            //error: isValidCardNumberSelector
+            error: false,
+            // error: !isValidCardNumber(cardInfo.number),
+            // helperText: !isValidCardNumber(cardInfo.number)
+            //     ? 'field should contain 16 numbers'
+            //     : '',
         },
         {
             label: 'card name',
             onChange: handleNameChange,
-            error: false,
             value: cardInfo.name,
+            error: false,
         },
         {
             label: 'expiry',
             onChange: handleExpiryChange,
-            error: false,
             value: cardInfo.expiry,
+            error: false,
         },
         {
             label: 'cvc',
             onChange: handleCvcChange,
-            error: false,
             value: cardInfo.cvc,
             type: 'password',
+            error: false,
         },
     ];
 
