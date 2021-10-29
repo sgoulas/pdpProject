@@ -175,6 +175,7 @@ const CardPaymentForm: React.FC = () => {
                                 onChange={onChange}
                                 inputProps={{
                                     'aria-label': label,
+                                    'data-testid': label,
                                 }}
                                 value={value}
                                 {...rest}

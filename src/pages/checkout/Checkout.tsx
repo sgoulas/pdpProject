@@ -57,10 +57,6 @@ const Checkout: React.FC = () => {
         }
     });
 
-    useEffect(() => {
-        console.log('isValidCardPaymentStep: ', isValidCardPaymentStep);
-    }, [isValidCardPaymentStep]);
-
     const handleStep = (step: number) => {
         setActiveStep(step);
     };
