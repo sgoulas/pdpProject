@@ -556,3 +556,16 @@ In the end I did not have much time but I connected the credit card info to redu
 ## 29 October 2021
 
 I added multiple selectors for the card payment form fields in order to determine if the next step button should be enabled or disabled and added a clean up function so that when a user closes the tab their payment info are deleted. Under normal circumstances this clean up behaviour should exist in the `_app.page.tsx` but I liked the idea of leaving that component as simple as it is right now and in any case, the checkout page is supposed to be tightly tied to a back end, so a pure front end implementation is bound to cut some corners.
+
+I also had to stub the css file that `CardPaymentForm` loads by adding a relevant entry in the `moduleNameMapper` property of `jest.config.ts`:
+
+```json
+{
+    "moduleNameMapper": {
+        // ...
+        "\\.(css|less)$": "identity-obj-proxy"
+    }
+}
+```
+
+I remember reading about this back when I started with the project. Thought I had already added it. Maybe I did so in another project and got confused?
