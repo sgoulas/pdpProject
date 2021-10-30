@@ -2,6 +2,7 @@
 
 exports[`CardPaymentForm renders correctly 1`] = `
 <div
+  data-testid="payment-info-form"
   id="payment-info-form"
 >
   <div

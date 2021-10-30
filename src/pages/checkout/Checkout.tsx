@@ -29,7 +29,7 @@ const getStepContent: (step: number) => React.ReactNode = step => {
         case paymentMethodStep:
             return <CardPaymentForm />;
         case finishStep:
-            return 'finish';
+            return 'complete order';
         default:
             'unexpected state';
     }
@@ -97,7 +97,6 @@ const Checkout: React.FC = () => {
 
     return (
         <Box>
-            <Box my={4}>card items here</Box>
             <Stepper
                 activeStep={activeStep}
                 orientation="vertical"
@@ -116,12 +115,14 @@ const Checkout: React.FC = () => {
                             <Box mt={2}>
                                 <Button
                                     disabled={activeStep === 0}
+                                    aria-label="previous-step"
                                     onClick={handleBackStep}
                                 >
                                     Back
                                 </Button>
                                 <Button
                                     variant="text"
+                                    aria-label="next-step"
                                     onClick={handleNextStep}
                                     style={{
                                         backgroundColor: '#FFA41C',

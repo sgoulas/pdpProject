@@ -597,3 +597,13 @@ describe('NavBar', () => {
     });
 });
 ```
+
+In the end the following lines:
+
+```tsx
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const useRouter = jest.spyOn(require('next/router'), 'useRouter');
+useRouter.mockImplementation(() => ({ pathname: 'some-page' }));
+```
+
+had to be copied in many test files. I could always mock `next/router` as a module in a separate `__mocks__` folder as `jest` suggests (https://jestjs.io/docs/manual-mocks) but I like the idea of each test mocking what it needs and nothing more, so mocking anything centrally is something I would like to avoid unless left with no other option.
