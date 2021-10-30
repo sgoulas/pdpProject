@@ -12,7 +12,10 @@ import { CardPaymentForm, BillingInformationForm } from './components';
 import { useCart, useAppSelector as useSelect, useAppDispatch } from '@hooks';
 import { landingPage } from '@core';
 
-import { isValidCardPaymentFormSelector } from './store/selectors';
+import {
+    isValidBillingInfoForm,
+    isValidCardPaymentFormSelector,
+} from './store/selectors';
 import { clearCheckoutInfoAction } from './store/actions';
 
 const billingInfoStep = 0;
@@ -37,6 +40,7 @@ const Checkout: React.FC = () => {
     const dispatch = useAppDispatch();
     const { products: items } = useCart();
     const [activeStep, setActiveStep] = useState(0);
+    const isValidBillingInfoStep = useSelect(isValidBillingInfoForm);
     const isValidCardPaymentStep = useSelect(isValidCardPaymentFormSelector);
 
     const steps = ['Billing Address', 'Payment Method', 'Finish'];
@@ -81,7 +85,7 @@ const Checkout: React.FC = () => {
     const isNextStepBtnDisabled = (step: number) => {
         switch (step) {
             case billingInfoStep:
-                return false;
+                return !isValidBillingInfoStep;
             case paymentMethodStep:
                 return !isValidCardPaymentStep;
             case finishStep:
@@ -90,10 +94,6 @@ const Checkout: React.FC = () => {
                 true;
         }
     };
-
-    // StepContent should only be used for vertical steppers
-    // https://v4.mui.com/components/steppers/
-    // https://codesandbox.io/s/b1fp9?file=/demo.js:819-850
 
     return (
         <Box>

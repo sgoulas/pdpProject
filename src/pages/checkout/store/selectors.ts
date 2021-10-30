@@ -98,7 +98,7 @@ export const billingFullNameSelector: (state: RootState) => string = state =>
 export const billingAddressSelector: (state: RootState) => string = state =>
     state.checkout.billingInfo.address;
 
-export const isValidBillingFullName: (state: RootState) => boolean =
+export const isValidBillingFullNameSelector: (state: RootState) => boolean =
     createSelector(billingFullNameSelector, name => {
         const containsValidChars = Array.from(name).every(char =>
             char.match(/[a-z A-Z]/)
@@ -109,7 +109,7 @@ export const isValidBillingFullName: (state: RootState) => boolean =
         return containsValidChars && hasCorrectLength;
     });
 
-export const isValidBillingAddress: (state: RootState) => boolean =
+export const isValidBillingAddressSelector: (state: RootState) => boolean =
     createSelector(billingAddressSelector, address => {
         const maxLength = 30;
 
@@ -121,8 +121,8 @@ export const isValidBillingAddress: (state: RootState) => boolean =
 
 export const isValidBillingInfoForm: (state: RootState) => boolean =
     createSelector(
-        isValidBillingFullName,
-        isValidBillingAddress,
+        isValidBillingFullNameSelector,
+        isValidBillingAddressSelector,
         (isValidBillingFullName, isValidBillingAddress) =>
             isValidBillingFullName && isValidBillingAddress
     );

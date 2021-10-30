@@ -29,6 +29,7 @@ import {
 import useStyles from './CardPaymentForm.styles';
 
 const CardPaymentForm: React.FC = () => {
+    const inputDebounce = 250;
     const classes = useStyles();
     const dispatch = useAppDispatch();
 
@@ -55,8 +56,6 @@ const CardPaymentForm: React.FC = () => {
         expiry: cardExpiry,
         cvc: cardCvc,
     });
-
-    const inputDebounce = 250;
 
     const debouncedCardNumber = useDebounce(cardInfo.number, inputDebounce);
     const debouncedCardName = useDebounce(cardInfo.name, inputDebounce);

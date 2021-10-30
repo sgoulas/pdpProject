@@ -2,7 +2,7 @@
 
 exports[`CardPaymentForm renders correctly 1`] = `
 <div
-  id="PaymentForm"
+  id="payment-info-form"
 >
   <div
     class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-direction-xs-column MuiGrid-align-items-xs-center MuiGrid-justify-content-xs-center"

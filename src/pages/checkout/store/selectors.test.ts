@@ -15,8 +15,8 @@ import {
     isValidCardPaymentFormSelector,
     billingFullNameSelector,
     billingAddressSelector,
-    isValidBillingFullName,
-    isValidBillingAddress,
+    isValidBillingFullNameSelector,
+    isValidBillingAddressSelector,
     isValidBillingInfoForm,
 } from './selectors';
 
@@ -301,12 +301,12 @@ describe('Checkout selectors', () => {
 
         describe('isValidBillingFullName', () => {
             it('returns true for valid name', () => {
-                expect(isValidBillingFullName(state)).toBe(true);
+                expect(isValidBillingFullNameSelector(state)).toBe(true);
             });
 
             it('returns false for empty name', () => {
                 expect(
-                    isValidBillingFullName({
+                    isValidBillingFullNameSelector({
                         ...state,
                         checkout: {
                             ...mockState.checkout,
@@ -321,7 +321,7 @@ describe('Checkout selectors', () => {
 
             it('returns false for invalid name', () => {
                 expect(
-                    isValidBillingFullName({
+                    isValidBillingFullNameSelector({
                         ...state,
                         checkout: {
                             ...mockState.checkout,
@@ -337,12 +337,12 @@ describe('Checkout selectors', () => {
 
         describe('isValidBillingAddress', () => {
             it('return true for valid address', () => {
-                expect(isValidBillingAddress(state)).toBe(true);
+                expect(isValidBillingAddressSelector(state)).toBe(true);
             });
 
             it('return false for empty address', () => {
                 expect(
-                    isValidBillingAddress({
+                    isValidBillingAddressSelector({
                         ...state,
                         checkout: {
                             ...mockState.checkout,
@@ -357,7 +357,7 @@ describe('Checkout selectors', () => {
 
             it('returns false for invalid address length', () => {
                 expect(
-                    isValidBillingAddress({
+                    isValidBillingAddressSelector({
                         ...state,
                         checkout: {
                             ...mockState.checkout,
