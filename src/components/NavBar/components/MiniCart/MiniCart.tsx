@@ -23,6 +23,7 @@ const MiniCart: React.FC = () => {
 
     const priceDecimals = 2;
     const hasItemsInCart = items.length > 0;
+    const isCheckoutPage = router.pathname === checkoutPage();
 
     const openCart = () => setIsOpen(true);
     const closeCart = () => setIsOpen(false);
@@ -80,7 +81,7 @@ const MiniCart: React.FC = () => {
                         </Grid>
                     </Grid>
                 )}
-                {hasItemsInCart && (
+                {hasItemsInCart && !isCheckoutPage && (
                     <Box textAlign="center" mt={8} mr="auto" ml="auto">
                         <Button
                             data-testid="checkout-button"
