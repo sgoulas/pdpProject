@@ -571,3 +571,7 @@ I also had to stub the css file that `CardPaymentForm` loads by adding a relevan
 I remember reading about this back when I started with the project. Thought I had already added it. Maybe I did so in another project and got confused?
 
 I also added an extention for inspecting the various testing library selectors I can use to get an element in my test suites (https://chrome.google.com/webstore/detail/testing-playground/hejbmebodbijjdhflfknehhcgaklhano). Learned it from a colleague at work, quite useful.
+
+I added the billing info component (super simple, just two fields). I think there is definitely a cleaner way to handle local state immediate updates and redux state value storing than the one I implemented. What I currently do is use local state for displaying user input and debouncing it to redux store for future uses (mainly for handling the call to the back end), but I dislike the amount of code this needs (selectors, local state, debounced local state and useEffects to dispatch updates store actions). I should re-evaluate my approach in the future after some time has passed.
+
+What's left is to hide the checkout button from the mini cart if I'm already in the checkout page, add tests for the checkout page, add the back end call for finishing the order and add a small FAQ page since I have a link for that in my footer. And then the project will be finished. We are getting there.
