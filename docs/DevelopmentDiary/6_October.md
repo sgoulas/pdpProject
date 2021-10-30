@@ -575,3 +575,25 @@ I also added an extention for inspecting the various testing library selectors I
 I added the billing info component (super simple, just two fields). I think there is definitely a cleaner way to handle local state immediate updates and redux state value storing than the one I implemented. What I currently do is use local state for displaying user input and debouncing it to redux store for future uses (mainly for handling the call to the back end), but I dislike the amount of code this needs (selectors, local state, debounced local state and useEffects to dispatch updates store actions). I should re-evaluate my approach in the future after some time has passed.
 
 What's left is to hide the checkout button from the mini cart if I'm already in the checkout page, add tests for the checkout page, add the back end call for finishing the order and add a small FAQ page since I have a link for that in my footer. And then the project will be finished. We are getting there.
+
+## 30 October 2021
+
+I hid the checkout button from the mini cart slider when the user is already in the checkout page. It turns out that accessing a property of the router object does not play that well with `jest` so I had to mock the `userRouter` hook:
+
+```tsx
+describe('NavBar', () => {
+    afterAll(() => {
+        jest.restoreAllMocks();
+    });
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const useRouter = jest.spyOn(require('next/router'), 'useRouter');
+    useRouter.mockImplementation(() => ({ pathname: 'some-page' }));
+    it('renders correctly', () => {
+        const {
+            container: { firstChild },
+        } = renderWithProviders(<NavBar />);
+
+        expect(firstChild).toMatchSnapshot();
+    });
+});
+```

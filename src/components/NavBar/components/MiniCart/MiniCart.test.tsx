@@ -2,14 +2,18 @@ import React from 'react';
 
 import { mockState, renderWithProviders, waitFor } from '@testUtils';
 import { RootState } from '@store/store';
+import { checkoutPage } from '@core';
 
 import MiniCart from './MiniCart';
-import { checkoutPage } from '@core';
 
 describe('MiniCart', () => {
     afterAll(() => {
         jest.restoreAllMocks();
     });
+
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const useRouter = jest.spyOn(require('next/router'), 'useRouter');
+    useRouter.mockImplementation(() => ({ pathname: 'some-page' }));
     it('renders correctly for empty cart', () => {
         const {
             container: { firstChild },
@@ -49,7 +53,25 @@ describe('MiniCart', () => {
         await waitFor(() => expect(queryByText('checkout')).toBe(null));
     });
 
-    it('shows the checkout button if there are product(s) in the cart', async () => {
+    it('does not show the checkout button if there are no product in the cart', async () => {
+        const initialState: RootState = {
+            ...mockState,
+            cart: { products: [] },
+        };
+
+        const { getByTestId, queryByText } = renderWithProviders(<MiniCart />, {
+            initialState,
+        });
+
+        const miniCartIcon = getByTestId('mini-cart-icon');
+
+        miniCartIcon.click();
+
+        await waitFor(() => expect(queryByText('checkout')).toBe(null));
+    });
+
+    it('does not show the checkout button if current page is checkout page', async () => {
+        useRouter.mockImplementation(() => ({ pathname: checkoutPage() }));
         const initialState: RootState = {
             ...mockState,
         };
@@ -62,9 +84,9 @@ describe('MiniCart', () => {
 
         miniCartIcon.click();
 
-        await waitFor(() =>
-            expect(queryByText('checkout')).toBeInTheDocument()
-        );
+        await waitFor(() => expect(queryByText('checkout')).toBe(null));
+
+        useRouter.mockImplementation(() => ({ pathname: 'some-page' }));
     });
 
     it('navigates to checkout page if the checkout button is clicked', async () => {
