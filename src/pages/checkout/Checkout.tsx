@@ -6,11 +6,17 @@ import Step from '@material-ui/core/Step';
 import StepContent from '@material-ui/core/StepContent';
 import StepButton from '@material-ui/core/StepButton';
 import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import { CardPaymentForm, BillingInformationForm } from './components';
 
-import { useCart, useAppSelector as useSelect, useAppDispatch } from '@hooks';
-import { landingPage } from '@core';
+import {
+    useCart,
+    useAppSelector as useSelect,
+    useAppDispatch,
+    emptyCartAction,
+} from '@hooks';
+import { CartProduct, landingPage } from '@core';
 
 import {
     isValidBillingInfoForm,
@@ -22,14 +28,34 @@ const billingInfoStep = 0;
 const paymentMethodStep = 1;
 const finishStep = 2;
 
-const getStepContent: (step: number) => React.ReactNode = step => {
+const timeout = 3000;
+
+export const handleCheckout: (items: CartProduct[]) => Promise<string> = () =>
+    new Promise(resolve => {
+        setTimeout(() => {
+            resolve('order completed');
+        }, timeout);
+    });
+
+const getStepContent: (
+    step: number,
+    isPendingCheckout: boolean
+) => React.ReactNode = (step, isPendingCheckout) => {
     switch (step) {
         case billingInfoStep:
             return <BillingInformationForm />;
         case paymentMethodStep:
             return <CardPaymentForm />;
         case finishStep:
-            return 'complete order';
+            return (
+                <div>
+                    {isPendingCheckout ? (
+                        <CircularProgress />
+                    ) : (
+                        'complere order'
+                    )}
+                </div>
+            );
         default:
             'unexpected state';
     }
@@ -42,17 +68,34 @@ const Checkout: React.FC = () => {
     const [activeStep, setActiveStep] = useState(0);
     const isValidBillingInfoStep = useSelect(isValidBillingInfoForm);
     const isValidCardPaymentStep = useSelect(isValidCardPaymentFormSelector);
+    const [isPendingCheckout, setIsPendingCheckout] = useState(false);
+
+    const cleanUpCheckoutInformation = () =>
+        dispatch(clearCheckoutInfoAction());
+
+    const cleanUpCart = () => dispatch(emptyCartAction());
+
+    const completeOrder = async () => {
+        const result = await handleCheckout(items);
+        console.log(result);
+        setIsPendingCheckout(false);
+        cleanUpCheckoutInformation();
+        cleanUpCart();
+
+        router.push(landingPage());
+    };
 
     const steps = ['Billing Address', 'Payment Method', 'Finish'];
 
     useEffect(() => {
-        const cleanUp = () => dispatch(clearCheckoutInfoAction());
-
-        window.addEventListener('beforeunload', cleanUp);
+        window.addEventListener('beforeunload', cleanUpCheckoutInformation);
 
         return () => {
-            cleanUp();
-            window.removeEventListener('beforeunload', cleanUp);
+            cleanUpCheckoutInformation();
+            window.removeEventListener(
+                'beforeunload',
+                cleanUpCheckoutInformation
+            );
         };
     }, []);
 
@@ -68,11 +111,8 @@ const Checkout: React.FC = () => {
 
     const handleNextStep = () => {
         if (activeStep === finishStep) {
-            console.log('finish');
-            //todo perform checkout call
-            //clear checkout state
-            //clear cart state
-            //redirect to main page
+            setIsPendingCheckout(true);
+            completeOrder();
         } else {
             setActiveStep(prevActiveStep => prevActiveStep + 1);
         }
@@ -109,7 +149,7 @@ const Checkout: React.FC = () => {
                         </StepButton>
                         <StepContent>
                             <Box minHeight={0}>
-                                {getStepContent(activeStep)}
+                                {getStepContent(activeStep, isPendingCheckout)}
                             </Box>
 
                             <Box mt={2}>
