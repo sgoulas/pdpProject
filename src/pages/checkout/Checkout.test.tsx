@@ -1,7 +1,6 @@
 import React from 'react';
-import faker from 'faker';
 
-import { mockState, renderWithProviders, fireEvent } from '@testUtils';
+import { mockState, renderWithProviders, act } from '@testUtils';
 import { RootState } from '@store/store';
 import { checkoutPage, landingPage } from '@core';
 
@@ -97,6 +96,35 @@ describe('Checkout page', () => {
                     name: /full name/i,
                 }).length
             ).toBeGreaterThan(0);
+        });
+
+        it('shows spinner while processing order', () => {
+            jest.useFakeTimers();
+
+            const { getByLabelText, getAllByTestId } = renderWithProviders(
+                <Checkout />,
+                { initialState }
+            );
+
+            const nextBtn = getByLabelText('next-step');
+
+            act(() => {
+                nextBtn.click(); // proceed to payment info
+            });
+            act(() => {
+                nextBtn.click(); // proceed to last step
+            });
+            act(() => {
+                nextBtn.click(); // finish order
+            });
+
+            act(() => {
+                jest.runAllTimers();
+            });
+
+            expect(getAllByTestId('loading-spinner').length).toBeGreaterThan(0);
+
+            jest.useRealTimers();
         });
     });
 });

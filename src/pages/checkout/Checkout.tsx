@@ -50,9 +50,9 @@ const getStepContent: (
             return (
                 <div>
                     {isPendingCheckout ? (
-                        <CircularProgress />
+                        <CircularProgress data-testid="loading-spinner" />
                     ) : (
-                        'complere order'
+                        'complete order'
                     )}
                 </div>
             );
@@ -78,7 +78,6 @@ const Checkout: React.FC = () => {
     const completeOrder = async () => {
         const result = await handleCheckout(items);
         console.log(result);
-        setIsPendingCheckout(false);
         cleanUpCheckoutInformation();
         cleanUpCart();
 
