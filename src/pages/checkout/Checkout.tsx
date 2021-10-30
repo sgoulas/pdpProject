@@ -7,7 +7,7 @@ import StepContent from '@material-ui/core/StepContent';
 import StepButton from '@material-ui/core/StepButton';
 import Button from '@material-ui/core/Button';
 
-import { CardPaymentForm } from './components';
+import { CardPaymentForm, BillingInformationForm } from './components';
 
 import { useCart, useAppSelector as useSelect, useAppDispatch } from '@hooks';
 import { landingPage } from '@core';
@@ -15,14 +15,14 @@ import { landingPage } from '@core';
 import { isValidCardPaymentFormSelector } from './store/selectors';
 import { clearCheckoutInfoAction } from './store/actions';
 
-const personalInfoStep = 0;
+const billingInfoStep = 0;
 const paymentMethodStep = 1;
 const finishStep = 2;
 
 const getStepContent: (step: number) => React.ReactNode = step => {
     switch (step) {
-        case personalInfoStep:
-            return 'step 0';
+        case billingInfoStep:
+            return <BillingInformationForm />;
         case paymentMethodStep:
             return <CardPaymentForm />;
         case finishStep:
@@ -80,7 +80,7 @@ const Checkout: React.FC = () => {
 
     const isNextStepBtnDisabled = (step: number) => {
         switch (step) {
-            case personalInfoStep:
+            case billingInfoStep:
                 return false;
             case paymentMethodStep:
                 return !isValidCardPaymentStep;

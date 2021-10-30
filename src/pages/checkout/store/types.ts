@@ -1,3 +1,11 @@
+export interface UpdateBillingFullNameActionPayload {
+    fullName: string;
+}
+
+export interface UpdateBillingAddressActionPayload {
+    address: string;
+}
+
 export interface UpdateCardNumberActionPayload {
     number: string;
 }

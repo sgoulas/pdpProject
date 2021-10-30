@@ -3,6 +3,8 @@ import { createAction } from '@reduxjs/toolkit';
 import { withPrefix } from '@utils';
 
 import {
+    UpdateBillingFullNameActionPayload,
+    UpdateBillingAddressActionPayload,
     UpdateCardNumberActionPayload,
     UpdateCardNameActionPayload,
     UpdateCardExpiryActionPayload,
@@ -12,9 +14,19 @@ import {
 const nameSpace = 'CHECKOUT';
 const withNameSpacePrefix = withPrefix(nameSpace);
 
+export const updateBillingFullNameAction =
+    createAction<UpdateBillingFullNameActionPayload>(
+        withNameSpacePrefix('update_billing_name')
+    );
+
+export const updateBillingAddressAction =
+    createAction<UpdateBillingAddressActionPayload>(
+        withNameSpacePrefix('update_billing_address')
+    );
+
 export const updateCardNumberAction =
     createAction<UpdateCardNumberActionPayload>(
-        withNameSpacePrefix('update_cart_number')
+        withNameSpacePrefix('update_card_number')
     );
 
 export const updateCardNameAction = createAction<UpdateCardNameActionPayload>(

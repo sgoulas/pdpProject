@@ -4,6 +4,8 @@ import { mockState } from '@testUtils';
 
 import reducer, { CheckoutState, initialState } from './reducer';
 import {
+    updateBillingFullNameAction,
+    updateBillingAddressAction,
     updateCardNumberAction,
     updateCardNameAction,
     updateCardExpiryAction,
@@ -11,6 +13,8 @@ import {
     clearCheckoutInfoAction,
 } from './actions';
 import {
+    UpdateBillingFullNameActionPayload,
+    UpdateBillingAddressActionPayload,
     UpdateCardNumberActionPayload,
     UpdateCardNameActionPayload,
     UpdateCardExpiryActionPayload,
@@ -18,6 +22,53 @@ import {
 } from './types';
 
 describe('Checkout reducer', () => {
+    describe('billing info', () => {
+        it('updates billing full name', () => {
+            const previousState: CheckoutState = initialState;
+            const rndFullName = `${faker.name.firstName()} ${faker.name.lastName()}`;
+            const actionPayload: UpdateBillingFullNameActionPayload = {
+                fullName: rndFullName,
+            };
+
+            const expectedState: CheckoutState = {
+                ...initialState,
+                billingInfo: {
+                    ...previousState.billingInfo,
+                    fullName: rndFullName,
+                },
+            };
+
+            expect(
+                reducer(
+                    previousState,
+                    updateBillingFullNameAction(actionPayload)
+                )
+            ).toEqual(expectedState);
+        });
+
+        it('updates billing address', () => {
+            const previousState: CheckoutState = initialState;
+            const rndAddress = faker.address.streetName();
+            const actionPayload: UpdateBillingAddressActionPayload = {
+                address: rndAddress,
+            };
+
+            const expectedState: CheckoutState = {
+                ...initialState,
+                billingInfo: {
+                    ...previousState.billingInfo,
+                    address: rndAddress,
+                },
+            };
+
+            expect(
+                reducer(
+                    previousState,
+                    updateBillingAddressAction(actionPayload)
+                )
+            ).toEqual(expectedState);
+        });
+    });
     describe('payment method', () => {
         it('updates card number', () => {
             const previousState: CheckoutState = initialState;

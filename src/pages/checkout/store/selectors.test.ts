@@ -13,6 +13,11 @@ import {
     isValidCardExpirySelector,
     isValidCardCvcSelector,
     isValidCardPaymentFormSelector,
+    billingFullNameSelector,
+    billingAddressSelector,
+    isValidBillingFullName,
+    isValidBillingAddress,
+    isValidBillingInfoForm,
 } from './selectors';
 
 describe('Checkout selectors', () => {
@@ -20,6 +25,7 @@ describe('Checkout selectors', () => {
         ...mockState,
     };
     const maxNameLength = 60;
+    const maxAddressLength = 30;
     it('cardNumberSelector', () => {
         expect(cardNumberSelector(state)).toBe(
             state.checkout.paymentInfo.card.number
@@ -50,6 +56,7 @@ describe('Checkout selectors', () => {
                 isValidCardNumberSelector({
                     ...mockState,
                     checkout: {
+                        ...mockState.checkout,
                         paymentInfo: {
                             card: {
                                 ...mockState.checkout.paymentInfo.card,
@@ -65,6 +72,7 @@ describe('Checkout selectors', () => {
                 isValidCardNumberSelector({
                     ...mockState,
                     checkout: {
+                        ...mockState.checkout,
                         paymentInfo: {
                             card: {
                                 ...mockState.checkout.paymentInfo.card,
@@ -86,6 +94,7 @@ describe('Checkout selectors', () => {
                 isValidCardNameSelector({
                     ...mockState,
                     checkout: {
+                        ...mockState.checkout,
                         paymentInfo: {
                             card: {
                                 ...mockState.checkout.paymentInfo.card,
@@ -99,6 +108,7 @@ describe('Checkout selectors', () => {
                 isValidCardNameSelector({
                     ...mockState,
                     checkout: {
+                        ...mockState.checkout,
                         paymentInfo: {
                             card: {
                                 ...mockState.checkout.paymentInfo.card,
@@ -114,6 +124,7 @@ describe('Checkout selectors', () => {
                 isValidCardNameSelector({
                     ...mockState,
                     checkout: {
+                        ...mockState.checkout,
                         paymentInfo: {
                             card: {
                                 ...mockState.checkout.paymentInfo.card,
@@ -134,6 +145,7 @@ describe('Checkout selectors', () => {
                 isValidCardExpirySelector({
                     ...mockState,
                     checkout: {
+                        ...mockState.checkout,
                         paymentInfo: {
                             card: {
                                 ...mockState.checkout.paymentInfo.card,
@@ -149,6 +161,7 @@ describe('Checkout selectors', () => {
                 isValidCardExpirySelector({
                     ...mockState,
                     checkout: {
+                        ...mockState.checkout,
                         paymentInfo: {
                             card: {
                                 ...mockState.checkout.paymentInfo.card,
@@ -169,6 +182,7 @@ describe('Checkout selectors', () => {
                 isValidCardCvcSelector({
                     ...mockState,
                     checkout: {
+                        ...mockState.checkout,
                         paymentInfo: {
                             card: {
                                 ...mockState.checkout.paymentInfo.card,
@@ -184,6 +198,7 @@ describe('Checkout selectors', () => {
                 isValidCardCvcSelector({
                     ...mockState,
                     checkout: {
+                        ...mockState.checkout,
                         paymentInfo: {
                             card: {
                                 ...mockState.checkout.paymentInfo.card,
@@ -204,6 +219,7 @@ describe('Checkout selectors', () => {
                 isValidCardPaymentFormSelector({
                     ...mockState,
                     checkout: {
+                        ...mockState.checkout,
                         paymentInfo: {
                             card: {
                                 ...mockState.checkout.paymentInfo.card,
@@ -219,6 +235,7 @@ describe('Checkout selectors', () => {
                 isValidCardPaymentFormSelector({
                     ...mockState,
                     checkout: {
+                        ...mockState.checkout,
                         paymentInfo: {
                             card: {
                                 ...mockState.checkout.paymentInfo.card,
@@ -234,6 +251,7 @@ describe('Checkout selectors', () => {
                 isValidCardPaymentFormSelector({
                     ...mockState,
                     checkout: {
+                        ...mockState.checkout,
                         paymentInfo: {
                             card: {
                                 ...mockState.checkout.paymentInfo.card,
@@ -249,6 +267,7 @@ describe('Checkout selectors', () => {
                 isValidCardPaymentFormSelector({
                     ...mockState,
                     checkout: {
+                        ...mockState.checkout,
                         paymentInfo: {
                             card: {
                                 ...mockState.checkout.paymentInfo.card,
@@ -258,6 +277,134 @@ describe('Checkout selectors', () => {
                     },
                 })
             ).toBe(false);
+        });
+    });
+
+    describe('billingInfo', () => {
+        it('billingFullNameSelector', () => {
+            expect(billingFullNameSelector(state)).toBe(
+                state.checkout.billingInfo.fullName
+            );
+        });
+
+        it('billingAddressSelector', () => {
+            expect(billingAddressSelector(state)).toBe(
+                state.checkout.billingInfo.address
+            );
+        });
+
+        it('billingAddressSelector', () => {
+            expect(billingAddressSelector(state)).toBe(
+                state.checkout.billingInfo.address
+            );
+        });
+
+        describe('isValidBillingFullName', () => {
+            it('returns true for valid name', () => {
+                expect(isValidBillingFullName(state)).toBe(true);
+            });
+
+            it('returns false for empty name', () => {
+                expect(
+                    isValidBillingFullName({
+                        ...state,
+                        checkout: {
+                            ...mockState.checkout,
+                            billingInfo: {
+                                ...mockState.checkout.billingInfo,
+                                fullName: '',
+                            },
+                        },
+                    })
+                ).toBe(false);
+            });
+
+            it('returns false for invalid name', () => {
+                expect(
+                    isValidBillingFullName({
+                        ...state,
+                        checkout: {
+                            ...mockState.checkout,
+                            billingInfo: {
+                                ...mockState.checkout.billingInfo,
+                                fullName: '12324',
+                            },
+                        },
+                    })
+                ).toBe(false);
+            });
+        });
+
+        describe('isValidBillingAddress', () => {
+            it('return true for valid address', () => {
+                expect(isValidBillingAddress(state)).toBe(true);
+            });
+
+            it('return false for empty address', () => {
+                expect(
+                    isValidBillingAddress({
+                        ...state,
+                        checkout: {
+                            ...mockState.checkout,
+                            billingInfo: {
+                                ...mockState.checkout.billingInfo,
+                                address: '',
+                            },
+                        },
+                    })
+                ).toBe(false);
+            });
+
+            it('returns false for invalid address length', () => {
+                expect(
+                    isValidBillingAddress({
+                        ...state,
+                        checkout: {
+                            ...mockState.checkout,
+                            billingInfo: {
+                                ...mockState.checkout.billingInfo,
+                                address: faker.datatype.string(
+                                    maxAddressLength + 1
+                                ),
+                            },
+                        },
+                    })
+                ).toBe(false);
+            });
+        });
+
+        describe('isValidBillingInfoForm', () => {
+            it('returns true for valid inputs', () => {
+                expect(isValidBillingInfoForm(state)).toBe(true);
+            });
+            it('returns false for invalid name', () => {
+                expect(
+                    isValidBillingInfoForm({
+                        ...state,
+                        checkout: {
+                            ...mockState.checkout,
+                            billingInfo: {
+                                ...mockState.checkout.billingInfo,
+                                fullName: '12324',
+                            },
+                        },
+                    })
+                ).toBe(false);
+            });
+            it('returns false for invalid address', () => {
+                expect(
+                    isValidBillingInfoForm({
+                        ...state,
+                        checkout: {
+                            ...mockState.checkout,
+                            billingInfo: {
+                                ...mockState.checkout.billingInfo,
+                                address: '',
+                            },
+                        },
+                    })
+                ).toBe(false);
+            });
         });
     });
 });

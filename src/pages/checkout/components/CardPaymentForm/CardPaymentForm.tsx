@@ -146,7 +146,7 @@ const CardPaymentForm: React.FC = () => {
     ];
 
     return (
-        <div id="PaymentForm">
+        <div id="payment-info-form">
             <Grid
                 container
                 direction="column"

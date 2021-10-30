@@ -3,6 +3,8 @@ import { createReducer } from '@reduxjs/toolkit';
 import type { ActionHandler } from '@core';
 
 import {
+    updateBillingFullNameAction,
+    updateBillingAddressAction,
     updateCardNumberAction,
     updateCardNameAction,
     updateCardExpiryAction,
@@ -10,6 +12,8 @@ import {
     clearCheckoutInfoAction,
 } from './actions';
 import {
+    UpdateBillingFullNameActionPayload,
+    UpdateBillingAddressActionPayload,
     UpdateCardNumberActionPayload,
     UpdateCardNameActionPayload,
     UpdateCardExpiryActionPayload,
@@ -17,6 +21,10 @@ import {
 } from './types';
 
 export interface CheckoutState {
+    billingInfo: {
+        fullName: string;
+        address: string;
+    };
     paymentInfo: {
         /**
          * the card property could be ommited for our project since it is the only
@@ -33,6 +41,10 @@ export interface CheckoutState {
 }
 
 export const initialState: CheckoutState = {
+    billingInfo: {
+        fullName: '',
+        address: '',
+    },
     paymentInfo: {
         card: {
             number: '',
@@ -41,6 +53,20 @@ export const initialState: CheckoutState = {
             cvc: '',
         },
     },
+};
+
+const handleUpdateBillingFullName: ActionHandler<
+    CheckoutState,
+    UpdateBillingFullNameActionPayload
+> = (state, { payload: { fullName } }) => {
+    state.billingInfo.fullName = fullName;
+};
+
+const handleUpdateBillingAddress: ActionHandler<
+    CheckoutState,
+    UpdateBillingAddressActionPayload
+> = (state, { payload: { address } }) => {
+    state.billingInfo.address = address;
 };
 
 const handleUpdateCardNumber: ActionHandler<
@@ -72,6 +98,8 @@ const handleUpdateCardCvcName: ActionHandler<
 };
 
 const checkoutReducer = createReducer(initialState, {
+    [updateBillingFullNameAction.type]: handleUpdateBillingFullName,
+    [updateBillingAddressAction.type]: handleUpdateBillingAddress,
     [updateCardNumberAction.type]: handleUpdateCardNumber,
     [updateCardNameAction.type]: handleUpdateCardName,
     [updateCardExpiryAction.type]: handleUpdateCardExpiryName,

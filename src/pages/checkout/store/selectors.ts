@@ -27,7 +27,7 @@ export const isValidCardNumberSelector: (state: RootState) => boolean =
 
 export const isValidCardNameSelector: (state: RootState) => boolean =
     createSelector(cardNameSelector, cardName => {
-        const containsOnlyLetters = Array.from(cardName).every(letter =>
+        const containsValidChars = Array.from(cardName).every(letter =>
             letter.match(/[a-z A-Z]/)
         );
 
@@ -35,7 +35,7 @@ export const isValidCardNameSelector: (state: RootState) => boolean =
         const isLessThanMaxLength =
             cardName.length > 0 && cardName.length <= maxLength;
 
-        return containsOnlyLetters && isLessThanMaxLength;
+        return containsValidChars && isLessThanMaxLength;
     });
 
 export const isValidCardExpirySelector: (state: RootState) => boolean =
@@ -90,4 +90,39 @@ export const isValidCardPaymentFormSelector: (state: RootState) => boolean =
         isValidCardCvcSelector,
         (isValidCardNumber, isValidCardName, isValidExpiry, isValidCvc) =>
             isValidCardNumber && isValidCardName && isValidExpiry && isValidCvc
+    );
+
+export const billingFullNameSelector: (state: RootState) => string = state =>
+    state.checkout.billingInfo.fullName;
+
+export const billingAddressSelector: (state: RootState) => string = state =>
+    state.checkout.billingInfo.address;
+
+export const isValidBillingFullName: (state: RootState) => boolean =
+    createSelector(billingFullNameSelector, name => {
+        const containsValidChars = Array.from(name).every(char =>
+            char.match(/[a-z A-Z]/)
+        );
+        const maxLength = 60;
+        const hasCorrectLength = name.length > 0 && name.length <= maxLength;
+
+        return containsValidChars && hasCorrectLength;
+    });
+
+export const isValidBillingAddress: (state: RootState) => boolean =
+    createSelector(billingAddressSelector, address => {
+        const maxLength = 30;
+
+        const hasCorrectLength =
+            address.length > 0 && address.length <= maxLength;
+
+        return hasCorrectLength;
+    });
+
+export const isValidBillingInfoForm: (state: RootState) => boolean =
+    createSelector(
+        isValidBillingFullName,
+        isValidBillingAddress,
+        (isValidBillingFullName, isValidBillingAddress) =>
+            isValidBillingFullName && isValidBillingAddress
     );
