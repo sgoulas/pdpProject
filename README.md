@@ -29,3 +29,10 @@ One of the major aims of this project is to set up the toolchain from the scratc
 -   Mark up validated by W3C mark up validator
 -   ADR folder detailing architectural decisions
 -   Detailed development diary with daily entries for each development day, the problems I encountered, the driving factors behind my decisions and my thoughts during each step of the way
+
+## How to deploy locally
+
+-   Clone this repository
+-   Install the dependencies by running `yarn`
+-   In two separate terminal instances run `yarn startServer` to start the mock back end server and `yarn dev` to start the front end client.
+-   The front end should be deployed at `http://localhost:3000/` and the back end at `http://localhost:4000/` (check the terminals to make sure these are the ports)

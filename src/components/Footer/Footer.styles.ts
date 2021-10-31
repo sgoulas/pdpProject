@@ -32,6 +32,9 @@ const useStyles = makeStyles(
             color: palette.common.white,
             fontWeight: typography.fontWeightBold,
         },
+        link: {
+            cursor: 'pointer',
+        },
     })
 );
 

@@ -1,8 +1,10 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 
 import { Typography, Divider } from '@components';
 import {
     DEV_PROFILE_URL,
+    faqPage,
     GIT_PROFILE_URL,
     GIT_REPO_URL,
     LINKEDIN_PROFILE_URL,
@@ -14,6 +16,9 @@ import { LinkExternal, Copyright } from './components';
 
 const Footer: React.FC = () => {
     const classes = useStyles();
+    const router = useRouter();
+
+    const navigateToFAQpage = () => router.push(faqPage());
 
     return (
         <article>
@@ -45,7 +50,12 @@ const Footer: React.FC = () => {
                         >
                             FAQ
                         </Typography>
-                        <Typography variant="body2" color="textSecondary">
+                        <Typography
+                            variant="body2"
+                            color="textSecondary"
+                            onClick={navigateToFAQpage}
+                            className={classes.link}
+                        >
                             about this project
                         </Typography>
                     </div>
