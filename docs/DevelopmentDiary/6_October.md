@@ -532,3 +532,78 @@ In any case, I increased the test coverage to make me feel good about myself and
 ## 13 October 2021
 
 Having merged the cart functionality I feel I should skip the category page and proceed straight into the checkout one, so that I can have a user journey completed from start to finish. Plus, the checkout page would require a payment method integration (currently thinking about `stripe`) and this is something I have never done before so I am definitely eager to test the waters with this one.
+
+At this point it's important to note that I am just spitballing over here. In a professional setting the cart would exist, at least in a mirrored state, in the back end. I have also seen implementations where the cart exists solely in the back end and no cart information is held in the front end. What I am going to try doing, keep the cart in the redux state and using it "as is" in the checkout page to immediately perform a payment without any sort of back end verification, is plain wrong and should never ever (ever) be done in a professional project. It just so happens that my server is mocked from start to finish and in the scope of this project I have no plans of doing any real back end development. Truth be told at this point, excluding the process of deploying a nextjs application to a host environment and CSS animations, I have implemented everything that I set out to implement. Even the category page would not be something I have never done before since in my previous work I did something really similar (keeping many products in redux state, presenting them in categories and using filters to update the listing). What's left to do is the holy grail of every personal project ever: finish the project.
+
+`stripe` has a relevant developers page with instructions for implementing the technology to one's project (https://stripe.com/docs/stripe-js/react#elements-consumer). I already created a dummy account just so that I could have an API key. Never finished activating the account although I _can_ see in my profile a public and a secret key, plus some dummy cards that can be used to test everything works correctly so hopefully these should prove enough.
+
+I went through the documentation (see above) but I also like checking out some articles with simple yet complete implementations so I used this one https://blog.logrocket.com/integrating-stripe-react-stripe-js/ as a reference point as well.
+
+After messing around with the existing examples, repos and sandbox, I may have to drop `stripe`. The styling options are all pure css and importing it as is breaks all the existing styles. On the other hand, since the component being exported is not my own or a material-ui one I can't override the way it receives styling, because it relies on getting styled from an external `css` file. I tried importing the file as a css module but I got the error "global class is not pure (pure selectors must contain at least one local class or id)", which does make sense. No selectors means no local scope. The documentation does not provide any API page for the component either.
+
+I did find a material-ui implementation (https://javascript.plainenglish.io/stripe-payment-form-with-reactjs-and-material-ui-part-4-118e60fca962) but to be honest, after hitting the 5 months milestone and over 300 commits (tomorrow marks exactly 5 months from my first commit and funnily enough the commit containing this entry will be my 300th) there is a certain element of fatigue. I have been burning the midnight oil for quite some time and I am reaching a point where I want to finish this thing properly, make the repo public and be done with it, at least for now.
+
+What I currently have in mind is to setup a vertical stepper with all the relevant input fields. I would like however to also find a component for accepting credit card details (this looks insane https://reactjsexample.com/a-modern-credit-card-component-for-react/), however if I am not satisfied with any solution I might create one myself.
+
+I did find this nice library https://www.npmjs.com/package/react-credit-cards which actually does work as advertised, so I am gonna use it.
+
+## 24 October 2021
+
+Today I would like to finish the structure of the checkout page and maybe split the page in its relevant components.
+
+In the end I did not have much time but I connected the credit card info to redux. Now in order to finish this component I should add separate error checkers for its individual fields (that will be updated via saga triggers) and also update the next button in the stepper to be disabled if the step content is erroneous.
+
+## 29 October 2021
+
+I added multiple selectors for the card payment form fields in order to determine if the next step button should be enabled or disabled and added a clean up function so that when a user closes the tab their payment info are deleted. Under normal circumstances this clean up behaviour should exist in the `_app.page.tsx` but I liked the idea of leaving that component as simple as it is right now and in any case, the checkout page is supposed to be tightly tied to a back end, so a pure front end implementation is bound to cut some corners.
+
+I also had to stub the css file that `CardPaymentForm` loads by adding a relevant entry in the `moduleNameMapper` property of `jest.config.ts`:
+
+```json
+{
+    "moduleNameMapper": {
+        // ...
+        "\\.(css|less)$": "identity-obj-proxy"
+    }
+}
+```
+
+I remember reading about this back when I started with the project. Thought I had already added it. Maybe I did so in another project and got confused?
+
+I also added an extention for inspecting the various testing library selectors I can use to get an element in my test suites (https://chrome.google.com/webstore/detail/testing-playground/hejbmebodbijjdhflfknehhcgaklhano). Learned it from a colleague at work, quite useful.
+
+I added the billing info component (super simple, just two fields). I think there is definitely a cleaner way to handle local state immediate updates and redux state value storing than the one I implemented. What I currently do is use local state for displaying user input and debouncing it to redux store for future uses (mainly for handling the call to the back end), but I dislike the amount of code this needs (selectors, local state, debounced local state and useEffects to dispatch updates store actions). I should re-evaluate my approach in the future after some time has passed.
+
+What's left is to hide the checkout button from the mini cart if I'm already in the checkout page, add tests for the checkout page, add the back end call for finishing the order and add a small FAQ page since I have a link for that in my footer. And then the project will be finished. We are getting there.
+
+## 30 October 2021
+
+I hid the checkout button from the mini cart slider when the user is already in the checkout page. It turns out that accessing a property of the router object does not play that well with `jest` so I had to mock the `userRouter` hook:
+
+```tsx
+describe('NavBar', () => {
+    afterAll(() => {
+        jest.restoreAllMocks();
+    });
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const useRouter = jest.spyOn(require('next/router'), 'useRouter');
+    useRouter.mockImplementation(() => ({ pathname: 'some-page' }));
+    it('renders correctly', () => {
+        const {
+            container: { firstChild },
+        } = renderWithProviders(<NavBar />);
+
+        expect(firstChild).toMatchSnapshot();
+    });
+});
+```
+
+In the end the following lines:
+
+```tsx
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const useRouter = jest.spyOn(require('next/router'), 'useRouter');
+useRouter.mockImplementation(() => ({ pathname: 'some-page' }));
+```
+
+had to be copied in many test files. I could always mock `next/router` as a module in a separate `__mocks__` folder as `jest` suggests (https://jestjs.io/docs/manual-mocks) but I like the idea of each test mocking what it needs and nothing more, so mocking anything centrally is something I would like to avoid unless left with no other option.

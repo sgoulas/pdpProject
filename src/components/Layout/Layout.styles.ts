@@ -4,7 +4,7 @@ const useStyles = makeStyles(({ spacing }) => ({
     layout: {
         display: 'grid',
         placeContent: 'center',
-        minHeight: spacing(50),
+        minHeight: '100vh',
         marginTop: spacing(6),
         marginBottom: spacing(20),
     },

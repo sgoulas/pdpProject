@@ -103,6 +103,8 @@ export default {
         '@styles(.*)$': '<rootDir>/src/styles$1',
         '@testUtils(.*)$': '<rootDir>/src/testUtils$1',
         '@utils(.*)$': '<rootDir>/src/utils$1',
+        '@pages(.*)$': '<rootDir>/src/pages$1',
+        '\\.(css|less)$': 'identity-obj-proxy',
     },
 
     // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader

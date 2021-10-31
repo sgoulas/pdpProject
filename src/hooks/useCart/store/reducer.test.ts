@@ -19,7 +19,7 @@ import {
 } from './types';
 import { mockState } from '@testUtils';
 
-describe('CartState reducer', () => {
+describe('Cart reducer', () => {
     describe('handles addToCartAction', () => {
         it('when the product is not already in the cart', () => {
             const previousState: CartState = initialState;

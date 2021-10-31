@@ -1,0 +1,324 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkout page renders correctly 1`] = `
+<div
+  class="MuiBox-root MuiBox-root-1"
+>
+  <div
+    class="MuiPaper-root MuiStepper-root MuiStepper-vertical MuiPaper-elevation0"
+    style="width: 80vw;"
+  >
+    <div
+      class="MuiStep-root MuiStep-vertical"
+    >
+      <button
+        class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiStepLabel-root MuiStepLabel-vertical"
+        >
+          <span
+            class="MuiStepLabel-iconContainer"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiStepIcon-root MuiStepIcon-active"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="12"
+              />
+              <text
+                class="MuiStepIcon-text"
+                text-anchor="middle"
+                x="12"
+                y="16"
+              >
+                1
+              </text>
+            </svg>
+          </span>
+          <span
+            class="MuiStepLabel-labelContainer"
+          >
+            <span
+              class="MuiTypography-root MuiStepLabel-label MuiStepLabel-active MuiTypography-body2 MuiTypography-displayBlock"
+            >
+              Billing Address
+            </span>
+          </span>
+        </span>
+        <span
+          class="MuiTouchRipple-root MuiStepButton-touchRipple"
+        />
+      </button>
+      <div
+        class="MuiStepContent-root"
+        icon="1"
+      >
+        <div
+          class="MuiCollapse-root MuiStepContent-transition MuiCollapse-entered"
+          style="min-height: 0px;"
+        >
+          <div
+            class="MuiCollapse-wrapper"
+          >
+            <div
+              class="MuiCollapse-wrapperInner"
+            >
+              <div
+                class="MuiBox-root MuiBox-root-2"
+              >
+                <div
+                  id="billing-info-form"
+                >
+                  <div
+                    class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-direction-xs-column MuiGrid-align-items-xs-center MuiGrid-justify-content-xs-center"
+                  >
+                    <div
+                      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+                    >
+                      <div
+                        class="MuiFormControl-root MuiTextField-root"
+                      >
+                        <label
+                          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+                          data-shrink="true"
+                        >
+                          full name
+                        </label>
+                        <div
+                          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+                        >
+                          <input
+                            aria-invalid="false"
+                            aria-label="full name"
+                            class="MuiInputBase-input MuiOutlinedInput-input"
+                            data-testid="full name"
+                            type="text"
+                            value="Jason Smith"
+                          />
+                          <fieldset
+                            aria-hidden="true"
+                            class="PrivateNotchedOutline-root-3 MuiOutlinedInput-notchedOutline"
+                          >
+                            <legend
+                              class="PrivateNotchedOutline-legendLabelled-5 PrivateNotchedOutline-legendNotched-6"
+                            >
+                              <span>
+                                full name
+                              </span>
+                            </legend>
+                          </fieldset>
+                        </div>
+                        
+                      </div>
+                    </div>
+                    <div
+                      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+                    >
+                      <div
+                        class="MuiFormControl-root MuiTextField-root"
+                      >
+                        <label
+                          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+                          data-shrink="true"
+                        >
+                          address
+                        </label>
+                        <div
+                          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+                        >
+                          <input
+                            aria-invalid="false"
+                            aria-label="address"
+                            class="MuiInputBase-input MuiOutlinedInput-input"
+                            data-testid="address"
+                            type="text"
+                            value="Black Mesa 13"
+                          />
+                          <fieldset
+                            aria-hidden="true"
+                            class="PrivateNotchedOutline-root-3 MuiOutlinedInput-notchedOutline"
+                          >
+                            <legend
+                              class="PrivateNotchedOutline-legendLabelled-5 PrivateNotchedOutline-legendNotched-6"
+                            >
+                              <span>
+                                address
+                              </span>
+                            </legend>
+                          </fieldset>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="MuiBox-root MuiBox-root-7"
+              >
+                <button
+                  aria-label="previous-step"
+                  class="MuiButtonBase-root MuiButton-root MuiButton-text Mui-disabled Mui-disabled"
+                  disabled=""
+                  tabindex="-1"
+                  type="button"
+                >
+                  <span
+                    class="MuiButton-label"
+                  >
+                    Back
+                  </span>
+                </button>
+                <button
+                  aria-label="next-step"
+                  class="MuiButtonBase-root MuiButton-root MuiButton-text"
+                  style="background-color: rgb(255, 164, 28);"
+                  tabindex="0"
+                  type="button"
+                >
+                  <span
+                    class="MuiButton-label"
+                  >
+                    Next
+                  </span>
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="MuiStepConnector-root MuiStepConnector-vertical Mui-disabled"
+    >
+      <span
+        class="MuiStepConnector-line MuiStepConnector-lineVertical"
+      />
+    </div>
+    <div
+      class="MuiStep-root MuiStep-vertical"
+    >
+      <button
+        class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical Mui-disabled"
+        disabled=""
+        tabindex="-1"
+        type="button"
+      >
+        <span
+          class="MuiStepLabel-root MuiStepLabel-vertical Mui-disabled"
+        >
+          <span
+            class="MuiStepLabel-iconContainer"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiStepIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="12"
+              />
+              <text
+                class="MuiStepIcon-text"
+                text-anchor="middle"
+                x="12"
+                y="16"
+              >
+                2
+              </text>
+            </svg>
+          </span>
+          <span
+            class="MuiStepLabel-labelContainer"
+          >
+            <span
+              class="MuiTypography-root MuiStepLabel-label MuiTypography-body2 MuiTypography-displayBlock"
+            >
+              Payment Method
+            </span>
+          </span>
+        </span>
+      </button>
+      <div
+        class="MuiStepContent-root"
+        disabled=""
+        icon="2"
+      />
+    </div>
+    <div
+      class="MuiStepConnector-root MuiStepConnector-vertical Mui-disabled"
+    >
+      <span
+        class="MuiStepConnector-line MuiStepConnector-lineVertical"
+      />
+    </div>
+    <div
+      class="MuiStep-root MuiStep-vertical"
+    >
+      <button
+        class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical Mui-disabled"
+        disabled=""
+        tabindex="-1"
+        type="button"
+      >
+        <span
+          class="MuiStepLabel-root MuiStepLabel-vertical Mui-disabled"
+        >
+          <span
+            class="MuiStepLabel-iconContainer"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiStepIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="12"
+              />
+              <text
+                class="MuiStepIcon-text"
+                text-anchor="middle"
+                x="12"
+                y="16"
+              >
+                3
+              </text>
+            </svg>
+          </span>
+          <span
+            class="MuiStepLabel-labelContainer"
+          >
+            <span
+              class="MuiTypography-root MuiStepLabel-label MuiTypography-body2 MuiTypography-displayBlock"
+            >
+              Finish
+            </span>
+          </span>
+        </span>
+      </button>
+      <div
+        class="MuiStepContent-root MuiStepContent-last"
+        disabled=""
+        icon="3"
+      />
+    </div>
+  </div>
+</div>
+`;

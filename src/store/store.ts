@@ -20,6 +20,7 @@ import { cartReducer } from '@hooks';
 
 import appReducer from './reducer';
 import rootSaga from './saga';
+import { checkoutReducer } from '../pages/checkout/store';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const makeStore = (
@@ -33,7 +34,11 @@ export const makeStore = (
 
     const persistedReducer = persistReducer(
         persistConfig,
-        combineReducers({ app: appReducer, cart: cartReducer })
+        combineReducers({
+            app: appReducer,
+            cart: cartReducer,
+            checkout: checkoutReducer,
+        })
     );
 
     const sagaMiddleware = createSagaMiddleware();

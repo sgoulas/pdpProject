@@ -1,0 +1,244 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardPaymentForm renders correctly 1`] = `
+<div
+  data-testid="payment-info-form"
+  id="payment-info-form"
+>
+  <div
+    class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-direction-xs-column MuiGrid-align-items-xs-center MuiGrid-justify-content-xs-center"
+  >
+    <div
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+    >
+      <div
+        class="makeStyles-cardImage-1"
+      >
+        <div
+          class="rccs"
+        >
+          <div
+            class="rccs__card rccs__card--unknown"
+          >
+            <div
+              class="rccs__card--front"
+            >
+              <div
+                class="rccs__card__background"
+              />
+              <div
+                class="rccs__issuer"
+              />
+              <div
+                class="rccs__cvc__front"
+              />
+              <div
+                class="rccs__number"
+              >
+                •••• •••• •••• ••••
+              </div>
+              <div
+                class="rccs__name"
+              >
+                YOUR NAME HERE
+              </div>
+              <div
+                class="rccs__expiry"
+              >
+                <div
+                  class="rccs__expiry__valid"
+                >
+                  valid thru
+                </div>
+                <div
+                  class="rccs__expiry__value"
+                >
+                  ••/••
+                </div>
+              </div>
+              <div
+                class="rccs__chip"
+              />
+            </div>
+            <div
+              class="rccs__card--back"
+            >
+              <div
+                class="rccs__card__background"
+              />
+              <div
+                class="rccs__stripe"
+              />
+              <div
+                class="rccs__signature"
+              />
+              <div
+                class="rccs__cvc"
+              />
+              <div
+                class="rccs__issuer"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+    >
+      <div
+        class="MuiFormControl-root MuiTextField-root"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+          data-shrink="false"
+        >
+          card number
+        </label>
+        <div
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+        >
+          <input
+            aria-invalid="false"
+            aria-label="card number"
+            class="MuiInputBase-input MuiOutlinedInput-input"
+            data-testid="card number"
+            type="text"
+            value=""
+          />
+          <fieldset
+            aria-hidden="true"
+            class="PrivateNotchedOutline-root-2 MuiOutlinedInput-notchedOutline"
+          >
+            <legend
+              class="PrivateNotchedOutline-legendLabelled-4"
+            >
+              <span>
+                card number
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+        
+      </div>
+    </div>
+    <div
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+    >
+      <div
+        class="MuiFormControl-root MuiTextField-root"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+          data-shrink="false"
+        >
+          card name
+        </label>
+        <div
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+        >
+          <input
+            aria-invalid="false"
+            aria-label="card name"
+            class="MuiInputBase-input MuiOutlinedInput-input"
+            data-testid="card name"
+            type="text"
+            value=""
+          />
+          <fieldset
+            aria-hidden="true"
+            class="PrivateNotchedOutline-root-2 MuiOutlinedInput-notchedOutline"
+          >
+            <legend
+              class="PrivateNotchedOutline-legendLabelled-4"
+            >
+              <span>
+                card name
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+        
+      </div>
+    </div>
+    <div
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+    >
+      <div
+        class="MuiFormControl-root MuiTextField-root"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+          data-shrink="false"
+        >
+          expiry
+        </label>
+        <div
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+        >
+          <input
+            aria-invalid="false"
+            aria-label="expiry"
+            class="MuiInputBase-input MuiOutlinedInput-input"
+            data-testid="expiry"
+            type="text"
+            value=""
+          />
+          <fieldset
+            aria-hidden="true"
+            class="PrivateNotchedOutline-root-2 MuiOutlinedInput-notchedOutline"
+          >
+            <legend
+              class="PrivateNotchedOutline-legendLabelled-4"
+            >
+              <span>
+                expiry
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+        
+      </div>
+    </div>
+    <div
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+    >
+      <div
+        class="MuiFormControl-root MuiTextField-root"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+          data-shrink="false"
+        >
+          cvc
+        </label>
+        <div
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+        >
+          <input
+            aria-invalid="false"
+            aria-label="cvc"
+            class="MuiInputBase-input MuiOutlinedInput-input"
+            data-testid="cvc"
+            type="password"
+            value=""
+          />
+          <fieldset
+            aria-hidden="true"
+            class="PrivateNotchedOutline-root-2 MuiOutlinedInput-notchedOutline"
+          >
+            <legend
+              class="PrivateNotchedOutline-legendLabelled-4"
+            >
+              <span>
+                cvc
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+`;
