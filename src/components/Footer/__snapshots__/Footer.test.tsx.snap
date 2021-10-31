@@ -62,7 +62,7 @@ exports[`Footer component matches snapshot 1`] = `
           FAQ
         </h5>
         <p
-          class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary"
+          class="MuiTypography-root makeStyles-link-5 MuiTypography-body2 MuiTypography-colorTextSecondary"
         >
           about this project
         </p>
@@ -105,7 +105,7 @@ exports[`Footer component matches snapshot 1`] = `
       class="MuiDivider-root MuiDivider-middle"
     />
     <p
-      class="MuiTypography-root makeStyles-text-5 MuiTypography-caption MuiTypography-colorTextSecondary MuiTypography-alignRight"
+      class="MuiTypography-root makeStyles-text-6 MuiTypography-caption MuiTypography-colorTextSecondary MuiTypography-alignRight"
     >
       made by Spyros Goulas
     </p>

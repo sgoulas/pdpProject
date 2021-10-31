@@ -34,7 +34,7 @@ exports[`Layout renders correctly 1`] = `
         />
       </button>
       <div
-        class="PrivateSwipeArea-root-24 PrivateSwipeArea-anchorLeft-25"
+        class="PrivateSwipeArea-root-25 PrivateSwipeArea-anchorLeft-26"
         style="width: 20px;"
       />
     </div>
@@ -122,7 +122,7 @@ exports[`Layout renders correctly 1`] = `
       />
     </button>
     <div
-      class="PrivateSwipeArea-root-24 PrivateSwipeArea-anchorRight-26"
+      class="PrivateSwipeArea-root-25 PrivateSwipeArea-anchorRight-27"
       style="width: 20px;"
     />
   </div>
@@ -198,7 +198,7 @@ exports[`Layout renders correctly 1`] = `
             FAQ
           </h5>
           <p
-            class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary"
+            class="MuiTypography-root makeStyles-link-23 MuiTypography-body2 MuiTypography-colorTextSecondary"
           >
             about this project
           </p>
@@ -241,7 +241,7 @@ exports[`Layout renders correctly 1`] = `
         class="MuiDivider-root MuiDivider-middle"
       />
       <p
-        class="MuiTypography-root makeStyles-text-23 MuiTypography-caption MuiTypography-colorTextSecondary MuiTypography-alignRight"
+        class="MuiTypography-root makeStyles-text-24 MuiTypography-caption MuiTypography-colorTextSecondary MuiTypography-alignRight"
       >
         made by Spyros Goulas
       </p>
