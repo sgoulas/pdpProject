@@ -607,3 +607,7 @@ useRouter.mockImplementation(() => ({ pathname: 'some-page' }));
 ```
 
 had to be copied in many test files. I could always mock `next/router` as a module in a separate `__mocks__` folder as `jest` suggests (https://jestjs.io/docs/manual-mocks) but I like the idea of each test mocking what it needs and nothing more, so mocking anything centrally is something I would like to avoid unless left with no other option.
+
+I added the FAQ page, went over the TODO list again and marked what was left (in the end I did not work with CSS animations, I think I should do so in another project where I will not be using any component libraries at all).
+
+And that was it.

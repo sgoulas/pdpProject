@@ -1,13 +1,13 @@
 
 Project aims:
-  ☐ Build an e-commerce site that is highly rated in lighthouse and wc3 validation tools.
+  ✔ Build an e-commerce site that is highly rated in lighthouse and wc3 validation tools. @done(21-10-31 03:37)
 
 Technologies, methodologies and architecture:
   ✔ React with typescript @done(21-06-14 03:32)
   ✔ Redux saga @done(21-08-09 19:09)
   ✔ Redux toolkit (with care for memoized selectors) @done(21-08-09 19:09)
   ✔ SEO @done(21-10-14 01:56)
-  ☐ Performance optimization
+  ✘ Performance optimization @cancelled(21-10-31 03:37)
   ✔ Semantic HTML @done(21-09-29 02:39)
   ✔ Custom CSS + Flex / Grid @done(07-09-08 03:10)
   ✔ Data driven navigation @done(21-09-29 02:37)
@@ -19,9 +19,9 @@ Technologies, methodologies and architecture:
   ✔ SSR with next @done(21-07-19 01:51)
   ✔ fake data with faker @done(21-07-26 01:55)
   ✔ GraphQL calls @done(21-08-19 00:38)
-  ☐ Animations
+  ✘ Animations @cancelled(21-10-31 03:37) (should work in an ad hoc project for that)
   ✔ Responsive, mobile first design @done(21-09-29 02:37)
-  ☐ Hosted somewhere
+  ✘ Hosted somewhere @cancelled(21-10-31 03:43) the process detailed in https://vercel.com/new is straightforward but the back end would need additional configuration
   ✔ Persistent state (redux-persist or ADR) @done(21-10-03 20:09)
   ✘ Dynamic loading with suspense @cancelled(21-08-10 01:59) suspense is at the time still an experimental feature, NextJS provides dynamic loading
   ✔ jest + jest config file with coverage option @done(21-08-10 01:57)
@@ -29,9 +29,9 @@ Technologies, methodologies and architecture:
 
 Main Goals:
   ✔ Landing Page @done(24-09-29 02:38)
-  ☐ Products listing page
+  ✘ Products listing page @cancelled(21-10-31 03:37)
   ✔ Product page @done(21-10-14 01:56)
-  ☐ Checkout page
+  ✔ Checkout page @done(21-10-31 03:37)
 
 Extra milestones:
   ☐ Wishlist

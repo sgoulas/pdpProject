@@ -8,6 +8,8 @@ export const landingPage: () => string = () => '/';
 
 export const checkoutPage: () => string = () => '/checkout';
 
+export const faqPage: () => string = () => '/about-this-project';
+
 /** OTHER */
 export const productImageUrl: (image: string) => string = image =>
     `/images/${image}`;
