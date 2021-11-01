@@ -1,6 +1,6 @@
 import { InMemoryCacheConfig, DefaultOptions } from '@apollo/client';
 
-export const BACK_END_URL = 'http://localhost:4000/graphql';
+export const BACK_END_URL = 'https://sgoulas-pdp-project.herokuapp.com/graphql';
 
 export const CACHE_OPTIONS: InMemoryCacheConfig = {
     addTypename: false,
