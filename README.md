@@ -27,6 +27,7 @@ One of the major aims of this project is to set up the toolchain from the scratc
 -   Husky pre-commit hooks
 -   SEO, OpenGraph protocol implementation and structure data mark up
 -   Mark up validated by W3C mark up validator
+-   Accessibility validated by WAVE validator
 -   ADR folder detailing architectural decisions
 -   Detailed development diary with daily entries for each development day, the problems I encountered, the driving factors behind my decisions and my thoughts during each step of the way
 
