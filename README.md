@@ -10,7 +10,7 @@ One of the major aims of this project is to set up the toolchain from the scratc
 
 ## Stack
 
--   React 18
+-   React
 -   Material-UI
 -   Redux, redux-saga, redux toolkit
 -   Webpack 5
